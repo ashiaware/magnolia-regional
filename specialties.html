@@ -287,7 +287,8 @@
       function initHeaderSearch() {
         var DOCTOR_WORDS = ["doctor", "doctors", "dr", "physician", "physicians", "clinician", "clinicians", "provider", "providers"];
         var DOCTOR_NAMES = ["okafor", "halim", "reyes", "haddad", "owusu", "mehta", "marin", "mar\u00edn", "delgado", "silva",
-          "amara", "grace", "daniel", "leila", "samuel", "arjun", "sofia", "rosa", "mateo"];
+          "amara", "grace", "daniel", "leila", "samuel", "arjun", "sofia", "rosa", "mateo",
+          "brooks", "ethan", "tran", "linh", "vargas", "ernesto", "ríos", "rios", "gabriela", "harper", "danielle", "hale", "richard", "siddiqui", "omar", "chen", "mei", "nwosu", "adaeze", "santos", "ryan", "asante", "kwame", "herrera", "lucía", "lucia", "mokoena", "thandiwe", "wallace", "andre", "mansour", "youssef", "carter", "imani", "cruz", "natalia", "lim", "hannah", "kim", "hana", "webb", "marcus", "clarke", "naomi"];
         var FILLER_WORDS = ["a", "an", "the", "find", "search", "show", "see", "me", "my", "for", "all", "near", "best", "good", "who", "speaks"];
         function doctorSearchUrl(query) {
           var words = query.trim().toLowerCase().replace(/\./g, "").split(/\s+/).filter(Boolean);

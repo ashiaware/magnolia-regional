@@ -169,6 +169,38 @@
     .restricted p{margin:0!important;color:var(--ink)!important}
     .restricted i{color:var(--danger);flex:none;margin-top:.1rem}
 
+
+    /* Care team, appointment actions and replies */
+    .team-list{list-style:none;margin:1rem 0 0;padding:0;display:grid;gap:.75rem}
+    @media(min-width:900px){.team-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    .team-member{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem 1rem;padding:.85rem;border:1px solid var(--line);border-radius:14px;background:var(--ivory)}
+    .team-member img{width:3.5rem;height:3.5rem;border-radius:14px 14px 14px 4px;object-fit:cover;flex:none;background:var(--cream)}
+    .team-who{flex:1;min-width:10rem}
+    .team-name{font-weight:700;color:var(--forest);text-decoration:none}
+    .team-name:hover{text-decoration:underline}
+    .portal-card p.team-role{margin:.1rem 0 0;font-size:.8125rem}
+    .team-actions{display:flex;flex-wrap:wrap;gap:.4rem}
+    .team-actions .soft-action{min-height:2.5rem;padding:.45rem .8rem;font-size:.875rem;margin:0}
+    .team-more{display:inline-flex;align-items:center;gap:.35rem;margin-top:1rem;font-weight:700;font-size:.9375rem;color:var(--plum)}
+    .appt-actions{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}
+    .portal-card .appt-actions .soft-action{margin-top:0}
+    .soft-action--danger{color:var(--danger);border-color:#e4cbce}
+    .soft-action--danger:hover{background:var(--blush);border-color:var(--danger)}
+    .action--danger{background:var(--danger);border-color:var(--danger)}
+    .action--danger:hover{background:#7f2234;border-color:#7f2234}
+    .appt-confirm{margin-top:1rem;padding:1rem;border-radius:14px;background:var(--blush)}
+    .portal-card .appt-confirm p{margin:0;color:var(--ink)}
+    .appt-confirm .appt-actions{margin-top:.75rem}
+    .portal-card p.appt-cancelled{display:flex;align-items:center;gap:.45rem;margin-top:1rem;padding:.75rem 1rem;border-radius:12px;background:var(--mist);color:var(--forest);font-weight:600}
+    .portal-card.is-cancelled h3,.portal-card.is-cancelled > p:not(.appt-cancelled){text-decoration:line-through;text-decoration-color:rgba(48,61,55,.45);opacity:.65}
+    .reply-box{margin-top:.9rem;display:grid;gap:.6rem}
+    .reply-box label{font-weight:700;font-size:.875rem;color:var(--forest)}
+    .reply-box textarea{width:100%;min-height:5.5rem;padding:.7rem .9rem;border:1px solid #9daf9f;border-radius:12px;font:inherit;font-size:.9375rem;resize:vertical}
+    .reply-box textarea:focus-visible{outline:none;border-color:var(--plum);box-shadow:0 0 0 3px rgba(131,71,174,.3)}
+    .reply-box small{color:var(--muted)}
+    .reply-sent{margin-top:.9rem;padding:.8rem 1rem;border-radius:14px 14px 4px 14px;background:var(--lav);margin-left:auto;max-width:90%}
+    .portal-card .reply-sent p{margin:0;color:var(--ink)}
+    .portal-card .reply-sent .row-meta{margin-top:.25rem}
     footer{background:var(--deep);color:var(--mist);padding:2rem 1.25rem}
     footer p{max-width:72rem;margin:0 auto;font-size:.9rem}
     footer a{color:var(--ivory)}
@@ -318,18 +350,26 @@
                       <article class="portal-card span-2">
                         <div class="card-head"><span class="card-icon"><i data-lucide="calendar-heart" aria-hidden="true"></i></span><div><p class="persona-eyebrow" style="margin:0">Upcoming care</p></div></div>
                         <h3>Well-child visit &amp; flu shot</h3>
-                        <p>Thu, Oct 29 · 3:30 PM with <a href="doctors.html#delgado">Dr. Rosa Delgado</a>, pediatrics. A flu shot is booked right after, at 3:45 PM.</p>
+                        <p><time data-rel="3" data-at="3:30 PM">Thu, Nov 5 · 3:30 PM</time> with <a href="doctors.html#delgado">Dr. Rosa Delgado</a>, pediatrics. A flu shot is booked right after, at 3:45 PM.</p>
                         <button type="button" class="soft-action focus-ring" data-goto-view="appointments"><i data-lucide="calendar-days" class="h-4 w-4" aria-hidden="true"></i>View all appointments</button>
+                      </article>
+                      <article class="portal-card span-2 team-card">
+                        <div class="card-head"><span class="card-icon"><i data-lucide="users-round" aria-hidden="true"></i></span><div><p class="persona-eyebrow" style="margin:0">Noah's care team</p></div></div>
+                        <ul class="team-list">
+                          <li class="team-member"><img src="https://images.unsplash.com/photo-1623854767648-e7bb8009f0db?auto=format&amp;fit=crop&amp;crop=faces&amp;w=120&amp;h=120&amp;q=70" alt="" width="56" height="56" loading="lazy"><div class="team-who"><a class="team-name" href="doctors.html#delgado">Dr. Rosa Delgado</a><p class="team-role">Pediatrics · Lead clinician</p></div><div class="team-actions"><a class="soft-action focus-ring" href="book.html?doctor=delgado"><i data-lucide="calendar-plus" class="h-4 w-4" aria-hidden="true"></i>Book<span class="sr-only"> with Dr. Rosa Delgado</span></a><button type="button" class="soft-action focus-ring" data-goto-view="messages"><i data-lucide="message-circle" class="h-4 w-4" aria-hidden="true"></i>Message<span class="sr-only"> Dr. Rosa Delgado</span></button></div></li>
+                          <li class="team-member"><img src="https://images.unsplash.com/photo-1657551856874-d492ef8ecba0?auto=format&amp;fit=crop&amp;crop=faces&amp;w=120&amp;h=120&amp;q=70" alt="" width="56" height="56" loading="lazy"><div class="team-who"><a class="team-name" href="doctors.html#mansour">Dr. Youssef Mansour</a><p class="team-role">Pediatrics · Kids' asthma &amp; allergy clinic</p></div><div class="team-actions"><a class="soft-action focus-ring" href="book.html?doctor=mansour"><i data-lucide="calendar-plus" class="h-4 w-4" aria-hidden="true"></i>Book<span class="sr-only"> with Dr. Youssef Mansour</span></a><button type="button" class="soft-action focus-ring" data-goto-view="messages"><i data-lucide="message-circle" class="h-4 w-4" aria-hidden="true"></i>Message<span class="sr-only"> Dr. Youssef Mansour</span></button></div></li>
+                        </ul>
+                        <a class="team-more focus-ring" href="doctors.html">See all 30 doctors <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
                       </article>
                       <article class="portal-card" style="background:var(--blush)">
                         <p class="persona-eyebrow">Reminders</p>
                         <h3>Vaccinations &amp; school forms</h3>
-                        <p>Noah's immunization record is up to date through age 8, with the next round due at the Oct 29 visit. A school-form checklist is also ready to review.</p>
+                        <p>Noah's immunization record is up to date through age 8, with the next round due at the <span data-rel-short="3">Nov 5</span> visit. A school-form checklist is also ready to review.</p>
                       </article>
                       <article class="portal-card" style="background:var(--cream)">
                         <p class="persona-eyebrow">Secure messages</p>
                         <h3>Dr. Rosa Delgado</h3>
-                        <p>"Noah is due for his next round of vaccines at the Oct 29 visit. Let me know if you have any questions before then."</p>
+                        <p>"Noah is due for his next round of vaccines at the <span data-rel-short="3">Nov 5</span> visit. Let me know if you have any questions before then."</p>
                         <button type="button" class="soft-action focus-ring" data-goto-view="messages"><i data-lucide="message-circle" class="h-4 w-4" aria-hidden="true"></i>View all messages</button>
                       </article>
                       <article class="portal-card" style="background:var(--mist)">
@@ -374,7 +414,18 @@
                       <article class="portal-card span-2">
                         <div class="card-head"><span class="card-icon"><i data-lucide="calendar-heart" aria-hidden="true"></i></span><div><p class="persona-eyebrow" style="margin:0">Upcoming</p></div></div>
                         <h3>Well-child visit &amp; flu shot</h3>
-                        <p>Thu, Oct 29 · 3:30 PM with <a href="doctors.html#delgado">Dr. Rosa Delgado</a>, pediatrics, Magnolia Regional Outpatient Center. A flu shot is booked right after, at 3:45 PM.</p>
+                        <p><time data-rel="3" data-at="3:30 PM">Thu, Nov 5 · 3:30 PM</time> with <a href="doctors.html#delgado">Dr. Rosa Delgado</a>, pediatrics, Magnolia Regional Outpatient Center. A flu shot is booked right after, at 3:45 PM.</p>
+                      
+                        <div class="appt-actions" data-appt-title="Well-child visit and flu shot" data-appt-doctor="Dr. Rosa Delgado" data-appt-rel="3" data-appt-at="3:30 PM" data-appt-mins="30">
+                          <button type="button" class="soft-action focus-ring" data-appt="calendar"><i data-lucide="calendar-plus" class="h-4 w-4" aria-hidden="true"></i>Add to calendar</button>
+                          <a class="soft-action focus-ring" href="book.html?doctor=delgado"><i data-lucide="calendar-clock" class="h-4 w-4" aria-hidden="true"></i>Reschedule</a>
+                          <button type="button" class="soft-action soft-action--danger focus-ring" data-appt="cancel"><i data-lucide="calendar-x" class="h-4 w-4" aria-hidden="true"></i>Cancel visit</button>
+                        </div>
+                        <div class="appt-confirm" role="alertdialog" aria-label="Cancel this visit?" hidden>
+                          <p><strong>Cancel this visit?</strong> The time will be offered to someone on the waitlist.</p>
+                          <div class="appt-actions"><button type="button" class="action action--danger focus-ring" data-appt="confirm-cancel">Yes, cancel it</button><button type="button" class="soft-action focus-ring" data-appt="keep">Keep my visit</button></div>
+                        </div>
+                        <p class="appt-cancelled" role="status" hidden><i data-lucide="circle-check" class="h-4 w-4" aria-hidden="true"></i>Cancelled. <a href="book.html?doctor=delgado">Book a new time with Dr. Rosa Delgado</a>.</p>
                       </article>
                     </div>
                     <div class="stack-section">
@@ -384,7 +435,7 @@
                         <div class="row-item"><div class="row-main"><p class="row-title">Vaccine catch-up visit</p><p class="row-meta">Jan 9, 2026 · Dr. Rosa Delgado, pediatrics</p></div><span class="row-value">Completed</span></div>
                       </div>
                     </div>
-                    <a class="action focus-ring view-footer-action" href="book.html"><i data-lucide="calendar-plus" class="h-4 w-4" aria-hidden="true"></i>Request an appointment</a>
+                    <a class="action focus-ring view-footer-action" href="book.html"><i data-lucide="calendar-plus" class="h-4 w-4" aria-hidden="true"></i>Book an appointment</a>
                   </div>
 
                   <div class="portal-view" data-view="messages" hidden>
@@ -395,14 +446,19 @@
                     </div>
                     <div class="stack">
                       <article class="portal-card">
+                        <div class="card-head"><span class="card-icon"><i data-lucide="baby" aria-hidden="true"></i></span><div><p class="persona-eyebrow" style="margin:0">Dr. Youssef Mansour · pediatrics</p><p class="row-meta">Oct 27, 2026</p></div></div>
+                        <p>"Dr. Delgado asked me to see Noah at our kids' asthma and allergy clinic about his seasonal allergies. Book a time with me online whenever it suits you, no rush."</p>
+                        <div class="appt-actions"><button type="button" class="soft-action focus-ring" data-reply><i data-lucide="reply" class="h-4 w-4" aria-hidden="true"></i>Reply</button><a class="soft-action focus-ring" href="book.html?doctor=mansour"><i data-lucide="calendar-plus" class="h-4 w-4" aria-hidden="true"></i>Book with Dr. Youssef Mansour</a></div>
+                      </article>
+                      <article class="portal-card">
                         <div class="card-head"><span class="card-icon"><i data-lucide="stethoscope" aria-hidden="true"></i></span><div><p class="persona-eyebrow" style="margin:0">Dr. Rosa Delgado · pediatrics</p><p class="row-meta">Oct 12, 2026</p></div></div>
-                        <p>"Noah is due for his next round of vaccines at the Oct 29 visit. Let me know if you have any questions before then."</p>
-                        <button type="button" class="soft-action focus-ring"><i data-lucide="reply" class="h-4 w-4" aria-hidden="true"></i>Reply</button>
+                        <p>"Noah is due for his next round of vaccines at the <span data-rel-short="3">Nov 5</span> visit. Let me know if you have any questions before then."</p>
+                        <button type="button" class="soft-action focus-ring" data-reply><i data-lucide="reply" class="h-4 w-4" aria-hidden="true"></i>Reply</button>
                       </article>
                       <article class="portal-card">
                         <div class="card-head"><span class="card-icon"><i data-lucide="clipboard-list" aria-hidden="true"></i></span><div><p class="persona-eyebrow" style="margin:0">Front desk team</p><p class="row-meta">Sep 30, 2026</p></div></div>
                         <p>"Your school-form request is ready. You can pick it up at the front desk, or we can mail a copy, whichever is easier."</p>
-                        <button type="button" class="soft-action focus-ring"><i data-lucide="reply" class="h-4 w-4" aria-hidden="true"></i>Reply</button>
+                        <button type="button" class="soft-action focus-ring" data-reply><i data-lucide="reply" class="h-4 w-4" aria-hidden="true"></i>Reply</button>
                       </article>
                     </div>
                     <a class="action focus-ring view-footer-action" href="index.html?reason=Patient%20portal%20or%20records#contact"><i data-lucide="pencil-line" class="h-4 w-4" aria-hidden="true"></i>Send a new message</a>
@@ -497,13 +553,21 @@
                       <article class="portal-card span-2">
                         <div class="card-head"><span class="card-icon"><i data-lucide="calendar-heart" aria-hidden="true"></i></span><div><p class="persona-eyebrow" style="margin:0">Upcoming care</p></div></div>
                         <h3>Migraine follow-up</h3>
-                        <p>Fri, Oct 30 · 1:00 PM with <a href="doctors.html#haddad">Dr. Leila Haddad</a>, neurology.</p>
+                        <p><time data-rel="4" data-at="1:00 PM">Fri, Nov 6 · 1:00 PM</time> with <a href="doctors.html#haddad">Dr. Leila Haddad</a>, neurology.</p>
                         <button type="button" class="soft-action focus-ring" data-goto-view="appointments"><i data-lucide="calendar-days" class="h-4 w-4" aria-hidden="true"></i>View all appointments</button>
+                      </article>
+                      <article class="portal-card span-2 team-card">
+                        <div class="card-head"><span class="card-icon"><i data-lucide="users-round" aria-hidden="true"></i></span><div><p class="persona-eyebrow" style="margin:0">Your care team</p></div></div>
+                        <ul class="team-list">
+                          <li class="team-member"><img src="https://images.unsplash.com/photo-1706565029539-d09af5896340?auto=format&amp;fit=crop&amp;crop=faces&amp;w=120&amp;h=120&amp;q=70" alt="" width="56" height="56" loading="lazy"><div class="team-who"><a class="team-name" href="doctors.html#haddad">Dr. Leila Haddad</a><p class="team-role">Neurology · Lead for your migraine care</p></div><div class="team-actions"><a class="soft-action focus-ring" href="book.html?doctor=haddad"><i data-lucide="calendar-plus" class="h-4 w-4" aria-hidden="true"></i>Book<span class="sr-only"> with Dr. Leila Haddad</span></a><button type="button" class="soft-action focus-ring" data-goto-view="messages"><i data-lucide="message-circle" class="h-4 w-4" aria-hidden="true"></i>Message<span class="sr-only"> Dr. Leila Haddad</span></button></div></li>
+                          <li class="team-member"><img src="https://images.unsplash.com/photo-1678695972687-033fa0bdbac9?auto=format&amp;fit=crop&amp;crop=faces&amp;w=120&amp;h=120&amp;q=70" alt="" width="56" height="56" loading="lazy"><div class="team-who"><a class="team-name" href="doctors.html#okafor">Dr. Amara Okafor</a><p class="team-role">Family medicine · Primary care</p></div><div class="team-actions"><a class="soft-action focus-ring" href="book.html?doctor=okafor"><i data-lucide="calendar-plus" class="h-4 w-4" aria-hidden="true"></i>Book<span class="sr-only"> with Dr. Amara Okafor</span></a><button type="button" class="soft-action focus-ring" data-goto-view="messages"><i data-lucide="message-circle" class="h-4 w-4" aria-hidden="true"></i>Message<span class="sr-only"> Dr. Amara Okafor</span></button></div></li>
+                        </ul>
+                        <a class="team-more focus-ring" href="doctors.html">See all 30 doctors <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
                       </article>
                       <article class="portal-card" style="background:var(--cream)">
                         <p class="persona-eyebrow">Secure messages</p>
                         <h3>Dr. Leila Haddad</h3>
-                        <p>"Keep tracking your sleep and water intake before the Oct 30 visit. It will help us spot what is triggering the migraines."</p>
+                        <p>"Keep tracking your sleep and water intake before the <span data-rel-short="4">Nov 6</span> visit. It will help us spot what is triggering the migraines."</p>
                         <button type="button" class="soft-action focus-ring" data-goto-view="messages"><i data-lucide="message-circle" class="h-4 w-4" aria-hidden="true"></i>View all messages</button>
                       </article>
                       <article class="portal-card" style="background:var(--blush)">
@@ -552,7 +616,18 @@
                       <article class="portal-card span-2">
                         <div class="card-head"><span class="card-icon"><i data-lucide="calendar-heart" aria-hidden="true"></i></span><div><p class="persona-eyebrow" style="margin:0">Upcoming</p></div></div>
                         <h3>Migraine follow-up</h3>
-                        <p>Fri, Oct 30 · 1:00 PM with <a href="doctors.html#haddad">Dr. Leila Haddad</a>, neurology, Magnolia Regional Outpatient Center.</p>
+                        <p><time data-rel="4" data-at="1:00 PM">Fri, Nov 6 · 1:00 PM</time> with <a href="doctors.html#haddad">Dr. Leila Haddad</a>, neurology, Magnolia Regional Outpatient Center.</p>
+                      
+                        <div class="appt-actions" data-appt-title="Migraine follow-up" data-appt-doctor="Dr. Leila Haddad" data-appt-rel="4" data-appt-at="1:00 PM" data-appt-mins="30">
+                          <button type="button" class="soft-action focus-ring" data-appt="calendar"><i data-lucide="calendar-plus" class="h-4 w-4" aria-hidden="true"></i>Add to calendar</button>
+                          <a class="soft-action focus-ring" href="book.html?doctor=haddad"><i data-lucide="calendar-clock" class="h-4 w-4" aria-hidden="true"></i>Reschedule</a>
+                          <button type="button" class="soft-action soft-action--danger focus-ring" data-appt="cancel"><i data-lucide="calendar-x" class="h-4 w-4" aria-hidden="true"></i>Cancel visit</button>
+                        </div>
+                        <div class="appt-confirm" role="alertdialog" aria-label="Cancel this visit?" hidden>
+                          <p><strong>Cancel this visit?</strong> The time will be offered to someone on the waitlist.</p>
+                          <div class="appt-actions"><button type="button" class="action action--danger focus-ring" data-appt="confirm-cancel">Yes, cancel it</button><button type="button" class="soft-action focus-ring" data-appt="keep">Keep my visit</button></div>
+                        </div>
+                        <p class="appt-cancelled" role="status" hidden><i data-lucide="circle-check" class="h-4 w-4" aria-hidden="true"></i>Cancelled. <a href="book.html?doctor=haddad">Book a new time with Dr. Leila Haddad</a>.</p>
                       </article>
                     </div>
                     <div class="stack-section">
@@ -562,7 +637,7 @@
                         <div class="row-item"><div class="row-main"><p class="row-title">Initial neurology consult</p><p class="row-meta">Jun 2, 2026 · Dr. Leila Haddad, neurology</p></div><span class="row-value">Completed</span></div>
                       </div>
                     </div>
-                    <a class="action focus-ring view-footer-action" href="book.html"><i data-lucide="calendar-plus" class="h-4 w-4" aria-hidden="true"></i>Request an appointment</a>
+                    <a class="action focus-ring view-footer-action" href="book.html"><i data-lucide="calendar-plus" class="h-4 w-4" aria-hidden="true"></i>Book an appointment</a>
                   </div>
 
                   <div class="portal-view" data-view="messages" hidden>
@@ -573,14 +648,19 @@
                     </div>
                     <div class="stack">
                       <article class="portal-card">
+                        <div class="card-head"><span class="card-icon"><i data-lucide="stethoscope" aria-hidden="true"></i></span><div><p class="persona-eyebrow" style="margin:0">Dr. Amara Okafor · primary care</p><p class="row-meta">Oct 26, 2026</p></div></div>
+                        <p>"I've shared your migraine plan from Dr. Haddad with your primary care chart, so we're all on the same page. Your yearly physical is due in March."</p>
+                        <div class="appt-actions"><button type="button" class="soft-action focus-ring" data-reply><i data-lucide="reply" class="h-4 w-4" aria-hidden="true"></i>Reply</button><a class="soft-action focus-ring" href="book.html?doctor=okafor"><i data-lucide="calendar-plus" class="h-4 w-4" aria-hidden="true"></i>Book with Dr. Amara Okafor</a></div>
+                      </article>
+                      <article class="portal-card">
                         <div class="card-head"><span class="card-icon"><i data-lucide="brain" aria-hidden="true"></i></span><div><p class="persona-eyebrow" style="margin:0">Dr. Leila Haddad · neurology</p><p class="row-meta">Oct 15, 2026</p></div></div>
-                        <p>"Keep tracking your sleep and water intake before the Oct 30 visit. It will help us spot what is triggering the migraines."</p>
-                        <button type="button" class="soft-action focus-ring"><i data-lucide="reply" class="h-4 w-4" aria-hidden="true"></i>Reply</button>
+                        <p>"Keep tracking your sleep and water intake before the <span data-rel-short="4">Nov 6</span> visit. It will help us spot what is triggering the migraines."</p>
+                        <button type="button" class="soft-action focus-ring" data-reply><i data-lucide="reply" class="h-4 w-4" aria-hidden="true"></i>Reply</button>
                       </article>
                       <article class="portal-card">
                         <div class="card-head"><span class="card-icon"><i data-lucide="stethoscope" aria-hidden="true"></i></span><div><p class="persona-eyebrow" style="margin:0">Dr. Amara Okafor · primary care</p><p class="row-meta">Mar 4, 2026</p></div></div>
                         <p>"Your last physical looked good. Keep up the water intake, and let us know if the headaches change before your next visit."</p>
-                        <button type="button" class="soft-action focus-ring"><i data-lucide="reply" class="h-4 w-4" aria-hidden="true"></i>Reply</button>
+                        <button type="button" class="soft-action focus-ring" data-reply><i data-lucide="reply" class="h-4 w-4" aria-hidden="true"></i>Reply</button>
                       </article>
                     </div>
                   </div>
@@ -666,8 +746,16 @@
                       <article class="portal-card span-2">
                         <div class="card-head"><span class="card-icon"><i data-lucide="calendar-heart" aria-hidden="true"></i></span><div><p class="persona-eyebrow" style="margin:0">Upcoming care</p></div></div>
                         <h3>Annual physical &amp; flu shot</h3>
-                        <p>Mon, Nov 2 · 9:00 AM with <a href="doctors.html#okafor">Dr. Amara Okafor</a>, primary care. A flu shot is also booked for Thu, Nov 5.</p>
+                        <p><time data-rel="2" data-at="9:00 AM">Wed, Nov 4 · 9:00 AM</time> with <a href="doctors.html#okafor">Dr. Amara Okafor</a>, primary care. A flu shot is also booked for <span data-rel-day="5">Mon, Nov 9</span>.</p>
                         <button type="button" class="soft-action focus-ring" data-goto-view="appointments"><i data-lucide="calendar-days" class="h-4 w-4" aria-hidden="true"></i>View all appointments</button>
+                      </article>
+                      <article class="portal-card span-2 team-card">
+                        <div class="card-head"><span class="card-icon"><i data-lucide="users-round" aria-hidden="true"></i></span><div><p class="persona-eyebrow" style="margin:0">Your care team</p></div></div>
+                        <ul class="team-list">
+                          <li class="team-member"><img src="https://images.unsplash.com/photo-1678695972687-033fa0bdbac9?auto=format&amp;fit=crop&amp;crop=faces&amp;w=120&amp;h=120&amp;q=70" alt="" width="56" height="56" loading="lazy"><div class="team-who"><a class="team-name" href="doctors.html#okafor">Dr. Amara Okafor</a><p class="team-role">Family medicine · Lead clinician</p></div><div class="team-actions"><a class="soft-action focus-ring" href="book.html?doctor=okafor"><i data-lucide="calendar-plus" class="h-4 w-4" aria-hidden="true"></i>Book<span class="sr-only"> with Dr. Amara Okafor</span></a><button type="button" class="soft-action focus-ring" data-goto-view="messages"><i data-lucide="message-circle" class="h-4 w-4" aria-hidden="true"></i>Message<span class="sr-only"> Dr. Amara Okafor</span></button></div></li>
+                          <li class="team-member"><img src="https://images.unsplash.com/photo-1699106674693-589465a2aa62?auto=format&amp;fit=crop&amp;crop=faces&amp;w=120&amp;h=120&amp;q=70" alt="" width="56" height="56" loading="lazy"><div class="team-who"><a class="team-name" href="doctors.html#harper">Dr. Danielle Harper</a><p class="team-role">Cardiology · Heart health check</p></div><div class="team-actions"><a class="soft-action focus-ring" href="book.html?doctor=harper"><i data-lucide="calendar-plus" class="h-4 w-4" aria-hidden="true"></i>Book<span class="sr-only"> with Dr. Danielle Harper</span></a><button type="button" class="soft-action focus-ring" data-goto-view="messages"><i data-lucide="message-circle" class="h-4 w-4" aria-hidden="true"></i>Message<span class="sr-only"> Dr. Danielle Harper</span></button></div></li>
+                        </ul>
+                        <a class="team-more focus-ring" href="doctors.html">See all 30 doctors <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
                       </article>
                       <article class="portal-card">
                         <p class="persona-eyebrow">Test results</p>
@@ -717,7 +805,18 @@
                       <article class="portal-card span-2">
                         <div class="card-head"><span class="card-icon"><i data-lucide="calendar-heart" aria-hidden="true"></i></span><div><p class="persona-eyebrow" style="margin:0">Upcoming</p></div></div>
                         <h3>Annual physical &amp; flu shot</h3>
-                        <p>Mon, Nov 2 · 9:00 AM with <a href="doctors.html#okafor">Dr. Amara Okafor</a>, primary care, Magnolia Regional Outpatient Center. A flu shot is also booked for Thu, Nov 5.</p>
+                        <p><time data-rel="2" data-at="9:00 AM">Wed, Nov 4 · 9:00 AM</time> with <a href="doctors.html#okafor">Dr. Amara Okafor</a>, primary care, Magnolia Regional Outpatient Center. A flu shot is also booked for <span data-rel-day="5">Mon, Nov 9</span>.</p>
+                      
+                        <div class="appt-actions" data-appt-title="Annual physical" data-appt-doctor="Dr. Amara Okafor" data-appt-rel="2" data-appt-at="9:00 AM" data-appt-mins="45">
+                          <button type="button" class="soft-action focus-ring" data-appt="calendar"><i data-lucide="calendar-plus" class="h-4 w-4" aria-hidden="true"></i>Add to calendar</button>
+                          <a class="soft-action focus-ring" href="book.html?doctor=okafor"><i data-lucide="calendar-clock" class="h-4 w-4" aria-hidden="true"></i>Reschedule</a>
+                          <button type="button" class="soft-action soft-action--danger focus-ring" data-appt="cancel"><i data-lucide="calendar-x" class="h-4 w-4" aria-hidden="true"></i>Cancel visit</button>
+                        </div>
+                        <div class="appt-confirm" role="alertdialog" aria-label="Cancel this visit?" hidden>
+                          <p><strong>Cancel this visit?</strong> The time will be offered to someone on the waitlist.</p>
+                          <div class="appt-actions"><button type="button" class="action action--danger focus-ring" data-appt="confirm-cancel">Yes, cancel it</button><button type="button" class="soft-action focus-ring" data-appt="keep">Keep my visit</button></div>
+                        </div>
+                        <p class="appt-cancelled" role="status" hidden><i data-lucide="circle-check" class="h-4 w-4" aria-hidden="true"></i>Cancelled. <a href="book.html?doctor=okafor">Book a new time with Dr. Amara Okafor</a>.</p>
                       </article>
                     </div>
                     <div class="stack-section">
@@ -727,7 +826,7 @@
                         <div class="row-item"><div class="row-main"><p class="row-title">Annual physical</p><p class="row-meta">Oct 21, 2025 · Dr. Amara Okafor, primary care</p></div><span class="row-value">Completed</span></div>
                       </div>
                     </div>
-                    <a class="action focus-ring view-footer-action" href="book.html"><i data-lucide="calendar-plus" class="h-4 w-4" aria-hidden="true"></i>Request an appointment</a>
+                    <a class="action focus-ring view-footer-action" href="book.html"><i data-lucide="calendar-plus" class="h-4 w-4" aria-hidden="true"></i>Book an appointment</a>
                   </div>
 
                   <div class="portal-view" data-view="messages" hidden>
@@ -738,14 +837,19 @@
                     </div>
                     <div class="stack">
                       <article class="portal-card">
+                        <div class="card-head"><span class="card-icon"><i data-lucide="heart-pulse" aria-hidden="true"></i></span><div><p class="persona-eyebrow" style="margin:0">Dr. Danielle Harper · cardiology</p><p class="row-meta">Oct 22, 2026</p></div></div>
+                        <p>"Dr. Okafor shared your cholesterol results with me. Your numbers look good on atorvastatin. Let's do a heart health check in the next few months; you can book it online."</p>
+                        <div class="appt-actions"><button type="button" class="soft-action focus-ring" data-reply><i data-lucide="reply" class="h-4 w-4" aria-hidden="true"></i>Reply</button><a class="soft-action focus-ring" href="book.html?doctor=harper"><i data-lucide="calendar-plus" class="h-4 w-4" aria-hidden="true"></i>Book with Dr. Danielle Harper</a></div>
+                      </article>
+                      <article class="portal-card">
                         <div class="card-head"><span class="card-icon"><i data-lucide="stethoscope" aria-hidden="true"></i></span><div><p class="persona-eyebrow" style="margin:0">Dr. Amara Okafor · primary care</p><p class="row-meta">Oct 5, 2026</p></div></div>
                         <p>"Your cholesterol levels are within normal range. Keep up the good work with your diet and exercise, and we will recheck at your annual physical."</p>
-                        <button type="button" class="soft-action focus-ring"><i data-lucide="reply" class="h-4 w-4" aria-hidden="true"></i>Reply</button>
+                        <button type="button" class="soft-action focus-ring" data-reply><i data-lucide="reply" class="h-4 w-4" aria-hidden="true"></i>Reply</button>
                       </article>
                       <article class="portal-card">
                         <div class="card-head"><span class="card-icon"><i data-lucide="receipt" aria-hidden="true"></i></span><div><p class="persona-eyebrow" style="margin:0">Patient billing</p><p class="row-meta">Sep 18, 2026</p></div></div>
                         <p>"Your September statement is ready to view online. No balance is due."</p>
-                        <button type="button" class="soft-action focus-ring"><i data-lucide="reply" class="h-4 w-4" aria-hidden="true"></i>Reply</button>
+                        <button type="button" class="soft-action focus-ring" data-reply><i data-lucide="reply" class="h-4 w-4" aria-hidden="true"></i>Reply</button>
                       </article>
                     </div>
                     <a class="action focus-ring view-footer-action" href="index.html?reason=Patient%20portal%20or%20records#contact"><i data-lucide="pencil-line" class="h-4 w-4" aria-hidden="true"></i>Send a new message</a>
@@ -855,7 +959,8 @@
       function initHeaderSearch() {
         var DOCTOR_WORDS = ["doctor", "doctors", "dr", "physician", "physicians", "clinician", "clinicians", "provider", "providers"];
         var DOCTOR_NAMES = ["okafor", "halim", "reyes", "haddad", "owusu", "mehta", "marin", "mar\u00edn", "delgado", "silva",
-          "amara", "grace", "daniel", "leila", "samuel", "arjun", "sofia", "rosa", "mateo"];
+          "amara", "grace", "daniel", "leila", "samuel", "arjun", "sofia", "rosa", "mateo",
+          "brooks", "ethan", "tran", "linh", "vargas", "ernesto", "ríos", "rios", "gabriela", "harper", "danielle", "hale", "richard", "siddiqui", "omar", "chen", "mei", "nwosu", "adaeze", "santos", "ryan", "asante", "kwame", "herrera", "lucía", "lucia", "mokoena", "thandiwe", "wallace", "andre", "mansour", "youssef", "carter", "imani", "cruz", "natalia", "lim", "hannah", "kim", "hana", "webb", "marcus", "clarke", "naomi"];
         var FILLER_WORDS = ["a", "an", "the", "find", "search", "show", "see", "me", "my", "for", "all", "near", "best", "good", "who", "speaks"];
         function doctorSearchUrl(query) {
           var words = query.trim().toLowerCase().replace(/\./g, "").split(/\s+/).filter(Boolean);
@@ -1052,6 +1157,63 @@
         });
       }
     });
+  </script>
+
+  <script>
+  // Keep demo dates current, run appointment actions and replies
+  (() => {
+    const addBusinessDays = (n) => { const d = new Date(); d.setHours(0, 0, 0, 0); let left = n; while (left > 0) { d.setDate(d.getDate() + 1); if (d.getDay() % 6 !== 0) left--; } return d; };
+    const day = (d) => d.toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" });
+    const short = (d) => d.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+    document.querySelectorAll("[data-rel]").forEach((el) => { const d = addBusinessDays(+el.dataset.rel); el.dateTime = d.toISOString().slice(0, 10); el.textContent = `${day(d)} · ${el.dataset.at}`; });
+    document.querySelectorAll("[data-rel-short]").forEach((el) => { el.textContent = short(addBusinessDays(+el.dataset.relShort)); });
+    document.querySelectorAll("[data-rel-day]").forEach((el) => { el.textContent = day(addBusinessDays(+el.dataset.relDay)); });
+    const icons = () => window.lucide && lucide.createIcons();
+
+    document.addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-appt]");
+      if (btn) {
+        const card = btn.closest(".portal-card");
+        const box = card.querySelector(".appt-actions[data-appt-title]");
+        const confirm = card.querySelector(".appt-confirm");
+        const act = btn.dataset.appt;
+        if (act === "calendar") {
+          const start = addBusinessDays(+box.dataset.apptRel);
+          const [hm, ap] = box.dataset.apptAt.split(" "); let [h, m] = hm.split(":").map(Number); if (ap === "PM" && h < 12) h += 12; if (ap === "AM" && h === 12) h = 0;
+          start.setHours(h, m); const end = new Date(start.getTime() + box.dataset.apptMins * 60000);
+          const pad = (n) => String(n).padStart(2, "0"); const st = (d) => `${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}T${pad(d.getHours())}${pad(d.getMinutes())}00`;
+          const ics = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Magnolia Regional (fictional demo)//EN", "BEGIN:VEVENT", `UID:${Date.now()}@magnolia-demo`, `DTSTAMP:${st(new Date())}`,
+            `DTSTART:${st(start)}`, `DTEND:${st(end)}`, `SUMMARY:${box.dataset.apptTitle} with ${box.dataset.apptDoctor} (demo)`, "LOCATION:Magnolia Regional Outpatient Center",
+            "DESCRIPTION:Fictional demo appointment from a student design project.", "END:VEVENT", "END:VCALENDAR"].join("\r\n");
+          const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([ics], { type: "text/calendar" })); a.download = "magnolia-appointment.ics"; document.body.appendChild(a); a.click(); a.remove();
+        }
+        if (act === "cancel") { box.hidden = true; confirm.hidden = false; confirm.querySelector("[data-appt='keep']").focus(); }
+        if (act === "keep") { confirm.hidden = true; box.hidden = false; box.querySelector("[data-appt='cancel']").focus(); }
+        if (act === "confirm-cancel") { confirm.hidden = true; card.classList.add("is-cancelled"); const done = card.querySelector(".appt-cancelled"); done.hidden = false; done.querySelector("a").focus(); }
+        return;
+      }
+      const reply = e.target.closest("[data-reply]");
+      if (reply) {
+        const card = reply.closest(".portal-card");
+        if (card.querySelector(".reply-box")) { card.querySelector(".reply-box textarea").focus(); return; }
+        const id = "reply-" + Math.random().toString(36).slice(2, 8);
+        const who = card.querySelector(".persona-eyebrow").textContent.split(" · ")[0];
+        const anchor = reply.closest(".appt-actions") || reply;
+        anchor.insertAdjacentHTML("afterend", `<form class="reply-box"><label for="${id}">Reply to ${who}</label><textarea id="${id}" required placeholder="Write your message"></textarea><small>Demo only: messages aren't sent anywhere.</small><div class="appt-actions" style="margin-top:0"><button type="submit" class="action focus-ring"><i data-lucide="send" class="h-4 w-4" aria-hidden="true"></i>Send</button><button type="button" class="soft-action focus-ring" data-reply-cancel>Cancel</button></div></form>`);
+        icons(); card.querySelector("textarea").focus();
+        return;
+      }
+      if (e.target.closest("[data-reply-cancel]")) { e.target.closest(".reply-box").remove(); }
+    });
+    document.addEventListener("submit", (e) => {
+      const form = e.target.closest(".reply-box"); if (!form) return;
+      e.preventDefault();
+      const text = form.querySelector("textarea").value.trim(); if (!text) { form.querySelector("textarea").focus(); return; }
+      const bubble = document.createElement("div"); bubble.className = "reply-sent"; bubble.setAttribute("role", "status");
+      const p = document.createElement("p"); p.textContent = text; const meta = document.createElement("p"); meta.className = "row-meta"; meta.textContent = "You · just now · Sent";
+      bubble.append(p, meta); form.replaceWith(bubble);
+    });
+  })();
   </script>
 </body>
 </html>
