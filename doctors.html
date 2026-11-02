@@ -178,7 +178,7 @@
         <input id="doctor-search" type="search" placeholder="Try “heart”, “Spanish” or “Reyes”" autocomplete="off" aria-describedby="result-count">
       </div>
       <label class="toggle"><input id="accepting-only" type="checkbox"> Accepting new patients only</label>
-      <p id="result-count" class="result-count" role="status" aria-live="polite">Showing all 12 doctors</p>
+      <p id="result-count" class="result-count" role="status" aria-live="polite">Showing all 30 doctors</p>
     </div>
     <div class="empty" id="doctor-empty" hidden><p>No doctors match that search. Try a different word, or <a href="index.html?reason=Finding%20care%20or%20a%20service#contact">ask us to match you</a>.</p></div>
 
@@ -198,6 +198,36 @@
           </div>
         </div>
       </li>
+      <li class="doc-card fill-card" id="brooks" data-search="dr. ethan brooks family medicine family medicine primary care general practitioner gp check-up english" data-accepting="true">
+        <img class="doc-card__photo" src="https://images.unsplash.com/photo-1642541724244-83d49288a86b?auto=format&amp;fit=crop&amp;crop=faces&amp;w=600&amp;h=750&amp;q=75" alt="Portrait of Dr. Ethan Brooks smiling in glasses and a white coat." width="600" height="750" loading="lazy">
+        <div class="doc-card__body">
+          <span class="spec-tag fill-chip" style="background:#ece5f2;color:#8347ae">Family medicine</span>
+          <h2 class="fill-ink">Dr. Ethan Brooks</h2>
+          <p class="doc-card__credentials fill-muted">MD &middot; Board certified in Family Medicine</p>
+          <span class="status status--open"><span class="status__dot" aria-hidden="true"></span>Accepting new patients</span>
+          <p class="fill-muted">Sees adults and teens for check-ups, sick visits and long-term conditions, with early-morning appointments for people who work.</p>
+          <p class="doc-card__langs fill-muted"><strong class="fill-ink">Languages:</strong> English</p>
+          <div class="doc-card__actions">
+            <a class="button-primary focus-ring" href="book.html?doctor=brooks">Book an appointment<span class="sr-only"> with Dr. Ethan Brooks</span></a>
+            <a class="text-link focus-ring" href="primary-care.html">About primary care <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </li>
+      <li class="doc-card fill-card" id="tran" data-search="dr. linh tran family medicine family medicine primary care general practitioner gp check-up english vietnamese" data-accepting="true">
+        <img class="doc-card__photo" src="https://images.unsplash.com/photo-1605176647037-cb9e5e5dc87d?auto=format&amp;fit=crop&amp;crop=faces&amp;w=600&amp;h=750&amp;q=75" alt="Portrait of Dr. Linh Tran in round glasses." width="600" height="750" loading="lazy">
+        <div class="doc-card__body">
+          <span class="spec-tag fill-chip" style="background:#ece5f2;color:#8347ae">Family medicine</span>
+          <h2 class="fill-ink">Dr. Linh Tran</h2>
+          <p class="doc-card__credentials fill-muted">DO &middot; Board certified in Family Medicine</p>
+          <span class="status status--open"><span class="status__dot" aria-hidden="true"></span>Accepting new patients</span>
+          <p class="fill-muted">Cares for whole families, from newborn check-ups to grandparents, with a focus on diabetes and preventive care.</p>
+          <p class="doc-card__langs fill-muted"><strong class="fill-ink">Languages:</strong> English, Vietnamese</p>
+          <div class="doc-card__actions">
+            <a class="button-primary focus-ring" href="book.html?doctor=tran">Book an appointment<span class="sr-only"> with Dr. Linh Tran</span></a>
+            <a class="text-link focus-ring" href="primary-care.html">About primary care <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </li>
       <li class="doc-card fill-card" id="halim" data-search="dr. grace halim emergency medicine emergency er urgent trauma english indonesian" data-accepting="false">
         <img class="doc-card__photo" src="https://images.unsplash.com/photo-1757125736482-328a3cdd9743?auto=format&amp;fit=crop&amp;crop=faces&amp;w=600&amp;h=750&amp;q=75" alt="Portrait of Dr. Grace Halim smiling in a white coat outdoors." width="600" height="750" loading="lazy">
         <div class="doc-card__body">
@@ -208,7 +238,37 @@
           <p class="fill-muted">Leads the emergency department team and teaches staff how to care for serious injuries and sudden illness.</p>
           <p class="doc-card__langs fill-muted"><strong class="fill-ink">Languages:</strong> English, Indonesian</p>
           <div class="doc-card__actions">
-            <a class="button-primary focus-ring" href="index.html?reason=Requesting%20an%20appointment&amp;doctor=Dr.%20Grace%20Halim#contact">Request an appointment<span class="sr-only"> with Dr. Grace Halim</span></a>
+            <a class="button-primary focus-ring" href="index.html#find-care">Emergency care info<span class="sr-only"> for Dr. Grace Halim</span></a>
+            <a class="text-link focus-ring" href="index.html#find-care">About emergency care <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </li>
+      <li class="doc-card fill-card" id="vargas" data-search="dr. ernesto vargas emergency medicine emergency medicine emergency er urgent trauma english spanish" data-accepting="true">
+        <img class="doc-card__photo" src="https://images.unsplash.com/photo-1678940805950-73f2127f9d4e?auto=format&amp;fit=crop&amp;crop=faces&amp;w=600&amp;h=750&amp;q=75" alt="Portrait of Dr. Ernesto Vargas in glasses with a stethoscope around his neck." width="600" height="750" loading="lazy">
+        <div class="doc-card__body">
+          <span class="spec-tag fill-chip" style="background:#f4e2e1;color:#9b2c3f">Emergency medicine</span>
+          <h2 class="fill-ink">Dr. Ernesto Vargas</h2>
+          <p class="doc-card__credentials fill-muted">MD &middot; Board certified in Emergency Medicine</p>
+          <span class="status status--open"><span class="status__dot" aria-hidden="true"></span>Accepting new patients</span>
+          <p class="fill-muted">Leads the overnight emergency team and has more than 25 years of experience treating serious injuries and sudden illness.</p>
+          <p class="doc-card__langs fill-muted"><strong class="fill-ink">Languages:</strong> English, Spanish</p>
+          <div class="doc-card__actions">
+            <a class="button-primary focus-ring" href="index.html#find-care">Emergency care info<span class="sr-only"> for Dr. Ernesto Vargas</span></a>
+            <a class="text-link focus-ring" href="index.html#find-care">About emergency care <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </li>
+      <li class="doc-card fill-card" id="rios" data-search="dr. gabriela ríos emergency medicine emergency medicine emergency er urgent trauma english spanish portuguese" data-accepting="true">
+        <img class="doc-card__photo" src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&amp;fit=crop&amp;crop=faces&amp;w=600&amp;h=750&amp;q=75" alt="Portrait of Dr. Gabriela Ríos in teal scrubs with her arms crossed." width="600" height="750" loading="lazy">
+        <div class="doc-card__body">
+          <span class="spec-tag fill-chip" style="background:#f4e2e1;color:#9b2c3f">Emergency medicine</span>
+          <h2 class="fill-ink">Dr. Gabriela Ríos</h2>
+          <p class="doc-card__credentials fill-muted">MD &middot; Board certified in Emergency Medicine</p>
+          <span class="status status--open"><span class="status__dot" aria-hidden="true"></span>Accepting new patients</span>
+          <p class="fill-muted">Treats urgent injuries and illness in the emergency department and trains staff in stroke and heart attack response.</p>
+          <p class="doc-card__langs fill-muted"><strong class="fill-ink">Languages:</strong> English, Spanish, Portuguese</p>
+          <div class="doc-card__actions">
+            <a class="button-primary focus-ring" href="index.html#find-care">Emergency care info<span class="sr-only"> for Dr. Gabriela Ríos</span></a>
             <a class="text-link focus-ring" href="index.html#find-care">About emergency care <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
           </div>
         </div>
@@ -228,6 +288,36 @@
           </div>
         </div>
       </li>
+      <li class="doc-card fill-card" id="harper" data-search="dr. danielle harper cardiology cardiology heart cardiac blood pressure vascular english" data-accepting="true">
+        <img class="doc-card__photo" src="https://images.unsplash.com/photo-1699106674693-589465a2aa62?auto=format&amp;fit=crop&amp;crop=faces&amp;w=600&amp;h=750&amp;q=75" alt="Portrait of Dr. Danielle Harper in a white blazer with her arms crossed." width="600" height="750" loading="lazy">
+        <div class="doc-card__body">
+          <span class="spec-tag fill-chip" style="background:#f4e2e1;color:#9b2c3f">Cardiology</span>
+          <h2 class="fill-ink">Dr. Danielle Harper</h2>
+          <p class="doc-card__credentials fill-muted">MD &middot; Board certified in Cardiology</p>
+          <span class="status status--open"><span class="status__dot" aria-hidden="true"></span>Accepting new patients</span>
+          <p class="fill-muted">Focuses on heart health for women, including heart disease prevention and heart care during and after pregnancy.</p>
+          <p class="doc-card__langs fill-muted"><strong class="fill-ink">Languages:</strong> English</p>
+          <div class="doc-card__actions">
+            <a class="button-primary focus-ring" href="book.html?doctor=harper">Book an appointment<span class="sr-only"> with Dr. Danielle Harper</span></a>
+            <a class="text-link focus-ring" href="specialties.html#heart">About heart and vascular care <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </li>
+      <li class="doc-card fill-card" id="hale" data-search="dr. richard hale cardiology cardiology heart cardiac blood pressure vascular english german" data-accepting="false">
+        <img class="doc-card__photo" src="https://images.unsplash.com/photo-1620928269189-dc4ee9d981c0?auto=format&amp;fit=crop&amp;crop=faces&amp;w=600&amp;h=750&amp;q=75" alt="Portrait of Dr. Richard Hale in glasses, a white coat and a tie." width="600" height="750" loading="lazy">
+        <div class="doc-card__body">
+          <span class="spec-tag fill-chip" style="background:#f4e2e1;color:#9b2c3f">Cardiology</span>
+          <h2 class="fill-ink">Dr. Richard Hale</h2>
+          <p class="doc-card__credentials fill-muted">MD &middot; Board certified in Cardiology and Interventional Cardiology</p>
+          <span class="status status--waitlist"><span class="status__dot" aria-hidden="true"></span>Waitlist for new patients</span>
+          <p class="fill-muted">Performs heart catheter procedures, including stents and valve checks, and follows patients after a heart attack.</p>
+          <p class="doc-card__langs fill-muted"><strong class="fill-ink">Languages:</strong> English, German</p>
+          <div class="doc-card__actions">
+            <a class="button-primary focus-ring" href="book.html?doctor=hale">Book an appointment<span class="sr-only"> with Dr. Richard Hale</span></a>
+            <a class="text-link focus-ring" href="specialties.html#heart">About heart and vascular care <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </li>
       <li class="doc-card fill-card" id="haddad" data-search="dr. leila haddad neurology neurology brain stroke migraine headache seizure epilepsy memory english arabic french" data-accepting="true">
         <img class="doc-card__photo" src="https://images.unsplash.com/photo-1706565029539-d09af5896340?auto=format&amp;fit=crop&amp;crop=faces&amp;w=600&amp;h=750&amp;q=75" alt="Portrait of Dr. Leila Haddad in a white coat." width="600" height="750" loading="lazy">
         <div class="doc-card__body">
@@ -239,6 +329,36 @@
           <p class="doc-card__langs fill-muted"><strong class="fill-ink">Languages:</strong> English, Arabic, French</p>
           <div class="doc-card__actions">
             <a class="button-primary focus-ring" href="book.html?doctor=haddad">Book an appointment<span class="sr-only"> with Dr. Leila Haddad</span></a>
+            <a class="text-link focus-ring" href="specialties.html#neurology">About neurology <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </li>
+      <li class="doc-card fill-card" id="siddiqui" data-search="dr. omar siddiqui neurology neurology brain stroke migraine headache seizure epilepsy memory english urdu arabic" data-accepting="true">
+        <img class="doc-card__photo" src="https://images.unsplash.com/photo-1712215544003-af10130f8eb3?auto=format&amp;fit=crop&amp;crop=faces&amp;w=600&amp;h=750&amp;q=75" alt="Portrait of Dr. Omar Siddiqui in a white coat." width="600" height="750" loading="lazy">
+        <div class="doc-card__body">
+          <span class="spec-tag fill-chip" style="background:#ece5f2;color:#8347ae">Neurology</span>
+          <h2 class="fill-ink">Dr. Omar Siddiqui</h2>
+          <p class="doc-card__credentials fill-muted">MD &middot; Board certified in Neurology</p>
+          <span class="status status--open"><span class="status__dot" aria-hidden="true"></span>Accepting new patients</span>
+          <p class="fill-muted">Treats epilepsy and sleep-related seizures, and runs the same-week clinic for new headaches and nerve pain.</p>
+          <p class="doc-card__langs fill-muted"><strong class="fill-ink">Languages:</strong> English, Urdu, Arabic</p>
+          <div class="doc-card__actions">
+            <a class="button-primary focus-ring" href="book.html?doctor=siddiqui">Book an appointment<span class="sr-only"> with Dr. Omar Siddiqui</span></a>
+            <a class="text-link focus-ring" href="specialties.html#neurology">About neurology <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </li>
+      <li class="doc-card fill-card" id="chen" data-search="dr. mei chen neurology neurology brain stroke migraine headache seizure epilepsy memory english mandarin" data-accepting="true">
+        <img class="doc-card__photo" src="https://images.unsplash.com/photo-1691177418473-8df169e0cbc6?auto=format&amp;fit=crop&amp;crop=faces&amp;w=600&amp;h=750&amp;q=75" alt="Portrait of Dr. Mei Chen in scrubs with a stethoscope and her arms crossed." width="600" height="750" loading="lazy">
+        <div class="doc-card__body">
+          <span class="spec-tag fill-chip" style="background:#ece5f2;color:#8347ae">Neurology</span>
+          <h2 class="fill-ink">Dr. Mei Chen</h2>
+          <p class="doc-card__credentials fill-muted">MD &middot; Board certified in Neurology</p>
+          <span class="status status--open"><span class="status__dot" aria-hidden="true"></span>Accepting new patients</span>
+          <p class="fill-muted">Cares for people with memory loss, Parkinson's disease and movement disorders, and works closely with their families.</p>
+          <p class="doc-card__langs fill-muted"><strong class="fill-ink">Languages:</strong> English, Mandarin</p>
+          <div class="doc-card__actions">
+            <a class="button-primary focus-ring" href="book.html?doctor=chen">Book an appointment<span class="sr-only"> with Dr. Mei Chen</span></a>
             <a class="text-link focus-ring" href="specialties.html#neurology">About neurology <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
           </div>
         </div>
@@ -258,6 +378,36 @@
           </div>
         </div>
       </li>
+      <li class="doc-card fill-card" id="nwosu" data-search="dr. adaeze nwosu oncology oncology cancer chemotherapy tumor english igbo french" data-accepting="true">
+        <img class="doc-card__photo" src="https://images.unsplash.com/photo-1784652952101-5a10c5202270?auto=format&amp;fit=crop&amp;crop=faces&amp;w=600&amp;h=750&amp;q=75" alt="Portrait of Dr. Adaeze Nwosu in glasses with her arms crossed." width="600" height="750" loading="lazy">
+        <div class="doc-card__body">
+          <span class="spec-tag fill-chip" style="background:#ece5f2;color:#8347ae">Oncology</span>
+          <h2 class="fill-ink">Dr. Adaeze Nwosu</h2>
+          <p class="doc-card__credentials fill-muted">MD &middot; Board certified in Medical Oncology</p>
+          <span class="status status--open"><span class="status__dot" aria-hidden="true"></span>Accepting new patients</span>
+          <p class="fill-muted">Treats breast and ovarian cancers and leads the cancer survivorship clinic for life after treatment.</p>
+          <p class="doc-card__langs fill-muted"><strong class="fill-ink">Languages:</strong> English, Igbo, French</p>
+          <div class="doc-card__actions">
+            <a class="button-primary focus-ring" href="book.html?doctor=nwosu">Book an appointment<span class="sr-only"> with Dr. Adaeze Nwosu</span></a>
+            <a class="text-link focus-ring" href="specialties.html#cancer">About cancer care <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </li>
+      <li class="doc-card fill-card" id="santos" data-search="dr. ryan santos oncology oncology cancer chemotherapy tumor english tagalog" data-accepting="true">
+        <img class="doc-card__photo" src="https://images.unsplash.com/photo-1622902046580-2b47f47f5471?auto=format&amp;fit=crop&amp;crop=faces&amp;w=600&amp;h=750&amp;q=75" alt="Portrait of Dr. Ryan Santos in a white coat with his arms crossed." width="600" height="750" loading="lazy">
+        <div class="doc-card__body">
+          <span class="spec-tag fill-chip" style="background:#ece5f2;color:#8347ae">Oncology</span>
+          <h2 class="fill-ink">Dr. Ryan Santos</h2>
+          <p class="doc-card__credentials fill-muted">MD &middot; Board certified in Hematology and Medical Oncology</p>
+          <span class="status status--open"><span class="status__dot" aria-hidden="true"></span>Accepting new patients</span>
+          <p class="fill-muted">Treats blood cancers such as leukemia and lymphoma, and coordinates care with the infusion center.</p>
+          <p class="doc-card__langs fill-muted"><strong class="fill-ink">Languages:</strong> English, Tagalog</p>
+          <div class="doc-card__actions">
+            <a class="button-primary focus-ring" href="book.html?doctor=santos">Book an appointment<span class="sr-only"> with Dr. Ryan Santos</span></a>
+            <a class="text-link focus-ring" href="specialties.html#cancer">About cancer care <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </li>
       <li class="doc-card fill-card" id="mehta" data-search="dr. arjun mehta general surgery surgery surgeon general surgery hernia gallbladder operation english hindi gujarati" data-accepting="true">
         <img class="doc-card__photo" src="https://images.unsplash.com/photo-1637059824899-a441006a6875?auto=format&amp;fit=crop&amp;crop=faces&amp;w=600&amp;h=750&amp;q=75" alt="Portrait of Dr. Arjun Mehta with arms crossed and a stethoscope around his neck." width="600" height="750" loading="lazy">
         <div class="doc-card__body">
@@ -269,6 +419,36 @@
           <p class="doc-card__langs fill-muted"><strong class="fill-ink">Languages:</strong> English, Hindi, Gujarati</p>
           <div class="doc-card__actions">
             <a class="button-primary focus-ring" href="book.html?doctor=mehta">Book an appointment<span class="sr-only"> with Dr. Arjun Mehta</span></a>
+            <a class="text-link focus-ring" href="specialties.html#surgery">About surgery <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </li>
+      <li class="doc-card fill-card" id="asante" data-search="dr. kwame asante general surgery general surgery surgeon hernia gallbladder operation english twi french" data-accepting="true">
+        <img class="doc-card__photo" src="https://images.unsplash.com/photo-1769072610024-5b8a50f05c73?auto=format&amp;fit=crop&amp;crop=faces&amp;w=600&amp;h=750&amp;q=75" alt="Portrait of Dr. Kwame Asante in blue scrubs in an operating room." width="600" height="750" loading="lazy">
+        <div class="doc-card__body">
+          <span class="spec-tag fill-chip" style="background:#e7eee4;color:#27483d">General surgery</span>
+          <h2 class="fill-ink">Dr. Kwame Asante</h2>
+          <p class="doc-card__credentials fill-muted">MD &middot; Board certified in General Surgery</p>
+          <span class="status status--open"><span class="status__dot" aria-hidden="true"></span>Accepting new patients</span>
+          <p class="fill-muted">Performs keyhole surgery for hernias, gallbladder and appendix, so most patients go home the same day.</p>
+          <p class="doc-card__langs fill-muted"><strong class="fill-ink">Languages:</strong> English, Twi, French</p>
+          <div class="doc-card__actions">
+            <a class="button-primary focus-ring" href="book.html?doctor=asante">Book an appointment<span class="sr-only"> with Dr. Kwame Asante</span></a>
+            <a class="text-link focus-ring" href="specialties.html#surgery">About surgery <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </li>
+      <li class="doc-card fill-card" id="herrera" data-search="dr. lucía herrera general surgery general surgery surgeon hernia gallbladder operation english spanish" data-accepting="true">
+        <img class="doc-card__photo" src="https://images.unsplash.com/photo-1770134223774-13b735e29201?auto=format&amp;fit=crop&amp;crop=faces&amp;w=600&amp;h=750&amp;q=75" alt="Portrait of Dr. Lucía Herrera smiling in navy scrubs and glasses." width="600" height="750" loading="lazy">
+        <div class="doc-card__body">
+          <span class="spec-tag fill-chip" style="background:#e7eee4;color:#27483d">General surgery</span>
+          <h2 class="fill-ink">Dr. Lucía Herrera</h2>
+          <p class="doc-card__credentials fill-muted">MD &middot; Board certified in General Surgery</p>
+          <span class="status status--open"><span class="status__dot" aria-hidden="true"></span>Accepting new patients</span>
+          <p class="fill-muted">Specializes in breast and thyroid surgery and meets every patient before and after their operation.</p>
+          <p class="doc-card__langs fill-muted"><strong class="fill-ink">Languages:</strong> English, Spanish</p>
+          <div class="doc-card__actions">
+            <a class="button-primary focus-ring" href="book.html?doctor=herrera">Book an appointment<span class="sr-only"> with Dr. Lucía Herrera</span></a>
             <a class="text-link focus-ring" href="specialties.html#surgery">About surgery <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
           </div>
         </div>
@@ -288,6 +468,36 @@
           </div>
         </div>
       </li>
+      <li class="doc-card fill-card" id="mokoena" data-search="dr. thandiwe mokoena obstetrics and gynecology obstetrics gynecology obgyn women maternity pregnancy prenatal birth english zulu" data-accepting="true">
+        <img class="doc-card__photo" src="https://images.unsplash.com/photo-1617565980755-d57f254b0ba7?auto=format&amp;fit=crop&amp;crop=faces&amp;w=600&amp;h=750&amp;q=75" alt="Portrait of Dr. Thandiwe Mokoena smiling in a white coat." width="600" height="750" loading="lazy">
+        <div class="doc-card__body">
+          <span class="spec-tag fill-chip" style="background:#e7eee4;color:#27483d">Obstetrics and gynecology</span>
+          <h2 class="fill-ink">Dr. Thandiwe Mokoena</h2>
+          <p class="doc-card__credentials fill-muted">MD &middot; Board certified in Obstetrics and Gynecology</p>
+          <span class="status status--open"><span class="status__dot" aria-hidden="true"></span>Accepting new patients</span>
+          <p class="fill-muted">Cares for high-risk pregnancies, including twins and pregnancies with diabetes or high blood pressure.</p>
+          <p class="doc-card__langs fill-muted"><strong class="fill-ink">Languages:</strong> English, Zulu</p>
+          <div class="doc-card__actions">
+            <a class="button-primary focus-ring" href="book.html?doctor=mokoena">Book an appointment<span class="sr-only"> with Dr. Thandiwe Mokoena</span></a>
+            <a class="text-link focus-ring" href="specialties.html#maternity">About women's health and maternity <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </li>
+      <li class="doc-card fill-card" id="wallace" data-search="dr. andre wallace obstetrics and gynecology obstetrics gynecology obgyn women maternity pregnancy prenatal birth english" data-accepting="true">
+        <img class="doc-card__photo" src="https://images.unsplash.com/photo-1645736593731-4eef033ac37a?auto=format&amp;fit=crop&amp;crop=faces&amp;w=600&amp;h=750&amp;q=75" alt="Portrait of Dr. Andre Wallace in glasses, a suit and a tie." width="600" height="750" loading="lazy">
+        <div class="doc-card__body">
+          <span class="spec-tag fill-chip" style="background:#e7eee4;color:#27483d">Obstetrics and gynecology</span>
+          <h2 class="fill-ink">Dr. Andre Wallace</h2>
+          <p class="doc-card__credentials fill-muted">MD &middot; Board certified in Obstetrics and Gynecology</p>
+          <span class="status status--open"><span class="status__dot" aria-hidden="true"></span>Accepting new patients</span>
+          <p class="fill-muted">Provides prenatal care, delivers babies and offers minimally invasive surgery for fibroids and endometriosis.</p>
+          <p class="doc-card__langs fill-muted"><strong class="fill-ink">Languages:</strong> English</p>
+          <div class="doc-card__actions">
+            <a class="button-primary focus-ring" href="book.html?doctor=wallace">Book an appointment<span class="sr-only"> with Dr. Andre Wallace</span></a>
+            <a class="text-link focus-ring" href="specialties.html#maternity">About women's health and maternity <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </li>
       <li class="doc-card fill-card" id="delgado" data-search="dr. rosa delgado pediatrics pediatrics pediatrician children kids teens baby vaccines english spanish" data-accepting="true">
         <img class="doc-card__photo" src="https://images.unsplash.com/photo-1623854767648-e7bb8009f0db?auto=format&amp;fit=crop&amp;crop=faces&amp;w=600&amp;h=750&amp;q=75" alt="Portrait of Dr. Rosa Delgado smiling outdoors in a white coat with a stethoscope." width="600" height="750" loading="lazy">
         <div class="doc-card__body">
@@ -303,6 +513,36 @@
           </div>
         </div>
       </li>
+      <li class="doc-card fill-card" id="mansour" data-search="dr. youssef mansour pediatrics pediatrics pediatrician children kids teens baby vaccines english arabic french" data-accepting="true">
+        <img class="doc-card__photo" src="https://images.unsplash.com/photo-1657551856874-d492ef8ecba0?auto=format&amp;fit=crop&amp;crop=faces&amp;w=600&amp;h=750&amp;q=75" alt="Portrait of Dr. Youssef Mansour in a white lab coat." width="600" height="750" loading="lazy">
+        <div class="doc-card__body">
+          <span class="spec-tag fill-chip" style="background:#f7f0e2;color:#27483d">Pediatrics</span>
+          <h2 class="fill-ink">Dr. Youssef Mansour</h2>
+          <p class="doc-card__credentials fill-muted">MD &middot; Board certified in Pediatrics</p>
+          <span class="status status--open"><span class="status__dot" aria-hidden="true"></span>Accepting new patients</span>
+          <p class="fill-muted">Sees babies, children and teens for check-ups and sick visits, and runs the asthma and allergy clinic for kids.</p>
+          <p class="doc-card__langs fill-muted"><strong class="fill-ink">Languages:</strong> English, Arabic, French</p>
+          <div class="doc-card__actions">
+            <a class="button-primary focus-ring" href="book.html?doctor=mansour">Book an appointment<span class="sr-only"> with Dr. Youssef Mansour</span></a>
+            <a class="text-link focus-ring" href="specialties.html#pediatrics">About pediatrics <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </li>
+      <li class="doc-card fill-card" id="carter" data-search="dr. imani carter pediatrics pediatrics pediatrician children kids teens baby vaccines english american sign language" data-accepting="true">
+        <img class="doc-card__photo" src="https://images.unsplash.com/photo-1765005204058-10418f5123c5?auto=format&amp;fit=crop&amp;crop=faces&amp;w=600&amp;h=750&amp;q=75" alt="Portrait of Dr. Imani Carter smiling." width="600" height="750" loading="lazy">
+        <div class="doc-card__body">
+          <span class="spec-tag fill-chip" style="background:#f7f0e2;color:#27483d">Pediatrics</span>
+          <h2 class="fill-ink">Dr. Imani Carter</h2>
+          <p class="doc-card__credentials fill-muted">MD &middot; Board certified in Pediatrics</p>
+          <span class="status status--open"><span class="status__dot" aria-hidden="true"></span>Accepting new patients</span>
+          <p class="fill-muted">Cares for newborns and young children, and supports families with feeding, sleep and growth questions.</p>
+          <p class="doc-card__langs fill-muted"><strong class="fill-ink">Languages:</strong> English, American Sign Language</p>
+          <div class="doc-card__actions">
+            <a class="button-primary focus-ring" href="book.html?doctor=carter">Book an appointment<span class="sr-only"> with Dr. Imani Carter</span></a>
+            <a class="text-link focus-ring" href="specialties.html#pediatrics">About pediatrics <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </li>
       <li class="doc-card fill-card" id="silva" data-search="dr. mateo silva rehabilitation medicine rehabilitation rehab physical therapy recovery stroke injury english portuguese" data-accepting="false">
         <img class="doc-card__photo" src="https://images.unsplash.com/photo-1729162128021-f37dca3ff30d?auto=format&amp;fit=crop&amp;crop=faces&amp;w=600&amp;h=750&amp;q=75" alt="Portrait of Dr. Mateo Silva smiling in a white lab coat." width="600" height="750" loading="lazy">
         <div class="doc-card__body">
@@ -314,6 +554,36 @@
           <p class="doc-card__langs fill-muted"><strong class="fill-ink">Languages:</strong> English, Portuguese</p>
           <div class="doc-card__actions">
             <a class="button-primary focus-ring" href="book.html?doctor=silva">Book an appointment<span class="sr-only"> with Dr. Mateo Silva</span></a>
+            <a class="text-link focus-ring" href="specialties.html#rehabilitation">About rehabilitation <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </li>
+      <li class="doc-card fill-card" id="cruz" data-search="dr. natalia cruz rehabilitation medicine rehabilitation medicine rehab physical therapy recovery stroke injury english spanish" data-accepting="true">
+        <img class="doc-card__photo" src="https://images.unsplash.com/photo-1754715203698-70c7ad3a879d?auto=format&amp;fit=crop&amp;crop=faces&amp;w=600&amp;h=750&amp;q=75" alt="Portrait of Dr. Natalia Cruz smiling in a white coat." width="600" height="750" loading="lazy">
+        <div class="doc-card__body">
+          <span class="spec-tag fill-chip" style="background:#e7eee4;color:#27483d">Rehabilitation medicine</span>
+          <h2 class="fill-ink">Dr. Natalia Cruz</h2>
+          <p class="doc-card__credentials fill-muted">DO &middot; Board certified in Physical Medicine and Rehabilitation</p>
+          <span class="status status--open"><span class="status__dot" aria-hidden="true"></span>Accepting new patients</span>
+          <p class="fill-muted">Helps people recover from sports injuries and back pain, and leads the outpatient physical therapy team.</p>
+          <p class="doc-card__langs fill-muted"><strong class="fill-ink">Languages:</strong> English, Spanish</p>
+          <div class="doc-card__actions">
+            <a class="button-primary focus-ring" href="book.html?doctor=cruz">Book an appointment<span class="sr-only"> with Dr. Natalia Cruz</span></a>
+            <a class="text-link focus-ring" href="specialties.html#rehabilitation">About rehabilitation <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </li>
+      <li class="doc-card fill-card" id="lim" data-search="dr. hannah lim rehabilitation medicine rehabilitation medicine rehab physical therapy recovery stroke injury english korean" data-accepting="false">
+        <img class="doc-card__photo" src="https://images.unsplash.com/photo-1686737357932-ae1c50492a9e?auto=format&amp;fit=crop&amp;crop=faces&amp;w=600&amp;h=750&amp;q=75" alt="Portrait of Dr. Hannah Lim with short hair in a white shirt." width="600" height="750" loading="lazy">
+        <div class="doc-card__body">
+          <span class="spec-tag fill-chip" style="background:#e7eee4;color:#27483d">Rehabilitation medicine</span>
+          <h2 class="fill-ink">Dr. Hannah Lim</h2>
+          <p class="doc-card__credentials fill-muted">MD &middot; Board certified in Physical Medicine and Rehabilitation</p>
+          <span class="status status--waitlist"><span class="status__dot" aria-hidden="true"></span>Waitlist for new patients</span>
+          <p class="fill-muted">Builds recovery plans after joint replacement and amputation, working alongside physical and occupational therapists.</p>
+          <p class="doc-card__langs fill-muted"><strong class="fill-ink">Languages:</strong> English, Korean</p>
+          <div class="doc-card__actions">
+            <a class="button-primary focus-ring" href="book.html?doctor=lim">Book an appointment<span class="sr-only"> with Dr. Hannah Lim</span></a>
             <a class="text-link focus-ring" href="specialties.html#rehabilitation">About rehabilitation <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
           </div>
         </div>
@@ -378,9 +648,10 @@
       const count = document.getElementById("result-count");
       const empty = document.getElementById("doctor-empty");
       function apply() {
-        const words = search.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+        const plain = (t) => t.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+        const words = plain(search.value.trim()).split(/\s+/).filter(Boolean);
         const visible = cards.filter((card) => {
-          const keywords = card.dataset.search.split(/\s+/);
+          const keywords = plain(card.dataset.search).split(/\s+/);
           const matchesWords = words.every((word) => keywords.some((keyword) => keyword.startsWith(word)));
           const matchesAccepting = !acceptingOnly.checked || card.dataset.accepting === "true";
           return matchesWords && matchesAccepting;
