@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diagnostic Imaging · Magnolia Regional</title>
+  <meta name="description" content="Diagnostic imaging at Magnolia Regional Medical Center: X-ray, ultrasound, CT scan, and MRI and mammography, read by board-certified radiologists.">
+  <meta name="theme-color" content="#18352d">
+  <link rel="icon" type="image/webp" href="assets/magnolia-logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;family=Work+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.577.0/dist/umd/lucide.min.js"></script>
+  <style>
+    :root{
+      --forest:#27483d;--deep:#18352d;--sage:#aebbaa;--mist:#e7eee4;--ivory:#fffaf1;--cream:#f7f0e2;--blush:#f4e2e1;--lav:#ece5f2;--plum:#8347ae;--ink:#303d37;--muted:#5c675f;--line:#d8d8ca;--danger:#9b2c3f;
+      --font-display:"DM Serif Display",Georgia,serif;--font-body:"Work Sans",system-ui,sans-serif;
+      --ease-out:cubic-bezier(.23,1,.32,1);--dur:220ms;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--ivory);color:var(--ink);font-family:var(--font-body);font-size:1rem;line-height:1.65}
+    a{color:var(--forest);text-underline-offset:4px}
+    :focus-visible{outline:3px solid var(--plum);outline-offset:3px;border-radius:.375rem}
+    .skip-link{position:fixed;left:1rem;top:-5rem;z-index:10;background:var(--deep);color:#fff;padding:.75rem 1rem;border-radius:.5rem}
+    .skip-link:focus{top:1rem}
+    .h-4{width:1rem;height:1rem}.h-5{width:1.25rem;height:1.25rem}
+
+    .emergency-bar{background:var(--deep);color:var(--ivory);font-size:.875rem;font-weight:500}
+    .emergency-bar p{max-width:72rem;margin:0 auto;padding:.5rem 1.25rem}
+    .emergency-bar a{color:var(--ivory);font-weight:700}
+    .site-bar{position:sticky;top:0;z-index:5;background:rgba(255,250,241,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+    .site-bar__inner{max-width:72rem;margin:0 auto;padding:.85rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.75rem 1rem}
+    .brand{display:flex;align-items:center;gap:.75rem;text-decoration:none;color:var(--forest);font-weight:700;font-size:.95rem;line-height:1.2}
+    .brand img{width:2.75rem;height:2.75rem;border-radius:.75rem;object-fit:cover}
+    .header-cta{display:inline-flex;align-items:center;gap:.5rem;min-height:2.75rem;padding:0 1.25rem;border-radius:999px;background:var(--forest);color:#fff;font-weight:700;font-size:.9rem;text-decoration:none;white-space:nowrap;transition:background-color var(--dur) ease,transform 160ms var(--ease-out)}
+    .header-cta:hover{background:var(--deep);transform:translateY(-1px)}
+    .header-cta:active{transform:scale(.97)}
+    .header-search{display:flex;flex:1 1 14rem;min-width:0;max-width:26rem}
+    .header-search label{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .header-search input{flex:1;min-width:0;min-height:2.75rem;padding:0 1rem;border:1px solid #9daf9f;border-right:0;border-radius:999px 0 0 999px;background:#fff;font:inherit;font-size:.9rem;color:var(--ink)}
+    .header-search input::placeholder{color:var(--muted);opacity:1}
+    .header-search input:hover{border-color:var(--forest)}
+    .header-search input:focus-visible{outline:none;border-color:var(--plum);box-shadow:0 0 0 3px rgba(131,71,174,.3)}
+    .header-search button{display:inline-flex;align-items:center;justify-content:center;flex:none;min-height:2.75rem;width:2.75rem;border:1px solid var(--forest);border-radius:0 999px 999px 0;background:var(--forest);color:#fff;cursor:pointer;transition:background-color var(--dur) ease}
+    .header-search button:hover{background:var(--deep)}
+    @media(max-width:640px){.header-search{order:3;flex-basis:100%;max-width:none}}
+    .site-nav{border-top:1px solid var(--line);background:var(--ivory)}
+    .site-nav ul{max-width:72rem;margin:0 auto;padding:.65rem 1.25rem;display:flex;flex-wrap:wrap;gap:.5rem;list-style:none}
+    .site-nav a{display:inline-flex;align-items:center;min-height:2.5rem;padding:0 .9rem;border-radius:999px;font-weight:600;font-size:.875rem;text-decoration:none;color:var(--forest);border:1px solid transparent;transition:background-color var(--dur) ease,border-color var(--dur) ease}
+    .site-nav a:hover{background:var(--mist)}
+    .site-nav a[aria-current="page"]{background:var(--forest);color:#fff}
+    @media(max-width:560px){.site-nav ul{gap:.4rem}.site-nav a{font-size:.8125rem;padding:0 .75rem}}
+
+    .hero{max-width:72rem;margin:0 auto;padding:3.5rem 1.25rem 2rem}
+    h1,h2{font-family:var(--font-display);font-weight:400;color:var(--forest);margin:0}
+    h1{font-size:clamp(2.5rem,1.6rem + 3.4vw,4rem);line-height:1.05;letter-spacing:-.02em}
+    .lead{max-width:44rem;margin:1.25rem 0 0;font-size:1.125rem;line-height:1.7}
+    .note{display:flex;gap:.75rem;max-width:44rem;margin-top:1.5rem;padding:1rem 1.25rem;border-radius:1.25rem 1.25rem 1.25rem .375rem;background:var(--lav)}
+    .note p{margin:0}
+    .pill{display:inline-flex;align-items:center;gap:.4rem;margin-top:1.25rem;padding:.35rem .85rem;border-radius:999px;background:var(--cream);border:1px solid var(--line);font-size:.875rem;font-weight:600;color:var(--forest)}
+
+    .chips{max-width:72rem;margin:0 auto;padding:0 1.25rem}
+    .chips h2{font-family:var(--font-body);font-size:.875rem;font-weight:700;color:var(--muted)}
+    .chips ul{list-style:none;margin:.6rem 0 0;padding:0;display:flex;flex-wrap:wrap;gap:.5rem}
+    .chip{display:inline-flex;align-items:center;gap:.45rem;min-height:2.75rem;padding:0 1rem;border-radius:999px;border:1px solid var(--line);background:#fff;font-weight:600;font-size:.9375rem;text-decoration:none;color:var(--forest);transition:background-color var(--dur) ease,border-color var(--dur) ease}
+    .chip:hover{background:var(--mist);border-color:var(--forest)}
+
+    .grid{max-width:72rem;margin:0 auto;padding:2.5rem 1.25rem 5rem;display:grid;gap:1.5rem}
+    @media(min-width:900px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    .spec-card{scroll-margin-top:6.5rem;display:flex;flex-direction:column;padding:.85rem;border:1px solid var(--line);border-radius:2rem 2rem 2rem .5rem;background:var(--ivory)}
+    .spec-card:nth-child(even){border-radius:2rem 2rem .5rem 2rem}
+    .spec-card:target{border-color:var(--plum);box-shadow:0 0 0 3px rgba(131,71,174,.25)}
+    .spec-card__photo{display:block;width:100%;aspect-ratio:16/9;height:auto;object-fit:cover;border-radius:1.4rem 1.4rem 1.4rem .375rem;background:var(--cream)}
+    .spec-card__body{display:flex;flex-direction:column;flex:1;padding:0 .85rem .85rem}
+    .spec-card__icon{display:grid;place-items:center;width:3rem;height:3rem;border-radius:999px;margin-top:-1.5rem;position:relative;box-shadow:0 0 0 4px var(--ivory)}
+    .spec-card h2{font-size:clamp(1.6rem,1.3rem + 1vw,2rem);line-height:1.15;margin-top:1rem}
+    .spec-card p{margin:.6rem 0 0}
+    .spec-card h3{margin:1.25rem 0 0;font-size:1rem;font-weight:700;color:var(--forest)}
+    .spec-card ul{margin:.5rem 0 0;padding-left:1.2rem}
+    .spec-card li+li{margin-top:.2rem}
+    .spec-card__start{padding-top:1rem;margin-top:1.25rem!important;border-top:1px solid var(--line);font-size:.9375rem}
+    .button-primary{align-self:flex-start;display:inline-flex;align-items:center;gap:.5rem;min-height:2.85rem;margin-top:auto;padding:.72rem 1.25rem;border-radius:999px;background:var(--forest);color:#fff;font-weight:700;font-size:.9375rem;text-decoration:none;transition:background-color var(--dur) ease,transform 160ms var(--ease-out)}
+    .spec-card__start+.button-primary{margin-top:1.25rem}
+    .text-link{align-self:flex-start;display:inline-flex;align-items:center;gap:.4rem;min-height:2.75rem;margin-top:.35rem;color:var(--plum);font-weight:700;text-decoration:underline;text-underline-offset:5px}
+    .text-link:hover{text-decoration-thickness:2px}
+    .fill-card:has(:focus-visible) .text-link{color:var(--blush)}
+    @media(hover:hover){.fill-card:hover .text-link{color:var(--blush)}}
+    .button-primary:hover{background:var(--deep);transform:translateY(-1px)}
+    .button-primary:active{transform:scale(.97)}
+
+    /* Same green fill as the landing page cards */
+    .fill-card{position:relative;isolation:isolate;overflow:hidden;transition:transform var(--dur) var(--ease-out),box-shadow var(--dur) ease}
+    .fill-card:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(165deg,var(--forest),var(--deep));clip-path:inset(100% 0 0 0);transition:clip-path 480ms var(--ease-out)}
+    .fill-card .fill-ink,.fill-card .fill-muted,.fill-card .fill-chip{transition:color 280ms ease,background-color 280ms ease}
+    .fill-card:has(:focus-visible):before{clip-path:inset(0)}
+    .fill-card:has(:focus-visible) .fill-ink{color:var(--ivory)!important}
+    .fill-card:has(:focus-visible) .fill-muted{color:var(--mist)!important}
+    .fill-card:has(:focus-visible) .fill-chip{background:rgba(255,250,241,.14)!important;color:var(--ivory)!important}
+    .fill-card:has(:focus-visible) .button-primary{background:var(--ivory);color:var(--forest)}
+    .fill-card .focus-ring:focus-visible{outline-color:var(--blush)}
+    @media(hover:hover){
+      .fill-card:hover{transform:translateY(-3px);box-shadow:0 18px 35px rgba(39,72,61,.12)}
+      .fill-card:hover:before{clip-path:inset(0)}
+      .fill-card:hover .fill-ink{color:var(--ivory)!important}
+      .fill-card:hover .fill-muted{color:var(--mist)!important}
+      .fill-card:hover .fill-chip{background:rgba(255,250,241,.14)!important;color:var(--ivory)!important}
+      .fill-card:hover .button-primary{background:var(--ivory);color:var(--forest)}
+    }
+
+    footer{background:var(--deep);color:var(--mist);padding:2rem 1.25rem}
+    footer p{max-width:72rem;margin:0 auto;font-size:.9rem}
+    footer a{color:var(--ivory)}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before{transition:none!important}.fill-card:hover{transform:none}}
+
+    @media(max-width:400px){
+      .site-bar__inner{padding:.75rem 1rem;gap:.5rem}
+      .brand{font-size:.85rem;gap:.55rem}
+      .brand img{width:2.4rem;height:2.4rem}
+      .header-cta{padding:0 .9rem;font-size:.85rem}
+    }
+    .notes-pill{position:fixed;left:1rem;bottom:1rem;z-index:30;display:inline-flex;align-items:center;gap:.45rem;min-height:2.75rem;padding:0 1rem;border:1px solid #9daf9f;border-radius:999px;background:var(--ivory);color:var(--forest);font-weight:700;font-size:.875rem;text-decoration:none;box-shadow:0 10px 24px -12px rgba(24,53,45,.55);transition:background-color var(--dur) ease,border-color var(--dur) ease}
+    .notes-pill:hover{background:var(--mist);border-color:var(--forest)}
+    .notes-pill:active{transform:scale(.97)}
+    @media print{.notes-pill{display:none}}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#imaging-list">Skip to imaging</a>
+  <div class="emergency-bar"><p>Life-threatening emergency? Call <a href="tel:911">911</a>. Our emergency department is open 24/7.</p></div>
+  <header class="site-bar">
+    <div class="site-bar__inner">
+      <a class="brand" href="index.html"><img src="assets/magnolia-logo.webp" alt="" width="44" height="44">Magnolia Regional<br>Medical Center</a>
+      <form id="header-search-form" class="header-search" role="search" action="index.html" method="get">
+        <label for="header-search">Search services or doctors</label>
+        <input id="header-search" type="search" name="search" placeholder="Search services or doctors" autocomplete="off">
+        <button type="submit" aria-label="Search"><i data-lucide="search" class="h-4 w-4" aria-hidden="true"></i></button>
+      </form>
+      <a class="header-cta focus-ring" href="index.html#contact">Request support</a>
+    </div>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="primary-care.html">Primary care</a></li>
+        <li><a href="specialties.html">Specialty care</a></li>
+        <li><a href="imaging.html" aria-current="page">Diagnostic imaging</a></li>
+        <li><a href="doctors.html">Find a doctor</a></li>
+        <li><a href="patient-portal.html">Patient portal</a></li>
+        <li><a href="sources.html">Sources &amp; notes</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="page-title">
+      <h1 id="page-title">Diagnostic imaging</h1>
+      <p class="lead">Scans that help your care team see what is going on, read by board-certified radiologists. Choose a scan type to see what to expect and how to get started.</p>
+      <div class="note"><i data-lucide="info" class="h-5 w-5" aria-hidden="true" style="flex:none;color:var(--plum);margin-top:.15rem"></i><p>Most scans need an order from your clinician. Same-day X-ray is available for urgent needs. <a href="index.html?reason=Finding%20care%20or%20a%20service#contact">Send us a request</a> if you have questions before you schedule.</p></div>
+    </section>
+
+    <nav class="chips" aria-labelledby="chips-title">
+      <h2 id="chips-title">Jump to a scan type</h2>
+      <ul>
+        <li><a class="chip focus-ring" href="#xray"><i data-lucide="scan-line" class="h-4 w-4" aria-hidden="true"></i>X-ray and fluoroscopy</a></li>
+        <li><a class="chip focus-ring" href="#ultrasound"><i data-lucide="waves" class="h-4 w-4" aria-hidden="true"></i>Ultrasound</a></li>
+        <li><a class="chip focus-ring" href="#ct"><i data-lucide="scan" class="h-4 w-4" aria-hidden="true"></i>CT scan</a></li>
+        <li><a class="chip focus-ring" href="#mri"><i data-lucide="aperture" class="h-4 w-4" aria-hidden="true"></i>MRI and mammography</a></li>
+      </ul>
+    </nav>
+
+    <div class="grid" id="imaging-list">
+      <article class="spec-card fill-card" id="xray" aria-labelledby="xray-title">
+        <img class="spec-card__photo" src="https://images.unsplash.com/photo-1666214277657-e60f05c40b04?auto=format&amp;fit=crop&amp;w=900&amp;q=75" alt="Two clinicians in white coats review a scan together on computer monitors." width="900" height="506" loading="eager">
+        <div class="spec-card__body">
+          <span class="spec-card__icon fill-chip" style="background:#e7eee4;color:#27483d"><i data-lucide="scan-line" class="h-5 w-5" aria-hidden="true"></i></span>
+          <h2 id="xray-title" class="fill-ink">X-ray and fluoroscopy</h2>
+          <p class="fill-muted">Quick imaging for bones, joints and chest concerns. Fluoroscopy adds real-time, moving X-ray for certain procedures.</p>
+          <h3 class="fill-ink">What to expect</h3>
+          <ul class="fill-muted"><li>Usually done in 15 minutes or less</li><li>No preparation needed for most X-rays</li><li>Results usually shared within a day</li><li>Same-day scheduling for urgent needs</li></ul>
+          <p class="spec-card__start fill-muted"><strong class="fill-ink">Getting started:</strong> Needs an order from your clinician, except for same-day urgent X-ray.</p>
+          <a class="button-primary focus-ring" href="index.html?reason=Finding%20care%20or%20a%20service&amp;service=X-ray%20and%20fluoroscopy#contact">Ask about a scan <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
+          <a class="text-link focus-ring" href="doctors.html#webb">Meet Dr. Marcus Webb <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
+        </div>
+      </article>
+      <article class="spec-card fill-card" id="ultrasound" aria-labelledby="ultrasound-title">
+        <img class="spec-card__photo" src="https://images.unsplash.com/photo-1706065264583-55f1a8549769?auto=format&amp;fit=crop&amp;w=900&amp;q=75" alt="A sonographer performs an ultrasound exam with a patient." width="900" height="506" loading="lazy">
+        <div class="spec-card__body">
+          <span class="spec-card__icon fill-chip" style="background:#ece5f2;color:#8347ae"><i data-lucide="waves" class="h-5 w-5" aria-hidden="true"></i></span>
+          <h2 id="ultrasound-title" class="fill-ink">Ultrasound</h2>
+          <p class="fill-muted">Sound-wave imaging with no radiation, used for everything from prenatal check-ups to abdominal and vascular concerns.</p>
+          <h3 class="fill-ink">What to expect</h3>
+          <ul class="fill-muted"><li>Prenatal ultrasounds at key points in pregnancy</li><li>Abdominal and pelvic imaging</li><li>Vascular studies for blood flow</li><li>Some exams ask you to arrive with a full bladder</li></ul>
+          <p class="spec-card__start fill-muted"><strong class="fill-ink">Getting started:</strong> Needs an order from your clinician. Your care team will share any prep instructions.</p>
+          <a class="button-primary focus-ring" href="index.html?reason=Finding%20care%20or%20a%20service&amp;service=Ultrasound#contact">Ask about a scan <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
+          <a class="text-link focus-ring" href="specialties.html#maternity">Women's health and maternity <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
+        </div>
+      </article>
+      <article class="spec-card fill-card" id="ct" aria-labelledby="ct-title">
+        <img class="spec-card__photo" src="https://images.unsplash.com/photo-1758206523747-69af03fb56e4?auto=format&amp;fit=crop&amp;w=900&amp;q=75" alt="A medical professional helps position a patient for a CT scan next to the scanner." width="900" height="506" loading="lazy">
+        <div class="spec-card__body">
+          <span class="spec-card__icon fill-chip" style="background:#f4e2e1;color:#9b2c3f"><i data-lucide="scan" class="h-5 w-5" aria-hidden="true"></i></span>
+          <h2 id="ct-title" class="fill-ink">CT scan</h2>
+          <p class="fill-muted">Detailed, cross-sectional images used to look closely at organs, blood vessels and injuries.</p>
+          <h3 class="fill-ink">What to expect</h3>
+          <ul class="fill-muted"><li>Usually takes 10 to 30 minutes</li><li>Some scans use a contrast dye</li><li>You may be asked to fast beforehand</li><li>Tell your care team about any allergies first</li></ul>
+          <p class="spec-card__start fill-muted"><strong class="fill-ink">Getting started:</strong> Needs an order from your clinician. Your care team will explain any preparation, such as fasting.</p>
+          <a class="button-primary focus-ring" href="index.html?reason=Finding%20care%20or%20a%20service&amp;service=CT%20scan#contact">Ask about a scan <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
+          <a class="text-link focus-ring" href="doctors.html#kim">Meet Dr. Hana Kim <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
+        </div>
+      </article>
+      <article class="spec-card fill-card" id="mri" aria-labelledby="mri-title">
+        <img class="spec-card__photo" src="https://images.unsplash.com/photo-1758691462519-99076ad0d485?auto=format&amp;fit=crop&amp;w=900&amp;q=75" alt="A clinician shows an elderly patient their scan results on a tablet." width="900" height="506" loading="lazy">
+        <div class="spec-card__body">
+          <span class="spec-card__icon fill-chip" style="background:#f7f0e2;color:#27483d"><i data-lucide="aperture" class="h-5 w-5" aria-hidden="true"></i></span>
+          <h2 id="mri-title" class="fill-ink">MRI and mammography</h2>
+          <p class="fill-muted">MRI uses magnets and radio waves for highly detailed images of soft tissue, the brain and joints. Mammography screens for breast cancer.</p>
+          <h3 class="fill-ink">What to expect</h3>
+          <ul class="fill-muted"><li>MRI exams typically take 30 to 60 minutes</li><li>Let your care team know about any metal implants</li><li>Annual mammograms recommended starting at 40</li><li>Results reviewed by a board-certified radiologist</li></ul>
+          <p class="spec-card__start fill-muted"><strong class="fill-ink">Getting started:</strong> Needs an order from your clinician, except for routine annual mammograms.</p>
+          <a class="button-primary focus-ring" href="index.html?reason=Finding%20care%20or%20a%20service&amp;service=MRI%20and%20mammography#contact">Ask about a scan <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
+          <a class="text-link focus-ring" href="doctors.html#clarke">Meet Dr. Naomi Clarke <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <a class="notes-pill" href="sources.html"><i data-lucide="notebook-text" class="h-4 w-4" aria-hidden="true"></i>Sources and notes</a>
+  <footer>
+    <p>Magnolia Regional Medical Center concept site · <a href="index.html">Back to the landing page</a> · <a href="doctors.html">Find a doctor</a> · <a href="specialties.html">Specialty care</a> · <a href="primary-care.html">Primary care</a> · <a href="patient-portal.html">Patient portal</a> · <a href="sources.html">Sources and notes</a> · <a href="donate.html">Donate</a></p>
+  </footer>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      if (window.lucide) lucide.createIcons(); else console.error("Lucide icons failed to load");
+      initHeaderSearch();
+      function initHeaderSearch() {
+        var DOCTOR_WORDS = ["doctor", "doctors", "dr", "physician", "physicians", "clinician", "clinicians", "provider", "providers"];
+        var DOCTOR_NAMES = ["okafor", "halim", "reyes", "haddad", "owusu", "mehta", "marin", "mar\u00edn", "delgado", "silva",
+          "amara", "grace", "daniel", "leila", "samuel", "arjun", "sofia", "rosa", "mateo"];
+        var FILLER_WORDS = ["a", "an", "the", "find", "search", "show", "see", "me", "my", "for", "all", "near", "best", "good", "who", "speaks"];
+        function doctorSearchUrl(query) {
+          var words = query.trim().toLowerCase().replace(/\./g, "").split(/\s+/).filter(Boolean);
+          var asksForDoctor = words.some(function (w) { return DOCTOR_WORDS.indexOf(w) !== -1; });
+          var namesDoctor = words.some(function (w) { return DOCTOR_NAMES.indexOf(w) !== -1; });
+          if (!asksForDoctor && !namesDoctor) return null;
+          var rest = words.filter(function (w) { return DOCTOR_WORDS.indexOf(w) === -1 && FILLER_WORDS.indexOf(w) === -1; }).join(" ");
+          return rest ? "doctors.html?q=" + encodeURIComponent(rest) : "doctors.html";
+        }
+        var form = document.getElementById("header-search-form");
+        var input = document.getElementById("header-search");
+        if (!form || !input) return;
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+          var query = input.value;
+          var doctorsUrl = doctorSearchUrl(query);
+          window.location.href = doctorsUrl || "index.html?search=" + encodeURIComponent(query) + "#find-care";
+        });
+      }
+    });
+  </script>
+</body>
+</html>

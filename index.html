@@ -3,13 +3,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Magnolia Regional Medical Center</title>
-  <meta name="description" content="Magnolia Regional Medical Center: find care, plan your visit and request support. Concept site with sample information.">
+  <meta name="description" content="Magnolia Regional Medical Center: find care, plan your visit and request support.">
   <meta name="theme-color" content="#18352d">
-  <link rel="icon" type="image/webp" href="magnolia-logo.webp">
-  <link rel="apple-touch-icon" href="magnolia-logo.webp">
+  <link rel="icon" type="image/webp" href="assets/magnolia-logo.webp">
+  <link rel="apple-touch-icon" href="assets/magnolia-logo.webp">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Magnolia Regional Medical Center">
-  <meta property="og:description" content="Find care, meet clinicians, plan your visit and request support. Concept site with sample information.">
+  <meta property="og:description" content="Find care, meet clinicians, plan your visit and request support.">
   <meta property="og:image" content="https://images.unsplash.com/photo-1495202337139-e865ed70fcd4?auto=format&amp;fit=crop&amp;w=1200&amp;h=1200&amp;q=75">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -48,6 +48,24 @@
     .on-dark .focus-ring:focus-visible,.on-dark.focus-ring:focus-visible{outline-color:var(--blush)}
 
     .site-header{position:sticky;top:0;z-index:40;background:rgba(255,250,241,.97);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+    .nav-dropdown{position:relative}
+    .nav-dropdown-trigger{display:inline-flex;align-items:center;gap:.3rem;background:none;border:0;font:inherit;cursor:pointer;color:var(--forest)}
+    .nav-dropdown-trigger:hover{color:var(--plum)}
+    .nav-dropdown-trigger i{transition:transform var(--dur) ease}
+    .nav-dropdown.is-open .nav-dropdown-trigger{color:var(--plum)}
+    .nav-dropdown.is-open .nav-dropdown-trigger i{transform:rotate(180deg)}
+    .nav-dropdown-menu{position:absolute;top:100%;left:-.75rem;margin-top:.7rem;min-width:13.5rem;padding:.5rem;border-radius:1rem;border:1px solid var(--line);background:var(--ivory);box-shadow:0 18px 40px -20px rgba(24,53,45,.35);z-index:40}
+    .nav-dropdown-menu[hidden]{display:none}
+    .nav-dropdown-menu a{display:block;border-radius:.65rem;padding:.6rem .85rem;font-size:.9375rem;font-weight:600;text-decoration:none;color:var(--forest)}
+    .nav-dropdown-menu a:hover{background:var(--mist);color:var(--plum)}
+    .mobile-nav-group>.nav-dropdown-trigger{width:100%;justify-content:space-between;border-radius:.5rem;padding:.6rem .75rem}
+    .mobile-nav-sub{display:grid;gap:.15rem;padding-left:.75rem;margin-top:.15rem}
+    .mobile-nav-group:not(.is-open) .mobile-nav-sub{display:none}
+    .mobile-nav-group:not(.is-open) .nav-dropdown-trigger i{transform:none}
+    .mobile-nav-group.is-open .nav-dropdown-trigger i{transform:rotate(180deg)}
+    .nav-dropdown-menu--wide{min-width:29rem;column-count:2;column-gap:.25rem}
+    .nav-dropdown-menu--wide a{break-inside:avoid-column}
+    .nav-dropdown-menu__all{column-span:all;margin-bottom:.4rem!important;padding-bottom:.65rem!important;border-bottom:1px solid var(--line);font-weight:700;color:var(--plum)!important}
     .utility-link{color:var(--ivory);text-decoration:none;font-size:.875rem;font-weight:600;padding:.25rem 0;background:none;border:0;cursor:pointer}
     .utility-link:hover{text-decoration:underline;text-underline-offset:4px}
     .nav-link{position:relative;color:var(--forest);text-decoration:none;font-size:.9375rem;font-weight:600;padding:.35rem 0}
@@ -184,11 +202,6 @@
       .button-base:hover,.button-base:active,.path-card:hover{transform:none}
       .js-reveal [data-reveal]{opacity:1}
     }
-
-    .notes-pill{position:fixed;left:1rem;bottom:1rem;z-index:30;display:inline-flex;align-items:center;gap:.45rem;min-height:2.75rem;padding:0 1rem;border:1px solid #9daf9f;border-radius:999px;background:var(--ivory);color:var(--forest);font-weight:700;font-size:.875rem;text-decoration:none;box-shadow:0 10px 24px -12px rgba(24,53,45,.55);transition:background-color var(--dur) ease,border-color var(--dur) ease}
-    .notes-pill:hover{background:var(--mist);border-color:var(--forest)}
-    .notes-pill:active{transform:scale(.97)}
-    @media print{.notes-pill{display:none}}
   </style>
   <script src="https://cdn.tailwindcss.com/3.4.17" type="text/javascript"></script>
   <script src="https://cdn.jsdelivr.net/npm/lucide@0.577.0/dist/umd/lucide.min.js" type="text/javascript"></script>
@@ -203,24 +216,24 @@
     <div class="on-dark bg-[#18352d]">
      <div class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-x-6 gap-y-1 px-5 py-2 lg:px-8">
       <p class="m-0 flex items-center gap-2 text-[#fffaf1]"><i data-lucide="siren" class="h-4 w-4 flex-none text-[#f4e2e1]" aria-hidden="true"></i><span data-template-id="utility-message" class="canva-text t-small" style="color: rgb(255, 250, 241); font-weight: 500; font-style: normal;">Life-threatening emergency? Call <a class="focus-ring font-bold text-[#fffaf1] underline underline-offset-4" href="tel:911">911</a>. Our emergency department is open 24/7.</span></p>
-      <nav class="desktop-only flex items-center gap-6" aria-label="Utility navigation"><button class="utility-link focus-ring" type="button" data-modal="portal">Patient portal</button><button class="utility-link focus-ring" type="button" data-modal="billpay">Pay a bill</button><a class="utility-link focus-ring" href="#visit">Plan your visit</a><a class="utility-link focus-ring" href="tel:+15550147820">(555) 014-7820</a></nav>
+      <nav class="desktop-only flex items-center gap-6" aria-label="Utility navigation"><a class="utility-link focus-ring" href="#top">Home</a><a class="utility-link focus-ring" href="patient-portal.html">Patient portal</a><a class="utility-link focus-ring" href="donate.html">Donate</a><button class="utility-link focus-ring" type="button" data-modal="billpay">Pay a bill</button><a class="utility-link focus-ring" href="#visit">Plan your visit</a><a class="utility-link focus-ring" href="tel:+15550147820">(555) 014-7820</a></nav>
      </div>
     </div>
-    <div class="mx-auto flex max-w-7xl items-center gap-4 px-5 py-4 lg:px-8"><a href="#top" class="focus-ring flex min-w-0 items-center gap-3" aria-label="Magnolia Regional Medical Center home"> <span class="h-12 w-12 flex-none" aria-hidden="true"> <img data-template-id="hospital-emblem" class="canva-image magnolia-mark object-contain" width="48" height="48" src="magnolia-logo.webp" alt="" onerror="this.onerror=null;this.src='magnolia-logo.webp'"> </span> <span class="logo-lockup"><span data-template-id="hospital-name-header" class="canva-text logo-name block" style="color: rgb(39, 72, 61); font-weight: 700; font-style: normal;">Magnolia Regional Medical Center</span><span data-template-id="hospital-type-header" class="canva-text logo-type block" style="color: rgb(92, 103, 95); font-weight: 500; font-style: normal;">Compassionate care, close to home</span></span> </a>
+    <div class="mx-auto flex max-w-7xl items-center gap-4 px-5 py-4 lg:px-8"><a href="#top" class="focus-ring flex min-w-0 items-center gap-3" aria-label="Magnolia Regional Medical Center home"> <span class="h-12 w-12 flex-none" aria-hidden="true"> <img data-template-id="hospital-emblem" class="canva-image magnolia-mark object-contain" width="48" height="48" src="canva://MAHWmvPMiXI/1" alt="" onerror="this.onerror=null;this.src='assets/magnolia-logo.webp'"> </span> <span class="logo-lockup"><span data-template-id="hospital-name-header" class="canva-text logo-name block" style="color: rgb(39, 72, 61); font-weight: 700; font-style: normal;">Magnolia Regional Medical Center</span><span data-template-id="hospital-type-header" class="canva-text logo-type block" style="color: rgb(92, 103, 95); font-weight: 500; font-style: normal;">Compassionate care, close to home</span></span> </a>
      <form id="header-search-form" class="desktop-only ml-auto flex w-full max-w-xs" role="search"><label class="sr-only" for="header-search">Search services or doctors</label> <input id="header-search" class="focus-ring w-full rounded-l-full border border-[#aebbaa] bg-[#fffaf1] px-4 py-2.5 text-sm" type="search" placeholder="Search services or doctors"> <button data-template-id="search-button" class="canva-button focus-ring rounded-r-full px-4" type="submit" aria-label="Search" style="background: rgb(39, 72, 61); color: rgb(255, 255, 255);"><i data-lucide="search" class="h-4 w-4" aria-hidden="true"></i></button>
      </form>
      <div class="desktop-only flex gap-2"><a href="doctors.html" data-template-id="find-doctor-header" class="canva-button button-base button-soft focus-ring" style="color: rgb(39, 72, 61); font-weight: 700; font-style: normal;">Find a doctor</a> <a data-template-id="appointment-header" class="canva-button button-base button-primary focus-ring" href="#contact" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal;">Request support</a>
      </div><button id="menu-toggle" class="mobile-toggle focus-ring ml-auto grid h-11 w-11 flex-none place-items-center rounded-full border border-[#aebbaa]" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation menu"><i data-lucide="menu" class="h-5 w-5" aria-hidden="true"></i></button>
     </div>
     <nav class="desktop-only border-t border-[#d8d8ca]" aria-label="Primary navigation">
-     <div class="mx-auto flex max-w-7xl gap-8 px-5 py-3 lg:px-8"><a class="nav-link focus-ring" href="#top">Home</a><a class="nav-link focus-ring" href="#find-care">Find care</a><a class="nav-link focus-ring" href="#doctors">Doctors</a><a class="nav-link focus-ring" href="#about">About Magnolia</a><a class="nav-link focus-ring" href="#visit">Plan your visit</a><a class="nav-link focus-ring" href="#billing">Billing</a><a class="nav-link focus-ring" href="#contact">Contact</a>
+     <div class="mx-auto flex max-w-7xl gap-5 px-5 py-3 lg:px-8"><a class="nav-link focus-ring" href="#top">Home</a><a class="nav-link focus-ring" href="patient-portal.html">Patient portal</a><div class="nav-dropdown" id="find-care-dropdown"><button class="nav-dropdown-trigger nav-link focus-ring" type="button" id="find-care-trigger" aria-expanded="false" aria-controls="find-care-menu">Find care <i data-lucide="chevron-down" class="h-4 w-4" aria-hidden="true"></i></button><div id="find-care-menu" class="nav-dropdown-menu" role="menu" aria-label="Find care" hidden><a role="menuitem" href="#find-care">Emergency care</a><a role="menuitem" href="primary-care.html">Primary care</a><a role="menuitem" href="specialties.html">Specialty care</a><a role="menuitem" href="imaging.html">Diagnostic imaging</a></div></div><div class="nav-dropdown" id="doctors-dropdown"><button class="nav-dropdown-trigger nav-link focus-ring" type="button" id="doctors-trigger" aria-expanded="false" aria-controls="doctors-menu">Doctors <i data-lucide="chevron-down" class="h-4 w-4" aria-hidden="true"></i></button><div id="doctors-menu" class="nav-dropdown-menu nav-dropdown-menu--wide" role="menu" aria-label="Find a doctor" hidden><a role="menuitem" class="nav-dropdown-menu__all" href="doctors.html">All doctors</a><a role="menuitem" href="doctors.html?q=family">Primary care</a><a role="menuitem" href="doctors.html?q=emergency">Emergency medicine</a><a role="menuitem" href="doctors.html?q=cardiology">Cardiology</a><a role="menuitem" href="doctors.html?q=neurology">Neurology</a><a role="menuitem" href="doctors.html?q=oncology">Oncology</a><a role="menuitem" href="doctors.html?q=surgery">General surgery</a><a role="menuitem" href="doctors.html?q=obgyn">Obstetrics &amp; gynecology</a><a role="menuitem" href="doctors.html?q=pediatrics">Pediatrics</a><a role="menuitem" href="doctors.html?q=rehabilitation">Rehabilitation medicine</a><a role="menuitem" href="doctors.html?q=radiology">Diagnostic imaging</a></div></div><a class="nav-link focus-ring" href="#about">About Magnolia</a><a class="nav-link focus-ring" href="#visit">Plan your visit</a><a class="nav-link focus-ring" href="#billing">Billing</a><a class="nav-link focus-ring" href="#contact">Contact</a><a class="nav-link focus-ring" href="sources.html">Sources &amp; notes</a>
      </div>
     </nav>
     <nav id="mobile-menu" class="mobile-nav border-t border-[#d8d8ca] bg-[#fffaf1] px-5 py-4" aria-label="Mobile navigation">
      <form id="mobile-search-form" class="mb-4 flex" role="search"><label class="sr-only" for="mobile-search">Search services or doctors</label> <input id="mobile-search" class="focus-ring w-full rounded-l-full border border-[#aebbaa] bg-white px-4 py-2.5 text-base" type="search" placeholder="Search services or doctors"> <button class="focus-ring rounded-r-full bg-[#27483d] px-4 text-white" type="submit" aria-label="Search"><i data-lucide="search" class="h-4 w-4" aria-hidden="true"></i></button>
      </form>
      <div class="grid gap-1">
-      <a class="nav-link focus-ring rounded-lg px-3 py-2.5" href="#top">Home</a><a class="nav-link focus-ring rounded-lg px-3 py-2.5" href="#find-care">Find care</a><a class="nav-link focus-ring rounded-lg px-3 py-2.5" href="#doctors">Doctors</a><a class="nav-link focus-ring rounded-lg px-3 py-2.5" href="#about">About Magnolia</a><a class="nav-link focus-ring rounded-lg px-3 py-2.5" href="#visit">Plan your visit</a><a class="nav-link focus-ring rounded-lg px-3 py-2.5" href="#billing">Insurance and billing</a><a class="nav-link focus-ring rounded-lg px-3 py-2.5" href="#contact">Contact</a><button class="nav-link focus-ring rounded-lg px-3 py-2.5 text-left" type="button" data-modal="portal">Patient portal</button><a class="nav-link focus-ring rounded-lg px-3 py-2.5" href="sources.html">Sources and notes</a>
+      <a class="nav-link focus-ring rounded-lg px-3 py-2.5" href="#top">Home</a><a class="nav-link focus-ring rounded-lg px-3 py-2.5" href="patient-portal.html">Patient portal</a><a class="nav-link focus-ring rounded-lg px-3 py-2.5" href="donate.html">Donate</a><div class="mobile-nav-group" id="find-care-mobile-group"><button class="nav-dropdown-trigger nav-link focus-ring" type="button" id="find-care-mobile-trigger" aria-expanded="false" aria-controls="find-care-mobile-sub">Find care <i data-lucide="chevron-down" class="h-4 w-4" aria-hidden="true"></i></button><div id="find-care-mobile-sub" class="mobile-nav-sub"><a class="nav-link focus-ring rounded-lg px-3 py-2" href="#find-care">Emergency care</a><a class="nav-link focus-ring rounded-lg px-3 py-2" href="primary-care.html">Primary care</a><a class="nav-link focus-ring rounded-lg px-3 py-2" href="specialties.html">Specialty care</a><a class="nav-link focus-ring rounded-lg px-3 py-2" href="imaging.html">Diagnostic imaging</a></div></div><div class="mobile-nav-group" id="doctors-mobile-group"><button class="nav-dropdown-trigger nav-link focus-ring" type="button" id="doctors-mobile-trigger" aria-expanded="false" aria-controls="doctors-mobile-sub">Doctors <i data-lucide="chevron-down" class="h-4 w-4" aria-hidden="true"></i></button><div id="doctors-mobile-sub" class="mobile-nav-sub"><a class="nav-link focus-ring rounded-lg px-3 py-2" href="doctors.html">All doctors</a><a class="nav-link focus-ring rounded-lg px-3 py-2" href="doctors.html?q=family">Primary care</a><a class="nav-link focus-ring rounded-lg px-3 py-2" href="doctors.html?q=emergency">Emergency medicine</a><a class="nav-link focus-ring rounded-lg px-3 py-2" href="doctors.html?q=cardiology">Cardiology</a><a class="nav-link focus-ring rounded-lg px-3 py-2" href="doctors.html?q=neurology">Neurology</a><a class="nav-link focus-ring rounded-lg px-3 py-2" href="doctors.html?q=oncology">Oncology</a><a class="nav-link focus-ring rounded-lg px-3 py-2" href="doctors.html?q=surgery">General surgery</a><a class="nav-link focus-ring rounded-lg px-3 py-2" href="doctors.html?q=obgyn">Obstetrics &amp; gynecology</a><a class="nav-link focus-ring rounded-lg px-3 py-2" href="doctors.html?q=pediatrics">Pediatrics</a><a class="nav-link focus-ring rounded-lg px-3 py-2" href="doctors.html?q=rehabilitation">Rehabilitation medicine</a><a class="nav-link focus-ring rounded-lg px-3 py-2" href="doctors.html?q=radiology">Diagnostic imaging</a></div></div><a class="nav-link focus-ring rounded-lg px-3 py-2.5" href="#about">About Magnolia</a><a class="nav-link focus-ring rounded-lg px-3 py-2.5" href="#visit">Plan your visit</a><a class="nav-link focus-ring rounded-lg px-3 py-2.5" href="#billing">Insurance and billing</a><a class="nav-link focus-ring rounded-lg px-3 py-2.5" href="#contact">Contact</a><a class="nav-link focus-ring rounded-lg px-3 py-2.5" href="sources.html">Sources &amp; notes</a>
      </div>
      <div class="mt-4 grid gap-2 sm:grid-cols-2">
       <a href="doctors.html" data-template-id="find-doctor-mobile" class="canva-button button-base button-soft focus-ring" style="color: rgb(39, 72, 61); font-weight: 700; font-style: normal;">Find a doctor</a><a data-template-id="appointment-mobile" class="canva-button button-base button-primary focus-ring" href="#contact" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal;">Request support</a>
@@ -239,7 +252,7 @@
 
     <!-- Hero -->
     <section id="top" class="section-anchor hero-section relative overflow-hidden px-5 pb-16 pt-12 lg:px-8 lg:pb-24 lg:pt-20" aria-labelledby="hero-title">
-     <img class="canva-image hero-watermark" src="magnolia-logo.webp" alt="" aria-hidden="true" width="1254" height="1254" loading="eager" onerror="this.onerror=null;this.src='magnolia-logo.webp'">
+     <img class="canva-image hero-watermark" src="canva://MAHWmvPMiXI/1" alt="" aria-hidden="true" width="1254" height="1254" loading="eager" onerror="this.onerror=null;this.src='assets/magnolia-logo.webp'">
      <div class="relative mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1.1fr_.9fr] lg:items-center">
       <div>
        <p data-template-id="hero-kicker" class="canva-tag t-eyebrow m-0" style="color: rgb(131, 71, 174); font-style: normal;">Care that grows with you</p>
@@ -252,7 +265,7 @@
       <figure class="relative mx-auto m-0 w-full max-w-lg">
        <div class="relative">
        <div aria-hidden="true" class="absolute -inset-3 rounded-[2.75rem_2.75rem_1.25rem_2.75rem] bg-[#ece5f2]"></div>
-       <div class="hospital-frame relative border border-[#d8d8ca] bg-[#f4e2e1] shadow-[0_20px_45px_rgba(39,72,61,.12)]"><img data-template-id="magnolia-detail-image" class="canva-image block h-auto w-full" style="aspect-ratio: 1 / 1; object-fit: cover; object-position: 58% 50%;" width="1200" height="1200" loading="eager" fetchpriority="high" src="https://images.unsplash.com/photo-1495202337139-e865ed70fcd4?auto=format&amp;fit=crop&amp;w=1200&amp;h=1200&amp;q=75" alt="Magnolia Regional Medical Center: white terraced towers with planted balconies under a blue sky, linked by a covered walkway." onerror="this.onerror=null;this.src='hospital-building.jpg'">
+       <div class="hospital-frame relative border border-[#d8d8ca] bg-[#f4e2e1] shadow-[0_20px_45px_rgba(39,72,61,.12)]"><img data-template-id="magnolia-detail-image" class="canva-image block h-auto w-full" style="aspect-ratio: 1 / 1; object-fit: cover; object-position: 58% 50%;" width="1200" height="1200" loading="eager" fetchpriority="high" src="https://images.unsplash.com/photo-1495202337139-e865ed70fcd4?auto=format&amp;fit=crop&amp;w=1200&amp;h=1200&amp;q=75" alt="Magnolia Regional Medical Center: white terraced towers with planted balconies under a blue sky, linked by a covered walkway." onerror="this.onerror=null;this.src='assets/hospital-building.jpg'">
        </div>
        </div>
        <figcaption data-template-id="hero-image-caption" class="canva-text t-small relative mx-5 -mt-10 rounded-2xl bg-[#27483d] p-5 shadow-lg" style="color: rgb(255, 255, 255); font-weight: 600; font-style: normal;">A welcoming regional setting designed to make the next step feel clearer.</figcaption>
@@ -266,7 +279,7 @@
       <h2 id="quick-actions-title" data-template-id="rail-title" class="sr-only">Quick actions</h2>
       <div class="grid overflow-hidden rounded-2xl border border-[#aebbaa]/50 bg-[#fffaf1] sm:grid-cols-2 lg:grid-cols-4">
        <a href="doctors.html" class="rail-action focus-ring"><i data-lucide="stethoscope" class="mb-4 h-5 w-5 text-[#8347ae]" aria-hidden="true"></i><span data-template-id="rail-doctor-title" class="canva-text t-h4 block" style="color: rgb(39, 72, 61); font-weight: 700; font-style: normal;">Find a doctor</span><span data-template-id="rail-doctor-copy" class="canva-text t-small mt-1 block" style="color: rgb(92, 103, 95); font-weight: 400; font-style: normal;">Browse all doctors by specialty.</span></a>
-       <button class="rail-action focus-ring" type="button" data-modal="portal"><i data-lucide="laptop" class="mb-4 h-5 w-5 text-[#8347ae]" aria-hidden="true"></i><span data-template-id="rail-portal-title" class="canva-text t-h4 block" style="color: rgb(39, 72, 61); font-weight: 700; font-style: normal;">Patient portal</span><span data-template-id="rail-portal-copy" class="canva-text t-small mt-1 block" style="color: rgb(92, 103, 95); font-weight: 400; font-style: normal;">Results, appointments and messages.</span></button>
+       <a class="rail-action focus-ring" href="patient-portal.html"><i data-lucide="laptop" class="mb-4 h-5 w-5 text-[#8347ae]" aria-hidden="true"></i><span data-template-id="rail-portal-title" class="canva-text t-h4 block" style="color: rgb(39, 72, 61); font-weight: 700; font-style: normal;">Patient portal</span><span data-template-id="rail-portal-copy" class="canva-text t-small mt-1 block" style="color: rgb(92, 103, 95); font-weight: 400; font-style: normal;">Results, appointments and messages.</span></a>
        <a href="#visit" class="rail-action focus-ring"><i data-lucide="map-pin" class="mb-4 h-5 w-5 text-[#27483d]" aria-hidden="true"></i><span data-template-id="rail-visit-title" class="canva-text t-h4 block" style="color: rgb(39, 72, 61); font-weight: 700; font-style: normal;">Plan your visit</span><span data-template-id="rail-visit-copy" class="canva-text t-small mt-1 block" style="color: rgb(92, 103, 95); font-weight: 400; font-style: normal;">Parking, visiting hours and what to bring.</span></a>
        <a href="tel:+15550147820" class="rail-action focus-ring"><i data-lucide="phone" class="mb-4 h-5 w-5 text-[#27483d]" aria-hidden="true"></i><span data-template-id="rail-service-title" class="canva-text t-h4 block" style="color: rgb(39, 72, 61); font-weight: 700; font-style: normal;">Call the main line</span><span data-template-id="rail-service-copy" class="canva-text t-small mt-1 block" style="color: rgb(92, 103, 95); font-weight: 400; font-style: normal;">(555) 014-7820</span></a>
       </div>
@@ -293,8 +306,8 @@
        <p class="t-body m-0 font-semibold text-[#27483d]">No matching services.</p>
        <p class="t-small mb-0 mt-1">Try a different word, or <a class="focus-ring font-bold text-[#27483d] underline underline-offset-4" href="#contact">send us a request</a> and the team will point you in the right direction.</p>
       </div>
-      <div id="service-list" class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-       <article data-reveal="0" class="path-card fill-card emergency-card rounded-[2rem_2rem_2rem_.5rem] bg-[#fffaf1] md:col-span-2 lg:col-span-3" data-search="emergency er urgent accident injury trauma chest pain stroke 24/7 ambulance paramedics">
+      <div id="service-list" class="mt-10 grid gap-6">
+       <article data-reveal="0" class="path-card fill-card emergency-card rounded-[2rem_2rem_2rem_.5rem] bg-[#fffaf1]" data-search="emergency er urgent accident injury trauma chest pain stroke 24/7 ambulance paramedics">
         <img class="emergency-card__photo" src="https://images.pexels.com/photos/6519920/pexels-photo-6519920.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200" alt="Paramedics wheel a stretcher to the back of an open ambulance." width="1200" height="800" loading="lazy">
         <div class="emergency-card__body">
          <div class="flex flex-wrap items-center gap-3"><span class="fill-chip grid h-11 w-11 flex-none place-items-center rounded-full bg-[#f4e2e1] text-[#9b2c3f]"><i data-lucide="siren" class="h-5 w-5" aria-hidden="true"></i></span><span class="fill-chip t-tag inline-flex items-center gap-1.5 rounded-full bg-[#f4e2e1] px-3 py-1.5 text-[#9b2c3f]"><span class="emergency-dot" aria-hidden="true"></span>Open 24 hours, every day</span></div>
@@ -304,20 +317,45 @@
          <div class="mt-3 flex flex-wrap gap-x-6"><button class="text-link focus-ring" type="button" data-modal="emergency">About emergency care <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></button><a class="text-link focus-ring" href="#visit">Directions to the ER <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a></div>
         </div>
        </article>
+      </div>
+      <button id="service-grid-toggle" class="button-base button-soft focus-ring mt-6 inline-flex items-center gap-2" type="button" aria-expanded="false" aria-controls="service-grid"><span class="service-grid-toggle-label">Browse all care types</span> <i data-lucide="chevron-down" class="h-4 w-4" aria-hidden="true"></i></button>
+      <div id="service-grid" class="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3" hidden>
        <article data-reveal="0" data-template-id="inpatient-path-card" class="canva-card path-card fill-card rounded-[2rem_2rem_2rem_.5rem] bg-[#fffaf1]" data-search="primary care check-up checkup physical screening vaccination vaccine everyday family doctor gp annual" style="background: rgb(255, 250, 241);"><img data-template-id="primary-care-image" class="canva-image h-52 w-full rounded-[1.5rem_1.5rem_1.5rem_.375rem] object-cover" width="800" height="533" loading="lazy" src="https://images.pexels.com/photos/4266942/pexels-photo-4266942.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Clinician consulting with a patient in a welcoming medical office.">
         <div class="mt-6 flex items-center gap-3"><span class="fill-chip grid h-11 w-11 flex-none place-items-center rounded-full bg-[#ece5f2] text-[#8347ae]"><i data-lucide="stethoscope" class="h-5 w-5" aria-hidden="true"></i></span><span data-template-id="inpatient-tag" class="canva-tag fill-chip t-tag rounded-full px-3 py-1.5" style="background: rgb(236, 229, 242); color: rgb(39, 72, 61); font-weight: 700; font-style: normal;">Everyday care</span></div>
         <h3 data-template-id="inpatient-title" class="canva-text fill-ink t-h3 mb-0 mt-5" style="color: rgb(39, 72, 61); font-weight: 400; font-style: normal;">Primary care</h3>
-        <p data-template-id="inpatient-copy" class="canva-text fill-muted t-body mb-0 mt-3" style="color: rgb(48, 61, 55); font-weight: 400; font-style: normal;">Check-ups, screenings and an ongoing relationship with one care team.</p><button data-modal="primary" data-template-id="inpatient-link" class="canva-link text-link focus-ring mt-4" type="button" style="color: rgb(131, 71, 174); font-weight: 700; font-style: normal;">About primary care <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></button>
+        <p data-template-id="inpatient-copy" class="canva-text fill-muted t-body mb-0 mt-3" style="color: rgb(48, 61, 55); font-weight: 400; font-style: normal;">Check-ups, screenings and an ongoing relationship with one care team that gets to know you.</p>
+        <ul class="mt-4 grid gap-1.5">
+         <li class="t-small fill-muted flex items-center gap-2"><i data-lucide="check" class="fill-ink h-4 w-4 flex-none" aria-hidden="true"></i>Annual physicals and wellness visits</li>
+         <li class="t-small fill-muted flex items-center gap-2"><i data-lucide="check" class="fill-ink h-4 w-4 flex-none" aria-hidden="true"></i>Vaccinations and preventive screenings</li>
+         <li class="t-small fill-muted flex items-center gap-2"><i data-lucide="check" class="fill-ink h-4 w-4 flex-none" aria-hidden="true"></i>Chronic conditions, such as diabetes or blood pressure</li>
+         <li class="t-small fill-muted flex items-center gap-2"><i data-lucide="check" class="fill-ink h-4 w-4 flex-none" aria-hidden="true"></i>Referrals to the right specialist when you need one</li>
+        </ul>
+        <a href="primary-care.html" data-template-id="inpatient-link" class="canva-link text-link focus-ring mt-4" style="color: rgb(131, 71, 174); font-weight: 700; font-style: normal;">Explore primary care <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
        </article>
        <article data-reveal="1" data-template-id="outpatient-path-card" class="canva-card path-card fill-card rounded-[2rem_2rem_.5rem_2rem] bg-[#fffaf1]" data-search="specialty specialist specialties referral consultation condition heart cardiology cardiac vascular blood pressure neurology brain stroke headache migraine seizure memory cancer oncology chemotherapy surgery surgical operation joint hernia women maternity pregnancy prenatal birth pediatrics children kids teens rehabilitation rehab therapy physical occupational speech lab laboratory blood test" style="background: rgb(255, 250, 241);"><img data-template-id="specialty-care-image" class="canva-image h-52 w-full rounded-[1.5rem_1.5rem_.375rem_1.5rem] object-cover" width="800" height="533" loading="lazy" src="https://images.pexels.com/photos/7578797/pexels-photo-7578797.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Specialist discusses a health chart with a patient during consultation.">
         <div class="mt-6 flex items-center gap-3"><span class="fill-chip grid h-11 w-11 flex-none place-items-center rounded-full bg-[#f4e2e1] text-[#a96778]"><i data-lucide="heart-pulse" class="h-5 w-5" aria-hidden="true"></i></span><span data-template-id="outpatient-tag" class="canva-tag fill-chip t-tag rounded-full px-3 py-1.5" style="background: rgb(244, 226, 225); color: rgb(39, 72, 61); font-weight: 700; font-style: normal;">Focused treatment</span></div>
         <h3 data-template-id="outpatient-title" class="canva-text fill-ink t-h3 mb-0 mt-5" style="color: rgb(39, 72, 61); font-weight: 400; font-style: normal;">Specialty care</h3>
-        <p data-template-id="outpatient-copy" class="canva-text fill-muted t-body mb-0 mt-3" style="color: rgb(48, 61, 55); font-weight: 400; font-style: normal;">Specialist teams for heart, brain, cancer, surgery, maternity, children and more, plus rehabilitation and lab services.</p><a href="specialties.html" data-template-id="outpatient-link" class="canva-link text-link focus-ring mt-4" style="color: rgb(131, 71, 174); font-weight: 700; font-style: normal;">Explore specialties <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
+        <p data-template-id="outpatient-copy" class="canva-text fill-muted t-body mb-0 mt-3" style="color: rgb(48, 61, 55); font-weight: 400; font-style: normal;">Specialist teams for heart, brain, cancer, surgery, maternity, children and more, plus rehabilitation and lab services.</p>
+        <ul class="mt-4 grid gap-1.5">
+         <li class="t-small fill-muted flex items-center gap-2"><i data-lucide="check" class="fill-ink h-4 w-4 flex-none" aria-hidden="true"></i>Heart, vascular and surgical care</li>
+         <li class="t-small fill-muted flex items-center gap-2"><i data-lucide="check" class="fill-ink h-4 w-4 flex-none" aria-hidden="true"></i>Neurology and cancer care</li>
+         <li class="t-small fill-muted flex items-center gap-2"><i data-lucide="check" class="fill-ink h-4 w-4 flex-none" aria-hidden="true"></i>Maternity and pediatrics</li>
+         <li class="t-small fill-muted flex items-center gap-2"><i data-lucide="check" class="fill-ink h-4 w-4 flex-none" aria-hidden="true"></i>Rehabilitation and lab services</li>
+        </ul>
+        <a href="specialties.html" data-template-id="outpatient-link" class="canva-link text-link focus-ring mt-4" style="color: rgb(131, 71, 174); font-weight: 700; font-style: normal;">Explore specialties <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
        </article>
        <article data-reveal="2" class="canva-card path-card fill-card md:col-span-2 lg:col-span-1 rounded-[2rem_.5rem_2rem_2rem] bg-[#fffaf1]" data-search="diagnostic imaging scan x-ray xray mri ct ultrasound mammogram radiology test tests"><img data-template-id="diagnostic-imaging-image" class="canva-image h-52 w-full rounded-[1.5rem_.375rem_1.5rem_1.5rem] object-cover" width="800" height="533" loading="lazy" src="https://images.pexels.com/photos/11119416/pexels-photo-11119416.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Medical technologist stands beside diagnostic imaging equipment, preparing for a scan.">
         <div class="mt-6 flex items-center gap-3"><span class="fill-chip grid h-11 w-11 flex-none place-items-center rounded-full bg-[#e7eee4] text-[#27483d]"><i data-lucide="scan" class="h-5 w-5" aria-hidden="true"></i></span><span class="fill-chip t-tag rounded-full bg-[#e7eee4] px-3 py-1.5 text-[#27483d]">Tests &amp; scans</span></div>
         <h3 data-template-id="diagnostic-imaging-title" class="canva-text fill-ink t-h3 mb-0 mt-5" style="color: rgb(39, 72, 61); font-weight: 400; font-style: normal;">Diagnostic imaging</h3>
-        <p data-template-id="diagnostic-imaging-copy" class="canva-text fill-muted t-body mb-0 mt-3" style="color: rgb(48, 61, 55); font-weight: 400; font-style: normal;">X-ray, ultrasound, CT and MRI scans that help your care team see what is going on.</p><button data-modal="imaging" data-template-id="diagnostic-imaging-link" class="canva-link text-link focus-ring mt-4" type="button" style="color: rgb(131, 71, 174); font-weight: 700; font-style: normal;">About imaging <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></button>
+        <p data-template-id="diagnostic-imaging-copy" class="canva-text fill-muted t-body mb-0 mt-3" style="color: rgb(48, 61, 55); font-weight: 400; font-style: normal;">Scans that help your care team see what is going on, read by board-certified radiologists.</p>
+        <ul class="mt-4 grid gap-1.5">
+         <li class="t-small fill-muted flex items-center gap-2"><i data-lucide="check" class="fill-ink h-4 w-4 flex-none" aria-hidden="true"></i>X-ray and fluoroscopy</li>
+         <li class="t-small fill-muted flex items-center gap-2"><i data-lucide="check" class="fill-ink h-4 w-4 flex-none" aria-hidden="true"></i>Ultrasound, including prenatal</li>
+         <li class="t-small fill-muted flex items-center gap-2"><i data-lucide="check" class="fill-ink h-4 w-4 flex-none" aria-hidden="true"></i>CT scan</li>
+         <li class="t-small fill-muted flex items-center gap-2"><i data-lucide="check" class="fill-ink h-4 w-4 flex-none" aria-hidden="true"></i>MRI and mammography</li>
+        </ul>
+        <p class="t-small fill-muted mb-0 mt-3">Most scans need an order from your clinician. Same-day X-ray is available for urgent needs.</p>
+        <a href="imaging.html" data-template-id="diagnostic-imaging-link" class="canva-link text-link focus-ring mt-4" style="color: rgb(131, 71, 174); font-weight: 700; font-style: normal;">Explore imaging <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
        </article>
       </div>
      </div>
@@ -331,7 +369,6 @@
         <h2 id="doctors-title" class="t-h2 m-0">Meet some of our clinicians</h2>
         <p class="t-body mb-0 mt-4">Every patient has a named lead clinician. Tell us what you need and we will match you with the right person.</p>
        </div>
-       <p class="t-small m-0 inline-flex items-center gap-2 self-start rounded-full border border-[#aebbaa] bg-[#fffaf1] px-4 py-2 font-semibold text-[#27483d] md:self-auto"><i data-lucide="info" class="h-4 w-4 flex-none" aria-hidden="true"></i>Sample profiles</p>
       </div>
       <div class="mt-10 grid gap-6 md:grid-cols-3">
        <article data-reveal="0" class="fill-card path-card rounded-[2rem_2rem_2rem_.5rem] bg-[#fffaf1]">
@@ -339,21 +376,21 @@
         <span class="fill-chip t-tag mt-6 inline-block rounded-full bg-[#ece5f2] px-3 py-1.5 text-[#27483d]">Family medicine</span>
         <h3 class="fill-ink t-h3 mb-0 mt-4">Dr. Amara Okafor</h3>
         <p class="fill-muted t-small mb-0 mt-2 text-[#5c675f]">Primary care for adults and children. Speaks English and Igbo.</p>
-        <button class="text-link focus-ring mt-3" type="button" data-request="Requesting an appointment">Request an appointment <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></button>
+        <button class="text-link focus-ring mt-3" type="button" data-request="Requesting an appointment" data-doctor="Dr. Amara Okafor">Request an appointment <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></button>
        </article>
        <article data-reveal="1" class="fill-card path-card rounded-[2rem_2rem_.5rem_2rem] bg-[#fffaf1]">
         <img class="doctor-photo" src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&amp;fit=crop&amp;crop=faces&amp;w=600&amp;h=750&amp;q=75" alt="Portrait of Dr. Daniel Reyes smiling in blue scrubs with a stethoscope." width="600" height="750" loading="lazy">
         <span class="fill-chip t-tag mt-6 inline-block rounded-full bg-[#f4e2e1] px-3 py-1.5 text-[#27483d]">Cardiology</span>
         <h3 class="fill-ink t-h3 mb-0 mt-4">Dr. Daniel Reyes</h3>
         <p class="fill-muted t-small mb-0 mt-2 text-[#5c675f]">Heart health, blood pressure and rhythm care. Speaks English and Spanish.</p>
-        <button class="text-link focus-ring mt-3" type="button" data-request="Requesting an appointment">Request an appointment <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></button>
+        <button class="text-link focus-ring mt-3" type="button" data-request="Requesting an appointment" data-doctor="Dr. Daniel Reyes">Request an appointment <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></button>
        </article>
        <article data-reveal="2" class="fill-card path-card rounded-[2rem_.5rem_2rem_2rem] bg-[#fffaf1]">
         <img class="doctor-photo" src="https://images.unsplash.com/photo-1729162128021-f37dca3ff30d?auto=format&amp;fit=crop&amp;crop=faces&amp;w=600&amp;h=750&amp;q=75" alt="Portrait of Dr. Mateo Silva smiling in a white lab coat." width="600" height="750" loading="lazy">
         <span class="fill-chip t-tag mt-6 inline-block rounded-full bg-[#e7eee4] px-3 py-1.5 text-[#27483d]">Rehabilitation medicine</span>
         <h3 class="fill-ink t-h3 mb-0 mt-4">Dr. Mateo Silva</h3>
         <p class="fill-muted t-small mb-0 mt-2 text-[#5c675f]">Recovery plans after surgery, injury or stroke. Speaks English and Portuguese.</p>
-        <button class="text-link focus-ring mt-3" type="button" data-request="Requesting an appointment">Request an appointment <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></button>
+        <button class="text-link focus-ring mt-3" type="button" data-request="Requesting an appointment" data-doctor="Dr. Mateo Silva">Request an appointment <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></button>
        </article>
       </div>
       <div class="mt-8 flex flex-wrap items-center justify-between gap-4">
@@ -386,7 +423,6 @@
       </blockquote>
       <figcaption class="mt-7 flex flex-wrap items-center gap-x-4 gap-y-2">
        <span class="t-h4 text-[#27483d]">Renée M., rehabilitation patient</span>
-       <span class="t-tag rounded-full bg-[#fffaf1] px-3 py-1.5 text-[#5c675f]">Sample story</span>
       </figcaption>
      </figure>
     </section>
@@ -408,6 +444,14 @@
         <li class="rounded-[1.25rem_.375rem_1.25rem_1.25rem] bg-[#e7eee4] p-4"><p class="t-small m-0 font-bold text-[#27483d]">Collaboration</p><p class="t-small mb-0 mt-1">Teams share information so you repeat yourself less.</p></li>
         <li class="rounded-[.375rem_1.25rem_1.25rem_1.25rem] bg-[#f7f0e2] p-4"><p data-template-id="story-note-copy" class="canva-text t-small m-0 font-bold" style="color: rgb(39, 72, 61); font-weight: 700; font-style: normal;">Thoughtful service</p><p class="t-small mb-0 mt-1">Practical details, like parking and forms, matter too.</p></li>
        </ul>
+       <h3 class="t-h4 mb-0 mt-9 text-[#27483d]">Recognized for quality care</h3>
+       <p class="t-small mb-0 mt-2 text-[#5c675f]">Recognitions modeled on the kind of accreditations a regional hospital typically earns.</p>
+       <ul class="m-0 mt-4 grid list-none gap-3 p-0 sm:grid-cols-2">
+        <li class="flex items-center gap-3 rounded-[1.25rem_1.25rem_1.25rem_.375rem] border border-[#d8d8ca] bg-[#fffaf1] p-4"><i data-lucide="shield-check" class="h-5 w-5 flex-none text-[#27483d]" aria-hidden="true"></i><p class="t-small m-0 font-bold text-[#27483d]">Joint Commission accredited</p></li>
+        <li class="flex items-center gap-3 rounded-[1.25rem_1.25rem_.375rem_1.25rem] border border-[#d8d8ca] bg-[#fffaf1] p-4"><i data-lucide="heart-pulse" class="h-5 w-5 flex-none text-[#27483d]" aria-hidden="true"></i><p class="t-small m-0 font-bold text-[#27483d]">Magnet recognized nursing</p></li>
+        <li class="flex items-center gap-3 rounded-[1.25rem_.375rem_1.25rem_1.25rem] border border-[#d8d8ca] bg-[#fffaf1] p-4"><i data-lucide="badge-check" class="h-5 w-5 flex-none text-[#27483d]" aria-hidden="true"></i><p class="t-small m-0 font-bold text-[#27483d]">“A” safety grade, Leapfrog</p></li>
+        <li class="flex items-center gap-3 rounded-[.375rem_1.25rem_1.25rem_1.25rem] border border-[#d8d8ca] bg-[#fffaf1] p-4"><i data-lucide="award" class="h-5 w-5 flex-none text-[#27483d]" aria-hidden="true"></i><p class="t-small m-0 font-bold text-[#27483d]">Top 100 rural and community hospital</p></li>
+       </ul>
       </div>
      </div>
     </section>
@@ -420,7 +464,6 @@
         <h2 id="events-title" class="t-h2 m-0">Classes and community events</h2>
         <p class="t-body mb-0 mt-4">Free sessions led by our care teams, open to patients, families and neighbors.</p>
        </div>
-       <p class="t-small m-0 inline-flex items-center gap-2 self-start rounded-full border border-[#aebbaa] bg-[#fffaf1] px-4 py-2 font-semibold text-[#27483d] md:self-auto"><i data-lucide="info" class="h-4 w-4 flex-none" aria-hidden="true"></i>Sample events</p>
       </div>
       <ul class="m-0 mt-10 grid list-none gap-6 p-0 lg:grid-cols-3">
        <li data-reveal="0" class="fill-card path-card flex gap-5 rounded-[2rem_2rem_2rem_.5rem] bg-[#fffaf1]">
@@ -459,7 +502,6 @@
      <div class="mx-auto max-w-7xl">
       <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
        <h2 id="visit-title" data-template-id="resources-title" class="canva-text t-h2 m-0" style="color: rgb(39, 72, 61); font-weight: 400; font-style: normal;">Plan your visit</h2>
-       <p class="t-small m-0 inline-flex items-center gap-2 self-start rounded-full border border-[#aebbaa] bg-[#fffaf1] px-4 py-2 font-semibold text-[#27483d] md:self-auto"><i data-lucide="info" class="h-4 w-4 flex-none" aria-hidden="true"></i>Sample details for this concept site</p>
       </div>
       <div class="mt-10 grid gap-6 lg:grid-cols-[1.15fr_.85fr]">
        <figure class="map-embed m-0 flex flex-col overflow-hidden rounded-[2rem_2rem_.5rem_2rem] border border-[#d8d8ca] bg-[#f1f3f4]" data-reveal="0">
@@ -922,7 +964,6 @@
        <div class="rounded-[2rem_2rem_.5rem_2rem] border border-[#d8d8ca] bg-white p-6 sm:p-8">
         <div class="flex flex-wrap items-center justify-between gap-3">
          <h3 class="t-h3 m-0">Coverage we accept</h3>
-         <span class="t-tag rounded-full bg-[#f7f0e2] px-3 py-1.5 text-[#5c675f]">Sample list</span>
         </div>
         <ul class="m-0 mt-6 grid list-none gap-4 p-0 sm:grid-cols-2">
          <li class="t-body flex items-start gap-3"><span class="grid h-7 w-7 flex-none place-items-center rounded-full bg-[#e7eee4] text-[#27483d]"><i data-lucide="check" class="h-4 w-4" aria-hidden="true"></i></span>Medicare, including Medicare Advantage</li>
@@ -1018,7 +1059,7 @@
         <p id="contact-email-error" class="field-error" hidden>Enter an email address, for example name@example.com.</p>
        </div>
        <div class="mt-5">
-        <label data-template-id="reason-label" class="canva-text t-small mb-2 block font-bold" for="contact-reason" style="color: rgb(39, 72, 61); font-weight: 700; font-style: normal;">Reason for contact</label><select id="contact-reason" name="reason_for_contact" class="field-input" required aria-describedby="contact-reason-error"><option value="">Select a reason</option><option value="Requesting an appointment">Requesting an appointment</option><option value="Finding care or a service">Finding care or a service</option><option value="Patient portal or records">Patient portal or records</option><option value="Billing or insurance">Billing or insurance</option><option value="Class or event sign-up">Class or event sign-up</option><option value="Accessibility or feedback">Accessibility or feedback</option><option value="General question">General question</option></select>
+        <label data-template-id="reason-label" class="canva-text t-small mb-2 block font-bold" for="contact-reason" style="color: rgb(39, 72, 61); font-weight: 700; font-style: normal;">Reason for contact</label><select id="contact-reason" name="reason_for_contact" class="field-input" required aria-describedby="contact-reason-error"><option value="">Select a reason</option><option value="Requesting an appointment">Requesting an appointment</option><option value="Finding care or a service">Finding care or a service</option><option value="Patient portal or records">Patient portal or records</option><option value="Billing or insurance">Billing or insurance</option><option value="Class or event sign-up">Class or event sign-up</option><option value="Giving and donations">Giving and donations</option><option value="Accessibility or feedback">Accessibility or feedback</option><option value="General question">General question</option></select>
         <p id="contact-reason-error" class="field-error" hidden>Choose a reason for contact.</p>
        </div>
        <div class="mt-5">
@@ -1036,11 +1077,11 @@
    </main>
 
    <footer data-template-id="footer-section" class="canva-footer on-dark relative overflow-hidden bg-[#18352d] px-5 pb-8 pt-14 lg:px-8" style="background: rgb(24, 53, 45);">
-    <img class="canva-image footer-watermark" src="magnolia-logo.webp" alt="" aria-hidden="true" width="1254" height="1254" loading="lazy" onerror="this.onerror=null;this.src='magnolia-logo.webp'">
+    <img class="canva-image footer-watermark" src="canva://MAHWmvPMiXI/1" alt="" aria-hidden="true" width="1254" height="1254" loading="lazy" onerror="this.onerror=null;this.src='assets/magnolia-logo.webp'">
     <div class="relative mx-auto grid max-w-7xl gap-10 lg:grid-cols-[.9fr_1.1fr]">
      <div>
       <div class="flex items-center gap-3">
-       <span class="h-12 w-12 flex-none overflow-hidden rounded-xl" aria-hidden="true"><img data-template-id="hospital-emblem" class="canva-image magnolia-mark object-contain" width="48" height="48" loading="lazy" src="magnolia-logo.webp" alt="" onerror="this.onerror=null;this.src='magnolia-logo.webp'"></span>
+       <span class="h-12 w-12 flex-none overflow-hidden rounded-xl" aria-hidden="true"><img data-template-id="hospital-emblem" class="canva-image magnolia-mark object-contain" width="48" height="48" loading="lazy" src="canva://MAHWmvPMiXI/1" alt="" onerror="this.onerror=null;this.src='assets/magnolia-logo.webp'"></span>
        <p data-template-id="footer-name" class="canva-text m-0 font-display text-2xl" style="color: rgb(255, 255, 255); font-weight: 400; font-style: normal;">Magnolia Regional Medical Center</p>
       </div>
       <p data-template-id="footer-copy" class="canva-text t-small mb-0 mt-4 max-w-xl" style="color: rgb(231, 238, 228); font-weight: 400; font-style: normal;">Patient-centered hospital and outpatient care, with practical guidance for every next step.</p>
@@ -1055,7 +1096,7 @@
      <nav class="grid grid-cols-2 content-start gap-x-6 gap-y-8 sm:grid-cols-3 lg:gap-6" aria-label="Footer navigation">
       <div>
        <h2 id="footer-patients" class="footer-heading">Patients and visitors</h2>
-       <ul class="m-0 mt-3 list-none p-0" aria-labelledby="footer-patients"><li><a href="#find-care" class="footer-link focus-ring">Find care</a></li><li><a href="specialties.html" class="footer-link focus-ring">Specialties</a></li><li><a href="doctors.html" class="footer-link focus-ring">Find a doctor</a></li><li><a href="#visit" class="footer-link focus-ring">Plan your visit</a></li><li><a href="#events" class="footer-link focus-ring">Classes and events</a></li><li><button type="button" data-modal="portal" class="footer-link focus-ring">Patient portal</button></li></ul>
+       <ul class="m-0 mt-3 list-none p-0" aria-labelledby="footer-patients"><li><a href="#find-care" class="footer-link focus-ring">Find care</a></li><li><a href="primary-care.html" class="footer-link focus-ring">Primary care</a></li><li><a href="specialties.html" class="footer-link focus-ring">Specialties</a></li><li><a href="imaging.html" class="footer-link focus-ring">Diagnostic imaging</a></li><li><a href="doctors.html" class="footer-link focus-ring">Find a doctor</a></li><li><a href="#visit" class="footer-link focus-ring">Plan your visit</a></li><li><a href="#events" class="footer-link focus-ring">Classes and events</a></li><li><a href="patient-portal.html" class="footer-link focus-ring">Patient portal</a></li><li><a href="donate.html" class="footer-link focus-ring">Donate</a></li></ul>
       </div>
       <div>
        <h2 id="footer-help" class="footer-heading">Billing and help</h2>
@@ -1067,9 +1108,8 @@
       </div>
      </nav>
     </div>
-    <div class="t-small relative mx-auto mt-12 max-w-7xl border-t border-white/15 pt-6 text-[#aebbaa]"><p class="m-0">Concept site for a class assignment. Magnolia Regional Medical Center, its clinicians, address, phone numbers and email are fictional placeholders.</p><p class="mb-0 mt-2">Service photos from Pexels. <a class="focus-ring font-semibold text-[#fffaf1] underline underline-offset-4" href="sources.html">Sources and notes</a></p></div>
+    <div class="t-small relative mx-auto mt-12 max-w-7xl border-t border-white/15 pt-6 text-[#aebbaa]"><p class="m-0">Concept site for a class assignment. Magnolia Regional Medical Center, its clinicians, address, phone numbers and email are fictional placeholders.</p><p class="mb-0 mt-2">Service photos from Pexels.</p></div>
    </footer>
-   <a class="notes-pill focus-ring" href="sources.html"><i data-lucide="notebook-text" class="h-4 w-4" aria-hidden="true"></i>Sources and notes</a>
   </div>
 
   <div id="feedback-modal" class="modal-backdrop fixed inset-0 z-[80] items-center justify-center bg-[#18352d]/75 p-5" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-copy">
@@ -1088,15 +1128,12 @@
 
   <script>
     const MODAL_CONTENT = {
-      portal: { title: "Patient portal", copy: "The online portal is not part of this concept site yet. For questions about results, appointments or records, send a request and the team will reply.", action: "Send a request", reason: "Patient portal or records" },
-      primary: { title: "Primary care", copy: "Primary care teams handle check-ups, preventive screenings, vaccinations and everyday health concerns. They also coordinate referrals when you need a specialist.", action: "Request an appointment", reason: "Requesting an appointment" },
-      imaging: { title: "Diagnostic imaging", copy: "Imaging includes X-ray, ultrasound, CT and MRI. Most scans need an order from your clinician. Your care team will explain any preparation, such as fasting.", action: "Ask about a scan", reason: "Finding care or a service" },
       billpay: { title: "Pay a bill", copy: "Online bill pay is not part of this concept site. To pay by phone, call the billing office at (555) 014-7822, Monday to Friday, 8:30 AM to 4:30 PM.", action: "Send a billing question", reason: "Billing or insurance" },
-      careers: { title: "Careers", copy: "Sample: Magnolia Regional hires nurses, therapists, imaging technologists and support staff. A careers page is not part of this concept site.", action: null, reason: "" },
+      careers: { title: "Careers", copy: "Magnolia Regional hires nurses, therapists, imaging technologists and support staff. Reach out through the contact form to ask about current openings.", action: null, reason: "" },
       volunteer: { title: "Volunteer", copy: "Volunteers greet visitors, help people find their way and support family waiting areas. Send a request to hear about the next volunteer orientation.", action: "Ask about volunteering", reason: "General question" },
       social: { title: "Follow Magnolia Regional", copy: "Social media accounts are not part of this concept site.", action: null, reason: "" },
       emergency: { title: "Emergency care", copy: "Our emergency department is open 24 hours a day, every day, at the east entrance off Magnolia Grove Way. For anything life-threatening, call 911 rather than driving yourself.", action: null, reason: "" },
-      privacy: { title: "Privacy", copy: "Sample statement: details sent through the request form are used only to reply to you. Please do not send medical records or other sensitive health information through this site.", action: null, reason: "" },
+      privacy: { title: "Privacy", copy: "Details sent through the request form are used only to reply to you. Please do not send medical records or other sensitive health information through this site.", action: null, reason: "" },
       accessibility: { title: "Accessibility", copy: "This site supports keyboard navigation, screen readers and reduced-motion settings. If something is hard to use, let us know and we will fix it.", action: "Report an issue", reason: "Accessibility or feedback" }
     };
     const prefersReducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -1146,9 +1183,13 @@
       return { open, close };
     }
 
-    function goToContactForm(reason) {
+    function goToContactForm(reason, message) {
       const reasonSelect = document.getElementById("contact-reason");
       if (reason) reasonSelect.value = reason;
+      if (message) {
+        const messageField = document.getElementById("contact-message");
+        if (messageField && !messageField.value.trim()) messageField.value = message;
+      }
       document.getElementById("contact").scrollIntoView({ behavior: scrollBehavior() });
       focusAfterScroll(document.getElementById("request-name"));
     }
@@ -1166,13 +1207,71 @@
       return { close: () => setOpen(false) };
     }
 
-    function createServiceSearch() {
+    function createNavDropdown() {
+      const controls = [...document.querySelectorAll(".nav-dropdown")].map((group) => ({
+        group,
+        trigger: group.querySelector(".nav-dropdown-trigger"),
+        menu: group.querySelector(".nav-dropdown-menu"),
+      })).filter((c) => c.trigger && c.menu);
+      if (!controls.length) return;
+      function close(c) {
+        c.group.classList.remove("is-open");
+        c.menu.hidden = true;
+        c.trigger.setAttribute("aria-expanded", "false");
+      }
+      function open(c) {
+        controls.forEach((other) => { if (other !== c) close(other); });
+        c.group.classList.add("is-open");
+        c.menu.hidden = false;
+        c.trigger.setAttribute("aria-expanded", "true");
+      }
+      controls.forEach((c) => {
+        c.trigger.addEventListener("click", () => (c.menu.hidden ? open(c) : close(c)));
+        c.menu.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => close(c)));
+      });
+      document.addEventListener("click", (event) => {
+        controls.forEach((c) => { if (!c.group.contains(event.target)) close(c); });
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key !== "Escape") return;
+        controls.forEach((c) => {
+          if (!c.menu.hidden) { close(c); c.trigger.focus(); }
+        });
+      });
+    }
+
+    function createMobileSubmenu() {
+      document.querySelectorAll(".mobile-nav-group").forEach((group) => {
+        const trigger = group.querySelector(".nav-dropdown-trigger");
+        if (!trigger) return;
+        trigger.addEventListener("click", () => {
+          const isOpen = group.classList.toggle("is-open");
+          trigger.setAttribute("aria-expanded", String(isOpen));
+        });
+      });
+    }
+
+    function createCareGrid() {
+      const toggle = document.getElementById("service-grid-toggle");
+      const grid = document.getElementById("service-grid");
+      const label = toggle ? toggle.querySelector(".service-grid-toggle-label") : null;
+      function setOpen(isOpen) {
+        grid.hidden = !isOpen;
+        toggle.setAttribute("aria-expanded", String(isOpen));
+        if (label) label.textContent = isOpen ? "Hide care types" : "Browse all care types";
+      }
+      toggle.addEventListener("click", () => setOpen(grid.hidden));
+      return { open: () => { if (grid.hidden) setOpen(true); } };
+    }
+
+    function createServiceSearch(careGrid) {
       const input = document.getElementById("service-search");
       const cards = [...document.querySelectorAll("#find-care [data-search]")];
       const empty = document.getElementById("service-empty");
       const results = document.getElementById("service-results");
       function apply() {
         const words = input.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+        if (words.length && careGrid) careGrid.open();
         const visibleCards = cards.filter((card) => {
           const keywords = card.dataset.search.split(/\s+/);
           return words.every((word) => keywords.some((keyword) => keyword.startsWith(word)));
@@ -1292,12 +1391,34 @@
     }
 
 
+    function applySearchFromUrl(serviceSearch) {
+      // Pages without their own find-care grid (the sub-pages) send their
+      // header search here with ?search=, so the query runs the moment the
+      // landing page is ready instead of needing a second, manual search.
+      const params = new URLSearchParams(window.location.search);
+      const query = params.get("search");
+      if (query) serviceSearch.searchFor(query);
+    }
+
     function prefillReasonFromUrl() {
-      const reason = new URLSearchParams(window.location.search).get("reason");
-      if (!reason) return;
-      const select = document.getElementById("contact-reason");
-      const isKnownOption = [...select.options].some((option) => option.value === reason);
-      if (isKnownOption) select.value = reason;
+      const params = new URLSearchParams(window.location.search);
+      const reason = params.get("reason");
+      if (reason) {
+        const select = document.getElementById("contact-reason");
+        const isKnownOption = [...select.options].some((option) => option.value === reason);
+        if (isKnownOption) select.value = reason;
+      }
+      // A doctor card or a visit-type card can arrive here with who or what
+      // prompted the visit, so the message field already reflects it.
+      const doctor = params.get("doctor");
+      const service = params.get("service");
+      const gift = params.get("gift");
+      const messageField = document.getElementById("contact-message");
+      if (messageField && !messageField.value.trim()) {
+        if (doctor) messageField.value = `I'd like to request an appointment with ${doctor}.`;
+        else if (service) messageField.value = `I'd like to ask about ${service}.`;
+        else if (gift) messageField.value = `I'd like to ask about ${gift}.`;
+      }
     }
 
     function initCampusMap() {
@@ -1474,12 +1595,18 @@
       if (window.lucide) lucide.createIcons(); else console.error("Lucide icons failed to load");
       const modal = createModal();
       const mobileMenu = createMobileMenu();
-      const serviceSearch = createServiceSearch();
+      createNavDropdown();
+      createMobileSubmenu();
+      const careGrid = createCareGrid();
+      const serviceSearch = createServiceSearch(careGrid);
       document.addEventListener("click", (event) => {
         const modalTrigger = event.target.closest("[data-modal]");
         if (modalTrigger) { modal.open(modalTrigger.dataset.modal); return; }
         const requestTrigger = event.target.closest("[data-request]");
-        if (requestTrigger) goToContactForm(requestTrigger.dataset.request);
+        if (requestTrigger) {
+          const doctor = requestTrigger.dataset.doctor;
+          goToContactForm(requestTrigger.dataset.request, doctor ? `I'd like to request an appointment with ${doctor}.` : undefined);
+        }
       });
       initScrollReveal();
       initCampusMap();
@@ -1488,6 +1615,7 @@
       initNavHighlight();
       initContactLinks();
       initContactForm();
+      applySearchFromUrl(serviceSearch);
       prefillReasonFromUrl();
     });
   </script>

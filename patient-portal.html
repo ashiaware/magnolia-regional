@@ -1,0 +1,1049 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patient Portal · Magnolia Regional</title>
+  <meta name="description" content="The Magnolia Regional patient portal, with dedicated views for appointments, messages, medications, test results and billing.">
+  <meta name="theme-color" content="#18352d">
+  <link rel="icon" type="image/webp" href="assets/magnolia-logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Work+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.577.0/dist/umd/lucide.min.js"></script>
+  <style>
+    :root{
+      --forest:#27483d;--deep:#18352d;--sage:#aebbaa;--mist:#e7eee4;--ivory:#fffaf1;--cream:#f7f0e2;--blush:#f4e2e1;--lav:#ece5f2;--plum:#8347ae;--ink:#303d37;--muted:#5c675f;--line:#d8d8ca;--danger:#9b2c3f;
+      --font-display:"DM Serif Display",Georgia,serif;--font-body:"Work Sans",system-ui,sans-serif;
+      --ease-out:cubic-bezier(.23,1,.32,1);--dur:220ms;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--ivory);color:var(--ink);font-family:var(--font-body);font-size:1rem;line-height:1.6}
+    a{color:var(--forest);text-underline-offset:4px}
+    button{font:inherit;cursor:pointer}
+    [hidden]{display:none!important}
+    :focus-visible{outline:3px solid var(--plum);outline-offset:3px;border-radius:.375rem}
+    .skip-link{position:fixed;left:1rem;top:-5rem;z-index:30;background:var(--deep);color:#fff;padding:.75rem 1rem;border-radius:.5rem}
+    .skip-link:focus{top:1rem}
+    .h-4{width:1rem;height:1rem}.h-5{width:1.25rem;height:1.25rem}
+
+    .emergency-bar{background:var(--deep);color:var(--ivory);font-size:.875rem;font-weight:500}
+    .emergency-bar p{max-width:72rem;margin:0 auto;padding:.5rem 1.25rem}
+    .emergency-bar a{color:var(--ivory);font-weight:700}
+    .site-bar{position:sticky;top:0;z-index:5;background:rgba(255,250,241,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+    .site-bar__inner{max-width:72rem;margin:0 auto;padding:.85rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.75rem 1rem}
+    .brand{display:flex;align-items:center;gap:.75rem;text-decoration:none;color:var(--forest);font-weight:700;font-size:.95rem;line-height:1.2}
+    .brand img{width:2.75rem;height:2.75rem;border-radius:.75rem;object-fit:cover}
+    .header-cta{display:inline-flex;align-items:center;gap:.5rem;min-height:2.75rem;padding:0 1.25rem;border-radius:999px;background:var(--forest);color:#fff;font-weight:700;font-size:.9rem;text-decoration:none;white-space:nowrap;transition:background-color var(--dur) ease,transform 160ms var(--ease-out)}
+    .header-cta:hover{background:var(--deep);transform:translateY(-1px)}
+    .header-cta:active{transform:scale(.97)}
+    .header-search{display:flex;flex:1 1 14rem;min-width:0;max-width:26rem}
+    .header-search label{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .header-search input{flex:1;min-width:0;min-height:2.75rem;padding:0 1rem;border:1px solid #9daf9f;border-right:0;border-radius:999px 0 0 999px;background:#fff;font:inherit;font-size:.9rem;color:var(--ink)}
+    .header-search input::placeholder{color:var(--muted);opacity:1}
+    .header-search input:hover{border-color:var(--forest)}
+    .header-search input:focus-visible{outline:none;border-color:var(--plum);box-shadow:0 0 0 3px rgba(131,71,174,.3)}
+    .header-search button{display:inline-flex;align-items:center;justify-content:center;flex:none;min-height:2.75rem;width:2.75rem;border:1px solid var(--forest);border-radius:0 999px 999px 0;background:var(--forest);color:#fff;cursor:pointer;transition:background-color var(--dur) ease}
+    .header-search button:hover{background:var(--deep)}
+    @media(max-width:640px){.header-search{order:3;flex-basis:100%;max-width:none}}
+    .site-nav{border-top:1px solid var(--line);background:var(--ivory)}
+    .site-nav ul{max-width:72rem;margin:0 auto;padding:.65rem 1.25rem;display:flex;flex-wrap:wrap;gap:.5rem;list-style:none}
+    .site-nav a{display:inline-flex;align-items:center;min-height:2.5rem;padding:0 .9rem;border-radius:999px;font-weight:600;font-size:.875rem;text-decoration:none;color:var(--forest);border:1px solid transparent;transition:background-color var(--dur) ease,border-color var(--dur) ease}
+    .site-nav a:hover{background:var(--mist)}
+    .site-nav a[aria-current="page"]{background:var(--forest);color:#fff}
+    @media(max-width:560px){.site-nav ul{gap:.4rem}.site-nav a{font-size:.8125rem;padding:0 .75rem}}
+    @media(max-width:400px){
+      .site-bar__inner{padding:.75rem 1rem;gap:.5rem}
+      .brand{font-size:.85rem;gap:.55rem}
+      .brand img{width:2.4rem;height:2.4rem}
+      .header-cta{padding:0 .9rem;font-size:.85rem}
+    }
+
+
+    .intro{max-width:72rem;margin:0 auto;padding:2.5rem 1.25rem 0}
+    .t-eyebrow{font-size:.8125rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--plum);margin:0}
+    h1{font-family:var(--font-display);font-weight:400;color:var(--forest);margin:.6rem 0 0;font-size:clamp(2rem,1.5rem + 2vw,2.75rem);line-height:1.1;letter-spacing:-.01em}
+    .lead{max-width:44rem;margin:1rem 0 0;font-size:1.0625rem;line-height:1.7;color:var(--muted)}
+
+    /* Explore-the-portal section */
+    .preview-section{max-width:72rem;margin:0 auto;padding:2.5rem 1.25rem 5rem}
+    .preview-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:1.25rem;margin-bottom:1.25rem}
+    .preview-head h2{font-family:var(--font-display);font-weight:400;color:var(--forest);font-size:1.5rem;margin:0}
+    .preview-head p{margin:.25rem 0 0;color:var(--muted)}
+    .action{display:inline-flex;align-items:center;gap:.5rem;background:var(--forest);color:#fff;border:1px solid var(--forest);border-radius:12px;padding:.7rem 1.1rem;font-weight:700;font-size:.9375rem;min-height:44px;text-decoration:none;transition:background var(--dur) ease,transform 160ms var(--ease-out)}
+    .action:hover{background:var(--deep);transform:translateY(-2px)}
+    .soft-action{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--sage);background:#fff;color:var(--forest);border-radius:12px;padding:.65rem 1rem;font-weight:700;font-size:.9375rem;min-height:44px;text-decoration:none;transition:background var(--dur) ease,transform 160ms var(--ease-out)}
+    .soft-action:hover{background:var(--mist);transform:translateY(-2px)}
+
+    /* Sign-in gate */
+    .signin-section{max-width:72rem;margin:0 auto;padding:2rem 1.25rem 1rem}
+    .signin-card{max-width:26rem;border:1px solid var(--line);border-radius:20px;background:#fff;padding:1.75rem 1.5rem;box-shadow:0 18px 45px rgba(24,53,45,.1)}
+    .signin-card h2{font-family:var(--font-display);font-weight:400;color:var(--forest);font-size:1.4rem;margin:.4rem 0 0}
+    .signin-note{margin:.6rem 0 1.25rem;color:var(--muted);font-size:.875rem;line-height:1.6}
+    .field{margin-bottom:1rem}
+    .field label{display:block;font-weight:700;font-size:.875rem;color:var(--forest);margin-bottom:.4rem}
+    .field input{width:100%;min-height:2.75rem;padding:0 .9rem;border:1px solid var(--sage);border-radius:10px;font:inherit;background:var(--ivory)}
+    .field input:focus-visible{outline:3px solid var(--plum);outline-offset:2px}
+    .field-label-row{display:flex;align-items:baseline;justify-content:space-between;gap:.75rem;margin-bottom:.4rem}
+    .field-label-row label{margin-bottom:0}
+    .forgot-link{padding:0;border:0;background:none;color:var(--plum);font-weight:700;font-size:.8125rem;text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+    .forgot-note{margin:-.4rem 0 1rem;padding:.75rem .9rem;border-radius:10px;background:var(--mist);color:var(--ink);font-size:.8125rem;line-height:1.55}
+    .signin-submit{width:100%;justify-content:center;margin-top:.25rem}
+    .signin-status{margin:1rem 0 0;font-weight:700;color:var(--forest);font-size:.875rem}
+    .topbar-actions{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
+    .view-back{display:inline-flex;align-items:center;gap:.4rem;margin:0 0 .75rem;padding:0;border:0;background:none;color:var(--plum);font-weight:700;font-size:.875rem;text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+    .view-back:hover{color:var(--forest)}
+
+    .account-picker-head h2{font-family:var(--font-display);font-weight:400;color:var(--forest);font-size:1.4rem;margin:.4rem 0 0}
+    .account-picker-head p{margin:.6rem 0 0;color:var(--muted);font-size:.9375rem;line-height:1.6;max-width:44rem}
+    .account-cards{display:grid;gap:1rem;margin-top:1.5rem}
+    @media(min-width:650px){.account-cards{grid-template-columns:repeat(3,minmax(0,1fr))}}
+    .account-card{display:flex;flex-direction:column;align-items:flex-start;gap:.3rem;text-align:left;border:1px solid var(--line);border-radius:16px;background:#fff;padding:1.25rem 1.1rem;cursor:pointer;transition:border-color var(--dur) ease,box-shadow var(--dur) ease,transform 160ms var(--ease-out)}
+    .account-card:hover{border-color:var(--forest);box-shadow:0 14px 30px rgba(24,53,45,.12);transform:translateY(-2px)}
+    .account-card__name{font-family:var(--font-display);font-weight:400;color:var(--forest);font-size:1.15rem}
+    .account-card__role{font-weight:700;font-size:.78125rem;color:var(--plum);text-transform:uppercase;letter-spacing:.06em}
+    .account-card__desc{display:block;margin:0;color:var(--muted);font-size:.875rem;line-height:1.5}
+
+    /* The portal frame: sidebar nav + content, responsive at every width */
+    .portal-frame{border:1px solid var(--sage);border-radius:22px;overflow:hidden;background:#fff;box-shadow:0 22px 65px rgba(24,53,45,.12)}
+    .portal-frame-inner{display:flex;flex-direction:column}
+    @media(min-width:800px){.portal-frame-inner{flex-direction:row;min-height:560px}}
+    .portal-sidebar{border-bottom:1px solid var(--line);background:var(--cream);padding:1rem 1.25rem}
+    @media(min-width:800px){.portal-sidebar{width:15rem;flex:none;border-bottom:0;border-right:1px solid var(--line);padding:1.25rem}}
+    .sidebar-head{display:none}
+    @media(min-width:800px){.sidebar-head{display:block;margin-bottom:1.5rem;padding-bottom:1.25rem;border-bottom:1px solid var(--line)}}
+    .sidebar-head p{margin:0}
+    .sidebar-head .brand-name{font-weight:700;color:var(--forest);font-size:1rem}
+    .sidebar-head .brand-caption{margin-top:.2rem;color:var(--muted);font-size:.75rem}
+    .portal-nav{display:flex;flex-wrap:wrap;gap:.5rem}
+    @media(min-width:800px){.portal-nav{flex-direction:column;flex-wrap:nowrap;gap:.25rem}}
+    .portal-nav button{display:flex;align-items:center;gap:.5rem;padding:.6rem .9rem;text-align:left;border:1px solid var(--line);border-radius:999px;color:var(--forest);font-weight:600;background:#fff;font-size:.875rem;min-height:44px}
+    @media(min-width:800px){.portal-nav button{width:100%;padding:.8rem .9rem;border:0;border-radius:10px;font-size:.9375rem;background:transparent}}
+    .portal-nav button:hover,.portal-nav button.is-active{background:var(--mist);border-color:var(--forest)}
+    @media(min-width:800px){.portal-nav button:hover,.portal-nav button.is-active{border-color:transparent}}
+    .portal-nav svg{width:18px;height:18px;flex:none}
+    .nav-badge{display:inline-flex;align-items:center;justify-content:center;min-width:1.25rem;height:1.25rem;padding:0 .35rem;margin-left:auto;border-radius:999px;background:var(--danger);color:#fff;font-size:.6875rem;font-weight:800;line-height:1}
+    .portal-main{min-width:0;flex:1}
+    .portal-topbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.75rem;border-bottom:1px solid var(--line);padding:1rem 1.25rem;scroll-margin-top:1rem}
+    .topbar-identity{display:flex;align-items:center;gap:.65rem}
+    .avatar{display:inline-flex;align-items:center;justify-content:center;width:2.25rem;height:2.25rem;border-radius:999px;background:var(--forest);color:#fff;font-weight:700;font-size:.8125rem;flex:none}
+    .topbar-identity .status-note{margin:0;font-weight:600;color:var(--muted);font-size:.9375rem}
+    .topbar-identity .status-sub{margin:0;color:var(--muted);font-size:.78125rem}
+    .portal-body{padding:1.25rem 1.25rem 1.75rem}
+    @media(min-width:500px){.portal-body{padding:1.75rem}}
+    .persona-eyebrow{font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;font-weight:800;color:var(--forest);margin:0}
+    .persona-greeting{font-family:var(--font-display);font-weight:400;color:var(--forest);font-size:1.3rem;margin:.5rem 0 0}
+    .persona-intro{margin:.5rem 0 0;color:var(--muted);line-height:1.6}
+
+    /* Dashboard overview grid */
+    .card-grid{display:grid;gap:1rem;margin-top:1.5rem}
+    @media(min-width:650px){.card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    .portal-card{border:1px solid var(--line);border-radius:17px;padding:1.25rem;background:#fff;min-width:0}
+    .portal-card.span-2{grid-column:1 / -1}
+    .portal-card:focus-visible{outline:3px solid var(--plum);outline-offset:2px}
+    .card-icon{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;background:var(--mist);color:var(--forest);flex:none}
+    .card-icon svg{width:19px;height:19px}
+    .card-head{display:flex;align-items:flex-start;gap:.75rem}
+    .portal-card h3{font-weight:700;color:var(--forest);font-size:1rem;margin:.6rem 0 0}
+    .portal-card p{margin:.5rem 0 0;color:var(--muted);font-size:.9375rem;line-height:1.55}
+    .portal-card .soft-action{margin-top:.9rem}
+    .findcare-links{list-style:none;margin:.75rem 0 0;padding:0;display:grid;gap:.4rem}
+    .findcare-links a{display:inline-flex;align-items:center;gap:.4rem;font-weight:700;font-size:.9375rem}
+
+    /* Detail views (Appointments, Messages, Medications, Test results, Billing, Support) */
+    .view-head{margin-top:1.5rem}
+    .view-head h2{font-family:var(--font-display);font-weight:400;color:var(--forest);font-size:1.3rem;margin:0}
+    .view-head p{margin:.5rem 0 0;color:var(--muted);line-height:1.6}
+    .stack{display:grid;gap:1rem;margin-top:1.5rem}
+    .stack-section{margin-top:2rem}
+    .stack-section h4{font-size:.8125rem;letter-spacing:.1em;text-transform:uppercase;font-weight:800;color:var(--forest);margin:0 0 .75rem}
+    .row-item{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.5rem .9rem;padding:.9rem 1rem;border:1px solid var(--line);border-radius:12px;background:#fff}
+    .row-main{display:flex;flex-direction:column;gap:.15rem}
+    .row-title{font-weight:700;color:var(--forest);font-size:.9375rem;margin:0}
+    .row-meta{color:var(--muted);font-size:.8125rem;margin:0}
+    .row-value{font-weight:700;color:var(--forest);font-size:.9375rem;white-space:nowrap}
+    .view-footer-action{margin-top:1.5rem}
+
+    .restricted{display:flex;gap:.6rem;align-items:flex-start;margin-top:.9rem;padding:.9rem 1rem;border-radius:.9rem;background:var(--blush)}
+    .restricted p{margin:0!important;color:var(--ink)!important}
+    .restricted i{color:var(--danger);flex:none;margin-top:.1rem}
+
+    footer{background:var(--deep);color:var(--mist);padding:2rem 1.25rem}
+    footer p{max-width:72rem;margin:0 auto;font-size:.9rem}
+    footer a{color:var(--ivory)}
+    .notes-pill{position:fixed;left:1rem;bottom:1rem;z-index:30;display:inline-flex;align-items:center;gap:.45rem;min-height:2.75rem;padding:0 1rem;border:1px solid #9daf9f;border-radius:999px;background:var(--ivory);color:var(--forest);font-weight:700;font-size:.875rem;text-decoration:none;box-shadow:0 10px 24px -12px rgba(24,53,45,.55);transition:background-color var(--dur) ease,border-color var(--dur) ease}
+    .notes-pill:hover{background:var(--mist);border-color:var(--forest)}
+    .notes-pill:active{transform:scale(.97)}
+    @media print{.notes-pill{display:none}}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before{transition:none!important}}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#preview">Skip to the portal preview</a>
+  <div class="emergency-bar"><p>Life-threatening emergency? Call <a href="tel:911">911</a>. Our emergency department is open 24/7.</p></div>
+  <header class="site-bar">
+    <div class="site-bar__inner">
+      <a class="brand" href="index.html"><img src="assets/magnolia-logo.webp" alt="" width="44" height="44">Magnolia Regional<br>Medical Center</a>
+      <form id="header-search-form" class="header-search" role="search" action="index.html" method="get">
+        <label for="header-search">Search services or doctors</label>
+        <input id="header-search" type="search" name="search" placeholder="Search services or doctors" autocomplete="off">
+        <button type="submit" aria-label="Search"><i data-lucide="search" class="h-4 w-4" aria-hidden="true"></i></button>
+      </form>
+      <a class="header-cta focus-ring" href="index.html#contact">Request support</a>
+    </div>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="primary-care.html">Primary care</a></li>
+        <li><a href="specialties.html">Specialty care</a></li>
+        <li><a href="imaging.html">Diagnostic imaging</a></li>
+        <li><a href="doctors.html">Find a doctor</a></li>
+        <li><a href="patient-portal.html" aria-current="page">Patient portal</a></li>
+        <li><a href="sources.html">Sources &amp; notes</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <div class="intro">
+      <p class="t-eyebrow">For Magnolia Regional patients</p>
+      <h1>Your care, thoughtfully connected.</h1>
+      <p class="lead">Sign in to the Magnolia Regional patient portal to manage appointments, send a secure message to your care team, review medications and test results, and keep up with billing, all in one place. <a href="index.html?reason=Patient%20portal%20or%20records#contact">Need help signing in?</a></p>
+    </div>
+
+    <section id="account-picker" class="signin-section account-picker-head" aria-labelledby="account-picker-heading">
+      <p class="t-eyebrow">Explore the portal</p>
+      <h2 id="account-picker-heading" tabindex="-1">Choose a demo account to sign in as</h2>
+      <p>This preview uses three separate sample accounts, each with its own sign-in, so you can see what the portal looks like for a caregiver, a teen and an adult patient. Signing in shows that one account only, the same as a real patient portal.</p>
+      <div class="account-cards">
+        <button type="button" class="account-card focus-ring" data-persona="parent">
+          <span class="account-card__role">Parent &amp; caregiver account</span>
+          <span class="account-card__name">Danielle Price</span>
+          <span class="account-card__desc">Manages care for her son, Noah.</span>
+        </button>
+        <button type="button" class="account-card focus-ring" data-persona="teen">
+          <span class="account-card__role">Teen account</span>
+          <span class="account-card__name">Jordan Reyes</span>
+          <span class="account-card__desc">Own sign-in, with guardian oversight on some records until 18.</span>
+        </button>
+        <button type="button" class="account-card focus-ring" data-persona="adult">
+          <span class="account-card__role">Adult account</span>
+          <span class="account-card__name">Morgan Ellis</span>
+          <span class="account-card__desc">Full access to their own records.</span>
+        </button>
+      </div>
+    </section>
+
+    <section id="signin" class="signin-section" aria-labelledby="signin-heading" hidden>
+      <div class="signin-card">
+        <button type="button" class="view-back focus-ring" id="change-account"><i data-lucide="arrow-left" class="h-4 w-4" aria-hidden="true"></i>Choose a different account</button>
+        <p class="t-eyebrow">Sign in</p>
+        <h2 id="signin-heading" tabindex="-1">Sign in as <span id="signin-account-name">Danielle Price</span></h2>
+        <p class="signin-note">Enter the email and password below, or use the pre-filled details to look around.</p>
+        <form id="signin-form" novalidate>
+          <div class="field">
+            <label for="signin-email">Email or patient ID</label>
+            <input type="text" id="signin-email" name="email" value="danielle.price@example.com" autocomplete="off">
+          </div>
+          <div class="field">
+            <div class="field-label-row"><label for="signin-password">Password</label><button type="button" class="forgot-link focus-ring" id="forgot-password-trigger" aria-expanded="false" aria-controls="forgot-password-note">Forgot password?</button></div>
+            <input type="password" id="signin-password" name="password" value="patientportal2026" autocomplete="off">
+          </div>
+          <p id="forgot-password-note" class="forgot-note" hidden>This portal does not send real reset emails. Use the pre-filled email and password above to sign in and look around, or <a href="index.html?reason=Patient%20portal%20or%20records#contact">send us a request</a> if you are testing your own account.</p>
+          <button type="submit" class="action focus-ring signin-submit"><i data-lucide="log-in" class="h-4 w-4" aria-hidden="true"></i>Sign in</button>
+        </form>
+        <p id="signin-status" class="signin-status" role="status" aria-live="polite" hidden>Signing you in&hellip;</p>
+      </div>
+    </section>
+
+    <section id="preview" aria-labelledby="preview-heading" class="preview-section" hidden>
+      <div class="preview-head">
+        <div>
+          <h2 id="preview-heading" tabindex="-1">Your portal</h2>
+          <p>Use the sidebar to open Appointments, Secure messages, Medications, Test results or Billing &amp; insurance.</p>
+        </div>
+      </div>
+
+      <div id="portal-preview">
+        <div class="portal-frame">
+          <div class="portal-frame-inner">
+            <aside class="portal-sidebar" aria-label="Portal navigation">
+              <div class="sidebar-head">
+                <p class="brand-name">Magnolia Portal</p>
+                <p class="brand-caption">Patient portal</p>
+              </div>
+              <nav class="portal-nav">
+                <button type="button" class="is-active" data-view="dashboard"><i data-lucide="layout-dashboard" aria-hidden="true"></i>Dashboard</button>
+                <button type="button" data-view="appointments"><i data-lucide="calendar-days" aria-hidden="true"></i>Appointments</button>
+                <button type="button" data-view="messages"><i data-lucide="message-circle" aria-hidden="true"></i>Secure messages<span class="nav-badge" aria-label="1 new message">1</span></button>
+                <button type="button" data-view="medications"><i data-lucide="pill" aria-hidden="true"></i>Medications</button>
+                <button type="button" data-view="results"><i data-lucide="file-text" aria-hidden="true"></i>Test results</button>
+                <button type="button" data-view="billing"><i data-lucide="wallet" aria-hidden="true"></i>Billing &amp; insurance</button>
+                <button type="button" data-view="support"><i data-lucide="circle-help" aria-hidden="true"></i>Find care &amp; support</button>
+              </nav>
+            </aside>
+            <div class="portal-main">
+              <div class="portal-topbar">
+                <div class="topbar-identity">
+                  <span class="avatar" id="status-avatar" aria-hidden="true">DP</span>
+                  <div>
+                    <p class="status-note" id="status-note">Danielle Price</p>
+                    <p class="status-sub" id="status-sub">Last signed in yesterday at 6:48 PM</p>
+                  </div>
+                </div>
+                <div class="topbar-actions">
+                  <button type="button" class="soft-action focus-ring" id="signout-button"><i data-lucide="log-out" class="h-4 w-4" aria-hidden="true"></i>Sign out</button>
+                </div>
+              </div>
+              <div class="portal-body">
+
+                <!-- ============ PARENT / CAREGIVER ============ -->
+                <section id="panel-parent" hidden class="persona-panel" data-persona-panel="parent">
+                  <p class="persona-eyebrow">Caregiver dashboard</p>
+                  <h3 class="persona-greeting">Danielle, here is Noah's care.</h3>
+                  <p class="persona-intro">A simple overview for your family.</p>
+
+                  <div class="portal-view" data-view="dashboard">
+                    <div class="card-grid">
+                      <article class="portal-card span-2">
+                        <div class="card-head"><span class="card-icon"><i data-lucide="calendar-heart" aria-hidden="true"></i></span><div><p class="persona-eyebrow" style="margin:0">Upcoming care</p></div></div>
+                        <h3>Well-child visit &amp; flu shot</h3>
+                        <p>Thu, Oct 29 · 3:30 PM with <a href="doctors.html#delgado">Dr. Rosa Delgado</a>, pediatrics. A flu shot is booked right after, at 3:45 PM.</p>
+                        <button type="button" class="soft-action focus-ring" data-goto-view="appointments"><i data-lucide="calendar-days" class="h-4 w-4" aria-hidden="true"></i>View all appointments</button>
+                      </article>
+                      <article class="portal-card" style="background:var(--blush)">
+                        <p class="persona-eyebrow">Reminders</p>
+                        <h3>Vaccinations &amp; school forms</h3>
+                        <p>Noah's immunization record is up to date through age 8, with the next round due at the Oct 29 visit. A school-form checklist is also ready to review.</p>
+                      </article>
+                      <article class="portal-card" style="background:var(--cream)">
+                        <p class="persona-eyebrow">Secure messages</p>
+                        <h3>Dr. Rosa Delgado</h3>
+                        <p>"Noah is due for his next round of vaccines at the Oct 29 visit. Let me know if you have any questions before then."</p>
+                        <button type="button" class="soft-action focus-ring" data-goto-view="messages"><i data-lucide="message-circle" class="h-4 w-4" aria-hidden="true"></i>View all messages</button>
+                      </article>
+                      <article class="portal-card" style="background:var(--mist)">
+                        <p class="persona-eyebrow">Medications</p>
+                        <h3>Cetirizine (children's allergy medicine)</h3>
+                        <p>Seasonal, as needed. Last noted Apr 2026 by Dr. Delgado.</p>
+                        <button type="button" class="soft-action focus-ring" data-goto-view="medications"><i data-lucide="pill" class="h-4 w-4" aria-hidden="true"></i>View all medications</button>
+                      </article>
+                      <article class="portal-card">
+                        <p class="persona-eyebrow">Test results</p>
+                        <h3>Immunization record &amp; growth chart</h3>
+                        <p>Immunizations up to date through age 8. Height and weight have tracked steadily along the 60th percentile.</p>
+                        <button type="button" class="soft-action focus-ring" data-goto-view="results"><i data-lucide="file-text" class="h-4 w-4" aria-hidden="true"></i>View all results</button>
+                      </article>
+                      <article class="portal-card">
+                        <p class="persona-eyebrow">Billing &amp; insurance</p>
+                        <h3>No balance due</h3>
+                        <p>Family plan on file, covering Noah and Danielle. Last statement Sep 2, 2026.</p>
+                        <button type="button" class="soft-action focus-ring" data-goto-view="billing"><i data-lucide="wallet" class="h-4 w-4" aria-hidden="true"></i>View billing &amp; insurance</button>
+                      </article>
+                      <article class="portal-card span-2" style="background:var(--lav)">
+                        <p class="persona-eyebrow">Find care &amp; support</p>
+                        <h3>Where to go next</h3>
+                        <ul class="findcare-links">
+                          <li><a href="primary-care.html"><i data-lucide="stethoscope" class="h-4 w-4" aria-hidden="true"></i>Primary care</a></li>
+                          <li><a href="specialties.html"><i data-lucide="heart-pulse" class="h-4 w-4" aria-hidden="true"></i>Specialty care</a></li>
+                          <li><a href="imaging.html"><i data-lucide="scan" class="h-4 w-4" aria-hidden="true"></i>Diagnostic imaging</a></li>
+                          <li><a href="doctors.html"><i data-lucide="user-search" class="h-4 w-4" aria-hidden="true"></i>Find a doctor</a></li>
+                        </ul>
+                        <a class="soft-action focus-ring" href="index.html?reason=General%20question#contact"><i data-lucide="life-buoy" class="h-4 w-4" aria-hidden="true"></i>Contact support</a>
+                      </article>
+                    </div>
+                  </div>
+
+                  <div class="portal-view" data-view="appointments" hidden>
+                    <div class="view-head">
+                      <button type="button" class="view-back focus-ring" data-goto-view="dashboard"><i data-lucide="arrow-left" class="h-4 w-4" aria-hidden="true"></i>Back to dashboard</button>
+                      <h2>Appointments</h2>
+                      <p>Noah's upcoming and past visits. Each one links straight to the doctor's profile.</p>
+                    </div>
+                    <div class="stack">
+                      <article class="portal-card span-2">
+                        <div class="card-head"><span class="card-icon"><i data-lucide="calendar-heart" aria-hidden="true"></i></span><div><p class="persona-eyebrow" style="margin:0">Upcoming</p></div></div>
+                        <h3>Well-child visit &amp; flu shot</h3>
+                        <p>Thu, Oct 29 · 3:30 PM with <a href="doctors.html#delgado">Dr. Rosa Delgado</a>, pediatrics, Magnolia Regional Outpatient Center. A flu shot is booked right after, at 3:45 PM.</p>
+                      </article>
+                    </div>
+                    <div class="stack-section">
+                      <h4>Past visits</h4>
+                      <div class="stack">
+                        <div class="row-item"><div class="row-main"><p class="row-title">Annual well-child visit</p><p class="row-meta">Apr 14, 2026 · Dr. Rosa Delgado, pediatrics</p></div><span class="row-value">Completed</span></div>
+                        <div class="row-item"><div class="row-main"><p class="row-title">Vaccine catch-up visit</p><p class="row-meta">Jan 9, 2026 · Dr. Rosa Delgado, pediatrics</p></div><span class="row-value">Completed</span></div>
+                      </div>
+                    </div>
+                    <a class="action focus-ring view-footer-action" href="index.html?reason=Requesting%20an%20appointment#contact"><i data-lucide="calendar-plus" class="h-4 w-4" aria-hidden="true"></i>Request an appointment</a>
+                  </div>
+
+                  <div class="portal-view" data-view="messages" hidden>
+                    <div class="view-head">
+                      <button type="button" class="view-back focus-ring" data-goto-view="dashboard"><i data-lucide="arrow-left" class="h-4 w-4" aria-hidden="true"></i>Back to dashboard</button>
+                      <h2>Secure messages</h2>
+                      <p>Conversations with Noah's care team.</p>
+                    </div>
+                    <div class="stack">
+                      <article class="portal-card">
+                        <div class="card-head"><span class="card-icon"><i data-lucide="stethoscope" aria-hidden="true"></i></span><div><p class="persona-eyebrow" style="margin:0">Dr. Rosa Delgado · pediatrics</p><p class="row-meta">Oct 12, 2026</p></div></div>
+                        <p>"Noah is due for his next round of vaccines at the Oct 29 visit. Let me know if you have any questions before then."</p>
+                        <button type="button" class="soft-action focus-ring"><i data-lucide="reply" class="h-4 w-4" aria-hidden="true"></i>Reply</button>
+                      </article>
+                      <article class="portal-card">
+                        <div class="card-head"><span class="card-icon"><i data-lucide="clipboard-list" aria-hidden="true"></i></span><div><p class="persona-eyebrow" style="margin:0">Front desk team</p><p class="row-meta">Sep 30, 2026</p></div></div>
+                        <p>"Your school-form request is ready. You can pick it up at the front desk, or we can mail a copy, whichever is easier."</p>
+                        <button type="button" class="soft-action focus-ring"><i data-lucide="reply" class="h-4 w-4" aria-hidden="true"></i>Reply</button>
+                      </article>
+                    </div>
+                    <a class="action focus-ring view-footer-action" href="index.html?reason=Patient%20portal%20or%20records#contact"><i data-lucide="pencil-line" class="h-4 w-4" aria-hidden="true"></i>Send a new message</a>
+                  </div>
+
+                  <div class="portal-view" data-view="medications" hidden>
+                    <div class="view-head">
+                      <button type="button" class="view-back focus-ring" data-goto-view="dashboard"><i data-lucide="arrow-left" class="h-4 w-4" aria-hidden="true"></i>Back to dashboard</button>
+                      <h2>Medications</h2>
+                      <p>Noah's current and past medications.</p>
+                    </div>
+                    <div class="stack">
+                      <article class="portal-card" style="background:var(--mist)">
+                        <h3>Cetirizine (children's allergy medicine)</h3>
+                        <p>Seasonal, as needed. Last noted Apr 2026 by Dr. Delgado.</p>
+                        <button type="button" class="soft-action focus-ring"><i data-lucide="rotate-ccw" class="h-4 w-4" aria-hidden="true"></i>Request a refill</button>
+                      </article>
+                    </div>
+                    <div class="stack-section">
+                      <h4>Past medications</h4>
+                      <div class="stack">
+                        <div class="row-item"><div class="row-main"><p class="row-title">Amoxicillin</p><p class="row-meta">Course completed Feb 2026 · Dr. Delgado</p></div><span class="row-value">Inactive</span></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="portal-view" data-view="results" hidden>
+                    <div class="view-head">
+                      <button type="button" class="view-back focus-ring" data-goto-view="dashboard"><i data-lucide="arrow-left" class="h-4 w-4" aria-hidden="true"></i>Back to dashboard</button>
+                      <h2>Test results</h2>
+                      <p>Noah's recent results.</p>
+                    </div>
+                    <div class="stack">
+                      <article class="portal-card">
+                        <h3>Immunization record &amp; growth chart</h3>
+                        <p>Immunizations up to date through age 8. Height and weight have tracked steadily along the 60th percentile.</p>
+                      </article>
+                      <article class="portal-card">
+                        <h3>Rapid strep test</h3>
+                        <p>Jan 9, 2026 · reviewed by Dr. Delgado: negative.</p>
+                      </article>
+                    </div>
+                  </div>
+
+                  <div class="portal-view" data-view="billing" hidden>
+                    <div class="view-head">
+                      <button type="button" class="view-back focus-ring" data-goto-view="dashboard"><i data-lucide="arrow-left" class="h-4 w-4" aria-hidden="true"></i>Back to dashboard</button>
+                      <h2>Billing &amp; insurance</h2>
+                      <p>A family plan covering Noah and Danielle.</p>
+                    </div>
+                    <div class="stack">
+                      <article class="portal-card span-2">
+                        <h3>No balance due</h3>
+                        <p>Family PPO plan on file. Last statement Sep 2, 2026. <a href="index.html#billing">View billing and insurance</a>.</p>
+                      </article>
+                    </div>
+                    <div class="stack-section">
+                      <h4>Statements</h4>
+                      <div class="stack">
+                        <div class="row-item"><div class="row-main"><p class="row-title">September 2026 statement</p><p class="row-meta">Paid in full</p></div><span class="row-value">$0.00</span></div>
+                        <div class="row-item"><div class="row-main"><p class="row-title">June 2026 statement</p><p class="row-meta">Well-child visit co-pay</p></div><span class="row-value">$25.00</span></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="portal-view" data-view="support" hidden>
+                    <div class="view-head">
+                      <button type="button" class="view-back focus-ring" data-goto-view="dashboard"><i data-lucide="arrow-left" class="h-4 w-4" aria-hidden="true"></i>Back to dashboard</button>
+                      <h2>Find care &amp; support</h2>
+                      <p>Where to go next for Noah's care.</p>
+                    </div>
+                    <article class="portal-card" style="background:var(--lav);margin-top:1.5rem">
+                      <ul class="findcare-links">
+                        <li><a href="primary-care.html"><i data-lucide="stethoscope" class="h-4 w-4" aria-hidden="true"></i>Primary care</a></li>
+                        <li><a href="specialties.html"><i data-lucide="heart-pulse" class="h-4 w-4" aria-hidden="true"></i>Specialty care</a></li>
+                        <li><a href="imaging.html"><i data-lucide="scan" class="h-4 w-4" aria-hidden="true"></i>Diagnostic imaging</a></li>
+                        <li><a href="doctors.html"><i data-lucide="user-search" class="h-4 w-4" aria-hidden="true"></i>Find a doctor</a></li>
+                      </ul>
+                      <a class="soft-action focus-ring" href="index.html?reason=General%20question#contact"><i data-lucide="life-buoy" class="h-4 w-4" aria-hidden="true"></i>Contact support</a>
+                    </article>
+                  </div>
+                </section>
+
+                <!-- ============ TEEN ============ -->
+                <section id="panel-teen" hidden class="persona-panel" data-persona-panel="teen">
+                  <p class="persona-eyebrow">Teen dashboard</p>
+                  <h3 class="persona-greeting">Hi, Jordan.</h3>
+                  <p class="persona-intro">A full visit history, billing and lab results are shared with a guardian's account until age 18.</p>
+
+                  <div class="portal-view" data-view="dashboard">
+                    <div class="card-grid">
+                      <article class="portal-card span-2">
+                        <div class="card-head"><span class="card-icon"><i data-lucide="calendar-heart" aria-hidden="true"></i></span><div><p class="persona-eyebrow" style="margin:0">Upcoming care</p></div></div>
+                        <h3>Migraine follow-up</h3>
+                        <p>Fri, Oct 30 · 1:00 PM with <a href="doctors.html#haddad">Dr. Leila Haddad</a>, neurology.</p>
+                        <button type="button" class="soft-action focus-ring" data-goto-view="appointments"><i data-lucide="calendar-days" class="h-4 w-4" aria-hidden="true"></i>View all appointments</button>
+                      </article>
+                      <article class="portal-card" style="background:var(--cream)">
+                        <p class="persona-eyebrow">Secure messages</p>
+                        <h3>Dr. Leila Haddad</h3>
+                        <p>"Keep tracking your sleep and water intake before the Oct 30 visit. It will help us spot what is triggering the migraines."</p>
+                        <button type="button" class="soft-action focus-ring" data-goto-view="messages"><i data-lucide="message-circle" class="h-4 w-4" aria-hidden="true"></i>View all messages</button>
+                      </article>
+                      <article class="portal-card" style="background:var(--blush)">
+                        <p class="persona-eyebrow">Account</p>
+                        <h3>Guardian oversight is on</h3>
+                        <p>Some records, billing and lab results are shared with a parent's account until you turn 18.</p>
+                      </article>
+                      <article class="portal-card" style="background:var(--mist)">
+                        <p class="persona-eyebrow">Medications</p>
+                        <h3>Sumatriptan 50mg</h3>
+                        <p>As needed, for migraine. Shared with your guardian's account.</p>
+                        <button type="button" class="soft-action focus-ring" data-goto-view="medications"><i data-lucide="pill" class="h-4 w-4" aria-hidden="true"></i>View all medications</button>
+                      </article>
+                      <article class="portal-card">
+                        <p class="persona-eyebrow">Test results</p>
+                        <h3>Brain <a href="imaging.html#mri">MRI</a> &amp; immunizations</h3>
+                        <p>Jul 14, 2026 · reviewed by Dr. Haddad: no acute findings. Immunizations are up to date as of your last physical.</p>
+                        <button type="button" class="soft-action focus-ring" data-goto-view="results"><i data-lucide="file-text" class="h-4 w-4" aria-hidden="true"></i>View all results</button>
+                      </article>
+                      <article class="portal-card">
+                        <p class="persona-eyebrow">Billing &amp; insurance</p>
+                        <h3>Managed by your guardian</h3>
+                        <div class="restricted"><i data-lucide="lock" class="h-5 w-5" aria-hidden="true"></i><p>Billing and insurance details are not shown here until you turn 18.</p></div>
+                      </article>
+                      <article class="portal-card span-2" style="background:var(--lav)">
+                        <p class="persona-eyebrow">Find care &amp; support</p>
+                        <h3>Where to go next</h3>
+                        <ul class="findcare-links">
+                          <li><a href="specialties.html"><i data-lucide="heart-pulse" class="h-4 w-4" aria-hidden="true"></i>Specialty care</a></li>
+                          <li><a href="imaging.html"><i data-lucide="scan" class="h-4 w-4" aria-hidden="true"></i>Diagnostic imaging</a></li>
+                          <li><a href="primary-care.html"><i data-lucide="stethoscope" class="h-4 w-4" aria-hidden="true"></i>Primary care</a></li>
+                          <li><a href="doctors.html"><i data-lucide="user-search" class="h-4 w-4" aria-hidden="true"></i>Find a doctor</a></li>
+                        </ul>
+                        <a class="soft-action focus-ring" href="index.html?reason=General%20question#contact"><i data-lucide="life-buoy" class="h-4 w-4" aria-hidden="true"></i>Contact support</a>
+                      </article>
+                    </div>
+                  </div>
+
+                  <div class="portal-view" data-view="appointments" hidden>
+                    <div class="view-head">
+                      <button type="button" class="view-back focus-ring" data-goto-view="dashboard"><i data-lucide="arrow-left" class="h-4 w-4" aria-hidden="true"></i>Back to dashboard</button>
+                      <h2>Appointments</h2>
+                      <p>Your upcoming and past visits.</p>
+                    </div>
+                    <div class="stack">
+                      <article class="portal-card span-2">
+                        <div class="card-head"><span class="card-icon"><i data-lucide="calendar-heart" aria-hidden="true"></i></span><div><p class="persona-eyebrow" style="margin:0">Upcoming</p></div></div>
+                        <h3>Migraine follow-up</h3>
+                        <p>Fri, Oct 30 · 1:00 PM with <a href="doctors.html#haddad">Dr. Leila Haddad</a>, neurology, Magnolia Regional Outpatient Center.</p>
+                      </article>
+                    </div>
+                    <div class="stack-section">
+                      <h4>Past visits</h4>
+                      <div class="stack">
+                        <div class="row-item"><div class="row-main"><p class="row-title">Annual physical</p><p class="row-meta">Mar 3, 2026 · Dr. Amara Okafor, primary care</p></div><span class="row-value">Completed</span></div>
+                        <div class="row-item"><div class="row-main"><p class="row-title">Initial neurology consult</p><p class="row-meta">Jun 2, 2026 · Dr. Leila Haddad, neurology</p></div><span class="row-value">Completed</span></div>
+                      </div>
+                    </div>
+                    <a class="action focus-ring view-footer-action" href="index.html?reason=Requesting%20an%20appointment#contact"><i data-lucide="calendar-plus" class="h-4 w-4" aria-hidden="true"></i>Request an appointment</a>
+                  </div>
+
+                  <div class="portal-view" data-view="messages" hidden>
+                    <div class="view-head">
+                      <button type="button" class="view-back focus-ring" data-goto-view="dashboard"><i data-lucide="arrow-left" class="h-4 w-4" aria-hidden="true"></i>Back to dashboard</button>
+                      <h2>Secure messages</h2>
+                      <p>Conversations with your care team.</p>
+                    </div>
+                    <div class="stack">
+                      <article class="portal-card">
+                        <div class="card-head"><span class="card-icon"><i data-lucide="brain" aria-hidden="true"></i></span><div><p class="persona-eyebrow" style="margin:0">Dr. Leila Haddad · neurology</p><p class="row-meta">Oct 15, 2026</p></div></div>
+                        <p>"Keep tracking your sleep and water intake before the Oct 30 visit. It will help us spot what is triggering the migraines."</p>
+                        <button type="button" class="soft-action focus-ring"><i data-lucide="reply" class="h-4 w-4" aria-hidden="true"></i>Reply</button>
+                      </article>
+                      <article class="portal-card">
+                        <div class="card-head"><span class="card-icon"><i data-lucide="stethoscope" aria-hidden="true"></i></span><div><p class="persona-eyebrow" style="margin:0">Dr. Amara Okafor · primary care</p><p class="row-meta">Mar 4, 2026</p></div></div>
+                        <p>"Your last physical looked good. Keep up the water intake, and let us know if the headaches change before your next visit."</p>
+                        <button type="button" class="soft-action focus-ring"><i data-lucide="reply" class="h-4 w-4" aria-hidden="true"></i>Reply</button>
+                      </article>
+                    </div>
+                  </div>
+
+                  <div class="portal-view" data-view="medications" hidden>
+                    <div class="view-head">
+                      <button type="button" class="view-back focus-ring" data-goto-view="dashboard"><i data-lucide="arrow-left" class="h-4 w-4" aria-hidden="true"></i>Back to dashboard</button>
+                      <h2>Medications</h2>
+                      <p>Shared with your guardian's account.</p>
+                    </div>
+                    <div class="stack">
+                      <article class="portal-card" style="background:var(--mist)">
+                        <h3>Sumatriptan 50mg</h3>
+                        <p>As needed, for migraine.</p>
+                        <button type="button" class="soft-action focus-ring"><i data-lucide="rotate-ccw" class="h-4 w-4" aria-hidden="true"></i>Request a refill</button>
+                      </article>
+                      <article class="portal-card">
+                        <h3>Ibuprofen 200mg</h3>
+                        <p>As needed, for headache. Over the counter.</p>
+                      </article>
+                    </div>
+                    <div class="stack-section">
+                      <h4>Past medications</h4>
+                      <div class="stack">
+                        <div class="row-item"><div class="row-main"><p class="row-title">Loratadine</p><p class="row-meta">Seasonal allergies · discontinued Jun 2026</p></div><span class="row-value">Inactive</span></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="portal-view" data-view="results" hidden>
+                    <div class="view-head">
+                      <button type="button" class="view-back focus-ring" data-goto-view="dashboard"><i data-lucide="arrow-left" class="h-4 w-4" aria-hidden="true"></i>Back to dashboard</button>
+                      <h2>Test results</h2>
+                      <p>Your recent results.</p>
+                    </div>
+                    <div class="stack">
+                      <article class="portal-card">
+                        <h3>Brain <a href="imaging.html#mri">MRI</a> &amp; immunizations</h3>
+                        <p>Jul 14, 2026 · reviewed by Dr. Haddad: no acute findings. Immunizations are up to date as of your last physical.</p>
+                      </article>
+                      <article class="portal-card">
+                        <h3>Annual physical labs</h3>
+                        <p>Mar 3, 2026 · reviewed by Dr. Okafor: within normal range.</p>
+                      </article>
+                    </div>
+                  </div>
+
+                  <div class="portal-view" data-view="billing" hidden>
+                    <div class="view-head">
+                      <button type="button" class="view-back focus-ring" data-goto-view="dashboard"><i data-lucide="arrow-left" class="h-4 w-4" aria-hidden="true"></i>Back to dashboard</button>
+                      <h2>Billing &amp; insurance</h2>
+                      <p>Managed by your guardian.</p>
+                    </div>
+                    <div class="restricted" style="margin-top:1.5rem"><i data-lucide="lock" class="h-5 w-5" aria-hidden="true"></i><p>Billing, insurance and statement details are not shown here until you turn 18. Your guardian can view and manage them from their own portal account.</p></div>
+                  </div>
+
+                  <div class="portal-view" data-view="support" hidden>
+                    <div class="view-head">
+                      <button type="button" class="view-back focus-ring" data-goto-view="dashboard"><i data-lucide="arrow-left" class="h-4 w-4" aria-hidden="true"></i>Back to dashboard</button>
+                      <h2>Find care &amp; support</h2>
+                      <p>Where to go next.</p>
+                    </div>
+                    <article class="portal-card" style="background:var(--lav);margin-top:1.5rem">
+                      <ul class="findcare-links">
+                        <li><a href="specialties.html"><i data-lucide="heart-pulse" class="h-4 w-4" aria-hidden="true"></i>Specialty care</a></li>
+                        <li><a href="imaging.html"><i data-lucide="scan" class="h-4 w-4" aria-hidden="true"></i>Diagnostic imaging</a></li>
+                        <li><a href="primary-care.html"><i data-lucide="stethoscope" class="h-4 w-4" aria-hidden="true"></i>Primary care</a></li>
+                        <li><a href="doctors.html"><i data-lucide="user-search" class="h-4 w-4" aria-hidden="true"></i>Find a doctor</a></li>
+                      </ul>
+                      <a class="soft-action focus-ring" href="index.html?reason=General%20question#contact"><i data-lucide="life-buoy" class="h-4 w-4" aria-hidden="true"></i>Contact support</a>
+                    </article>
+                  </div>
+                </section>
+
+                <!-- ============ ADULT ============ -->
+                <section id="panel-adult" hidden class="persona-panel" data-persona-panel="adult">
+                  <p class="persona-eyebrow">Adult dashboard</p>
+                  <h3 class="persona-greeting">Welcome back, Morgan.</h3>
+                  <p class="persona-intro">Your appointments, records, prescriptions and bills, all in one place.</p>
+
+                  <div class="portal-view" data-view="dashboard">
+                    <div class="card-grid">
+                      <article class="portal-card span-2">
+                        <div class="card-head"><span class="card-icon"><i data-lucide="calendar-heart" aria-hidden="true"></i></span><div><p class="persona-eyebrow" style="margin:0">Upcoming care</p></div></div>
+                        <h3>Annual physical &amp; flu shot</h3>
+                        <p>Mon, Nov 2 · 9:00 AM with <a href="doctors.html#okafor">Dr. Amara Okafor</a>, primary care. A flu shot is also booked for Thu, Nov 5.</p>
+                        <button type="button" class="soft-action focus-ring" data-goto-view="appointments"><i data-lucide="calendar-days" class="h-4 w-4" aria-hidden="true"></i>View all appointments</button>
+                      </article>
+                      <article class="portal-card">
+                        <p class="persona-eyebrow">Test results</p>
+                        <h3>Comprehensive metabolic &amp; lipid panel</h3>
+                        <p>Oct 2, 2026 · reviewed by Dr. Okafor. Within normal range.</p>
+                        <button type="button" class="soft-action focus-ring" data-goto-view="results"><i data-lucide="file-text" class="h-4 w-4" aria-hidden="true"></i>View all results</button>
+                      </article>
+                      <article class="portal-card" style="background:var(--mist)">
+                        <p class="persona-eyebrow">Medications</p>
+                        <h3>Atorvastatin 10mg</h3>
+                        <p>Once daily, for cholesterol management. Last filled Sep 12, 2026, 2 refills remaining.</p>
+                        <button type="button" class="soft-action focus-ring" data-goto-view="medications"><i data-lucide="pill" class="h-4 w-4" aria-hidden="true"></i>View all medications</button>
+                      </article>
+                      <article class="portal-card">
+                        <p class="persona-eyebrow">Billing &amp; insurance</p>
+                        <h3>No balance due</h3>
+                        <p>PPO plan on file. Last statement Sep 18, 2026.</p>
+                        <button type="button" class="soft-action focus-ring" data-goto-view="billing"><i data-lucide="wallet" class="h-4 w-4" aria-hidden="true"></i>View billing &amp; insurance</button>
+                      </article>
+                      <article class="portal-card" style="background:var(--cream)">
+                        <p class="persona-eyebrow">Secure messages</p>
+                        <h3>Dr. Amara Okafor</h3>
+                        <p>"Your cholesterol levels are within normal range. Keep up the good work with your diet and exercise, and we will recheck at your annual physical."</p>
+                        <button type="button" class="soft-action focus-ring" data-goto-view="messages"><i data-lucide="message-circle" class="h-4 w-4" aria-hidden="true"></i>View all messages</button>
+                      </article>
+                      <article class="portal-card span-2" style="background:var(--lav)">
+                        <p class="persona-eyebrow">Find care &amp; support</p>
+                        <h3>Where to go next</h3>
+                        <ul class="findcare-links">
+                          <li><a href="primary-care.html"><i data-lucide="stethoscope" class="h-4 w-4" aria-hidden="true"></i>Primary care</a></li>
+                          <li><a href="specialties.html"><i data-lucide="heart-pulse" class="h-4 w-4" aria-hidden="true"></i>Specialty care</a></li>
+                          <li><a href="imaging.html"><i data-lucide="scan" class="h-4 w-4" aria-hidden="true"></i>Diagnostic imaging</a></li>
+                          <li><a href="doctors.html"><i data-lucide="user-search" class="h-4 w-4" aria-hidden="true"></i>Find a doctor</a></li>
+                        </ul>
+                        <a class="soft-action focus-ring" href="index.html?reason=General%20question#contact"><i data-lucide="life-buoy" class="h-4 w-4" aria-hidden="true"></i>Contact support</a>
+                      </article>
+                    </div>
+                  </div>
+
+                  <div class="portal-view" data-view="appointments" hidden>
+                    <div class="view-head">
+                      <button type="button" class="view-back focus-ring" data-goto-view="dashboard"><i data-lucide="arrow-left" class="h-4 w-4" aria-hidden="true"></i>Back to dashboard</button>
+                      <h2>Appointments</h2>
+                      <p>Your upcoming and past visits.</p>
+                    </div>
+                    <div class="stack">
+                      <article class="portal-card span-2">
+                        <div class="card-head"><span class="card-icon"><i data-lucide="calendar-heart" aria-hidden="true"></i></span><div><p class="persona-eyebrow" style="margin:0">Upcoming</p></div></div>
+                        <h3>Annual physical &amp; flu shot</h3>
+                        <p>Mon, Nov 2 · 9:00 AM with <a href="doctors.html#okafor">Dr. Amara Okafor</a>, primary care, Magnolia Regional Outpatient Center. A flu shot is also booked for Thu, Nov 5.</p>
+                      </article>
+                    </div>
+                    <div class="stack-section">
+                      <h4>Past visits</h4>
+                      <div class="stack">
+                        <div class="row-item"><div class="row-main"><p class="row-title">Cholesterol recheck</p><p class="row-meta">Jul 8, 2026 · Dr. Amara Okafor, primary care</p></div><span class="row-value">Completed</span></div>
+                        <div class="row-item"><div class="row-main"><p class="row-title">Annual physical</p><p class="row-meta">Oct 21, 2025 · Dr. Amara Okafor, primary care</p></div><span class="row-value">Completed</span></div>
+                      </div>
+                    </div>
+                    <a class="action focus-ring view-footer-action" href="index.html?reason=Requesting%20an%20appointment#contact"><i data-lucide="calendar-plus" class="h-4 w-4" aria-hidden="true"></i>Request an appointment</a>
+                  </div>
+
+                  <div class="portal-view" data-view="messages" hidden>
+                    <div class="view-head">
+                      <button type="button" class="view-back focus-ring" data-goto-view="dashboard"><i data-lucide="arrow-left" class="h-4 w-4" aria-hidden="true"></i>Back to dashboard</button>
+                      <h2>Secure messages</h2>
+                      <p>Conversations with your care team.</p>
+                    </div>
+                    <div class="stack">
+                      <article class="portal-card">
+                        <div class="card-head"><span class="card-icon"><i data-lucide="stethoscope" aria-hidden="true"></i></span><div><p class="persona-eyebrow" style="margin:0">Dr. Amara Okafor · primary care</p><p class="row-meta">Oct 5, 2026</p></div></div>
+                        <p>"Your cholesterol levels are within normal range. Keep up the good work with your diet and exercise, and we will recheck at your annual physical."</p>
+                        <button type="button" class="soft-action focus-ring"><i data-lucide="reply" class="h-4 w-4" aria-hidden="true"></i>Reply</button>
+                      </article>
+                      <article class="portal-card">
+                        <div class="card-head"><span class="card-icon"><i data-lucide="receipt" aria-hidden="true"></i></span><div><p class="persona-eyebrow" style="margin:0">Patient billing</p><p class="row-meta">Sep 18, 2026</p></div></div>
+                        <p>"Your September statement is ready to view online. No balance is due."</p>
+                        <button type="button" class="soft-action focus-ring"><i data-lucide="reply" class="h-4 w-4" aria-hidden="true"></i>Reply</button>
+                      </article>
+                    </div>
+                    <a class="action focus-ring view-footer-action" href="index.html?reason=Patient%20portal%20or%20records#contact"><i data-lucide="pencil-line" class="h-4 w-4" aria-hidden="true"></i>Send a new message</a>
+                  </div>
+
+                  <div class="portal-view" data-view="medications" hidden>
+                    <div class="view-head">
+                      <button type="button" class="view-back focus-ring" data-goto-view="dashboard"><i data-lucide="arrow-left" class="h-4 w-4" aria-hidden="true"></i>Back to dashboard</button>
+                      <h2>Medications</h2>
+                      <p>Your current and past medications.</p>
+                    </div>
+                    <div class="stack">
+                      <article class="portal-card" style="background:var(--mist)">
+                        <h3>Atorvastatin 10mg</h3>
+                        <p>Once daily, for cholesterol management. Last filled Sep 12, 2026, 2 refills remaining.</p>
+                        <button type="button" class="soft-action focus-ring"><i data-lucide="rotate-ccw" class="h-4 w-4" aria-hidden="true"></i>Request a refill</button>
+                      </article>
+                      <article class="portal-card">
+                        <h3>Vitamin D3 2000 IU</h3>
+                        <p>Once daily, supplement.</p>
+                      </article>
+                    </div>
+                    <div class="stack-section">
+                      <h4>Past medications</h4>
+                      <div class="stack">
+                        <div class="row-item"><div class="row-main"><p class="row-title">Lisinopril 5mg</p><p class="row-meta">Discontinued Jun 2026 · Dr. Okafor</p></div><span class="row-value">Inactive</span></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="portal-view" data-view="results" hidden>
+                    <div class="view-head">
+                      <button type="button" class="view-back focus-ring" data-goto-view="dashboard"><i data-lucide="arrow-left" class="h-4 w-4" aria-hidden="true"></i>Back to dashboard</button>
+                      <h2>Test results</h2>
+                      <p>Your recent results.</p>
+                    </div>
+                    <div class="stack">
+                      <article class="portal-card">
+                        <h3>Comprehensive metabolic &amp; lipid panel</h3>
+                        <p>Oct 2, 2026 · reviewed by Dr. Okafor. Within normal range.</p>
+                      </article>
+                      <article class="portal-card">
+                        <h3>A1C &amp; blood pressure screening</h3>
+                        <p>Jul 8, 2026 · reviewed by Dr. Okafor. Within normal range.</p>
+                      </article>
+                    </div>
+                  </div>
+
+                  <div class="portal-view" data-view="billing" hidden>
+                    <div class="view-head">
+                      <button type="button" class="view-back focus-ring" data-goto-view="dashboard"><i data-lucide="arrow-left" class="h-4 w-4" aria-hidden="true"></i>Back to dashboard</button>
+                      <h2>Billing &amp; insurance</h2>
+                      <p>Your plan and recent statements.</p>
+                    </div>
+                    <div class="stack">
+                      <article class="portal-card span-2">
+                        <h3>No balance due</h3>
+                        <p>PPO plan on file. Last statement Sep 18, 2026. <a href="index.html#billing">View billing and insurance</a>.</p>
+                      </article>
+                    </div>
+                    <div class="stack-section">
+                      <h4>Statements</h4>
+                      <div class="stack">
+                        <div class="row-item"><div class="row-main"><p class="row-title">September 2026 statement</p><p class="row-meta">Paid in full</p></div><span class="row-value">$0.00</span></div>
+                        <div class="row-item"><div class="row-main"><p class="row-title">July 2026 statement</p><p class="row-meta">Office visit co-pay</p></div><span class="row-value">$40.00</span></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="portal-view" data-view="support" hidden>
+                    <div class="view-head">
+                      <button type="button" class="view-back focus-ring" data-goto-view="dashboard"><i data-lucide="arrow-left" class="h-4 w-4" aria-hidden="true"></i>Back to dashboard</button>
+                      <h2>Find care &amp; support</h2>
+                      <p>Where to go next.</p>
+                    </div>
+                    <article class="portal-card" style="background:var(--lav);margin-top:1.5rem">
+                      <ul class="findcare-links">
+                        <li><a href="primary-care.html"><i data-lucide="stethoscope" class="h-4 w-4" aria-hidden="true"></i>Primary care</a></li>
+                        <li><a href="specialties.html"><i data-lucide="heart-pulse" class="h-4 w-4" aria-hidden="true"></i>Specialty care</a></li>
+                        <li><a href="imaging.html"><i data-lucide="scan" class="h-4 w-4" aria-hidden="true"></i>Diagnostic imaging</a></li>
+                        <li><a href="doctors.html"><i data-lucide="user-search" class="h-4 w-4" aria-hidden="true"></i>Find a doctor</a></li>
+                      </ul>
+                      <a class="soft-action focus-ring" href="index.html?reason=General%20question#contact"><i data-lucide="life-buoy" class="h-4 w-4" aria-hidden="true"></i>Contact support</a>
+                    </article>
+                  </div>
+                </section>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p id="portal-status" role="status" aria-live="polite" hidden></p>
+    </section>
+  </main>
+
+  <a class="notes-pill" href="sources.html"><i data-lucide="notebook-text" class="h-4 w-4" aria-hidden="true"></i>Sources and notes</a>
+  <footer>
+    <p>Magnolia Regional Medical Center concept site · <a href="index.html">Back to the landing page</a> · <a href="doctors.html">Find a doctor</a> · <a href="specialties.html">Specialty care</a> · <a href="primary-care.html">Primary care</a> · <a href="imaging.html">Diagnostic imaging</a> · <a href="sources.html">Sources and notes</a> · <a href="donate.html">Donate</a></p>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      if (window.lucide) lucide.createIcons(); else console.error("Lucide icons failed to load");
+      initHeaderSearch();
+      function initHeaderSearch() {
+        var DOCTOR_WORDS = ["doctor", "doctors", "dr", "physician", "physicians", "clinician", "clinicians", "provider", "providers"];
+        var DOCTOR_NAMES = ["okafor", "halim", "reyes", "haddad", "owusu", "mehta", "marin", "mar\u00edn", "delgado", "silva",
+          "amara", "grace", "daniel", "leila", "samuel", "arjun", "sofia", "rosa", "mateo"];
+        var FILLER_WORDS = ["a", "an", "the", "find", "search", "show", "see", "me", "my", "for", "all", "near", "best", "good", "who", "speaks"];
+        function doctorSearchUrl(query) {
+          var words = query.trim().toLowerCase().replace(/\./g, "").split(/\s+/).filter(Boolean);
+          var asksForDoctor = words.some(function (w) { return DOCTOR_WORDS.indexOf(w) !== -1; });
+          var namesDoctor = words.some(function (w) { return DOCTOR_NAMES.indexOf(w) !== -1; });
+          if (!asksForDoctor && !namesDoctor) return null;
+          var rest = words.filter(function (w) { return DOCTOR_WORDS.indexOf(w) === -1 && FILLER_WORDS.indexOf(w) === -1; }).join(" ");
+          return rest ? "doctors.html?q=" + encodeURIComponent(rest) : "doctors.html";
+        }
+        var form = document.getElementById("header-search-form");
+        var input = document.getElementById("header-search");
+        if (!form || !input) return;
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+          var query = input.value;
+          var doctorsUrl = doctorSearchUrl(query);
+          window.location.href = doctorsUrl || "index.html?search=" + encodeURIComponent(query) + "#find-care";
+        });
+      }
+
+      const statusNote = document.getElementById("status-note");
+      const statusAvatar = document.getElementById("status-avatar");
+      const statusSub = document.getElementById("status-sub");
+      const topbar = document.querySelector(".portal-topbar");
+      const greetingByPersona = {
+        parent: "Danielle Price",
+        teen: "Jordan Reyes",
+        adult: "Morgan Ellis"
+      };
+      const avatarByPersona = { parent: "DP", teen: "JR", adult: "ME" };
+      const lastSignInByPersona = {
+        parent: "Last signed in yesterday at 6:48 PM",
+        teen: "Last signed in 3 days ago",
+        adult: "Last signed in today at 8:15 AM"
+      };
+      // Each sample account is its own sign-in, with its own email and
+      // password, the same as three different real patients would have.
+      // Picking one on the account-picker screen only fills in that
+      // account's sign-in form; it does not sign anyone in by itself.
+      const credentialsByPersona = {
+        parent: { email: "danielle.price@example.com", password: "patientportal2026" },
+        teen: { email: "jordan.reyes@example.com", password: "patientportal2026" },
+        adult: { email: "morgan.ellis@example.com", password: "patientportal2026" }
+      };
+      let persona = "parent";
+      let view = "dashboard";
+
+      function applyView() {
+        const panel = document.getElementById("panel-" + persona);
+        panel.querySelectorAll(".portal-view").forEach((v) => {
+          v.hidden = v.dataset.view !== view;
+        });
+        document.querySelectorAll(".portal-nav button[data-view]").forEach((button) => {
+          button.classList.toggle("is-active", button.dataset.view === view);
+        });
+      }
+
+      function setPersona(value) {
+        persona = value;
+        document.querySelectorAll("[data-persona-panel]").forEach((panel) => {
+          panel.hidden = panel.dataset.personaPanel !== value;
+        });
+        if (statusNote) statusNote.textContent = greetingByPersona[value];
+        if (statusAvatar) statusAvatar.textContent = avatarByPersona[value];
+        if (statusSub) statusSub.textContent = lastSignInByPersona[value];
+        applyView();
+      }
+
+      function setView(value) {
+        view = value;
+        applyView();
+        if (topbar) topbar.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      document.querySelectorAll(".portal-nav button[data-view]").forEach((button) => {
+        button.addEventListener("click", () => setView(button.dataset.view));
+      });
+
+      document.querySelectorAll("[data-goto-view]").forEach((button) => {
+        button.addEventListener("click", () => setView(button.dataset.gotoView));
+      });
+
+      const accountPickerSection = document.getElementById("account-picker");
+      const signinSection = document.getElementById("signin");
+      const previewSection = document.getElementById("preview");
+      const signinForm = document.getElementById("signin-form");
+      const signinStatus = document.getElementById("signin-status");
+      const signoutButton = document.getElementById("signout-button");
+      const signinEmailField = document.getElementById("signin-email");
+      const signinPasswordField = document.getElementById("signin-password");
+      const signinAccountName = document.getElementById("signin-account-name");
+      const changeAccountButton = document.getElementById("change-account");
+
+      const forgotTrigger = document.getElementById("forgot-password-trigger");
+      const forgotNote = document.getElementById("forgot-password-note");
+      if (forgotTrigger && forgotNote) {
+        forgotTrigger.addEventListener("click", () => {
+          const isOpen = forgotNote.hidden;
+          forgotNote.hidden = !isOpen;
+          forgotTrigger.setAttribute("aria-expanded", String(isOpen));
+        });
+      }
+
+      function focusHeading(id) {
+        const heading = document.getElementById(id);
+        if (heading) heading.focus({ preventScroll: true });
+      }
+
+      // The site header is sticky and its height changes by viewport width
+      // (the nav wraps on narrow screens), so jumping to a section with a
+      // plain scrollIntoView() can land it partly hidden underneath the
+      // header. This measures the header live and scrolls with that offset.
+      function scrollBelowHeader(target) {
+        if (!target) return;
+        const header = document.querySelector(".site-bar");
+        const headerHeight = header ? header.getBoundingClientRect().height : 0;
+        const targetTop = target.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({ top: Math.max(targetTop - headerHeight - 16, 0), behavior: "smooth" });
+      }
+
+      function chooseAccount(value) {
+        persona = value;
+        const creds = credentialsByPersona[value];
+        if (signinEmailField && creds) signinEmailField.value = creds.email;
+        if (signinPasswordField && creds) signinPasswordField.value = creds.password;
+        if (signinAccountName) signinAccountName.textContent = greetingByPersona[value];
+        if (forgotNote && forgotTrigger) {
+          forgotNote.hidden = true;
+          forgotTrigger.setAttribute("aria-expanded", "false");
+        }
+        accountPickerSection.hidden = true;
+        signinSection.hidden = false;
+        scrollBelowHeader(signinSection);
+        focusHeading("signin-heading");
+      }
+
+      document.querySelectorAll(".account-card[data-persona]").forEach((card) => {
+        card.addEventListener("click", () => chooseAccount(card.dataset.persona));
+      });
+
+      if (changeAccountButton) {
+        changeAccountButton.addEventListener("click", () => {
+          signinSection.hidden = true;
+          accountPickerSection.hidden = false;
+          scrollBelowHeader(accountPickerSection);
+          focusHeading("account-picker-heading");
+        });
+      }
+
+      if (signinForm) {
+        signinForm.addEventListener("submit", (event) => {
+          event.preventDefault();
+          if (signinStatus) {
+            signinStatus.hidden = false;
+            signinStatus.textContent = "Signing you in…";
+          }
+          window.setTimeout(() => {
+            signinSection.hidden = true;
+            previewSection.hidden = false;
+            setPersona(persona);
+            scrollBelowHeader(previewSection);
+            focusHeading("preview-heading");
+          }, 450);
+        });
+      }
+
+      if (signoutButton) {
+        signoutButton.addEventListener("click", () => {
+          previewSection.hidden = true;
+          accountPickerSection.hidden = false;
+          if (signinStatus) signinStatus.hidden = true;
+          if (signinForm) signinForm.reset();
+          scrollBelowHeader(accountPickerSection);
+          focusHeading("account-picker-heading");
+        });
+      }
+
+      const skipLink = document.querySelector(".skip-link");
+      if (skipLink) {
+        skipLink.addEventListener("click", (event) => {
+          event.preventDefault();
+          if (!previewSection.hidden) {
+            scrollBelowHeader(previewSection);
+            focusHeading("preview-heading");
+          } else if (!signinSection.hidden) {
+            // An account has already been chosen: send keyboard users to
+            // that account's own sign-in form rather than back to the start.
+            scrollBelowHeader(signinSection);
+            focusHeading("signin-heading");
+          } else {
+            scrollBelowHeader(accountPickerSection);
+            focusHeading("account-picker-heading");
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

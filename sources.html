@@ -6,7 +6,7 @@
   <title>Sources and Notes · Magnolia Regional</title>
   <meta name="description" content="Sources, credits and licenses for the Magnolia Regional Medical Center concept landing page.">
   <meta name="theme-color" content="#18352d">
-  <link rel="icon" type="image/webp" href="magnolia-logo.webp">
+  <link rel="icon" type="image/webp" href="assets/magnolia-logo.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;family=Work+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
@@ -26,12 +26,27 @@
     .skip-link:focus{top:1rem}
 
     .site-bar{position:sticky;top:0;z-index:5;background:rgba(255,250,241,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-    .site-bar__inner{max-width:72rem;margin:0 auto;padding:.85rem 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .site-bar__inner{max-width:72rem;margin:0 auto;padding:.85rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.75rem 1rem}
     .brand{display:flex;align-items:center;gap:.75rem;text-decoration:none;color:var(--forest);font-weight:700;font-size:.95rem;line-height:1.2}
     .brand img{width:2.75rem;height:2.75rem;border-radius:.75rem;object-fit:cover}
-    .back-link{display:inline-flex;align-items:center;gap:.4rem;min-height:2.75rem;padding:0 1.1rem;border:1px solid #9daf9f;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none;color:var(--forest);background:var(--ivory);transition:background-color .2s ease,border-color .2s ease}
-    .back-link:hover{background:var(--mist);border-color:var(--forest);color:var(--forest)}
-    .back-link:active{transform:scale(.97)}
+    .header-cta{display:inline-flex;align-items:center;gap:.5rem;min-height:2.75rem;padding:0 1.25rem;border-radius:999px;background:var(--forest);color:#fff;font-weight:700;font-size:.9rem;text-decoration:none;white-space:nowrap;transition:background-color .2s ease,transform 160ms var(--ease-out)}
+    .header-cta:hover{background:var(--deep);transform:translateY(-1px)}
+    .header-cta:active{transform:scale(.97)}
+    .header-search{display:flex;flex:1 1 14rem;min-width:0;max-width:26rem}
+    .header-search label{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .header-search input{flex:1;min-width:0;min-height:2.75rem;padding:0 1rem;border:1px solid #9daf9f;border-right:0;border-radius:999px 0 0 999px;background:#fff;font:inherit;font-size:.9rem;color:var(--ink)}
+    .header-search input::placeholder{color:var(--muted);opacity:1}
+    .header-search input:hover{border-color:var(--forest)}
+    .header-search input:focus-visible{outline:none;border-color:var(--plum);box-shadow:0 0 0 3px rgba(131,71,174,.3)}
+    .header-search button{display:inline-flex;align-items:center;justify-content:center;flex:none;min-height:2.75rem;width:2.75rem;border:1px solid var(--forest);border-radius:0 999px 999px 0;background:var(--forest);color:#fff;cursor:pointer;transition:background-color var(--dur) ease}
+    .header-search button:hover{background:var(--deep)}
+    @media(max-width:640px){.header-search{order:3;flex-basis:100%;max-width:none}}
+    .site-nav{border-top:1px solid var(--line);background:var(--ivory)}
+    .site-nav ul{max-width:72rem;margin:0 auto;padding:.65rem 1.25rem;display:flex;flex-wrap:wrap;gap:.5rem;list-style:none}
+    .site-nav a{display:inline-flex;align-items:center;min-height:2.5rem;padding:0 .9rem;border-radius:999px;font-weight:600;font-size:.875rem;text-decoration:none;color:var(--forest);border:1px solid transparent;transition:background-color var(--dur) ease,border-color var(--dur) ease}
+    .site-nav a:hover{background:var(--mist)}
+    .site-nav a[aria-current="page"]{background:var(--forest);color:#fff}
+    @media(max-width:560px){.site-nav ul{gap:.4rem}.site-nav a{font-size:.8125rem;padding:0 .75rem}}
 
     .hero{max-width:72rem;margin:0 auto;padding:3.5rem 1.25rem 2.5rem}
     h1,h2,h3{font-family:var(--font-display);font-weight:400;color:var(--forest);margin:0}
@@ -81,13 +96,11 @@
     footer a{color:var(--ivory)}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
   
-    .back-link__extra{display:inline}
     @media(max-width:400px){
       .site-bar__inner{padding:.75rem 1rem;gap:.5rem}
       .brand{font-size:.85rem;gap:.55rem}
       .brand img{width:2.4rem;height:2.4rem}
-      .back-link{padding:0 .85rem}
-      .back-link__extra{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+      .header-cta{padding:0 .9rem;font-size:.85rem}
     }
   
     .pill--todo{background:#fbf1d6;border:2px dashed #c9a640;color:#6b4e00}
@@ -148,9 +161,25 @@
   <a class="skip-link" href="#main">Skip to sources</a>
   <header class="site-bar">
     <div class="site-bar__inner">
-      <a class="brand" href="standalone.html"><img src="magnolia-logo.webp" alt="" width="44" height="44">Magnolia Regional<br>Medical Center</a>
-      <a class="back-link" href="standalone.html"><span aria-hidden="true">←</span> Back<span class="back-link__extra"> to the site</span></a>
+      <a class="brand" href="index.html"><img src="assets/magnolia-logo.webp" alt="" width="44" height="44">Magnolia Regional<br>Medical Center</a>
+      <form id="header-search-form" class="header-search" role="search" action="index.html" method="get">
+        <label for="header-search">Search services or doctors</label>
+        <input id="header-search" type="search" name="search" placeholder="Search services or doctors" autocomplete="off">
+        <button type="submit" aria-label="Search"><i data-lucide="search" class="h-4 w-4" aria-hidden="true"></i></button>
+      </form>
+      <a class="header-cta" href="index.html#contact">Request support</a>
     </div>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="primary-care.html">Primary care</a></li>
+        <li><a href="specialties.html">Specialty care</a></li>
+        <li><a href="imaging.html">Diagnostic imaging</a></li>
+        <li><a href="doctors.html">Find a doctor</a></li>
+        <li><a href="patient-portal.html">Patient portal</a></li>
+        <li><a href="sources.html" aria-current="page">Sources &amp; notes</a></li>
+      </ul>
+    </nav>
   </header>
 
   <section class="hero" aria-labelledby="page-title">
@@ -341,7 +370,7 @@
 
       <section id="unsplash" class="source-section" aria-labelledby="unsplash-title">
         <details class="source-group">
-          <summary><h2 id="unsplash-title">Unsplash photos</h2><span class="group-count">10 sources</span><span class="group-chevron" aria-hidden="true"></span></summary>
+          <summary><h2 id="unsplash-title">Unsplash photos</h2><span class="group-count">21 sources</span><span class="group-chevron" aria-hidden="true"></span></summary>
           <div class="source-group__body">
         <p class="section-note">The hospital building photo and the doctor portraits come from Unsplash, whose license allows free use. The people pictured are models, not the fictional doctors named on the site.</p>
         <ol class="entries">
@@ -425,6 +454,94 @@
               <details class="cite"><summary>APA citation</summary><p>Nappy. (n.d.). <em>A man wearing a white lab coat</em> [Photograph]. Unsplash. https://unsplash.com/photos/a-man-wearing-a-white-lab-coat-K6cnVC_0RuY</p></details>
             </div>
           </li>
+          <li class="entry entry--thumb">
+            <img class="entry__thumb" src="https://images.unsplash.com/photo-1758600587683-d86675a2f6e9?auto=format&amp;fit=crop&amp;crop=faces&amp;w=200&amp;h=200&amp;q=70" alt="" width="96" height="96" loading="lazy">
+            <div>
+              <h3>A smiling Asian woman with dark hair</h3>
+              <dl><dt>Photographer</dt><dd>Vitaly Gariev</dd><dt>Source</dt><dd><a href="https://unsplash.com/photos/a-smiling-asian-woman-with-dark-hair-5V6takmtNUM">unsplash.com/photos/5V6takmtNUM</a></dd><dt>License</dt><dd>Unsplash License (free to use)</dd><dt>Used for</dt><dd>Portrait for “Dr. Hana Kim”</dd></dl>
+              <details class="cite"><summary>APA citation</summary><p>Gariev, V. (n.d.). <em>A smiling Asian woman with dark hair</em> [Photograph]. Unsplash. https://unsplash.com/photos/a-smiling-asian-woman-with-dark-hair-5V6takmtNUM</p></details>
+            </div>
+          </li>
+          <li class="entry entry--thumb">
+            <img class="entry__thumb" src="https://images.unsplash.com/photo-1756699279298-c89cdef354ab?auto=format&amp;fit=crop&amp;crop=faces&amp;w=200&amp;h=200&amp;q=70" alt="" width="96" height="96" loading="lazy">
+            <div>
+              <h3>A smiling man in a white lab coat</h3>
+              <dl><dt>Photographer</dt><dd>SoyBreno</dd><dt>Source</dt><dd><a href="https://unsplash.com/photos/a-smiling-man-in-a-white-lab-coat-no7wWT_g9OA">unsplash.com/photos/no7wWT_g9OA</a></dd><dt>License</dt><dd>Unsplash License (free to use)</dd><dt>Used for</dt><dd>Portrait for “Dr. Marcus Webb”</dd></dl>
+              <details class="cite"><summary>APA citation</summary><p>SoyBreno. (n.d.). <em>A smiling man in a white lab coat</em> [Photograph]. Unsplash. https://unsplash.com/photos/a-smiling-man-in-a-white-lab-coat-no7wWT_g9OA</p></details>
+            </div>
+          </li>
+          <li class="entry entry--thumb">
+            <img class="entry__thumb" src="https://images.unsplash.com/photo-1643297654416-05795d62e39c?auto=format&amp;fit=crop&amp;crop=faces&amp;w=200&amp;h=200&amp;q=70" alt="" width="96" height="96" loading="lazy">
+            <div>
+              <h3>A woman holding a stethoscope in her right hand</h3>
+              <dl><dt>Photographer</dt><dd>Eben Kassaye</dd><dt>Source</dt><dd><a href="https://unsplash.com/photos/a-woman-holding-a-stethoscope-in-her-right-hand-Z7TAIOQgjWA">unsplash.com/photos/Z7TAIOQgjWA</a></dd><dt>License</dt><dd>Unsplash License (free to use)</dd><dt>Used for</dt><dd>Portrait for “Dr. Naomi Clarke”</dd></dl>
+              <details class="cite"><summary>APA citation</summary><p>Kassaye, E. (n.d.). <em>A woman holding a stethoscope in her right hand</em> [Photograph]. Unsplash. https://unsplash.com/photos/a-woman-holding-a-stethoscope-in-her-right-hand-Z7TAIOQgjWA</p></details>
+            </div>
+          </li>
+          <li class="entry entry--thumb">
+            <img class="entry__thumb" src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?auto=format&amp;fit=crop&amp;crop=faces&amp;w=200&amp;h=200&amp;q=70" alt="" width="96" height="96" loading="lazy">
+            <div>
+              <h3>Doctor talking to patient in clinic</h3>
+              <dl><dt>Photographer</dt><dd>National Cancer Institute</dd><dt>Source</dt><dd><a href="https://unsplash.com/photos/doctor-talking-to-patient-in-clinic-tl447mekwuQ">unsplash.com/photos/tl447mekwuQ</a></dd><dt>License</dt><dd>Unsplash License (free to use)</dd><dt>Used for</dt><dd>“Annual physicals and wellness visits” card on the Primary care page</dd></dl>
+              <details class="cite"><summary>APA citation</summary><p>National Cancer Institute. (n.d.). <em>Doctor talking to patient in clinic</em> [Photograph]. Unsplash. https://unsplash.com/photos/doctor-talking-to-patient-in-clinic-tl447mekwuQ</p></details>
+            </div>
+          </li>
+          <li class="entry entry--thumb">
+            <img class="entry__thumb" src="https://images.unsplash.com/photo-1612277795421-9bc7706a4a34?auto=format&amp;fit=crop&amp;crop=faces&amp;w=200&amp;h=200&amp;q=70" alt="" width="96" height="96" loading="lazy">
+            <div>
+              <h3>Health care provider bandaging a patient's arm after a vaccine</h3>
+              <dl><dt>Photographer</dt><dd>CDC</dd><dt>Source</dt><dd><a href="https://unsplash.com/photos/woman-in-black-crew-neck-t-shirt-wearing-white-face-mask-uN8TV9Pw2ik">unsplash.com/photos/uN8TV9Pw2ik</a></dd><dt>License</dt><dd>Unsplash License (free to use)</dd><dt>Used for</dt><dd>“Vaccinations and preventive screenings” card on the Primary care page</dd></dl>
+              <details class="cite"><summary>APA citation</summary><p>CDC. (n.d.). <em>Woman in black crew neck t-shirt wearing white face mask</em> [Photograph]. Unsplash. https://unsplash.com/photos/woman-in-black-crew-neck-t-shirt-wearing-white-face-mask-uN8TV9Pw2ik</p></details>
+            </div>
+          </li>
+          <li class="entry entry--thumb">
+            <img class="entry__thumb" src="https://images.unsplash.com/photo-1758691462123-8a17ae95d203?auto=format&amp;fit=crop&amp;crop=faces&amp;w=200&amp;h=200&amp;q=70" alt="" width="96" height="96" loading="lazy">
+            <div>
+              <h3>Doctor checks patient's blood pressure with stethoscope</h3>
+              <dl><dt>Photographer</dt><dd>Vitaly Gariev</dd><dt>Source</dt><dd><a href="https://unsplash.com/photos/doctor-checks-patients-blood-pressure-with-stethoscope-NDOYHZ_98Rw">unsplash.com/photos/NDOYHZ_98Rw</a></dd><dt>License</dt><dd>Unsplash License (free to use)</dd><dt>Used for</dt><dd>“Chronic conditions” card on the Primary care page</dd></dl>
+              <details class="cite"><summary>APA citation</summary><p>Gariev, V. (n.d.). <em>Doctor checks patient's blood pressure with stethoscope</em> [Photograph]. Unsplash. https://unsplash.com/photos/doctor-checks-patients-blood-pressure-with-stethoscope-NDOYHZ_98Rw</p></details>
+            </div>
+          </li>
+          <li class="entry entry--thumb">
+            <img class="entry__thumb" src="https://images.unsplash.com/photo-1666214277730-e9c7e755e5a3?auto=format&amp;fit=crop&amp;crop=faces&amp;w=200&amp;h=200&amp;q=70" alt="" width="96" height="96" loading="lazy">
+            <div>
+              <h3>Doctor and patient in medical room</h3>
+              <dl><dt>Photographer</dt><dd>Accuray</dd><dt>Source</dt><dd><a href="https://unsplash.com/photos/doctor-and-patient-in-medical-room-ThpS0DVkPBs">unsplash.com/photos/ThpS0DVkPBs</a></dd><dt>License</dt><dd>Unsplash License (free to use)</dd><dt>Used for</dt><dd>“Referrals and care coordination” card on the Primary care page</dd></dl>
+              <details class="cite"><summary>APA citation</summary><p>Accuray. (n.d.). <em>Doctor and patient in medical room</em> [Photograph]. Unsplash. https://unsplash.com/photos/doctor-and-patient-in-medical-room-ThpS0DVkPBs</p></details>
+            </div>
+          </li>
+          <li class="entry entry--thumb">
+            <img class="entry__thumb" src="https://images.unsplash.com/photo-1666214277657-e60f05c40b04?auto=format&amp;fit=crop&amp;crop=faces&amp;w=200&amp;h=200&amp;q=70" alt="" width="96" height="96" loading="lazy">
+            <div>
+              <h3>Medical professionals reviewing a scan</h3>
+              <dl><dt>Photographer</dt><dd>Accuray</dd><dt>Source</dt><dd><a href="https://unsplash.com/photos/medical-professionals-reviewing-brain-scan-5VkNa1LrS8A">unsplash.com/photos/5VkNa1LrS8A</a></dd><dt>License</dt><dd>Unsplash License (free to use)</dd><dt>Used for</dt><dd>“X-ray and fluoroscopy” card on the Diagnostic imaging page</dd></dl>
+              <details class="cite"><summary>APA citation</summary><p>Accuray. (n.d.). <em>Medical professionals reviewing a scan</em> [Photograph]. Unsplash. https://unsplash.com/photos/medical-professionals-reviewing-brain-scan-5VkNa1LrS8A</p></details>
+            </div>
+          </li>
+          <li class="entry entry--thumb">
+            <img class="entry__thumb" src="https://images.unsplash.com/photo-1706065264583-55f1a8549769?auto=format&amp;fit=crop&amp;crop=faces&amp;w=200&amp;h=200&amp;q=70" alt="" width="96" height="96" loading="lazy">
+            <div>
+              <h3>Ultrasound exam in progress</h3>
+              <dl><dt>Photographer</dt><dd>Bagoes Ilhamy</dd><dt>Source</dt><dd><a href="https://unsplash.com/photos/a-couple-of-people-that-are-in-a-room-akrNKKqEQAI">unsplash.com/photos/akrNKKqEQAI</a></dd><dt>License</dt><dd>Unsplash License (free to use)</dd><dt>Used for</dt><dd>“Ultrasound” card on the Diagnostic imaging page</dd></dl>
+              <details class="cite"><summary>APA citation</summary><p>Ilhamy, B. (n.d.). <em>A couple of people that are in a room</em> [Photograph]. Unsplash. https://unsplash.com/photos/a-couple-of-people-that-are-in-a-room-akrNKKqEQAI</p></details>
+            </div>
+          </li>
+          <li class="entry entry--thumb">
+            <img class="entry__thumb" src="https://images.unsplash.com/photo-1758206523747-69af03fb56e4?auto=format&amp;fit=crop&amp;crop=faces&amp;w=200&amp;h=200&amp;q=70" alt="" width="96" height="96" loading="lazy">
+            <div>
+              <h3>Medical professional assists patient during a CT scan</h3>
+              <dl><dt>Photographer</dt><dd>Navy Medicine</dd><dt>Source</dt><dd><a href="https://unsplash.com/photos/medical-professional-assists-patient-during-ct-scan-procedure--N1bumMrRX0">unsplash.com/photos/-N1bumMrRX0</a></dd><dt>License</dt><dd>Unsplash License (free to use)</dd><dt>Used for</dt><dd>“CT scan” card on the Diagnostic imaging page</dd></dl>
+              <details class="cite"><summary>APA citation</summary><p>Navy Medicine. (n.d.). <em>Medical professional assists patient during CT scan procedure</em> [Photograph]. Unsplash. https://unsplash.com/photos/medical-professional-assists-patient-during-ct-scan-procedure--N1bumMrRX0</p></details>
+            </div>
+          </li>
+          <li class="entry entry--thumb">
+            <img class="entry__thumb" src="https://images.unsplash.com/photo-1758691462519-99076ad0d485?auto=format&amp;fit=crop&amp;crop=faces&amp;w=200&amp;h=200&amp;q=70" alt="" width="96" height="96" loading="lazy">
+            <div>
+              <h3>Doctor shows medical scan to elderly patient</h3>
+              <dl><dt>Photographer</dt><dd>Vitaly Gariev</dd><dt>Source</dt><dd><a href="https://unsplash.com/photos/doctor-shows-medical-scan-to-elderly-patient-Pg4bY_O1kh8">unsplash.com/photos/Pg4bY_O1kh8</a></dd><dt>License</dt><dd>Unsplash License (free to use)</dd><dt>Used for</dt><dd>“MRI and mammography” card on the Diagnostic imaging page</dd></dl>
+              <details class="cite"><summary>APA citation</summary><p>Gariev, V. (n.d.). <em>Doctor shows medical scan to elderly patient</em> [Photograph]. Unsplash. https://unsplash.com/photos/doctor-shows-medical-scan-to-elderly-patient-Pg4bY_O1kh8</p></details>
+            </div>
+          </li>
         </ol>
           </div>
         </details>
@@ -437,7 +554,7 @@
         <p class="section-note">The logo was generated by the site author using ChatGPT, an AI tool made by OpenAI.</p>
         <ol class="entries">
           <li class="entry entry--thumb">
-            <img class="entry__thumb" src="magnolia-logo.webp" alt="" width="96" height="96" loading="lazy">
+            <img class="entry__thumb" src="assets/magnolia-logo.webp" alt="" width="96" height="96" loading="lazy">
             <div>
               <h3>Magnolia Regional logo</h3>
               <dl><dt>Created with</dt><dd>ChatGPT (OpenAI), AI image generation, prompted by the site author</dd><dt>Used for</dt><dd>Header and footer logo, browser-tab icon, background watermarks</dd></dl>
@@ -547,7 +664,7 @@
   </div>
 
   <footer>
-    <p>Magnolia Regional Medical Center concept site · <a href="standalone.html">Back to the landing page</a></p>
+    <p>Magnolia Regional Medical Center concept site · <a href="index.html">Back to the landing page</a> · <a href="doctors.html">Find a doctor</a> · <a href="specialties.html">Specialty care</a> · <a href="primary-care.html">Primary care</a> · <a href="imaging.html">Diagnostic imaging</a> · <a href="patient-portal.html">Patient portal</a> · <a href="donate.html">Donate</a></p>
   </footer>
   <a class="to-top" id="to-top" href="#page-title" hidden><span aria-hidden="true">↑</span> Back to top</a>
   <script>
@@ -570,7 +687,30 @@
       if (!button || !hero || !("IntersectionObserver" in window)) return;
       new IntersectionObserver(([entry]) => { button.hidden = entry.isIntersecting; }).observe(hero);
     }
-    document.addEventListener("DOMContentLoaded", () => { initSourceGroups(); initBackToTop(); });
+    function initHeaderSearch() {
+      var DOCTOR_WORDS = ["doctor", "doctors", "dr", "physician", "physicians", "clinician", "clinicians", "provider", "providers"];
+      var DOCTOR_NAMES = ["okafor", "halim", "reyes", "haddad", "owusu", "mehta", "marin", "mar\u00edn", "delgado", "silva",
+        "amara", "grace", "daniel", "leila", "samuel", "arjun", "sofia", "rosa", "mateo"];
+      var FILLER_WORDS = ["a", "an", "the", "find", "search", "show", "see", "me", "my", "for", "all", "near", "best", "good", "who", "speaks"];
+      function doctorSearchUrl(query) {
+        var words = query.trim().toLowerCase().replace(/\./g, "").split(/\s+/).filter(Boolean);
+        var asksForDoctor = words.some(function (w) { return DOCTOR_WORDS.indexOf(w) !== -1; });
+        var namesDoctor = words.some(function (w) { return DOCTOR_NAMES.indexOf(w) !== -1; });
+        if (!asksForDoctor && !namesDoctor) return null;
+        var rest = words.filter(function (w) { return DOCTOR_WORDS.indexOf(w) === -1 && FILLER_WORDS.indexOf(w) === -1; }).join(" ");
+        return rest ? "doctors.html?q=" + encodeURIComponent(rest) : "doctors.html";
+      }
+      var form = document.getElementById("header-search-form");
+      var input = document.getElementById("header-search");
+      if (!form || !input) return;
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        var query = input.value;
+        var doctorsUrl = doctorSearchUrl(query);
+        window.location.href = doctorsUrl || "index.html?search=" + encodeURIComponent(query) + "#find-care";
+      });
+    }
+    document.addEventListener("DOMContentLoaded", () => { initSourceGroups(); initBackToTop(); initHeaderSearch(); });
   </script>
 </body>
 </html>

@@ -6,7 +6,7 @@
   <title>Specialty Care · Magnolia Regional</title>
   <meta name="description" content="Specialty care at Magnolia Regional Medical Center: heart, neurology, cancer, surgery, maternity, pediatrics, rehabilitation and lab services.">
   <meta name="theme-color" content="#18352d">
-  <link rel="icon" type="image/webp" href="magnolia-logo.webp">
+  <link rel="icon" type="image/webp" href="assets/magnolia-logo.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;family=Work+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
@@ -30,12 +30,27 @@
     .emergency-bar p{max-width:72rem;margin:0 auto;padding:.5rem 1.25rem}
     .emergency-bar a{color:var(--ivory);font-weight:700}
     .site-bar{position:sticky;top:0;z-index:5;background:rgba(255,250,241,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-    .site-bar__inner{max-width:72rem;margin:0 auto;padding:.85rem 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .site-bar__inner{max-width:72rem;margin:0 auto;padding:.85rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.75rem 1rem}
     .brand{display:flex;align-items:center;gap:.75rem;text-decoration:none;color:var(--forest);font-weight:700;font-size:.95rem;line-height:1.2}
     .brand img{width:2.75rem;height:2.75rem;border-radius:.75rem;object-fit:cover}
-    .back-link{display:inline-flex;align-items:center;gap:.4rem;min-height:2.75rem;padding:0 1.1rem;border:1px solid #9daf9f;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none;color:var(--forest);background:var(--ivory);white-space:nowrap;transition:background-color var(--dur) ease,border-color var(--dur) ease}
-    .back-link:hover{background:var(--mist);border-color:var(--forest)}
-    .back-link:active{transform:scale(.97)}
+    .header-cta{display:inline-flex;align-items:center;gap:.5rem;min-height:2.75rem;padding:0 1.25rem;border-radius:999px;background:var(--forest);color:#fff;font-weight:700;font-size:.9rem;text-decoration:none;white-space:nowrap;transition:background-color var(--dur) ease,transform 160ms var(--ease-out)}
+    .header-cta:hover{background:var(--deep);transform:translateY(-1px)}
+    .header-cta:active{transform:scale(.97)}
+    .header-search{display:flex;flex:1 1 14rem;min-width:0;max-width:26rem}
+    .header-search label{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .header-search input{flex:1;min-width:0;min-height:2.75rem;padding:0 1rem;border:1px solid #9daf9f;border-right:0;border-radius:999px 0 0 999px;background:#fff;font:inherit;font-size:.9rem;color:var(--ink)}
+    .header-search input::placeholder{color:var(--muted);opacity:1}
+    .header-search input:hover{border-color:var(--forest)}
+    .header-search input:focus-visible{outline:none;border-color:var(--plum);box-shadow:0 0 0 3px rgba(131,71,174,.3)}
+    .header-search button{display:inline-flex;align-items:center;justify-content:center;flex:none;min-height:2.75rem;width:2.75rem;border:1px solid var(--forest);border-radius:0 999px 999px 0;background:var(--forest);color:#fff;cursor:pointer;transition:background-color var(--dur) ease}
+    .header-search button:hover{background:var(--deep)}
+    @media(max-width:640px){.header-search{order:3;flex-basis:100%;max-width:none}}
+    .site-nav{border-top:1px solid var(--line);background:var(--ivory)}
+    .site-nav ul{max-width:72rem;margin:0 auto;padding:.65rem 1.25rem;display:flex;flex-wrap:wrap;gap:.5rem;list-style:none}
+    .site-nav a{display:inline-flex;align-items:center;min-height:2.5rem;padding:0 .9rem;border-radius:999px;font-weight:600;font-size:.875rem;text-decoration:none;color:var(--forest);border:1px solid transparent;transition:background-color var(--dur) ease,border-color var(--dur) ease}
+    .site-nav a:hover{background:var(--mist)}
+    .site-nav a[aria-current="page"]{background:var(--forest);color:#fff}
+    @media(max-width:560px){.site-nav ul{gap:.4rem}.site-nav a{font-size:.8125rem;padding:0 .75rem}}
 
     .hero{max-width:72rem;margin:0 auto;padding:3.5rem 1.25rem 2rem}
     h1,h2{font-family:var(--font-display);font-weight:400;color:var(--forest);margin:0}
@@ -98,13 +113,11 @@
     footer a{color:var(--ivory)}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before{transition:none!important}.fill-card:hover{transform:none}}
   
-    .back-link__extra{display:inline}
     @media(max-width:400px){
       .site-bar__inner{padding:.75rem 1rem;gap:.5rem}
       .brand{font-size:.85rem;gap:.55rem}
       .brand img{width:2.4rem;height:2.4rem}
-      .back-link{padding:0 .85rem}
-      .back-link__extra{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+      .header-cta{padding:0 .9rem;font-size:.85rem}
     }
       .notes-pill{position:fixed;left:1rem;bottom:1rem;z-index:30;display:inline-flex;align-items:center;gap:.45rem;min-height:2.75rem;padding:0 1rem;border:1px solid #9daf9f;border-radius:999px;background:var(--ivory);color:var(--forest);font-weight:700;font-size:.875rem;text-decoration:none;box-shadow:0 10px 24px -12px rgba(24,53,45,.55);transition:background-color var(--dur) ease,border-color var(--dur) ease}
     .notes-pill:hover{background:var(--mist);border-color:var(--forest)}
@@ -117,17 +130,32 @@
   <div class="emergency-bar"><p>Life-threatening emergency? Call <a href="tel:911">911</a>. Our emergency department is open 24/7.</p></div>
   <header class="site-bar">
     <div class="site-bar__inner">
-      <a class="brand" href="standalone.html"><img src="magnolia-logo.webp" alt="" width="44" height="44">Magnolia Regional<br>Medical Center</a>
-      <a class="back-link focus-ring" href="standalone.html#find-care"><span aria-hidden="true">←</span> <span class="back-link__extra">All </span>care options</a>
+      <a class="brand" href="index.html"><img src="assets/magnolia-logo.webp" alt="" width="44" height="44">Magnolia Regional<br>Medical Center</a>
+      <form id="header-search-form" class="header-search" role="search" action="index.html" method="get">
+        <label for="header-search">Search services or doctors</label>
+        <input id="header-search" type="search" name="search" placeholder="Search services or doctors" autocomplete="off">
+        <button type="submit" aria-label="Search"><i data-lucide="search" class="h-4 w-4" aria-hidden="true"></i></button>
+      </form>
+      <a class="header-cta focus-ring" href="index.html#contact">Request support</a>
     </div>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="primary-care.html">Primary care</a></li>
+        <li><a href="specialties.html" aria-current="page">Specialty care</a></li>
+        <li><a href="imaging.html">Diagnostic imaging</a></li>
+        <li><a href="doctors.html">Find a doctor</a></li>
+        <li><a href="patient-portal.html">Patient portal</a></li>
+        <li><a href="sources.html">Sources &amp; notes</a></li>
+      </ul>
+    </nav>
   </header>
 
   <main>
     <section class="hero" aria-labelledby="page-title">
       <h1 id="page-title">Specialty care</h1>
       <p class="lead">Specialist teams for specific conditions, plus rehabilitation and lab services. Choose a specialty to see what it covers and how to get started.</p>
-      <div class="note"><i data-lucide="info" class="h-5 w-5" aria-hidden="true" style="flex:none;color:var(--plum);margin-top:.15rem"></i><p>Most specialist visits start with a referral from your primary care team. Not sure where to begin? <a href="standalone.html?reason=Finding%20care%20or%20a%20service#contact">Send us a request</a> and we will point you to the right team.</p></div>
-      <span class="pill">Sample information for this concept site</span>
+      <div class="note"><i data-lucide="info" class="h-5 w-5" aria-hidden="true" style="flex:none;color:var(--plum);margin-top:.15rem"></i><p>Most specialist visits start with a referral from your primary care team. Not sure where to begin? <a href="index.html?reason=Finding%20care%20or%20a%20service#contact">Send us a request</a> and we will point you to the right team.</p></div>
     </section>
 
     <nav class="chips" aria-labelledby="chips-title">
@@ -154,7 +182,7 @@
           <h3 class="fill-ink">Common reasons people visit</h3>
           <ul class="fill-muted"><li>High blood pressure</li><li>Chest pain or a racing heartbeat</li><li>High cholesterol</li><li>Follow-up care after a heart attack</li></ul>
           <p class="spec-card__start fill-muted"><strong class="fill-ink">Getting started:</strong> Most visits start with a referral from your primary care team.</p>
-          <a class="button-primary focus-ring" href="standalone.html?reason=Requesting%20an%20appointment#contact">Request an appointment <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
+          <a class="button-primary focus-ring" href="index.html?reason=Requesting%20an%20appointment&amp;service=Heart%20and%20vascular#contact">Request an appointment <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
           <a class="text-link focus-ring" href="doctors.html#reyes">Meet Dr. Daniel Reyes <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
         </div>
       </article>
@@ -167,7 +195,7 @@
           <h3 class="fill-ink">Common reasons people visit</h3>
           <ul class="fill-muted"><li>Stroke prevention and recovery</li><li>Migraines and frequent headaches</li><li>Seizures and epilepsy</li><li>Memory changes</li></ul>
           <p class="spec-card__start fill-muted"><strong class="fill-ink">Getting started:</strong> Referral recommended. If someone shows sudden signs of stroke, call 911 right away.</p>
-          <a class="button-primary focus-ring" href="standalone.html?reason=Requesting%20an%20appointment#contact">Request an appointment <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
+          <a class="button-primary focus-ring" href="index.html?reason=Requesting%20an%20appointment&amp;service=Neurology#contact">Request an appointment <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
           <a class="text-link focus-ring" href="doctors.html#haddad">Meet Dr. Leila Haddad <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
         </div>
       </article>
@@ -180,7 +208,7 @@
           <h3 class="fill-ink">Common reasons people visit</h3>
           <ul class="fill-muted"><li>Cancer screening</li><li>Chemotherapy and infusion</li><li>Help understanding a new diagnosis</li><li>Support groups for patients and families</li></ul>
           <p class="spec-card__start fill-muted"><strong class="fill-ink">Getting started:</strong> Ask your primary care team for a referral, or send us a request and a nurse navigator will call you.</p>
-          <a class="button-primary focus-ring" href="standalone.html?reason=Finding%20care%20or%20a%20service#contact">Request an appointment <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
+          <a class="button-primary focus-ring" href="index.html?reason=Finding%20care%20or%20a%20service&amp;service=Cancer%20care#contact">Request an appointment <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
           <a class="text-link focus-ring" href="doctors.html#owusu">Meet Dr. Samuel Owusu <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
         </div>
       </article>
@@ -193,7 +221,7 @@
           <h3 class="fill-ink">Common reasons people visit</h3>
           <ul class="fill-muted"><li>Hip and knee replacement</li><li>Hernia repair</li><li>Gallbladder surgery</li><li>Same-day outpatient procedures</li></ul>
           <p class="spec-card__start fill-muted"><strong class="fill-ink">Getting started:</strong> Starts with a referral and a pre-surgery visit.</p>
-          <a class="button-primary focus-ring" href="standalone.html?reason=Finding%20care%20or%20a%20service#contact">Request an appointment <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
+          <a class="button-primary focus-ring" href="index.html?reason=Finding%20care%20or%20a%20service&amp;service=Surgery#contact">Request an appointment <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
           <a class="text-link focus-ring" href="doctors.html#mehta">Meet Dr. Arjun Mehta <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
         </div>
       </article>
@@ -206,7 +234,7 @@
           <h3 class="fill-ink">Common reasons people visit</h3>
           <ul class="fill-muted"><li>Prenatal check-ups and ultrasounds</li><li>Labor and delivery</li><li>Recovery and feeding support after birth</li><li>Annual well-woman visits</li></ul>
           <p class="spec-card__start fill-muted"><strong class="fill-ink">Getting started:</strong> No referral needed for most visits. Birth center tours are available for expecting families.</p>
-          <a class="button-primary focus-ring" href="standalone.html?reason=Requesting%20an%20appointment#contact">Request an appointment <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
+          <a class="button-primary focus-ring" href="index.html?reason=Requesting%20an%20appointment&amp;service=Women%27s%20health%20and%20maternity#contact">Request an appointment <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
           <a class="text-link focus-ring" href="doctors.html#marin">Meet Dr. Sofia Marín <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
         </div>
       </article>
@@ -219,7 +247,7 @@
           <h3 class="fill-ink">Common reasons people visit</h3>
           <ul class="fill-muted"><li>Well-child check-ups</li><li>Vaccines</li><li>Sick visits</li><li>School and sports physicals</li></ul>
           <p class="spec-card__start fill-muted"><strong class="fill-ink">Getting started:</strong> No referral needed.</p>
-          <a class="button-primary focus-ring" href="standalone.html?reason=Requesting%20an%20appointment#contact">Request an appointment <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
+          <a class="button-primary focus-ring" href="index.html?reason=Requesting%20an%20appointment&amp;service=Pediatrics#contact">Request an appointment <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
           <a class="text-link focus-ring" href="doctors.html#delgado">Meet Dr. Rosa Delgado <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
         </div>
       </article>
@@ -232,7 +260,7 @@
           <h3 class="fill-ink">Common reasons people visit</h3>
           <ul class="fill-muted"><li>Recovery after surgery or injury</li><li>Rehab after a stroke</li><li>Balance and mobility problems</li><li>Speech and swallowing therapy</li></ul>
           <p class="spec-card__start fill-muted"><strong class="fill-ink">Getting started:</strong> Usually starts with an order from your doctor or surgeon.</p>
-          <a class="button-primary focus-ring" href="standalone.html?reason=Requesting%20an%20appointment#contact">Request an appointment <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
+          <a class="button-primary focus-ring" href="index.html?reason=Requesting%20an%20appointment&amp;service=Rehabilitation#contact">Request an appointment <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
           <a class="text-link focus-ring" href="doctors.html#silva">Meet Dr. Mateo Silva <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
         </div>
       </article>
@@ -245,7 +273,7 @@
           <h3 class="fill-ink">Common reasons people visit</h3>
           <ul class="fill-muted"><li>Blood tests</li><li>Urine tests</li><li>Tests your clinician orders before a visit</li><li>Fasting blood work</li></ul>
           <p class="spec-card__start fill-muted"><strong class="fill-ink">Getting started:</strong> Most tests need an order from your clinician. Some, like fasting blood work, need a little preparation.</p>
-          <a class="button-primary focus-ring" href="standalone.html?reason=General%20question#contact">Request an appointment <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
+          <a class="button-primary focus-ring" href="index.html?reason=General%20question&amp;service=Lab%20services#contact">Request an appointment <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
         </div>
       </article>
     </div>
@@ -253,11 +281,35 @@
 
   <a class="notes-pill" href="sources.html"><i data-lucide="notebook-text" class="h-4 w-4" aria-hidden="true"></i>Sources and notes</a>
   <footer>
-    <p>Magnolia Regional Medical Center concept site · <a href="standalone.html">Back to the landing page</a> · <a href="doctors.html">Find a doctor</a> · <a href="sources.html">Sources and notes</a></p>
+    <p>Magnolia Regional Medical Center concept site · <a href="index.html">Back to the landing page</a> · <a href="doctors.html">Find a doctor</a> · <a href="primary-care.html">Primary care</a> · <a href="imaging.html">Diagnostic imaging</a> · <a href="patient-portal.html">Patient portal</a> · <a href="sources.html">Sources and notes</a> · <a href="donate.html">Donate</a></p>
   </footer>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       if (window.lucide) lucide.createIcons(); else console.error("Lucide icons failed to load");
+      initHeaderSearch();
+      function initHeaderSearch() {
+        var DOCTOR_WORDS = ["doctor", "doctors", "dr", "physician", "physicians", "clinician", "clinicians", "provider", "providers"];
+        var DOCTOR_NAMES = ["okafor", "halim", "reyes", "haddad", "owusu", "mehta", "marin", "mar\u00edn", "delgado", "silva",
+          "amara", "grace", "daniel", "leila", "samuel", "arjun", "sofia", "rosa", "mateo"];
+        var FILLER_WORDS = ["a", "an", "the", "find", "search", "show", "see", "me", "my", "for", "all", "near", "best", "good", "who", "speaks"];
+        function doctorSearchUrl(query) {
+          var words = query.trim().toLowerCase().replace(/\./g, "").split(/\s+/).filter(Boolean);
+          var asksForDoctor = words.some(function (w) { return DOCTOR_WORDS.indexOf(w) !== -1; });
+          var namesDoctor = words.some(function (w) { return DOCTOR_NAMES.indexOf(w) !== -1; });
+          if (!asksForDoctor && !namesDoctor) return null;
+          var rest = words.filter(function (w) { return DOCTOR_WORDS.indexOf(w) === -1 && FILLER_WORDS.indexOf(w) === -1; }).join(" ");
+          return rest ? "doctors.html?q=" + encodeURIComponent(rest) : "doctors.html";
+        }
+        var form = document.getElementById("header-search-form");
+        var input = document.getElementById("header-search");
+        if (!form || !input) return;
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+          var query = input.value;
+          var doctorsUrl = doctorSearchUrl(query);
+          window.location.href = doctorsUrl || "index.html?search=" + encodeURIComponent(query) + "#find-care";
+        });
+      }
     });
   </script>
 </body>
