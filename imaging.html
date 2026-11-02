@@ -84,28 +84,15 @@
     .spec-card__start+.button-primary{margin-top:1.25rem}
     .text-link{align-self:flex-start;display:inline-flex;align-items:center;gap:.4rem;min-height:2.75rem;margin-top:.35rem;color:var(--plum);font-weight:700;text-decoration:underline;text-underline-offset:5px}
     .text-link:hover{text-decoration-thickness:2px}
-    .fill-card:has(:focus-visible) .text-link{color:var(--blush)}
-    @media(hover:hover){.fill-card:hover .text-link{color:var(--blush)}}
     .button-primary:hover{background:var(--deep);transform:translateY(-1px)}
     .button-primary:active{transform:scale(.97)}
 
     /* Same green fill as the landing page cards */
     .fill-card{position:relative;isolation:isolate;overflow:hidden;transition:transform var(--dur) var(--ease-out),box-shadow var(--dur) ease}
-    .fill-card:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(165deg,var(--forest),var(--deep));clip-path:inset(100% 0 0 0);transition:clip-path 480ms var(--ease-out)}
     .fill-card .fill-ink,.fill-card .fill-muted,.fill-card .fill-chip{transition:color 280ms ease,background-color 280ms ease}
-    .fill-card:has(:focus-visible):before{clip-path:inset(0)}
-    .fill-card:has(:focus-visible) .fill-ink{color:var(--ivory)!important}
-    .fill-card:has(:focus-visible) .fill-muted{color:var(--mist)!important}
-    .fill-card:has(:focus-visible) .fill-chip{background:rgba(255,250,241,.14)!important;color:var(--ivory)!important}
-    .fill-card:has(:focus-visible) .button-primary{background:var(--ivory);color:var(--forest)}
     .fill-card .focus-ring:focus-visible{outline-color:var(--blush)}
     @media(hover:hover){
       .fill-card:hover{transform:translateY(-3px);box-shadow:0 18px 35px rgba(39,72,61,.12)}
-      .fill-card:hover:before{clip-path:inset(0)}
-      .fill-card:hover .fill-ink{color:var(--ivory)!important}
-      .fill-card:hover .fill-muted{color:var(--mist)!important}
-      .fill-card:hover .fill-chip{background:rgba(255,250,241,.14)!important;color:var(--ivory)!important}
-      .fill-card:hover .button-primary{background:var(--ivory);color:var(--forest)}
     }
 
     footer{background:var(--deep);color:var(--mist);padding:2rem 1.25rem}
@@ -123,6 +110,8 @@
     .notes-pill:hover{background:var(--mist);border-color:var(--forest)}
     .notes-pill:active{transform:scale(.97)}
     @media print{.notes-pill{display:none}}
+      @media(hover:hover){.fill-card:hover{border-color:#9daf9f}}
+    .fill-card:has(:focus-visible){border-color:var(--plum)}
   </style>
 </head>
 <body>
@@ -143,11 +132,12 @@
         <input id="header-search" type="search" name="search" placeholder="Search services or doctors" autocomplete="off">
         <button type="submit" aria-label="Search"><i data-lucide="search" class="h-4 w-4" aria-hidden="true"></i></button>
       </form>
-      <a class="header-cta focus-ring" href="index.html#contact">Request support</a>
+      <a class="header-cta focus-ring" href="book.html">Book appointment</a>
     </div>
     <nav class="site-nav" aria-label="Primary navigation">
       <ul>
         <li><a href="index.html">Home</a></li>
+        <li><a href="book.html">Book an appointment</a></li>
         <li><a href="primary-care.html">Primary care</a></li>
         <li><a href="specialties.html">Specialty care</a></li>
         <li><a href="imaging.html" aria-current="page">Diagnostic imaging</a></li>
@@ -185,7 +175,7 @@
           <h3 class="fill-ink">What to expect</h3>
           <ul class="fill-muted"><li>Usually done in 15 minutes or less</li><li>No preparation needed for most X-rays</li><li>Results usually shared within a day</li><li>Same-day scheduling for urgent needs</li></ul>
           <p class="spec-card__start fill-muted"><strong class="fill-ink">Getting started:</strong> Needs an order from your clinician, except for same-day urgent X-ray.</p>
-          <a class="button-primary focus-ring" href="index.html?reason=Finding%20care%20or%20a%20service&amp;service=X-ray%20and%20fluoroscopy#contact">Ask about a scan <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
+          <a class="button-primary focus-ring" href="book.html?care=imaging&amp;scan=xray">Book a scan <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
           <a class="text-link focus-ring" href="doctors.html#webb">Meet Dr. Marcus Webb <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
         </div>
       </article>
@@ -198,7 +188,7 @@
           <h3 class="fill-ink">What to expect</h3>
           <ul class="fill-muted"><li>Prenatal ultrasounds at key points in pregnancy</li><li>Abdominal and pelvic imaging</li><li>Vascular studies for blood flow</li><li>Some exams ask you to arrive with a full bladder</li></ul>
           <p class="spec-card__start fill-muted"><strong class="fill-ink">Getting started:</strong> Needs an order from your clinician. Your care team will share any prep instructions.</p>
-          <a class="button-primary focus-ring" href="index.html?reason=Finding%20care%20or%20a%20service&amp;service=Ultrasound#contact">Ask about a scan <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
+          <a class="button-primary focus-ring" href="book.html?care=imaging&amp;scan=ultrasound">Book a scan <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
           <a class="text-link focus-ring" href="specialties.html#maternity">Women's health and maternity <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
         </div>
       </article>
@@ -211,7 +201,7 @@
           <h3 class="fill-ink">What to expect</h3>
           <ul class="fill-muted"><li>Usually takes 10 to 30 minutes</li><li>Some scans use a contrast dye</li><li>You may be asked to fast beforehand</li><li>Tell your care team about any allergies first</li></ul>
           <p class="spec-card__start fill-muted"><strong class="fill-ink">Getting started:</strong> Needs an order from your clinician. Your care team will explain any preparation, such as fasting.</p>
-          <a class="button-primary focus-ring" href="index.html?reason=Finding%20care%20or%20a%20service&amp;service=CT%20scan#contact">Ask about a scan <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
+          <a class="button-primary focus-ring" href="book.html?care=imaging&amp;scan=ct">Book a scan <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
           <a class="text-link focus-ring" href="doctors.html#kim">Meet Dr. Hana Kim <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
         </div>
       </article>
@@ -224,7 +214,7 @@
           <h3 class="fill-ink">What to expect</h3>
           <ul class="fill-muted"><li>MRI exams typically take 30 to 60 minutes</li><li>Let your care team know about any metal implants</li><li>Annual mammograms recommended starting at 40</li><li>Results reviewed by a board-certified radiologist</li></ul>
           <p class="spec-card__start fill-muted"><strong class="fill-ink">Getting started:</strong> Needs an order from your clinician, except for routine annual mammograms.</p>
-          <a class="button-primary focus-ring" href="index.html?reason=Finding%20care%20or%20a%20service&amp;service=MRI%20and%20mammography#contact">Ask about a scan <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
+          <a class="button-primary focus-ring" href="book.html?care=imaging&amp;scan=mri">Book a scan <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
           <a class="text-link focus-ring" href="doctors.html#clarke">Meet Dr. Naomi Clarke <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
         </div>
       </article>

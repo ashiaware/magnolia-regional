@@ -1,0 +1,871 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book an Appointment · Magnolia Regional</title>
+  <meta name="description" content="Book an appointment online at Magnolia Regional Medical Center. Choose your care, clinician and a time that works for you.">
+  <meta name="theme-color" content="#18352d">
+  <link rel="icon" type="image/webp" href="assets/magnolia-logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;family=Work+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.577.0/dist/umd/lucide.min.js"></script>
+  <style>
+    :root{
+      --forest:#27483d;--deep:#18352d;--sage:#aebbaa;--mist:#e7eee4;--ivory:#fffaf1;--cream:#f7f0e2;--blush:#f4e2e1;--lav:#ece5f2;--plum:#8347ae;--ink:#303d37;--muted:#5c675f;--line:#d8d8ca;--danger:#9b2c3f;
+      --font-display:"DM Serif Display",Georgia,serif;--font-body:"Work Sans",system-ui,sans-serif;
+      --ease-out:cubic-bezier(.23,1,.32,1);--dur:220ms;
+    }
+    *{box-sizing:border-box}
+    [hidden]{display:none!important}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--ivory);color:var(--ink);font-family:var(--font-body);font-size:1rem;line-height:1.6}
+    button,input,select,textarea{font:inherit;color:inherit}
+    a{color:var(--forest);text-underline-offset:4px}
+    :focus-visible{outline:3px solid var(--plum);outline-offset:3px;border-radius:.375rem}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .h-4{width:1rem;height:1rem}.h-5{width:1.25rem;height:1.25rem}
+    .skip-link{position:fixed;left:1rem;top:-5rem;z-index:10;background:var(--deep);color:#fff;padding:.75rem 1rem;border-radius:.5rem}
+    .skip-link:focus{top:1rem}
+
+    /* Header, shared with the other inner pages */
+    .emergency-bar{background:var(--deep);color:var(--ivory);font-size:.875rem;font-weight:500}
+    .emergency-bar p{max-width:72rem;margin:0 auto;padding:.5rem 1.25rem}
+    .emergency-bar a{color:var(--ivory);font-weight:700}
+    .site-bar{position:sticky;top:0;z-index:5;background:rgba(255,250,241,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+    .site-bar__inner{max-width:72rem;margin:0 auto;padding:.85rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.75rem 1rem}
+    .brand{display:flex;align-items:center;gap:.75rem;text-decoration:none;color:var(--forest);font-weight:700;font-size:.95rem;line-height:1.2}
+    .brand img{width:2.75rem;height:2.75rem;border-radius:.75rem;object-fit:cover}
+    .header-links{display:flex;flex-wrap:wrap;gap:.5rem}
+    .header-cta,.header-soft{display:inline-flex;align-items:center;gap:.5rem;min-height:2.75rem;padding:0 1.25rem;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none;white-space:nowrap;transition:background-color var(--dur) ease,transform 160ms var(--ease-out)}
+    .header-cta{background:var(--forest);color:#fff}
+    .header-cta:hover{background:var(--deep);transform:translateY(-1px)}
+    .header-soft{border:1px solid #9daf9f;color:var(--forest);background:var(--ivory)}
+    .header-soft:hover{background:var(--mist)}
+    .site-nav{border-top:1px solid var(--line);background:var(--ivory)}
+    .site-nav ul{max-width:72rem;margin:0 auto;padding:.65rem 1.25rem;display:flex;flex-wrap:wrap;gap:.5rem;list-style:none}
+    .site-nav a{display:inline-flex;align-items:center;min-height:2.5rem;padding:0 .9rem;border-radius:999px;font-weight:600;font-size:.875rem;text-decoration:none;color:var(--forest);transition:background-color var(--dur) ease}
+    .site-nav a:hover{background:var(--mist)}
+    .site-nav a[aria-current="page"]{background:var(--forest);color:#fff}
+    @media(max-width:560px){.site-nav ul{gap:.4rem}.site-nav a{font-size:.8125rem;padding:0 .75rem}.header-soft{display:none}}
+
+    h1,h2,h3{font-family:var(--font-display);font-weight:400;color:var(--forest);margin:0}
+    .hero{max-width:72rem;margin:0 auto;padding:3rem 1.25rem 1.5rem}
+    .eyebrow{margin:0 0 .9rem;font-size:.8125rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--plum)}
+    h1{font-size:clamp(2.4rem,1.6rem + 3vw,3.6rem);line-height:1.05;letter-spacing:-.02em}
+    .lead{max-width:42rem;margin:1rem 0 0;font-size:1.125rem;line-height:1.7}
+    .perks{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.25rem 0 0;padding:0;list-style:none}
+    .perks li{display:inline-flex;align-items:center;gap:.45rem;padding:.4rem .85rem;border-radius:999px;background:var(--cream);border:1px solid var(--line);font-size:.875rem;font-weight:600;color:var(--forest)}
+    .perks i{color:var(--plum)}
+
+    /* Booking layout */
+    .booking{max-width:72rem;margin:0 auto;padding:1rem 1.25rem 5rem;display:grid;gap:1.5rem;align-items:start}
+    @media(min-width:960px){.booking{grid-template-columns:minmax(0,1fr) 20rem;gap:2rem}}
+    .booking>*{min-width:0}
+    .panel{min-width:0;background:#fff;border:1px solid var(--line);border-radius:2rem 2rem 2rem .5rem;padding:1.5rem;box-shadow:0 20px 45px -30px rgba(39,72,61,.35)}
+    @media(min-width:640px){.panel{padding:2rem 2.25rem}}
+
+    .steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.4rem;margin:0 0 1.75rem;padding:0;list-style:none;counter-reset:step}
+    .steps li{display:grid;gap:.45rem;font-size:.8125rem;font-weight:600;color:var(--muted)}
+    .steps li:before{content:"";height:.3rem;border-radius:999px;background:var(--line);transition:background-color 300ms ease}
+    .steps li[data-state="done"]:before{background:var(--sage)}
+    .steps li[data-state="current"]:before{background:var(--forest)}
+    .steps li[data-state="current"]{color:var(--forest)}
+    @media(max-width:560px){.steps li span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}}
+    .step-count{display:none;margin:-1rem 0 1.25rem;font-size:.875rem;font-weight:600;color:var(--muted)}
+    @media(max-width:560px){.step-count{display:block}}
+
+    .step h2{font-size:clamp(1.75rem,1.4rem + 1.2vw,2.25rem);line-height:1.1;letter-spacing:-.01em}
+    .step h2:focus{outline:none}
+    .step-intro{margin:.6rem 0 0;color:var(--muted)}
+    .group{margin-top:1.75rem;border:0;padding:0;min-width:0}
+    .group legend,.group-label{display:block;padding:0;margin-bottom:.75rem;font-weight:700;font-size:.9375rem;color:var(--forest)}
+    .group legend small,.group-label small{font-weight:500;color:var(--muted)}
+
+    /* Big selectable cards */
+    .choices{display:grid;gap:.75rem}
+    @media(min-width:640px){.choices--2{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    .choice{position:relative;display:flex;gap:.9rem;align-items:flex-start;padding:1rem 1.1rem;border:1.5px solid var(--line);border-radius:1.25rem 1.25rem 1.25rem .375rem;background:var(--ivory);cursor:pointer;transition:border-color var(--dur) ease,background-color var(--dur) ease,box-shadow var(--dur) ease}
+    .choice:hover{border-color:#9daf9f;background:#fff}
+    .choice input{position:absolute;opacity:0;pointer-events:none}
+    .choice:has(input:checked){border-color:var(--forest);background:var(--mist);box-shadow:inset 0 0 0 1px var(--forest)}
+    .choice:has(input:focus-visible){outline:3px solid var(--plum);outline-offset:2px}
+    .choice:has(input:disabled){opacity:.55;cursor:not-allowed;background:var(--cream)}
+    .choice__icon{display:grid;place-items:center;flex:none;width:2.6rem;height:2.6rem;border-radius:999px;background:var(--lav);color:var(--plum)}
+    .choice__body{display:grid;gap:.15rem;min-width:0}
+    .choice__title{font-weight:700;color:var(--forest)}
+    .choice__desc{font-size:.875rem;color:var(--muted);line-height:1.5}
+    .choice__check{margin-left:auto;flex:none;display:grid;place-items:center;width:1.4rem;height:1.4rem;border-radius:999px;border:1.5px solid #9daf9f;color:transparent;transition:background-color var(--dur) ease,border-color var(--dur) ease}
+    .choice:has(input:checked) .choice__check{background:var(--forest);border-color:var(--forest);color:#fff}
+    .choice--danger .choice__icon{background:var(--blush);color:var(--danger)}
+    .choice--danger:has(input:checked){border-color:var(--danger);background:var(--blush);box-shadow:inset 0 0 0 1px var(--danger)}
+
+    /* Small pill options */
+    .pills{display:flex;flex-wrap:wrap;gap:.5rem}
+    .pill{position:relative;display:inline-flex;align-items:center;gap:.4rem;min-height:2.75rem;padding:0 1.05rem;border:1.5px solid var(--line);border-radius:999px;background:var(--ivory);font-weight:600;font-size:.9375rem;color:var(--forest);cursor:pointer;transition:border-color var(--dur) ease,background-color var(--dur) ease}
+    .pill:hover{border-color:#9daf9f;background:#fff}
+    .pill input{position:absolute;opacity:0;pointer-events:none}
+    .pill:has(input:checked){background:var(--forest);border-color:var(--forest);color:#fff}
+    .pill:has(input:focus-visible){outline:3px solid var(--plum);outline-offset:2px}
+    .pill:has(input:disabled){opacity:.5;cursor:not-allowed}
+
+    .callout{display:flex;gap:.75rem;margin-top:1.25rem;padding:1rem 1.15rem;border-radius:1.25rem 1.25rem 1.25rem .375rem;background:var(--lav);font-size:.9375rem}
+    .callout i{flex:none;margin-top:.2rem;color:var(--plum)}
+    .callout p{margin:0}
+    .callout--danger{background:var(--blush)}
+    .callout--danger i{color:var(--danger)}
+    .callout--danger strong{color:var(--danger)}
+    .callout .inline-btn{display:inline;padding:0;border:0;background:none;color:var(--plum);font-weight:700;text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+    .call-911{display:inline-flex;align-items:center;gap:.45rem;margin-top:.75rem;min-height:2.75rem;padding:0 1.15rem;border-radius:999px;background:var(--danger);color:#fff;font-weight:700;text-decoration:none}
+    .call-911:hover{background:#7f2234}
+
+    /* Clinician cards */
+    .docs{display:grid;gap:.75rem}
+    @media(min-width:640px){.docs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    .doc{align-items:center}
+    .doc img{flex:none;width:3.75rem;height:3.75rem;border-radius:1rem 1rem 1rem .3rem;object-fit:cover;background:var(--cream)}
+    .doc .choice__desc b{color:var(--forest);font-weight:600}
+    .tag{display:inline-flex;align-items:center;gap:.3rem;width:max-content;margin-top:.25rem;padding:.15rem .55rem;border-radius:999px;font-size:.75rem;font-weight:700}
+    .tag--ok{background:var(--mist);color:#1f5c3f}
+    .tag--no{background:var(--cream);color:var(--muted)}
+    .first-avail .choice__icon{background:var(--mist);color:var(--forest)}
+
+    /* Date + time picker */
+    .dates-wrap{position:relative}
+    .dates{display:flex;gap:.5rem;overflow-x:auto;padding:.25rem .1rem .75rem;scroll-snap-type:x proximity;scrollbar-width:thin}
+    .date{flex:none;scroll-snap-align:start;display:grid;justify-items:center;gap:.1rem;width:4.6rem;padding:.7rem .25rem;border:1.5px solid var(--line);border-radius:1rem 1rem 1rem .3rem;background:var(--ivory);cursor:pointer;transition:border-color var(--dur) ease,background-color var(--dur) ease}
+    .date:hover{border-color:#9daf9f;background:#fff}
+    .date[aria-pressed="true"]{background:var(--forest);border-color:var(--forest);color:#fff}
+    .date[aria-pressed="true"] .date__dow,.date[aria-pressed="true"] .date__open{color:var(--mist)}
+    .date:disabled{opacity:.45;cursor:not-allowed}
+    .date__dow{font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+    .date__num{font-family:var(--font-display);font-size:1.6rem;line-height:1.1}
+    .date__open{font-size:.72rem;font-weight:600;color:var(--muted)}
+    .next-avail{display:inline-flex;align-items:center;gap:.5rem;margin-bottom:1rem;min-height:2.75rem;padding:0 1rem;border:1.5px dashed #9daf9f;border-radius:999px;background:none;font-weight:600;color:var(--forest);cursor:pointer}
+    .next-avail:hover{background:var(--mist);border-style:solid}
+    .slot-group{margin-top:1.25rem}
+    .slot-group h3{font-family:var(--font-body);font-size:.875rem;font-weight:700;color:var(--muted);margin-bottom:.6rem;display:flex;align-items:center;gap:.4rem}
+    .slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(6.5rem,1fr));gap:.5rem}
+    .slot{display:grid;gap:0;min-height:2.85rem;padding:.45rem .5rem;border:1.5px solid var(--line);border-radius:.85rem;background:var(--ivory);font-weight:700;color:var(--forest);cursor:pointer;text-align:center;font-variant-numeric:tabular-nums;transition:border-color var(--dur) ease,background-color var(--dur) ease}
+    .slot small{font-weight:500;font-size:.72rem;color:var(--muted)}
+    .slot:hover{border-color:#9daf9f;background:#fff}
+    .slot[aria-pressed="true"]{background:var(--forest);border-color:var(--forest);color:#fff}
+    .slot[aria-pressed="true"] small{color:var(--mist)}
+    .no-slots{margin:0;padding:1rem;border-radius:1rem;background:var(--cream);color:var(--muted)}
+
+    /* Form fields */
+    .fields{display:grid;gap:1.1rem;margin-top:1.5rem}
+    @media(min-width:640px){.fields{grid-template-columns:repeat(2,minmax(0,1fr))}.field--full{grid-column:1/-1}}
+    .field label{display:block;margin-bottom:.4rem;font-size:.875rem;font-weight:700;color:var(--forest)}
+    .field label small{font-weight:500;color:var(--muted)}
+    .input{width:100%;min-height:2.9rem;padding:.65rem .95rem;border:1px solid #9daf9f;border-radius:.75rem;background:#fff;font-size:1rem;transition:border-color var(--dur) ease,box-shadow var(--dur) ease}
+    .input:hover{border-color:var(--forest)}
+    .input:focus-visible{outline:none;border-color:var(--plum);box-shadow:0 0 0 3px rgba(131,71,174,.3)}
+    .input[aria-invalid="true"]{border-color:var(--danger);box-shadow:0 0 0 1px var(--danger)}
+    textarea.input{min-height:6rem;resize:vertical}
+    .err{margin:.35rem 0 0;font-size:.85rem;font-weight:600;color:var(--danger)}
+    .check{display:flex;gap:.65rem;align-items:flex-start;font-size:.9375rem;cursor:pointer}
+    .check input{flex:none;width:1.2rem;height:1.2rem;margin-top:.2rem;accent-color:var(--forest)}
+
+    /* Review */
+    .review{display:grid;gap:0;margin:1.5rem 0 0;padding:0;border:1px solid var(--line);border-radius:1.25rem 1.25rem 1.25rem .375rem;overflow:hidden}
+    .review div{display:grid;grid-template-columns:minmax(0,9rem) minmax(0,1fr) auto;gap:.25rem 1rem;align-items:start;padding:1rem 1.15rem;border-top:1px solid var(--line);background:var(--ivory)}
+    .review div:first-child{border-top:0}
+    .review dt{font-size:.875rem;font-weight:700;color:var(--muted)}
+    .review dd{margin:0;font-weight:600;color:var(--forest)}
+    .review dd small{display:block;font-weight:500;color:var(--muted)}
+    .edit{padding:0;border:0;background:none;color:var(--plum);font-weight:700;font-size:.875rem;text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+    @media(max-width:520px){.review div{grid-template-columns:1fr auto}.review dd{grid-column:1/-1;grid-row:2}}
+
+    /* Step buttons */
+    .actions{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.75rem;margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--line)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:2.9rem;padding:0 1.35rem;border:1px solid transparent;border-radius:999px;font-weight:700;font-size:.9375rem;text-decoration:none;cursor:pointer;white-space:nowrap;transition:background-color var(--dur) ease,transform 160ms var(--ease-out),box-shadow var(--dur) ease}
+    .btn:active{transform:scale(.97)}
+    .btn-primary{background:var(--forest);color:#fff;margin-left:auto}
+    .btn-primary:hover{background:var(--deep);box-shadow:0 10px 22px -12px rgba(24,53,45,.7)}
+    .btn-primary[aria-disabled="true"]{background:#9daf9f;cursor:not-allowed;box-shadow:none}
+    .btn-soft{background:var(--ivory);border-color:#9daf9f;color:var(--forest)}
+    .btn-soft:hover{background:var(--mist)}
+    .hint{margin:0;font-size:.875rem;color:var(--muted)}
+    .hint[data-tone="error"]{color:var(--danger);font-weight:600}
+
+    /* Summary sidebar */
+    .summary{position:sticky;top:7.5rem;display:grid;gap:1rem}
+    .summary-card{padding:1.4rem;border-radius:1.5rem 1.5rem 1.5rem .375rem;background:var(--deep);color:var(--mist)}
+    .summary-card h2{font-size:1.4rem;color:var(--ivory)}
+    .summary-list{display:grid;gap:.85rem;margin:1.1rem 0 0;padding:0;list-style:none}
+    .summary-list li{display:flex;gap:.7rem;align-items:flex-start;font-size:.9rem;line-height:1.45}
+    .summary-list i{flex:none;margin-top:.1rem;color:var(--sage)}
+    .summary-list b{display:block;font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--sage)}
+    .summary-list span[data-empty]{color:rgba(231,238,228,.55);font-style:italic}
+    .summary-list span{color:var(--ivory);font-weight:600}
+    .help-card{padding:1.15rem 1.25rem;border:1px solid var(--line);border-radius:1.25rem 1.25rem 1.25rem .375rem;background:var(--cream);font-size:.9rem}
+    .help-card p{margin:0}
+    .help-card a{font-weight:700}
+    @media(max-width:959px){.summary{position:static;order:-1}.summary-card{padding:1rem 1.15rem}.summary-card h2{font-size:1.15rem}.summary-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:.6rem 1rem;margin-top:.75rem}.summary-list li{font-size:.85rem}.help-card{display:none}}
+    @media(max-width:420px){.summary-list{grid-template-columns:1fr}}
+
+    /* Confirmation */
+    .done{text-align:left}
+    .done__badge{display:grid;place-items:center;width:4rem;height:4rem;border-radius:999px;background:var(--mist);color:var(--forest);animation:pop 420ms var(--ease-out) both}
+    @keyframes pop{from{transform:scale(.6);opacity:0}to{transform:none;opacity:1}}
+    .done h2{margin-top:1.25rem}
+    .code{display:inline-flex;align-items:center;gap:.5rem;margin-top:1rem;padding:.4rem .9rem;border-radius:999px;background:var(--lav);font-weight:700;color:var(--plum);font-variant-numeric:tabular-nums;letter-spacing:.04em}
+    .bring{margin:1rem 0 0;padding-left:1.2rem;display:grid;gap:.35rem}
+    .done-actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.75rem}
+    .done-actions .btn-primary{margin-left:0}
+    .demo-note{margin-top:1.5rem}
+
+    footer{background:var(--deep);color:var(--mist);padding:2rem 1.25rem}
+    footer p{max-width:72rem;margin:0 auto;font-size:.9rem}
+    footer a{color:var(--ivory)}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
+  </style>
+</head>
+<body>
+<div class="fx-note" role="note" aria-label="Fictional site notice"><style>
+.fx-note{background:#18352d;color:#e7eee4;font:500 .8125rem/1.45 "Work Sans",system-ui,sans-serif;text-align:center;padding:.55rem max(16px,env(safe-area-inset-left,0px));border-bottom:1px solid rgba(174,187,170,.25)}
+.fx-note p{margin:0 auto;max-width:72rem}
+.fx-note .fx-tag{display:inline-block;margin-right:.5rem;padding:.05rem .55rem;border-radius:999px;background:#f4e2e1;color:#18352d;font-weight:600;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;vertical-align:1px}
+.fx-note b{color:#fffaf1;font-weight:600}
+</style><p><span class="fx-tag">Fictional</span><b>Magnolia Regional Medical Center is not a real hospital.</b> This is a UX design student project by Ashia Ware. For real medical care, contact your provider or call 911.</p></div>
+
+  <a class="skip-link" href="#booking">Skip to booking</a>
+  <div class="emergency-bar"><p>Life-threatening emergency? Call <a href="tel:911">911</a>. Our emergency department is open 24/7.</p></div>
+  <header class="site-bar">
+    <div class="site-bar__inner">
+      <a class="brand" href="index.html"><img src="assets/magnolia-logo.webp" alt="" width="44" height="44">Magnolia Regional<br>Medical Center</a>
+      <div class="header-links">
+        <a class="header-soft" href="doctors.html">Find a doctor</a>
+        <a class="header-cta" href="index.html#contact">Request support</a>
+      </div>
+    </div>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="book.html" aria-current="page">Book an appointment</a></li>
+        <li><a href="primary-care.html">Primary care</a></li>
+        <li><a href="specialties.html">Specialty care</a></li>
+        <li><a href="imaging.html">Diagnostic imaging</a></li>
+        <li><a href="doctors.html">Find a doctor</a></li>
+        <li><a href="patient-portal.html">Patient portal</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="page-title">
+      <p class="eyebrow">Online booking</p>
+      <h1 id="page-title">Book an appointment</h1>
+      <p class="lead">Choose the care you need, pick a clinician and a time that works for you. It takes about two minutes, and you will get a confirmation right away.</p>
+      <ul class="perks">
+        <li><i data-lucide="clock-3" class="h-4 w-4" aria-hidden="true"></i>Same-week visits</li>
+        <li><i data-lucide="video" class="h-4 w-4" aria-hidden="true"></i>Video visits available</li>
+        <li><i data-lucide="bell-ring" class="h-4 w-4" aria-hidden="true"></i>Text or email reminders</li>
+      </ul>
+    </section>
+
+    <div class="booking" id="booking">
+      <div class="panel">
+        <ol class="steps" id="steps" aria-label="Booking progress">
+          <li data-state="current"><span>Care</span></li>
+          <li><span>Clinician</span></li>
+          <li><span>Time</span></li>
+          <li><span>Details</span></li>
+          <li><span>Review</span></li>
+        </ol>
+        <p class="step-count" id="step-count">Step 1 of 5</p>
+
+        <form id="book-form" novalidate>
+          <!-- STEP 1: care -->
+          <section class="step" data-step="1" aria-labelledby="s1-title">
+            <h2 id="s1-title" tabindex="-1">What do you need?</h2>
+            <p class="step-intro">Pick the kind of care. We will only show clinicians and times that fit.</p>
+
+            <fieldset class="group">
+              <legend class="sr-only">Type of care</legend>
+              <div class="choices choices--2">
+                <label class="choice"><input type="radio" name="care" value="primary">
+                  <span class="choice__icon"><i data-lucide="stethoscope" class="h-5 w-5" aria-hidden="true"></i></span>
+                  <span class="choice__body"><span class="choice__title">Primary care</span><span class="choice__desc">Check-ups, sick visits, vaccines and ongoing conditions. No referral needed.</span></span>
+                  <span class="choice__check" aria-hidden="true"><i data-lucide="check" class="h-4 w-4"></i></span></label>
+                <label class="choice"><input type="radio" name="care" value="specialty">
+                  <span class="choice__icon" style="background:var(--blush);color:#a96778"><i data-lucide="heart-pulse" class="h-5 w-5" aria-hidden="true"></i></span>
+                  <span class="choice__body"><span class="choice__title">Specialty care</span><span class="choice__desc">Heart, brain, maternity, children, rehab and more.</span></span>
+                  <span class="choice__check" aria-hidden="true"><i data-lucide="check" class="h-4 w-4"></i></span></label>
+                <label class="choice"><input type="radio" name="care" value="imaging">
+                  <span class="choice__icon" style="background:var(--mist);color:var(--forest)"><i data-lucide="scan" class="h-5 w-5" aria-hidden="true"></i></span>
+                  <span class="choice__body"><span class="choice__title">Imaging or scan</span><span class="choice__desc">X-ray, ultrasound, CT, MRI or mammogram. Usually needs an order.</span></span>
+                  <span class="choice__check" aria-hidden="true"><i data-lucide="check" class="h-4 w-4"></i></span></label>
+                <label class="choice choice--danger"><input type="radio" name="care" value="emergency">
+                  <span class="choice__icon"><i data-lucide="siren" class="h-5 w-5" aria-hidden="true"></i></span>
+                  <span class="choice__body"><span class="choice__title">Something urgent</span><span class="choice__desc">Chest pain, trouble breathing, a serious injury.</span></span>
+                  <span class="choice__check" aria-hidden="true"><i data-lucide="check" class="h-4 w-4"></i></span></label>
+              </div>
+            </fieldset>
+
+            <div class="callout callout--danger" id="emergency-note" hidden role="alert">
+              <i data-lucide="siren" class="h-5 w-5" aria-hidden="true"></i>
+              <div><p><strong>Emergencies can't wait for an appointment.</strong> If this could be life-threatening, call 911 now. Our emergency department is open 24/7 at the east entrance off Magnolia Grove Way.</p>
+              <a class="call-911" href="tel:911"><i data-lucide="phone" class="h-4 w-4" aria-hidden="true"></i>Call 911</a></div>
+            </div>
+
+            <fieldset class="group" id="specialty-group" hidden>
+              <legend>Which specialty?</legend>
+              <div class="pills" id="specialty-pills"></div>
+              <div class="callout" id="referral-note" hidden><i data-lucide="file-check-2" class="h-5 w-5" aria-hidden="true"></i><p>This specialty needs a referral from your primary care team. If you don't have one yet, <button type="button" class="inline-btn" data-switch-care="primary">book primary care first</button>.</p></div>
+            </fieldset>
+
+            <fieldset class="group" id="imaging-group" hidden>
+              <legend>Which scan?</legend>
+              <div class="pills" id="imaging-pills"></div>
+              <fieldset class="group">
+                <legend>Do you have an order from your clinician?</legend>
+                <div class="pills">
+                  <label class="pill"><input type="radio" name="order" value="yes">Yes, I have an order</label>
+                  <label class="pill"><input type="radio" name="order" value="no">Not yet</label>
+                </div>
+              </fieldset>
+              <div class="callout" id="order-note" hidden><i data-lucide="info" class="h-5 w-5" aria-hidden="true"></i><p>Most scans need an order so the radiologist knows what to look for. A primary care visit can get you one. <button type="button" class="inline-btn" data-switch-care="primary">Book primary care instead</button></p></div>
+            </fieldset>
+
+            <fieldset class="group" id="visit-group" hidden>
+              <legend>How would you like to be seen?</legend>
+              <div class="pills">
+                <label class="pill"><input type="radio" name="visit" value="in-person" checked><i data-lucide="building-2" class="h-4 w-4" aria-hidden="true"></i>In person</label>
+                <label class="pill" id="video-pill"><input type="radio" name="visit" value="video"><i data-lucide="video" class="h-4 w-4" aria-hidden="true"></i>Video visit</label>
+              </div>
+            </fieldset>
+
+            <fieldset class="group" id="patient-group" hidden>
+              <legend>Have you been seen at Magnolia Regional before?</legend>
+              <div class="pills">
+                <label class="pill"><input type="radio" name="patient" value="new">I'm a new patient</label>
+                <label class="pill"><input type="radio" name="patient" value="returning">I've been here before</label>
+              </div>
+            </fieldset>
+
+            <div class="actions">
+              <a class="btn btn-soft" href="index.html#find-care"><i data-lucide="arrow-left" class="h-4 w-4" aria-hidden="true"></i>Back</a>
+              <p class="hint" id="hint-1" aria-live="polite"></p>
+              <button class="btn btn-primary" type="button" data-next="2">Continue <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></button>
+            </div>
+          </section>
+
+          <!-- STEP 2: clinician -->
+          <section class="step" data-step="2" aria-labelledby="s2-title" hidden>
+            <h2 id="s2-title" tabindex="-1">Choose a clinician</h2>
+            <p class="step-intro" id="s2-intro">Pick someone you'd like to see, or take the first available time with any of them.</p>
+            <fieldset class="group">
+              <legend class="sr-only">Clinician</legend>
+              <div class="docs" id="doc-list"></div>
+            </fieldset>
+            <div class="actions">
+              <button class="btn btn-soft" type="button" data-back="1"><i data-lucide="arrow-left" class="h-4 w-4" aria-hidden="true"></i>Back</button>
+              <p class="hint" id="hint-2" aria-live="polite"></p>
+              <button class="btn btn-primary" type="button" data-next="3">Continue <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></button>
+            </div>
+          </section>
+
+          <!-- STEP 3: time -->
+          <section class="step" data-step="3" aria-labelledby="s3-title" hidden>
+            <h2 id="s3-title" tabindex="-1">Pick a day and time</h2>
+            <p class="step-intro" id="s3-intro">Times shown are open right now.</p>
+            <div class="group">
+              <button type="button" class="next-avail" id="next-avail"><i data-lucide="zap" class="h-4 w-4" aria-hidden="true"></i><span>Earliest available</span></button>
+              <p class="group-label" id="dates-label">Day</p>
+              <div class="dates-wrap"><div class="dates" id="dates" role="group" aria-labelledby="dates-label"></div></div>
+              <div id="slot-area" aria-live="polite"></div>
+            </div>
+            <div class="actions">
+              <button class="btn btn-soft" type="button" data-back="2"><i data-lucide="arrow-left" class="h-4 w-4" aria-hidden="true"></i>Back</button>
+              <p class="hint" id="hint-3" aria-live="polite"></p>
+              <button class="btn btn-primary" type="button" data-next="4">Continue <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></button>
+            </div>
+          </section>
+
+          <!-- STEP 4: details -->
+          <section class="step" data-step="4" aria-labelledby="s4-title" hidden>
+            <h2 id="s4-title" tabindex="-1">Your details</h2>
+            <p class="step-intro">We use these to confirm your visit and send reminders.</p>
+            <div class="callout"><i data-lucide="shield-check" class="h-5 w-5" aria-hidden="true"></i><p><strong>Demo site:</strong> nothing you type here is sent or saved. Feel free to use made-up details.</p></div>
+            <div class="fields">
+              <div class="field"><label for="f-first">First name</label><input class="input" id="f-first" name="first" autocomplete="given-name" required><p class="err" id="f-first-err" hidden>Enter your first name.</p></div>
+              <div class="field"><label for="f-last">Last name</label><input class="input" id="f-last" name="last" autocomplete="family-name" required><p class="err" id="f-last-err" hidden>Enter your last name.</p></div>
+              <div class="field"><label for="f-dob">Date of birth</label><input class="input" id="f-dob" name="dob" type="date" autocomplete="bday" required><p class="err" id="f-dob-err" hidden>Enter a valid date of birth.</p></div>
+              <div class="field"><label for="f-phone">Mobile phone</label><input class="input" id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(555) 555-0123" required><p class="err" id="f-phone-err" hidden>Enter a 10-digit phone number.</p></div>
+              <div class="field field--full"><label for="f-email">Email</label><input class="input" id="f-email" name="email" type="email" autocomplete="email" required><p class="err" id="f-email-err" hidden>Enter an email like name@example.com.</p></div>
+              <div class="field"><label for="f-insurance">Insurance</label>
+                <select class="input" id="f-insurance" name="insurance"><option>Private insurance</option><option>Medicare</option><option>Medicaid</option><option>I'll pay myself</option><option>Not sure</option></select></div>
+              <div class="field"><label for="f-language">Preferred language <small>(free interpreter)</small></label>
+                <select class="input" id="f-language" name="language"><option>English</option><option>Spanish</option><option>American Sign Language</option><option>Arabic</option><option>Korean</option><option>Portuguese</option><option>Other</option></select></div>
+              <div class="field field--full"><label for="f-reason">Reason for visit <small>(optional)</small></label><textarea class="input" id="f-reason" name="reason" placeholder="A few words help your care team prepare."></textarea></div>
+              <fieldset class="group field--full" style="margin-top:0">
+                <legend>Send reminders by</legend>
+                <div class="pills">
+                  <label class="pill"><input type="checkbox" name="remind" value="Text" checked><i data-lucide="message-square" class="h-4 w-4" aria-hidden="true"></i>Text</label>
+                  <label class="pill"><input type="checkbox" name="remind" value="Email" checked><i data-lucide="mail" class="h-4 w-4" aria-hidden="true"></i>Email</label>
+                </div>
+              </fieldset>
+            </div>
+            <div class="actions">
+              <button class="btn btn-soft" type="button" data-back="3"><i data-lucide="arrow-left" class="h-4 w-4" aria-hidden="true"></i>Back</button>
+              <p class="hint" id="hint-4" aria-live="polite"></p>
+              <button class="btn btn-primary" type="button" data-next="5">Review <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></button>
+            </div>
+          </section>
+
+          <!-- STEP 5: review -->
+          <section class="step" data-step="5" aria-labelledby="s5-title" hidden>
+            <h2 id="s5-title" tabindex="-1">Review and confirm</h2>
+            <p class="step-intro">Check everything looks right. You can change any part.</p>
+            <dl class="review" id="review"></dl>
+            <label class="check" style="margin-top:1.25rem"><input type="checkbox" id="f-agree"><span>I'll arrive 15 minutes early (or join 5 minutes early for video) and call if I need to cancel.</span></label>
+            <div class="actions">
+              <button class="btn btn-soft" type="button" data-back="4"><i data-lucide="arrow-left" class="h-4 w-4" aria-hidden="true"></i>Back</button>
+              <p class="hint" id="hint-5" aria-live="polite"></p>
+              <button class="btn btn-primary" type="submit"><i data-lucide="calendar-check" class="h-4 w-4" aria-hidden="true"></i>Confirm appointment</button>
+            </div>
+          </section>
+        </form>
+
+        <!-- Confirmation -->
+        <section class="done" id="done" aria-labelledby="done-title" hidden>
+          <div class="done__badge"><i data-lucide="calendar-check" class="h-5 w-5" style="width:1.75rem;height:1.75rem" aria-hidden="true"></i></div>
+          <h2 id="done-title" tabindex="-1">You're booked</h2>
+          <p class="step-intro" id="done-lead"></p>
+          <span class="code"><i data-lucide="ticket" class="h-4 w-4" aria-hidden="true"></i><span id="done-code"></span></span>
+          <dl class="review" id="done-review"></dl>
+          <h3 style="margin-top:1.75rem;font-size:1.35rem">What to bring</h3>
+          <ul class="bring" id="bring"></ul>
+          <div class="done-actions">
+            <button class="btn btn-primary" type="button" id="add-cal"><i data-lucide="calendar-plus" class="h-4 w-4" aria-hidden="true"></i>Add to calendar</button>
+            <a class="btn btn-soft" href="book.html">Book another visit</a>
+            <a class="btn btn-soft" href="index.html">Back to home</a>
+          </div>
+          <div class="callout demo-note"><i data-lucide="info" class="h-5 w-5" aria-hidden="true"></i><p>This is a fictional demo, so no real appointment was made. To change or cancel a real visit you'd call <a href="tel:+15550147821">(555) 014-7821</a> or use the <a href="patient-portal.html">patient portal</a>.</p></div>
+        </section>
+      </div>
+
+      <aside class="summary" aria-label="Your appointment so far">
+        <div class="summary-card">
+          <h2>Your appointment</h2>
+          <ul class="summary-list">
+            <li><i data-lucide="stethoscope" class="h-4 w-4" aria-hidden="true"></i><div><b>Care</b><span id="sum-care" data-empty>Not chosen yet</span></div></li>
+            <li><i data-lucide="user-round" class="h-4 w-4" aria-hidden="true"></i><div><b>Clinician</b><span id="sum-doc" data-empty>Not chosen yet</span></div></li>
+            <li><i data-lucide="calendar" class="h-4 w-4" aria-hidden="true"></i><div><b>When</b><span id="sum-when" data-empty>Not chosen yet</span></div></li>
+            <li><i data-lucide="map-pin" class="h-4 w-4" aria-hidden="true"></i><div><b>Where</b><span id="sum-where" data-empty>Not chosen yet</span></div></li>
+          </ul>
+        </div>
+        <div class="help-card">
+          <p><strong>Rather talk to someone?</strong><br>Call appointments on <a href="tel:+15550147821">(555) 014-7821</a>, Monday to Friday, 7 am to 7 pm.</p>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer>
+    <p>Magnolia Regional Medical Center concept site · <a href="index.html">Back to the landing page</a> · <a href="doctors.html">Find a doctor</a> · <a href="primary-care.html">Primary care</a> · <a href="specialties.html">Specialty care</a> · <a href="imaging.html">Diagnostic imaging</a> · <a href="patient-portal.html">Patient portal</a> · <a href="sources.html">Sources and notes</a></p>
+  </footer>
+
+  <script>
+  (() => {
+    const IMG = (id) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&crop=faces&w=160&h=160&q=70`;
+    const DOCTORS = [
+      { id: "okafor", name: "Dr. Amara Okafor", spec: "Family medicine", care: "primary", langs: "English, Igbo", accepting: true, img: IMG("1678695972687-033fa0bdbac9") },
+      { id: "delgado", name: "Dr. Rosa Delgado", spec: "Pediatrics", care: "specialty", specialty: "pediatrics", langs: "English, Spanish", accepting: true, img: IMG("1623854767648-e7bb8009f0db") },
+      { id: "reyes", name: "Dr. Daniel Reyes", spec: "Cardiology", care: "specialty", specialty: "heart", langs: "English, Spanish", accepting: true, img: IMG("1622253692010-333f2da6031d") },
+      { id: "haddad", name: "Dr. Leila Haddad", spec: "Neurology", care: "specialty", specialty: "neuro", langs: "English, Arabic, French", accepting: true, img: IMG("1706565029539-d09af5896340") },
+      { id: "owusu", name: "Dr. Samuel Owusu", spec: "Oncology", care: "specialty", specialty: "cancer", langs: "English, Twi", accepting: false, img: IMG("1666887360369-1901f341fdad") },
+      { id: "mehta", name: "Dr. Arjun Mehta", spec: "General surgery", care: "specialty", specialty: "surgery", langs: "English, Hindi, Gujarati", accepting: true, img: IMG("1637059824899-a441006a6875") },
+      { id: "marin", name: "Dr. Sofia Marín", spec: "Obstetrics and gynecology", care: "specialty", specialty: "womens", langs: "English, Spanish", accepting: true, img: IMG("1736289173074-df6009da27c9") },
+      { id: "silva", name: "Dr. Mateo Silva", spec: "Rehabilitation medicine", care: "specialty", specialty: "rehab", langs: "English, Portuguese", accepting: false, img: IMG("1729162128021-f37dca3ff30d") },
+      { id: "kim", name: "Dr. Hana Kim", spec: "Diagnostic radiology", care: "imaging", scans: ["xray", "ultrasound", "ct", "mri"], langs: "English, Korean", accepting: true, img: IMG("1758600587683-d86675a2f6e9") },
+      { id: "webb", name: "Dr. Marcus Webb", spec: "Interventional radiology", care: "imaging", scans: ["xray", "ct"], langs: "English", accepting: true, img: IMG("1756699279298-c89cdef354ab") },
+      { id: "clarke", name: "Dr. Naomi Clarke", spec: "Mammography & breast imaging", care: "imaging", scans: ["mri", "mammo"], langs: "English", accepting: true, img: IMG("1643297654416-05795d62e39c") }
+    ];
+    const SPECIALTIES = [
+      { id: "heart", label: "Heart & vascular" },
+      { id: "neuro", label: "Neurology" },
+      { id: "womens", label: "Women's health & maternity" },
+      { id: "pediatrics", label: "Pediatrics" },
+      { id: "rehab", label: "Rehabilitation" },
+      { id: "surgery", label: "Surgery", referral: true, noVideo: true },
+      { id: "cancer", label: "Cancer care", referral: true }
+    ];
+    const SCANS = [
+      { id: "xray", label: "X-ray", mins: 15 }, { id: "ultrasound", label: "Ultrasound", mins: 30 },
+      { id: "ct", label: "CT scan", mins: 30 }, { id: "mri", label: "MRI", mins: 45 }, { id: "mammo", label: "Mammogram", mins: 20 }
+    ];
+    const CARE_LABEL = { primary: "Primary care", specialty: "Specialty care", imaging: "Imaging" };
+    const LOCATION = { main: "Main campus, 1200 Magnolia Grove Way", imaging: "Imaging Center, Main campus, Level 1", video: "Video visit (link sent by text and email)" };
+
+    const $ = (s, r = document) => r.querySelector(s);
+    const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+    const form = $("#book-form");
+    const state = { step: 1, care: null, specialty: null, scan: null, order: null, visit: "in-person", patient: null, doctor: null, date: null, time: null, slotDoctor: null };
+
+    // Small seeded random so the same clinician + day always shows the same open times
+    function seeded(str) { let h = 2166136261; for (const c of str) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619); } return () => { h += 0x6D2B79F5; let t = h; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
+    const icons = () => window.lucide && lucide.createIcons();
+    const fmtDay = (d) => d.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" });
+    const fmtTime = (m) => { const h = Math.floor(m / 60), mm = m % 60; return `${((h + 11) % 12) + 1}:${String(mm).padStart(2, "0")} ${h < 12 ? "AM" : "PM"}`; };
+    const iso = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+
+    function nextWeekdays(n) {
+      const out = []; const d = new Date(); d.setHours(0, 0, 0, 0);
+      while (out.length < n) { d.setDate(d.getDate() + 1); if (d.getDay() !== 0 && d.getDay() !== 6) out.push(new Date(d)); }
+      return out;
+    }
+    const DAYS = nextWeekdays(12);
+
+    // ---------- Step 1 ----------
+    $("#specialty-pills").innerHTML = SPECIALTIES.map((s) => `<label class="pill"><input type="radio" name="specialty" value="${s.id}">${s.label}</label>`).join("");
+    $("#imaging-pills").innerHTML = SCANS.map((s) => `<label class="pill"><input type="radio" name="scan" value="${s.id}">${s.label}</label>`).join("");
+
+    function videoAllowed() {
+      if (state.care === "imaging") return false;
+      if (state.care === "specialty") { const s = SPECIALTIES.find((x) => x.id === state.specialty); return !(s && s.noVideo); }
+      return true;
+    }
+
+    function syncStep1() {
+      const c = state.care;
+      $("#emergency-note").hidden = c !== "emergency";
+      $("#specialty-group").hidden = c !== "specialty";
+      $("#imaging-group").hidden = c !== "imaging";
+      const ready = c && c !== "emergency";
+      $("#visit-group").hidden = !ready || c === "imaging";
+      $("#patient-group").hidden = !ready;
+      const spec = SPECIALTIES.find((x) => x.id === state.specialty);
+      $("#referral-note").hidden = !(c === "specialty" && spec && spec.referral);
+      $("#order-note").hidden = !(c === "imaging" && state.order === "no");
+      const videoInput = $('input[name="visit"][value="video"]');
+      videoInput.disabled = !videoAllowed();
+      if (!videoAllowed() && state.visit === "video") { state.visit = "in-person"; $('input[name="visit"][value="in-person"]').checked = true; }
+      $("#hint-1").textContent = ""; $("#hint-1").removeAttribute("data-tone");
+      summary();
+    }
+
+    function step1Error() {
+      if (!state.care) return "Choose the kind of care you need.";
+      if (state.care === "emergency") return "Emergencies can't be booked online. Please call 911.";
+      if (state.care === "specialty" && !state.specialty) return "Choose a specialty.";
+      if (state.care === "imaging" && !state.scan) return "Choose the scan you need.";
+      if (state.care === "imaging" && !state.order) return "Let us know if you have an order.";
+      if (state.care === "imaging" && state.order === "no") return "You'll need an order first. Book primary care to get one.";
+      if (!state.patient) return "Tell us if you're a new or returning patient.";
+      return "";
+    }
+
+    form.addEventListener("change", (e) => {
+      const t = e.target;
+      if (t.name === "care") { state.care = t.value; state.doctor = null; state.date = null; state.time = null; }
+      if (t.name === "specialty") { state.specialty = t.value; state.doctor = null; state.date = null; state.time = null; }
+      if (t.name === "scan") { state.scan = t.value; state.doctor = null; state.date = null; state.time = null; }
+      if (t.name === "order") state.order = t.value;
+      if (t.name === "visit") { state.visit = t.value; state.date = null; state.time = null; }
+      if (t.name === "patient") { state.patient = t.value; if (state.doctor && state.doctor !== "any") { const d = DOCTORS.find((x) => x.id === state.doctor); if (d && !d.accepting && t.value === "new") state.doctor = null; } }
+      if (t.name === "doctor") { state.doctor = t.value; state.date = null; state.time = null; $("#hint-2").textContent = ""; }
+      if (["care", "specialty", "scan", "order", "visit", "patient"].includes(t.name)) syncStep1();
+      summary();
+    });
+
+    document.addEventListener("click", (e) => {
+      const sw = e.target.closest("[data-switch-care]");
+      if (!sw) return;
+      const input = $(`input[name="care"][value="${sw.dataset.switchCare}"]`);
+      input.checked = true; state.care = sw.dataset.switchCare; state.doctor = null;
+      syncStep1(); input.focus();
+    });
+
+    // ---------- Step 2 ----------
+    function pool() {
+      return DOCTORS.filter((d) => {
+        if (d.care !== state.care) return false;
+        if (state.care === "specialty") return d.specialty === state.specialty;
+        if (state.care === "imaging") return d.scans.includes(state.scan);
+        return true;
+      });
+    }
+    function bookable(d) { return d.accepting || state.patient === "returning"; }
+
+    function renderDoctors() {
+      const list = pool();
+      const isImaging = state.care === "imaging";
+      $("#s2-title").textContent = isImaging ? "Choose a radiologist" : "Choose a clinician";
+      $("#s2-intro").textContent = isImaging ? "Your scan is done by our imaging team and read by one of these radiologists. Most people pick the first available time." : "Pick someone you'd like to see, or take the first available time with any of them.";
+      const open = list.filter(bookable);
+      let html = "";
+      if (open.length > 1) {
+        html += `<label class="choice first-avail"><input type="radio" name="doctor" value="any"${state.doctor === "any" ? " checked" : ""}>
+          <span class="choice__icon"><i data-lucide="zap" class="h-5 w-5" aria-hidden="true"></i></span>
+          <span class="choice__body"><span class="choice__title">First available</span><span class="choice__desc">The soonest time with any of the ${open.length} clinicians below.</span></span>
+          <span class="choice__check" aria-hidden="true"><i data-lucide="check" class="h-4 w-4"></i></span></label>`;
+      }
+      html += list.map((d) => {
+        const ok = bookable(d);
+        const tag = d.accepting ? `<span class="tag tag--ok">Accepting new patients</span>` : `<span class="tag tag--no">${ok ? "Returning patients only" : "Not taking new patients right now"}</span>`;
+        return `<label class="choice doc"><input type="radio" name="doctor" value="${d.id}"${state.doctor === d.id ? " checked" : ""}${ok ? "" : " disabled"}>
+          <img src="${d.img}" alt="" width="60" height="60" loading="lazy">
+          <span class="choice__body"><span class="choice__title">${d.name}</span><span class="choice__desc">${d.spec}<br><b>Speaks</b> ${d.langs}</span>${tag}</span>
+          <span class="choice__check" aria-hidden="true"><i data-lucide="check" class="h-4 w-4"></i></span></label>`;
+      }).join("");
+      if (!open.length) html += `<p class="no-slots">None of these clinicians are taking new patients right now. Call <a href="tel:+15550147821">(555) 014-7821</a> and we'll find you someone.</p>`;
+      $("#doc-list").innerHTML = html;
+      if (open.length === 1 && !state.doctor) { state.doctor = open[0].id; $(`input[name="doctor"][value="${open[0].id}"]`).checked = true; }
+      icons(); summary();
+    }
+
+    // ---------- Step 3 ----------
+    function slotsFor(doc, day) {
+      const rnd = seeded(`${doc.id}|${iso(day)}|${state.visit}`);
+      const step = state.care === "imaging" ? 15 : 20;
+      const out = [];
+      for (let m = 8 * 60; m < 16 * 60 + 40; m += step) {
+        if (m >= 12 * 60 && m < 13 * 60) continue; // lunch
+        if (rnd() < 0.3) out.push(m);
+      }
+      return out;
+    }
+    function openSlots(day) {
+      const docs = state.doctor === "any" ? pool().filter(bookable) : DOCTORS.filter((d) => d.id === state.doctor);
+      const map = new Map();
+      docs.forEach((d) => slotsFor(d, day).forEach((m) => { if (!map.has(m)) map.set(m, d); }));
+      return [...map.entries()].sort((a, b) => a[0] - b[0]).map(([m, d]) => ({ m, d }));
+    }
+
+    function renderDates() {
+      $("#s3-intro").textContent = state.visit === "video" ? "Video visit times. You'll get a link by text and email." : "Times shown are open right now.";
+      $("#dates").innerHTML = DAYS.map((d) => {
+        const n = openSlots(d).length;
+        const pressed = state.date === iso(d);
+        return `<button type="button" class="date" data-date="${iso(d)}" aria-pressed="${pressed}" ${n ? "" : "disabled"} aria-label="${fmtDay(d)}, ${n ? n + " times open" : "fully booked"}">
+          <span class="date__dow">${d.toLocaleDateString("en-US", { weekday: "short" })}</span>
+          <span class="date__num">${d.getDate()}</span>
+          <span class="date__open">${n ? n + " open" : "Full"}</span></button>`;
+      }).join("");
+      const first = earliest();
+      const btn = $("#next-avail");
+      if (first) { btn.hidden = false; btn.querySelector("span").textContent = `Earliest: ${first.day.toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" })} at ${fmtTime(first.m)}`; }
+      else btn.hidden = true;
+      renderSlots();
+    }
+
+    function earliest() {
+      for (const day of DAYS) { const s = openSlots(day); if (s.length) return { day, m: s[0].m, d: s[0].d }; }
+      return null;
+    }
+
+    function renderSlots() {
+      const area = $("#slot-area");
+      if (!state.date) { area.innerHTML = `<p class="no-slots" style="margin-top:1rem">Pick a day to see open times.</p>`; return; }
+      const day = DAYS.find((d) => iso(d) === state.date);
+      const slots = openSlots(day);
+      const showDoc = state.doctor === "any";
+      const btn = (s) => `<button type="button" class="slot" data-time="${s.m}" data-doc="${s.d.id}" aria-pressed="${state.time === s.m}">${fmtTime(s.m)}${showDoc ? `<small>${s.d.name.replace("Dr. ", "Dr. ").split(" ").slice(-1)[0]}</small>` : ""}</button>`;
+      const am = slots.filter((s) => s.m < 12 * 60), pm = slots.filter((s) => s.m >= 12 * 60);
+      area.innerHTML = `<p class="group-label" style="margin-top:1.25rem">${fmtDay(day)}</p>` +
+        (am.length ? `<div class="slot-group"><h3><i data-lucide="sunrise" class="h-4 w-4" aria-hidden="true"></i>Morning</h3><div class="slots">${am.map(btn).join("")}</div></div>` : "") +
+        (pm.length ? `<div class="slot-group"><h3><i data-lucide="sun" class="h-4 w-4" aria-hidden="true"></i>Afternoon</h3><div class="slots">${pm.map(btn).join("")}</div></div>` : "");
+      icons();
+    }
+
+    $("#dates").addEventListener("click", (e) => {
+      const b = e.target.closest(".date"); if (!b || b.disabled) return;
+      state.date = b.dataset.date; state.time = null; state.slotDoctor = null;
+      $$(".date").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+      renderSlots(); summary(); $("#hint-3").textContent = "";
+    });
+    $("#slot-area").addEventListener("click", (e) => {
+      const b = e.target.closest(".slot"); if (!b) return;
+      state.time = Number(b.dataset.time); state.slotDoctor = b.dataset.doc;
+      $$(".slot").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+      summary(); $("#hint-3").textContent = "";
+    });
+    $("#next-avail").addEventListener("click", () => {
+      const f = earliest(); if (!f) return;
+      state.date = iso(f.day); state.time = f.m; state.slotDoctor = f.d.id;
+      renderDates(); summary();
+      const sel = $(`.date[data-date="${state.date}"]`); if (sel) sel.scrollIntoView({ block: "nearest", inline: "center", behavior: "smooth" });
+    });
+
+    // ---------- Step 4 validation ----------
+    const VALID = {
+      "f-first": (v) => v.trim().length > 0,
+      "f-last": (v) => v.trim().length > 0,
+      "f-dob": (v) => { if (!v) return false; const d = new Date(v); const now = new Date(); return d < now && d.getFullYear() > now.getFullYear() - 120; },
+      "f-phone": (v) => v.replace(/\D/g, "").replace(/^1(?=\d{10}$)/, "").length === 10,
+      "f-email": (v) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim())
+    };
+    function checkField(id) {
+      const el = $("#" + id); const ok = VALID[id](el.value);
+      el.setAttribute("aria-invalid", String(!ok)); $("#" + id + "-err").hidden = ok;
+      if (!ok) el.setAttribute("aria-describedby", id + "-err"); else el.removeAttribute("aria-describedby");
+      return ok;
+    }
+    Object.keys(VALID).forEach((id) => {
+      const el = $("#" + id);
+      el.addEventListener("blur", () => { if (el.value) checkField(id); });
+      // Clear an error the moment it's fixed, so messages don't vanish mid-click and shift the buttons
+      el.addEventListener("input", () => { if (el.getAttribute("aria-invalid") === "true" && VALID[id](el.value)) checkField(id); });
+      el.addEventListener("change", () => { if (el.getAttribute("aria-invalid") === "true" && VALID[id](el.value)) checkField(id); });
+    });
+    $("#f-phone").addEventListener("input", (e) => {
+      const d = e.target.value.replace(/\D/g, "").slice(0, 10);
+      e.target.value = d.length > 6 ? `(${d.slice(0, 3)}) ${d.slice(3, 6)}-${d.slice(6)}` : d.length > 3 ? `(${d.slice(0, 3)}) ${d.slice(3)}` : d;
+    });
+
+    // ---------- Navigation ----------
+    function chosenDoctor() { return DOCTORS.find((d) => d.id === (state.slotDoctor || state.doctor)); }
+    function careText() {
+      if (state.care === "specialty") { const s = SPECIALTIES.find((x) => x.id === state.specialty); return s ? s.label : "Specialty care"; }
+      if (state.care === "imaging") { const s = SCANS.find((x) => x.id === state.scan); return s ? s.label : "Imaging"; }
+      return CARE_LABEL[state.care] || "";
+    }
+    function whereText() {
+      if (!state.care || state.care === "emergency") return "";
+      if (state.visit === "video") return LOCATION.video;
+      return state.care === "imaging" ? LOCATION.imaging : LOCATION.main;
+    }
+    function whenText() {
+      if (!state.date || state.time == null) return "";
+      const d = DAYS.find((x) => iso(x) === state.date); return `${fmtDay(d)} at ${fmtTime(state.time)}`;
+    }
+
+    function setSum(id, text) { const el = $("#" + id); if (text) { el.textContent = text; el.removeAttribute("data-empty"); } else { el.textContent = "Not chosen yet"; el.setAttribute("data-empty", ""); } }
+    function summary() {
+      const care = state.care && state.care !== "emergency" ? careText() + (state.visit === "video" && state.care !== "imaging" ? " · video" : "") : "";
+      setSum("sum-care", care);
+      const doc = chosenDoctor();
+      setSum("sum-doc", doc ? doc.name : state.doctor === "any" ? "First available" : "");
+      setSum("sum-when", whenText());
+      setSum("sum-where", whereText());
+    }
+
+    function errorFor(step) {
+      if (step === 1) return step1Error();
+      if (step === 2) return state.doctor ? "" : "Choose a clinician or first available.";
+      if (step === 3) return state.date && state.time != null ? "" : "Pick a day and a time.";
+      if (step === 4) { const bad = Object.keys(VALID).filter((id) => !checkField(id)); if (bad.length) { $("#" + bad[0]).focus(); return "Please fix the highlighted fields."; } return ""; }
+      return "";
+    }
+
+    function go(step, { focus = true } = {}) {
+      state.step = step;
+      $$(".step").forEach((s) => { s.hidden = Number(s.dataset.step) !== step; });
+      $$("#steps li").forEach((li, i) => li.setAttribute("data-state", i + 1 < step ? "done" : i + 1 === step ? "current" : ""));
+      $$("#steps li").forEach((li, i) => { if (i + 1 === step) li.setAttribute("aria-current", "step"); else li.removeAttribute("aria-current"); });
+      $("#step-count").textContent = `Step ${step} of 5`;
+      if (step === 2) renderDoctors();
+      if (step === 3) renderDates();
+      if (step === 5) renderReview();
+      icons();
+      if (focus) {
+        const panel = $(".panel"); const top = panel.getBoundingClientRect().top + window.scrollY - 130;
+        if (window.scrollY > top) window.scrollTo({ top, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+        $(`#s${step}-title`).focus({ preventScroll: true });
+      }
+    }
+
+    form.addEventListener("click", (e) => {
+      const next = e.target.closest("[data-next]"); const back = e.target.closest("[data-back]"); const edit = e.target.closest("[data-edit]");
+      if (next) {
+        const err = errorFor(state.step); const hint = $(`#hint-${state.step}`);
+        if (err) { hint.textContent = err; hint.dataset.tone = "error"; return; }
+        hint.textContent = ""; go(Number(next.dataset.next));
+      }
+      if (back) go(Number(back.dataset.back));
+      if (edit) go(Number(edit.dataset.edit));
+    });
+
+    function details() {
+      const v = (id) => $("#" + id).value.trim();
+      return { first: v("f-first"), last: v("f-last"), dob: v("f-dob"), phone: v("f-phone"), email: v("f-email"), insurance: v("f-insurance"), language: v("f-language"), reason: v("f-reason"), remind: $$('input[name="remind"]:checked').map((x) => x.value) };
+    }
+    function rows(withEdit) {
+      const p = details(); const doc = chosenDoctor();
+      const dob = p.dob ? new Date(p.dob + "T00:00").toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }) : "";
+      const items = [
+        ["Care", careText(), `${state.patient === "new" ? "New patient" : "Returning patient"} · ${state.visit === "video" ? "Video visit" : "In person"}`, 1],
+        ["Clinician", doc ? doc.name : "", doc ? doc.spec : "", 2],
+        ["When", whenText(), state.care === "imaging" ? `About ${SCANS.find((s) => s.id === state.scan).mins} minutes` : "About 30 minutes", 3],
+        ["Where", whereText(), state.visit === "video" ? "" : "Free parking in the Grove Way garage", 3],
+        ["Patient", `${p.first} ${p.last}`, `Born ${dob}`, 4],
+        ["Contact", p.phone, p.email, 4],
+        ["Insurance", p.insurance, p.language !== "English" ? `${p.language} interpreter requested` : "", 4],
+        ["Reminders", p.remind.length ? p.remind.join(" and ") : "No reminders", "", 4]
+      ];
+      if (p.reason) items.push(["Reason", p.reason, "", 4]);
+      const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+      return items.map(([k, v, sub, step]) => `<div><dt>${k}</dt><dd>${esc(v)}${sub ? `<small>${esc(sub)}</small>` : ""}</dd>${withEdit ? `<button type="button" class="edit" data-edit="${step}">Edit<span class="sr-only"> ${k.toLowerCase()}</span></button>` : "<span></span>"}</div>`).join("");
+    }
+    function renderReview() { $("#review").innerHTML = rows(true); }
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const hint = $("#hint-5");
+      if (!$("#f-agree").checked) { hint.textContent = "Please tick the box to confirm."; hint.dataset.tone = "error"; $("#f-agree").focus(); return; }
+      const rnd = seeded(JSON.stringify(state) + Date.now());
+      const code = "MRMC-" + Array.from({ length: 6 }, () => "ABCDEFGHJKMNPQRSTUVWXYZ23456789"[Math.floor(rnd() * 31)]).join("");
+      const doc = chosenDoctor(); const p = details();
+      $("#done-lead").textContent = `${p.first}, your ${careText().toLowerCase()} ${state.visit === "video" ? "video visit" : "visit"} with ${doc.name} is set for ${whenText()}.${p.remind.length ? ` We'll send a reminder by ${p.remind.join(" and ").toLowerCase()} the day before.` : ""}`;
+      $("#done-code").textContent = `Confirmation ${code}`;
+      $("#done-review").innerHTML = rows(false);
+      const bring = state.visit === "video"
+        ? ["A quiet, private space with good light", "Your phone or computer with camera and sound", "A list of your current medicines"]
+        : ["Photo ID and your insurance card", "A list of your current medicines", state.care === "imaging" ? "Your imaging order, and wear clothes without metal" : "Any questions you want to ask"];
+      if (state.patient === "new") bring.push("Arrive 15 minutes early to fill in new-patient forms");
+      $("#bring").innerHTML = bring.map((b) => `<li>${b}</li>`).join("");
+      state.code = code;
+      form.hidden = true; $("#steps").hidden = true; $("#step-count").hidden = true; $("#done").hidden = false;
+      $$("#steps li").forEach((li) => li.setAttribute("data-state", "done"));
+      icons();
+      const top = $(".panel").getBoundingClientRect().top + window.scrollY - 130;
+      window.scrollTo({ top, behavior: "smooth" });
+      $("#done-title").focus({ preventScroll: true });
+    });
+
+    $("#add-cal").addEventListener("click", () => {
+      const day = DAYS.find((x) => iso(x) === state.date); const doc = chosenDoctor();
+      const start = new Date(day); start.setMinutes(state.time);
+      const mins = state.care === "imaging" ? SCANS.find((s) => s.id === state.scan).mins : 30;
+      const end = new Date(start.getTime() + mins * 60000);
+      const stamp = (d) => `${d.getFullYear()}${String(d.getMonth() + 1).padStart(2, "0")}${String(d.getDate()).padStart(2, "0")}T${String(d.getHours()).padStart(2, "0")}${String(d.getMinutes()).padStart(2, "0")}00`;
+      const ics = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Magnolia Regional (fictional demo)//EN", "BEGIN:VEVENT",
+        `UID:${state.code}@magnolia-demo`, `DTSTAMP:${stamp(new Date())}`, `DTSTART:${stamp(start)}`, `DTEND:${stamp(end)}`,
+        `SUMMARY:${careText()} with ${doc.name} (demo)`, `LOCATION:${whereText()}`,
+        `DESCRIPTION:Confirmation ${state.code}. Fictional demo booking from a student design project. No real appointment exists.`,
+        "END:VEVENT", "END:VCALENDAR"].join("\r\n");
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(new Blob([ics], { type: "text/calendar" }));
+      a.download = "magnolia-appointment.ics"; document.body.appendChild(a); a.click(); a.remove();
+    });
+
+    // ---------- Deep links: book.html?doctor=reyes, ?care=imaging&scan=mri, ?care=specialty&specialty=heart ----------
+    function applyParams() {
+      const q = new URLSearchParams(location.search);
+      const pick = (name, value) => { const el = $(`input[name="${name}"][value="${value}"]`); if (el) { el.checked = true; return true; } return false; };
+      const doc = DOCTORS.find((d) => d.id === q.get("doctor"));
+      if (doc) {
+        state.care = doc.care; pick("care", doc.care);
+        if (doc.specialty) { state.specialty = doc.specialty; pick("specialty", doc.specialty); }
+        if (doc.scans) { state.scan = doc.scans[0]; pick("scan", doc.scans[0]); }
+        state.doctor = doc.id;
+      } else if (q.get("care") && pick("care", q.get("care"))) {
+        state.care = q.get("care");
+        if (q.get("specialty") && pick("specialty", q.get("specialty"))) state.specialty = q.get("specialty");
+        if (q.get("scan") && pick("scan", q.get("scan"))) state.scan = q.get("scan");
+      }
+      if (q.get("visit") === "video" && pick("visit", "video")) state.visit = "video";
+      syncStep1();
+      if (doc) { const h = $("#hint-1"); h.textContent = `Booking with ${doc.name}. Just answer the last question.`; }
+    }
+
+    applyParams();
+    icons();
+  })();
+  </script>
+</body>
+</html>

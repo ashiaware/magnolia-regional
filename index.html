@@ -106,22 +106,43 @@
     @media(min-width:640px){.path-card{padding:2rem}}
     .path-card:hover{transform:translateY(-4px);box-shadow:0 18px 35px rgba(39,72,61,.1)}
 
-    /* Green fill: a forest layer rises from the bottom of the card on hover or keyboard focus */
-    .fill-card{position:relative;isolation:isolate;overflow:hidden}
-    .fill-card:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(165deg,var(--forest) 0%,var(--deep) 100%);clip-path:inset(100% 0 0 0);transition:clip-path 480ms var(--ease-out)}
-    .fill-card .fill-ink,.fill-card .fill-muted,.fill-card .text-link,.fill-card .fill-chip{transition:color 280ms ease,background-color 280ms ease}
-    .fill-card:has(:focus-visible):before{clip-path:inset(0)}
-    .fill-card:has(:focus-visible) .fill-ink{color:var(--ivory)!important}
-    .fill-card:has(:focus-visible) .fill-muted{color:var(--mist)!important}
-    .fill-card:has(:focus-visible) .text-link{color:var(--blush)!important}
-    .fill-card:has(:focus-visible) .fill-chip{background:rgba(255,250,241,.14)!important;color:var(--ivory)!important}
-    .fill-card .focus-ring:focus-visible{outline-color:var(--blush)}
-    @media(hover:hover){
-      .fill-card:hover:before{clip-path:inset(0)}
-      .fill-card:hover .fill-ink{color:var(--ivory)!important}
-      .fill-card:hover .fill-muted{color:var(--mist)!important}
-      .fill-card:hover .text-link{color:var(--blush)!important}
-      .fill-card:hover .fill-chip{background:rgba(255,250,241,.14)!important;color:var(--ivory)!important}
+    /* Cards: calm hover. A soft lift and a darker border, no colour flood, so scanning across cards stays easy to read */
+    .fill-card{position:relative;transition:transform var(--dur) var(--ease-out),box-shadow var(--dur) ease,border-color var(--dur) ease}
+    @media(hover:hover){.fill-card:hover{border-color:#9daf9f}}
+    .fill-card:has(:focus-visible){border-color:var(--plum)}
+
+    /* Find care */
+    .care-list{display:grid;gap:1.5rem}
+    .care-emergency{display:grid;grid-template-columns:auto minmax(0,1fr);gap:1rem 1.25rem;align-items:center;padding:1.25rem 1.5rem;border:1px solid #e4cbce;border-radius:1.5rem 1.5rem 1.5rem .375rem;background:var(--blush)}
+    .care-emergency[hidden]{display:none}
+    .care-emergency__icon{display:grid;place-items:center;width:3rem;height:3rem;border-radius:999px;background:var(--ivory);color:var(--danger)}
+    .care-emergency__title{margin:0;display:flex;flex-wrap:wrap;align-items:center;gap:.4rem .75rem;font-family:var(--font-display);font-weight:400;font-size:1.5rem;line-height:1.15;color:var(--forest)}
+    .care-open{display:inline-flex;align-items:center;gap:.4rem;padding:.2rem .65rem;border-radius:999px;background:var(--ivory);font-family:var(--font-body);font-size:.75rem;font-weight:700;color:var(--danger)}
+    .care-emergency__actions{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:.25rem 1.5rem}
+    @media(min-width:1024px){.care-emergency{grid-template-columns:auto minmax(0,1fr) auto}.care-emergency__actions{grid-column:auto;justify-content:flex-end}}
+    .care-911{background:var(--danger);color:#fff}
+    .care-911:hover{background:#7f2234;box-shadow:0 10px 22px -12px rgba(155,44,63,.7)}
+    .care-grid{display:grid;gap:1.5rem}
+    .care-grid[hidden]{display:none}
+    @media(min-width:1024px){.care-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+    .care-card{display:flex;flex-direction:column;padding:.75rem;border:1px solid var(--line);border-radius:2rem 2rem 2rem .5rem;background:var(--ivory);transition:transform var(--dur) var(--ease-out),box-shadow var(--dur) ease,border-color var(--dur) ease}
+    .care-card[hidden]{display:none}
+    .care-card:nth-child(2){border-radius:2rem 2rem .5rem 2rem}
+    .care-card:nth-child(3){border-radius:2rem .5rem 2rem 2rem}
+    @media(hover:hover){.care-card:hover{transform:translateY(-3px);border-color:#9daf9f;box-shadow:0 22px 40px -24px rgba(39,72,61,.4)}}
+    .care-card:has(:focus-visible){border-color:var(--plum)}
+    .care-card__img{display:block;width:100%;aspect-ratio:16/10;height:auto;object-fit:cover;border-radius:1.5rem 1.5rem 1.5rem .375rem;background:var(--cream)}
+    .care-card__body{display:flex;flex-direction:column;flex:1;padding:1.25rem 1rem 1rem}
+    .care-card__list{display:grid;gap:.4rem;margin:1rem 0 0;padding:0;list-style:none}
+    .care-card__list li{display:flex;align-items:flex-start;gap:.5rem;font-size:.9375rem;line-height:1.45;color:var(--ink)}
+    .care-card__list svg{flex:none;margin-top:.15rem;color:var(--forest)}
+    .care-card__meta{display:flex;align-items:flex-start;gap:.45rem;margin:1rem 0 0;padding-top:.9rem;border-top:1px dashed var(--line);font-size:.8125rem;font-weight:600;color:var(--muted)}
+    .care-card__meta svg{flex:none;margin-top:.1rem;color:var(--plum)}
+    .care-card__actions{display:flex;flex-wrap:wrap;align-items:center;gap:.25rem 1.25rem;margin-top:auto;padding-top:1.25rem}
+    @media(min-width:640px) and (max-width:1023px){
+      .care-card{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:.5rem}
+      .care-card__img{height:100%;aspect-ratio:auto;min-height:16rem}
+      .care-card__body{padding:1rem 1rem 1rem 1.25rem}
     }
 
     /* Scroll reveal: only active once JS confirms motion is allowed, so content never stays hidden */
@@ -165,8 +186,6 @@
     .emergency-card__photo{display:block;width:100%;aspect-ratio:16/10;height:auto;object-fit:cover;object-position:50% 45%;border-radius:1.5rem 1.5rem 1.5rem .375rem;background:var(--cream)}
     .emergency-dot{width:.5rem;height:.5rem;border-radius:999px;background:currentColor}
     .emergency-911{color:var(--danger)}
-    .fill-card:has(:focus-visible) .emergency-911{color:var(--blush)!important}
-    @media(hover:hover){.fill-card:hover .emergency-911{color:var(--blush)!important}}
     .faq-list .accordion-item:first-child{border-top:0}
     .faq-list .accordion-item:last-child{border-bottom:0}
     .social-link{display:grid;place-items:center;width:2.75rem;height:2.75rem;border-radius:999px;border:1px solid rgba(255,250,241,.25);background:none;cursor:pointer;transition:background-color var(--dur) ease,border-color var(--dur) ease}
@@ -229,21 +248,21 @@
     <div class="mx-auto flex max-w-7xl items-center gap-4 px-5 py-4 lg:px-8"><a href="#top" class="focus-ring flex min-w-0 items-center gap-3" aria-label="Magnolia Regional Medical Center home"> <span class="h-12 w-12 flex-none" aria-hidden="true"> <img data-template-id="hospital-emblem" class="canva-image magnolia-mark object-contain" width="48" height="48" src="canva://MAHWmvPMiXI/1" alt="" onerror="this.onerror=null;this.src='assets/magnolia-logo.webp'"> </span> <span class="logo-lockup"><span data-template-id="hospital-name-header" class="canva-text logo-name block" style="color: rgb(39, 72, 61); font-weight: 700; font-style: normal;">Magnolia Regional Medical Center</span><span data-template-id="hospital-type-header" class="canva-text logo-type block" style="color: rgb(92, 103, 95); font-weight: 500; font-style: normal;">Compassionate care, close to home</span></span> </a>
      <form id="header-search-form" class="desktop-only ml-auto flex w-full max-w-xs" role="search"><label class="sr-only" for="header-search">Search services or doctors</label> <input id="header-search" class="focus-ring w-full rounded-l-full border border-[#aebbaa] bg-[#fffaf1] px-4 py-2.5 text-sm" type="search" placeholder="Search services or doctors"> <button data-template-id="search-button" class="canva-button focus-ring rounded-r-full px-4" type="submit" aria-label="Search" style="background: rgb(39, 72, 61); color: rgb(255, 255, 255);"><i data-lucide="search" class="h-4 w-4" aria-hidden="true"></i></button>
      </form>
-     <div class="desktop-only flex gap-2"><a href="doctors.html" data-template-id="find-doctor-header" class="canva-button button-base button-soft focus-ring" style="color: rgb(39, 72, 61); font-weight: 700; font-style: normal;">Find a doctor</a> <a data-template-id="appointment-header" class="canva-button button-base button-primary focus-ring" href="#contact" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal;">Request support</a>
+     <div class="desktop-only flex gap-2"><a href="doctors.html" data-template-id="find-doctor-header" class="canva-button button-base button-soft focus-ring" style="color: rgb(39, 72, 61); font-weight: 700; font-style: normal;">Find a doctor</a> <a data-template-id="appointment-header" class="canva-button button-base button-primary focus-ring" href="book.html" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal;"><i data-lucide="calendar-plus" class="h-4 w-4" aria-hidden="true"></i>Book appointment</a>
      </div><button id="menu-toggle" class="mobile-toggle focus-ring ml-auto grid h-11 w-11 flex-none place-items-center rounded-full border border-[#aebbaa]" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation menu"><i data-lucide="menu" class="h-5 w-5" aria-hidden="true"></i></button>
     </div>
     <nav class="desktop-only border-t border-[#d8d8ca]" aria-label="Primary navigation">
-     <div class="mx-auto flex max-w-7xl gap-5 px-5 py-3 lg:px-8"><a class="nav-link focus-ring" href="#top">Home</a><a class="nav-link focus-ring" href="patient-portal.html">Patient portal</a><div class="nav-dropdown" id="find-care-dropdown"><button class="nav-dropdown-trigger nav-link focus-ring" type="button" id="find-care-trigger" aria-expanded="false" aria-controls="find-care-menu">Find care <i data-lucide="chevron-down" class="h-4 w-4" aria-hidden="true"></i></button><div id="find-care-menu" class="nav-dropdown-menu" role="menu" aria-label="Find care" hidden><a role="menuitem" href="#find-care">Emergency care</a><a role="menuitem" href="primary-care.html">Primary care</a><a role="menuitem" href="specialties.html">Specialty care</a><a role="menuitem" href="imaging.html">Diagnostic imaging</a></div></div><div class="nav-dropdown" id="doctors-dropdown"><button class="nav-dropdown-trigger nav-link focus-ring" type="button" id="doctors-trigger" aria-expanded="false" aria-controls="doctors-menu">Doctors <i data-lucide="chevron-down" class="h-4 w-4" aria-hidden="true"></i></button><div id="doctors-menu" class="nav-dropdown-menu nav-dropdown-menu--wide" role="menu" aria-label="Find a doctor" hidden><a role="menuitem" class="nav-dropdown-menu__all" href="doctors.html">All doctors</a><a role="menuitem" href="doctors.html?q=family">Primary care</a><a role="menuitem" href="doctors.html?q=emergency">Emergency medicine</a><a role="menuitem" href="doctors.html?q=cardiology">Cardiology</a><a role="menuitem" href="doctors.html?q=neurology">Neurology</a><a role="menuitem" href="doctors.html?q=oncology">Oncology</a><a role="menuitem" href="doctors.html?q=surgery">General surgery</a><a role="menuitem" href="doctors.html?q=obgyn">Obstetrics &amp; gynecology</a><a role="menuitem" href="doctors.html?q=pediatrics">Pediatrics</a><a role="menuitem" href="doctors.html?q=rehabilitation">Rehabilitation medicine</a><a role="menuitem" href="doctors.html?q=radiology">Diagnostic imaging</a></div></div><a class="nav-link focus-ring" href="#about">About Magnolia</a><a class="nav-link focus-ring" href="#visit">Plan your visit</a><a class="nav-link focus-ring" href="#billing">Billing</a><a class="nav-link focus-ring" href="#contact">Contact</a><a class="nav-link focus-ring" href="sources.html">Sources &amp; notes</a>
+     <div class="mx-auto flex max-w-7xl gap-5 px-5 py-3 lg:px-8"><a class="nav-link focus-ring" href="#top">Home</a><a class="nav-link focus-ring" href="patient-portal.html">Patient portal</a><a class="nav-link focus-ring" href="book.html">Book online</a><div class="nav-dropdown" id="find-care-dropdown"><button class="nav-dropdown-trigger nav-link focus-ring" type="button" id="find-care-trigger" aria-expanded="false" aria-controls="find-care-menu">Find care <i data-lucide="chevron-down" class="h-4 w-4" aria-hidden="true"></i></button><div id="find-care-menu" class="nav-dropdown-menu" role="menu" aria-label="Find care" hidden><a role="menuitem" href="#find-care">Emergency care</a><a role="menuitem" href="primary-care.html">Primary care</a><a role="menuitem" href="specialties.html">Specialty care</a><a role="menuitem" href="imaging.html">Diagnostic imaging</a></div></div><div class="nav-dropdown" id="doctors-dropdown"><button class="nav-dropdown-trigger nav-link focus-ring" type="button" id="doctors-trigger" aria-expanded="false" aria-controls="doctors-menu">Doctors <i data-lucide="chevron-down" class="h-4 w-4" aria-hidden="true"></i></button><div id="doctors-menu" class="nav-dropdown-menu nav-dropdown-menu--wide" role="menu" aria-label="Find a doctor" hidden><a role="menuitem" class="nav-dropdown-menu__all" href="doctors.html">All doctors</a><a role="menuitem" href="doctors.html?q=family">Primary care</a><a role="menuitem" href="doctors.html?q=emergency">Emergency medicine</a><a role="menuitem" href="doctors.html?q=cardiology">Cardiology</a><a role="menuitem" href="doctors.html?q=neurology">Neurology</a><a role="menuitem" href="doctors.html?q=oncology">Oncology</a><a role="menuitem" href="doctors.html?q=surgery">General surgery</a><a role="menuitem" href="doctors.html?q=obgyn">Obstetrics &amp; gynecology</a><a role="menuitem" href="doctors.html?q=pediatrics">Pediatrics</a><a role="menuitem" href="doctors.html?q=rehabilitation">Rehabilitation medicine</a><a role="menuitem" href="doctors.html?q=radiology">Diagnostic imaging</a></div></div><a class="nav-link focus-ring" href="#about">About Magnolia</a><a class="nav-link focus-ring" href="#visit">Plan your visit</a><a class="nav-link focus-ring" href="#billing">Billing</a><a class="nav-link focus-ring" href="#contact">Contact</a><a class="nav-link focus-ring" href="sources.html">Sources &amp; notes</a>
      </div>
     </nav>
     <nav id="mobile-menu" class="mobile-nav border-t border-[#d8d8ca] bg-[#fffaf1] px-5 py-4" aria-label="Mobile navigation">
      <form id="mobile-search-form" class="mb-4 flex" role="search"><label class="sr-only" for="mobile-search">Search services or doctors</label> <input id="mobile-search" class="focus-ring w-full rounded-l-full border border-[#aebbaa] bg-white px-4 py-2.5 text-base" type="search" placeholder="Search services or doctors"> <button class="focus-ring rounded-r-full bg-[#27483d] px-4 text-white" type="submit" aria-label="Search"><i data-lucide="search" class="h-4 w-4" aria-hidden="true"></i></button>
      </form>
      <div class="grid gap-1">
-      <a class="nav-link focus-ring rounded-lg px-3 py-2.5" href="#top">Home</a><a class="nav-link focus-ring rounded-lg px-3 py-2.5" href="patient-portal.html">Patient portal</a><a class="nav-link focus-ring rounded-lg px-3 py-2.5" href="donate.html">Donate</a><div class="mobile-nav-group" id="find-care-mobile-group"><button class="nav-dropdown-trigger nav-link focus-ring" type="button" id="find-care-mobile-trigger" aria-expanded="false" aria-controls="find-care-mobile-sub">Find care <i data-lucide="chevron-down" class="h-4 w-4" aria-hidden="true"></i></button><div id="find-care-mobile-sub" class="mobile-nav-sub"><a class="nav-link focus-ring rounded-lg px-3 py-2" href="#find-care">Emergency care</a><a class="nav-link focus-ring rounded-lg px-3 py-2" href="primary-care.html">Primary care</a><a class="nav-link focus-ring rounded-lg px-3 py-2" href="specialties.html">Specialty care</a><a class="nav-link focus-ring rounded-lg px-3 py-2" href="imaging.html">Diagnostic imaging</a></div></div><div class="mobile-nav-group" id="doctors-mobile-group"><button class="nav-dropdown-trigger nav-link focus-ring" type="button" id="doctors-mobile-trigger" aria-expanded="false" aria-controls="doctors-mobile-sub">Doctors <i data-lucide="chevron-down" class="h-4 w-4" aria-hidden="true"></i></button><div id="doctors-mobile-sub" class="mobile-nav-sub"><a class="nav-link focus-ring rounded-lg px-3 py-2" href="doctors.html">All doctors</a><a class="nav-link focus-ring rounded-lg px-3 py-2" href="doctors.html?q=family">Primary care</a><a class="nav-link focus-ring rounded-lg px-3 py-2" href="doctors.html?q=emergency">Emergency medicine</a><a class="nav-link focus-ring rounded-lg px-3 py-2" href="doctors.html?q=cardiology">Cardiology</a><a class="nav-link focus-ring rounded-lg px-3 py-2" href="doctors.html?q=neurology">Neurology</a><a class="nav-link focus-ring rounded-lg px-3 py-2" href="doctors.html?q=oncology">Oncology</a><a class="nav-link focus-ring rounded-lg px-3 py-2" href="doctors.html?q=surgery">General surgery</a><a class="nav-link focus-ring rounded-lg px-3 py-2" href="doctors.html?q=obgyn">Obstetrics &amp; gynecology</a><a class="nav-link focus-ring rounded-lg px-3 py-2" href="doctors.html?q=pediatrics">Pediatrics</a><a class="nav-link focus-ring rounded-lg px-3 py-2" href="doctors.html?q=rehabilitation">Rehabilitation medicine</a><a class="nav-link focus-ring rounded-lg px-3 py-2" href="doctors.html?q=radiology">Diagnostic imaging</a></div></div><a class="nav-link focus-ring rounded-lg px-3 py-2.5" href="#about">About Magnolia</a><a class="nav-link focus-ring rounded-lg px-3 py-2.5" href="#visit">Plan your visit</a><a class="nav-link focus-ring rounded-lg px-3 py-2.5" href="#billing">Insurance and billing</a><a class="nav-link focus-ring rounded-lg px-3 py-2.5" href="#contact">Contact</a><a class="nav-link focus-ring rounded-lg px-3 py-2.5" href="sources.html">Sources &amp; notes</a>
+      <a class="nav-link focus-ring rounded-lg px-3 py-2.5" href="#top">Home</a><a class="nav-link focus-ring rounded-lg px-3 py-2.5" href="book.html">Book an appointment</a><a class="nav-link focus-ring rounded-lg px-3 py-2.5" href="patient-portal.html">Patient portal</a><a class="nav-link focus-ring rounded-lg px-3 py-2.5" href="donate.html">Donate</a><div class="mobile-nav-group" id="find-care-mobile-group"><button class="nav-dropdown-trigger nav-link focus-ring" type="button" id="find-care-mobile-trigger" aria-expanded="false" aria-controls="find-care-mobile-sub">Find care <i data-lucide="chevron-down" class="h-4 w-4" aria-hidden="true"></i></button><div id="find-care-mobile-sub" class="mobile-nav-sub"><a class="nav-link focus-ring rounded-lg px-3 py-2" href="#find-care">Emergency care</a><a class="nav-link focus-ring rounded-lg px-3 py-2" href="primary-care.html">Primary care</a><a class="nav-link focus-ring rounded-lg px-3 py-2" href="specialties.html">Specialty care</a><a class="nav-link focus-ring rounded-lg px-3 py-2" href="imaging.html">Diagnostic imaging</a></div></div><div class="mobile-nav-group" id="doctors-mobile-group"><button class="nav-dropdown-trigger nav-link focus-ring" type="button" id="doctors-mobile-trigger" aria-expanded="false" aria-controls="doctors-mobile-sub">Doctors <i data-lucide="chevron-down" class="h-4 w-4" aria-hidden="true"></i></button><div id="doctors-mobile-sub" class="mobile-nav-sub"><a class="nav-link focus-ring rounded-lg px-3 py-2" href="doctors.html">All doctors</a><a class="nav-link focus-ring rounded-lg px-3 py-2" href="doctors.html?q=family">Primary care</a><a class="nav-link focus-ring rounded-lg px-3 py-2" href="doctors.html?q=emergency">Emergency medicine</a><a class="nav-link focus-ring rounded-lg px-3 py-2" href="doctors.html?q=cardiology">Cardiology</a><a class="nav-link focus-ring rounded-lg px-3 py-2" href="doctors.html?q=neurology">Neurology</a><a class="nav-link focus-ring rounded-lg px-3 py-2" href="doctors.html?q=oncology">Oncology</a><a class="nav-link focus-ring rounded-lg px-3 py-2" href="doctors.html?q=surgery">General surgery</a><a class="nav-link focus-ring rounded-lg px-3 py-2" href="doctors.html?q=obgyn">Obstetrics &amp; gynecology</a><a class="nav-link focus-ring rounded-lg px-3 py-2" href="doctors.html?q=pediatrics">Pediatrics</a><a class="nav-link focus-ring rounded-lg px-3 py-2" href="doctors.html?q=rehabilitation">Rehabilitation medicine</a><a class="nav-link focus-ring rounded-lg px-3 py-2" href="doctors.html?q=radiology">Diagnostic imaging</a></div></div><a class="nav-link focus-ring rounded-lg px-3 py-2.5" href="#about">About Magnolia</a><a class="nav-link focus-ring rounded-lg px-3 py-2.5" href="#visit">Plan your visit</a><a class="nav-link focus-ring rounded-lg px-3 py-2.5" href="#billing">Insurance and billing</a><a class="nav-link focus-ring rounded-lg px-3 py-2.5" href="#contact">Contact</a><a class="nav-link focus-ring rounded-lg px-3 py-2.5" href="sources.html">Sources &amp; notes</a>
      </div>
      <div class="mt-4 grid gap-2 sm:grid-cols-2">
-      <a href="doctors.html" data-template-id="find-doctor-mobile" class="canva-button button-base button-soft focus-ring" style="color: rgb(39, 72, 61); font-weight: 700; font-style: normal;">Find a doctor</a><a data-template-id="appointment-mobile" class="canva-button button-base button-primary focus-ring" href="#contact" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal;">Request support</a>
+      <a href="doctors.html" data-template-id="find-doctor-mobile" class="canva-button button-base button-soft focus-ring" style="color: rgb(39, 72, 61); font-weight: 700; font-style: normal;">Find a doctor</a><a data-template-id="appointment-mobile" class="canva-button button-base button-primary focus-ring" href="book.html" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal;">Book appointment</a>
      </div>
     </nav>
    </header>
@@ -266,7 +285,7 @@
        <h1 id="hero-title" data-template-id="hero-title" class="canva-text t-display mt-5 max-w-3xl" style="color: rgb(39, 72, 61); font-weight: 400; font-style: normal;">Care, nurtured to last.</h1>
        <p data-template-id="hero-copy" class="canva-text t-lead mt-6 max-w-xl" style="color: rgb(48, 61, 55); font-weight: 400; font-style: normal;">Magnolia Regional helps patients and the people who support them find a clear path through hospital and outpatient care.</p>
        <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-        <a data-template-id="hero-care-paths" class="canva-button button-base button-primary focus-ring" href="#find-care" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal;">Find care <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a><a data-template-id="hero-appointment" class="canva-button button-base button-soft focus-ring" href="#contact" style="color: rgb(39, 72, 61); font-weight: 700; font-style: normal;">Request support</a>
+        <a data-template-id="hero-care-paths" class="canva-button button-base button-primary focus-ring" href="#find-care" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal;">Find care <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a><a data-template-id="hero-appointment" class="canva-button button-base button-soft focus-ring" href="book.html" style="color: rgb(39, 72, 61); font-weight: 700; font-style: normal;"><i data-lucide="calendar-plus" class="h-4 w-4" aria-hidden="true"></i>Book an appointment</a>
        </div>
       </div>
       <figure class="relative mx-auto m-0 w-full max-w-lg">
@@ -285,21 +304,22 @@
      <div class="mx-auto max-w-7xl">
       <h2 id="quick-actions-title" data-template-id="rail-title" class="sr-only">Quick actions</h2>
       <div class="grid overflow-hidden rounded-2xl border border-[#aebbaa]/50 bg-[#fffaf1] sm:grid-cols-2 lg:grid-cols-4">
+       <a href="book.html" class="rail-action focus-ring"><i data-lucide="calendar-plus" class="mb-4 h-5 w-5 text-[#8347ae]" aria-hidden="true"></i><span class="t-h4 block" style="color: rgb(39, 72, 61); font-weight: 700;">Book an appointment</span><span class="t-small mt-1 block" style="color: rgb(92, 103, 95);">Pick a clinician and time online.</span></a>
        <a href="doctors.html" class="rail-action focus-ring"><i data-lucide="stethoscope" class="mb-4 h-5 w-5 text-[#8347ae]" aria-hidden="true"></i><span data-template-id="rail-doctor-title" class="canva-text t-h4 block" style="color: rgb(39, 72, 61); font-weight: 700; font-style: normal;">Find a doctor</span><span data-template-id="rail-doctor-copy" class="canva-text t-small mt-1 block" style="color: rgb(92, 103, 95); font-weight: 400; font-style: normal;">Browse all doctors by specialty.</span></a>
        <a class="rail-action focus-ring" href="patient-portal.html"><i data-lucide="laptop" class="mb-4 h-5 w-5 text-[#8347ae]" aria-hidden="true"></i><span data-template-id="rail-portal-title" class="canva-text t-h4 block" style="color: rgb(39, 72, 61); font-weight: 700; font-style: normal;">Patient portal</span><span data-template-id="rail-portal-copy" class="canva-text t-small mt-1 block" style="color: rgb(92, 103, 95); font-weight: 400; font-style: normal;">Results, appointments and messages.</span></a>
        <a href="#visit" class="rail-action focus-ring"><i data-lucide="map-pin" class="mb-4 h-5 w-5 text-[#27483d]" aria-hidden="true"></i><span data-template-id="rail-visit-title" class="canva-text t-h4 block" style="color: rgb(39, 72, 61); font-weight: 700; font-style: normal;">Plan your visit</span><span data-template-id="rail-visit-copy" class="canva-text t-small mt-1 block" style="color: rgb(92, 103, 95); font-weight: 400; font-style: normal;">Parking, visiting hours and what to bring.</span></a>
-       <a href="tel:+15550147820" class="rail-action focus-ring"><i data-lucide="phone" class="mb-4 h-5 w-5 text-[#27483d]" aria-hidden="true"></i><span data-template-id="rail-service-title" class="canva-text t-h4 block" style="color: rgb(39, 72, 61); font-weight: 700; font-style: normal;">Call the main line</span><span data-template-id="rail-service-copy" class="canva-text t-small mt-1 block" style="color: rgb(92, 103, 95); font-weight: 400; font-style: normal;">(555) 014-7820</span></a>
+       
       </div>
      </div>
     </section>
 
-    <!-- Find care: one service list, one search -->
+    <!-- Find care: every care type visible at once, each with a direct way to book -->
     <section id="find-care" class="section-anchor bg-[#fffaf1] px-5 py-16 lg:px-8 lg:py-24" aria-labelledby="find-care-title">
      <div class="mx-auto max-w-7xl">
       <div class="grid gap-8 lg:grid-cols-[1fr_minmax(0,26rem)] lg:items-end">
        <div class="max-w-2xl">
         <h2 id="find-care-title" data-template-id="paths-title" class="canva-text t-h2 m-0" style="color: rgb(39, 72, 61); font-weight: 400; font-style: normal;">Find the care you need</h2>
-        <p data-template-id="paths-copy" class="canva-text t-body mt-4 mb-0" style="color: rgb(48, 61, 55); font-weight: 400; font-style: normal;">Start with the kind of help you are looking for. Each service explains what it covers and how to book.</p>
+        <p data-template-id="paths-copy" class="canva-text t-body mt-4 mb-0" style="color: rgb(48, 61, 55); font-weight: 400; font-style: normal;">Start with the kind of help you are looking for. Book online in a couple of minutes, or explore what each service covers.</p>
        </div>
        <div>
         <label data-template-id="service-search-label" class="canva-text t-small mb-2 block font-bold" for="service-search" style="color: rgb(39, 72, 61); font-weight: 700; font-style: normal;">Search services</label>
@@ -313,57 +333,79 @@
        <p class="t-body m-0 font-semibold text-[#27483d]">No matching services.</p>
        <p class="t-small mb-0 mt-1">Try a different word, or <a class="focus-ring font-bold text-[#27483d] underline underline-offset-4" href="#contact">send us a request</a> and the team will point you in the right direction.</p>
       </div>
-      <div id="service-list" class="mt-10 grid gap-6">
-       <article data-reveal="0" class="path-card fill-card emergency-card rounded-[2rem_2rem_2rem_.5rem] bg-[#fffaf1]" data-search="emergency er urgent accident injury trauma chest pain stroke 24/7 ambulance paramedics">
-        <img class="emergency-card__photo" src="https://images.pexels.com/photos/6519920/pexels-photo-6519920.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200" alt="Paramedics wheel a stretcher to the back of an open ambulance." width="1200" height="800" loading="lazy">
-        <div class="emergency-card__body">
-         <div class="flex flex-wrap items-center gap-3"><span class="fill-chip grid h-11 w-11 flex-none place-items-center rounded-full bg-[#f4e2e1] text-[#9b2c3f]"><i data-lucide="siren" class="h-5 w-5" aria-hidden="true"></i></span><span class="fill-chip t-tag inline-flex items-center gap-1.5 rounded-full bg-[#f4e2e1] px-3 py-1.5 text-[#9b2c3f]"><span class="emergency-dot" aria-hidden="true"></span>Open 24 hours, every day</span></div>
-         <h3 class="fill-ink t-h2 mb-0 mt-5">Emergency care</h3>
-         <p class="fill-muted t-body mb-0 mt-3">Our emergency department treats serious injuries and sudden illness around the clock. Ambulances and walk-in patients use the east entrance off Magnolia Grove Way.</p>
-         <p class="fill-ink t-body mb-0 mt-4 font-bold text-[#27483d]">Life-threatening? Call <a class="emergency-911 focus-ring underline underline-offset-4" href="tel:911">911</a> right away.</p>
-         <div class="mt-3 flex flex-wrap gap-x-6"><button class="text-link focus-ring" type="button" data-modal="emergency">About emergency care <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></button><a class="text-link focus-ring" href="#visit">Directions to the ER <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a></div>
+
+      <div id="service-list" class="care-list mt-10">
+       <article class="care-emergency" data-search="emergency er urgent accident injury trauma chest pain stroke 24/7 ambulance paramedics">
+        <span class="care-emergency__icon" aria-hidden="true"><i data-lucide="siren" class="h-5 w-5"></i></span>
+        <div class="care-emergency__text">
+         <h3 class="care-emergency__title">Emergency care <span class="care-open"><span class="emergency-dot" aria-hidden="true"></span>Open 24/7</span></h3>
+         <p class="t-small m-0 mt-1 text-[#303d37]">Serious injury or sudden illness? Come to the east entrance off Magnolia Grove Way. Emergencies don't need an appointment.</p>
+        </div>
+        <div class="care-emergency__actions">
+         <a class="button-base care-911 focus-ring" href="tel:911"><i data-lucide="phone" class="h-4 w-4" aria-hidden="true"></i>Call 911</a>
+         <a class="text-link focus-ring" href="#visit">Directions to the ER</a>
+         <button class="text-link focus-ring" type="button" data-modal="emergency">About emergency care</button>
         </div>
        </article>
-      </div>
-      <button id="service-grid-toggle" class="button-base button-soft focus-ring mt-6 inline-flex items-center gap-2" type="button" aria-expanded="false" aria-controls="service-grid"><span class="service-grid-toggle-label">Browse all care types</span> <i data-lucide="chevron-down" class="h-4 w-4" aria-hidden="true"></i></button>
-      <div id="service-grid" class="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3" hidden>
-       <article data-reveal="0" data-template-id="inpatient-path-card" class="canva-card path-card fill-card rounded-[2rem_2rem_2rem_.5rem] bg-[#fffaf1]" data-search="primary care check-up checkup physical screening vaccination vaccine everyday family doctor gp annual" style="background: rgb(255, 250, 241);"><img data-template-id="primary-care-image" class="canva-image h-52 w-full rounded-[1.5rem_1.5rem_1.5rem_.375rem] object-cover" width="800" height="533" loading="lazy" src="https://images.pexels.com/photos/4266942/pexels-photo-4266942.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Clinician consulting with a patient in a welcoming medical office.">
-        <div class="mt-6 flex items-center gap-3"><span class="fill-chip grid h-11 w-11 flex-none place-items-center rounded-full bg-[#ece5f2] text-[#8347ae]"><i data-lucide="stethoscope" class="h-5 w-5" aria-hidden="true"></i></span><span data-template-id="inpatient-tag" class="canva-tag fill-chip t-tag rounded-full px-3 py-1.5" style="background: rgb(236, 229, 242); color: rgb(39, 72, 61); font-weight: 700; font-style: normal;">Everyday care</span></div>
-        <h3 data-template-id="inpatient-title" class="canva-text fill-ink t-h3 mb-0 mt-5" style="color: rgb(39, 72, 61); font-weight: 400; font-style: normal;">Primary care</h3>
-        <p data-template-id="inpatient-copy" class="canva-text fill-muted t-body mb-0 mt-3" style="color: rgb(48, 61, 55); font-weight: 400; font-style: normal;">Check-ups, screenings and an ongoing relationship with one care team that gets to know you.</p>
-        <ul class="mt-4 grid gap-1.5">
-         <li class="t-small fill-muted flex items-center gap-2"><i data-lucide="check" class="fill-ink h-4 w-4 flex-none" aria-hidden="true"></i>Annual physicals and wellness visits</li>
-         <li class="t-small fill-muted flex items-center gap-2"><i data-lucide="check" class="fill-ink h-4 w-4 flex-none" aria-hidden="true"></i>Vaccinations and preventive screenings</li>
-         <li class="t-small fill-muted flex items-center gap-2"><i data-lucide="check" class="fill-ink h-4 w-4 flex-none" aria-hidden="true"></i>Chronic conditions, such as diabetes or blood pressure</li>
-         <li class="t-small fill-muted flex items-center gap-2"><i data-lucide="check" class="fill-ink h-4 w-4 flex-none" aria-hidden="true"></i>Referrals to the right specialist when you need one</li>
-        </ul>
-        <a href="primary-care.html" data-template-id="inpatient-link" class="canva-link text-link focus-ring mt-4" style="color: rgb(131, 71, 174); font-weight: 700; font-style: normal;">Explore primary care <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
-       </article>
-       <article data-reveal="1" data-template-id="outpatient-path-card" class="canva-card path-card fill-card rounded-[2rem_2rem_.5rem_2rem] bg-[#fffaf1]" data-search="specialty specialist specialties referral consultation condition heart cardiology cardiac vascular blood pressure neurology brain stroke headache migraine seizure memory cancer oncology chemotherapy surgery surgical operation joint hernia women maternity pregnancy prenatal birth pediatrics children kids teens rehabilitation rehab therapy physical occupational speech lab laboratory blood test" style="background: rgb(255, 250, 241);"><img data-template-id="specialty-care-image" class="canva-image h-52 w-full rounded-[1.5rem_1.5rem_.375rem_1.5rem] object-cover" width="800" height="533" loading="lazy" src="https://images.pexels.com/photos/7578797/pexels-photo-7578797.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Specialist discusses a health chart with a patient during consultation.">
-        <div class="mt-6 flex items-center gap-3"><span class="fill-chip grid h-11 w-11 flex-none place-items-center rounded-full bg-[#f4e2e1] text-[#a96778]"><i data-lucide="heart-pulse" class="h-5 w-5" aria-hidden="true"></i></span><span data-template-id="outpatient-tag" class="canva-tag fill-chip t-tag rounded-full px-3 py-1.5" style="background: rgb(244, 226, 225); color: rgb(39, 72, 61); font-weight: 700; font-style: normal;">Focused treatment</span></div>
-        <h3 data-template-id="outpatient-title" class="canva-text fill-ink t-h3 mb-0 mt-5" style="color: rgb(39, 72, 61); font-weight: 400; font-style: normal;">Specialty care</h3>
-        <p data-template-id="outpatient-copy" class="canva-text fill-muted t-body mb-0 mt-3" style="color: rgb(48, 61, 55); font-weight: 400; font-style: normal;">Specialist teams for heart, brain, cancer, surgery, maternity, children and more, plus rehabilitation and lab services.</p>
-        <ul class="mt-4 grid gap-1.5">
-         <li class="t-small fill-muted flex items-center gap-2"><i data-lucide="check" class="fill-ink h-4 w-4 flex-none" aria-hidden="true"></i>Heart, vascular and surgical care</li>
-         <li class="t-small fill-muted flex items-center gap-2"><i data-lucide="check" class="fill-ink h-4 w-4 flex-none" aria-hidden="true"></i>Neurology and cancer care</li>
-         <li class="t-small fill-muted flex items-center gap-2"><i data-lucide="check" class="fill-ink h-4 w-4 flex-none" aria-hidden="true"></i>Maternity and pediatrics</li>
-         <li class="t-small fill-muted flex items-center gap-2"><i data-lucide="check" class="fill-ink h-4 w-4 flex-none" aria-hidden="true"></i>Rehabilitation and lab services</li>
-        </ul>
-        <a href="specialties.html" data-template-id="outpatient-link" class="canva-link text-link focus-ring mt-4" style="color: rgb(131, 71, 174); font-weight: 700; font-style: normal;">Explore specialties <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
-       </article>
-       <article data-reveal="2" class="canva-card path-card fill-card md:col-span-2 lg:col-span-1 rounded-[2rem_.5rem_2rem_2rem] bg-[#fffaf1]" data-search="diagnostic imaging scan x-ray xray mri ct ultrasound mammogram radiology test tests"><img data-template-id="diagnostic-imaging-image" class="canva-image h-52 w-full rounded-[1.5rem_.375rem_1.5rem_1.5rem] object-cover" width="800" height="533" loading="lazy" src="https://images.pexels.com/photos/11119416/pexels-photo-11119416.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Medical technologist stands beside diagnostic imaging equipment, preparing for a scan.">
-        <div class="mt-6 flex items-center gap-3"><span class="fill-chip grid h-11 w-11 flex-none place-items-center rounded-full bg-[#e7eee4] text-[#27483d]"><i data-lucide="scan" class="h-5 w-5" aria-hidden="true"></i></span><span class="fill-chip t-tag rounded-full bg-[#e7eee4] px-3 py-1.5 text-[#27483d]">Tests &amp; scans</span></div>
-        <h3 data-template-id="diagnostic-imaging-title" class="canva-text fill-ink t-h3 mb-0 mt-5" style="color: rgb(39, 72, 61); font-weight: 400; font-style: normal;">Diagnostic imaging</h3>
-        <p data-template-id="diagnostic-imaging-copy" class="canva-text fill-muted t-body mb-0 mt-3" style="color: rgb(48, 61, 55); font-weight: 400; font-style: normal;">Scans that help your care team see what is going on, read by board-certified radiologists.</p>
-        <ul class="mt-4 grid gap-1.5">
-         <li class="t-small fill-muted flex items-center gap-2"><i data-lucide="check" class="fill-ink h-4 w-4 flex-none" aria-hidden="true"></i>X-ray and fluoroscopy</li>
-         <li class="t-small fill-muted flex items-center gap-2"><i data-lucide="check" class="fill-ink h-4 w-4 flex-none" aria-hidden="true"></i>Ultrasound, including prenatal</li>
-         <li class="t-small fill-muted flex items-center gap-2"><i data-lucide="check" class="fill-ink h-4 w-4 flex-none" aria-hidden="true"></i>CT scan</li>
-         <li class="t-small fill-muted flex items-center gap-2"><i data-lucide="check" class="fill-ink h-4 w-4 flex-none" aria-hidden="true"></i>MRI and mammography</li>
-        </ul>
-        <p class="t-small fill-muted mb-0 mt-3">Most scans need an order from your clinician. Same-day X-ray is available for urgent needs.</p>
-        <a href="imaging.html" data-template-id="diagnostic-imaging-link" class="canva-link text-link focus-ring mt-4" style="color: rgb(131, 71, 174); font-weight: 700; font-style: normal;">Explore imaging <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
-       </article>
+
+       <div id="service-grid" class="care-grid">
+        <article class="care-card focus-within" data-search="primary care check-up checkup physical screening vaccination vaccine everyday family doctor gp annual sick">
+         <img class="care-card__img" width="800" height="533" loading="lazy" src="https://images.pexels.com/photos/4266942/pexels-photo-4266942.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Clinician consulting with a patient in a welcoming medical office.">
+         <div class="care-card__body">
+          <div class="flex items-center gap-3"><span class="grid h-10 w-10 flex-none place-items-center rounded-full bg-[#ece5f2] text-[#8347ae]"><i data-lucide="stethoscope" class="h-5 w-5" aria-hidden="true"></i></span><span class="t-tag rounded-full bg-[#ece5f2] px-3 py-1.5 text-[#27483d]">Everyday care</span></div>
+          <h3 class="t-h3 mb-0 mt-4">Primary care</h3>
+          <p class="t-body mb-0 mt-2 text-[#303d37]">Check-ups, screenings and an ongoing relationship with one care team that gets to know you.</p>
+          <ul class="care-card__list">
+           <li><i data-lucide="check" class="h-4 w-4" aria-hidden="true"></i>Annual physicals and sick visits</li>
+           <li><i data-lucide="check" class="h-4 w-4" aria-hidden="true"></i>Vaccines and screenings</li>
+           <li><i data-lucide="check" class="h-4 w-4" aria-hidden="true"></i>Diabetes, blood pressure and more</li>
+          </ul>
+          <p class="care-card__meta"><i data-lucide="badge-check" class="h-4 w-4" aria-hidden="true"></i>No referral needed · Video visits available</p>
+          <div class="care-card__actions">
+           <a class="button-base button-primary focus-ring" href="book.html?care=primary"><i data-lucide="calendar-plus" class="h-4 w-4" aria-hidden="true"></i>Book online</a>
+           <a class="text-link focus-ring" href="primary-care.html">Explore<span class="sr-only"> primary care</span> <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
+          </div>
+         </div>
+        </article>
+
+        <article class="care-card" data-search="specialty specialist specialties referral consultation condition heart cardiology cardiac vascular blood pressure neurology brain stroke headache migraine seizure memory cancer oncology chemotherapy surgery surgical operation joint hernia women maternity pregnancy prenatal birth pediatrics children kids teens rehabilitation rehab therapy physical occupational speech lab laboratory blood test">
+         <img class="care-card__img" width="800" height="533" loading="lazy" src="https://images.pexels.com/photos/7578797/pexels-photo-7578797.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Specialist discusses a health chart with a patient during consultation.">
+         <div class="care-card__body">
+          <div class="flex items-center gap-3"><span class="grid h-10 w-10 flex-none place-items-center rounded-full bg-[#f4e2e1] text-[#a96778]"><i data-lucide="heart-pulse" class="h-5 w-5" aria-hidden="true"></i></span><span class="t-tag rounded-full bg-[#f4e2e1] px-3 py-1.5 text-[#27483d]">Focused treatment</span></div>
+          <h3 class="t-h3 mb-0 mt-4">Specialty care</h3>
+          <p class="t-body mb-0 mt-2 text-[#303d37]">Specialist teams for heart, brain, cancer, surgery, maternity, children and rehab.</p>
+          <ul class="care-card__list">
+           <li><i data-lucide="check" class="h-4 w-4" aria-hidden="true"></i>Heart, vascular and surgical care</li>
+           <li><i data-lucide="check" class="h-4 w-4" aria-hidden="true"></i>Neurology and cancer care</li>
+           <li><i data-lucide="check" class="h-4 w-4" aria-hidden="true"></i>Maternity, pediatrics and rehab</li>
+          </ul>
+          <p class="care-card__meta"><i data-lucide="file-check-2" class="h-4 w-4" aria-hidden="true"></i>Cancer care and surgery need a referral</p>
+          <div class="care-card__actions">
+           <a class="button-base button-primary focus-ring" href="book.html?care=specialty"><i data-lucide="calendar-plus" class="h-4 w-4" aria-hidden="true"></i>Book online</a>
+           <a class="text-link focus-ring" href="specialties.html">Explore<span class="sr-only"> specialty care</span> <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
+          </div>
+         </div>
+        </article>
+
+        <article class="care-card" data-search="diagnostic imaging scan x-ray xray mri ct ultrasound mammogram radiology test tests">
+         <img class="care-card__img" width="800" height="533" loading="lazy" src="https://images.pexels.com/photos/11119416/pexels-photo-11119416.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Medical technologist stands beside diagnostic imaging equipment, preparing for a scan.">
+         <div class="care-card__body">
+          <div class="flex items-center gap-3"><span class="grid h-10 w-10 flex-none place-items-center rounded-full bg-[#e7eee4] text-[#27483d]"><i data-lucide="scan" class="h-5 w-5" aria-hidden="true"></i></span><span class="t-tag rounded-full bg-[#e7eee4] px-3 py-1.5 text-[#27483d]">Tests &amp; scans</span></div>
+          <h3 class="t-h3 mb-0 mt-4">Diagnostic imaging</h3>
+          <p class="t-body mb-0 mt-2 text-[#303d37]">Scans that help your care team see what is going on, read by board-certified radiologists.</p>
+          <ul class="care-card__list">
+           <li><i data-lucide="check" class="h-4 w-4" aria-hidden="true"></i>X-ray and ultrasound</li>
+           <li><i data-lucide="check" class="h-4 w-4" aria-hidden="true"></i>CT and MRI</li>
+           <li><i data-lucide="check" class="h-4 w-4" aria-hidden="true"></i>Mammography</li>
+          </ul>
+          <p class="care-card__meta"><i data-lucide="file-check-2" class="h-4 w-4" aria-hidden="true"></i>Most scans need an order · Same-day X-ray</p>
+          <div class="care-card__actions">
+           <a class="button-base button-primary focus-ring" href="book.html?care=imaging"><i data-lucide="calendar-plus" class="h-4 w-4" aria-hidden="true"></i>Book a scan</a>
+           <a class="text-link focus-ring" href="imaging.html">Explore<span class="sr-only"> imaging</span> <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
+          </div>
+         </div>
+        </article>
+       </div>
       </div>
      </div>
     </section>
@@ -383,21 +425,21 @@
         <span class="fill-chip t-tag mt-6 inline-block rounded-full bg-[#ece5f2] px-3 py-1.5 text-[#27483d]">Family medicine</span>
         <h3 class="fill-ink t-h3 mb-0 mt-4">Dr. Amara Okafor</h3>
         <p class="fill-muted t-small mb-0 mt-2 text-[#5c675f]">Primary care for adults and children. Speaks English and Igbo.</p>
-        <button class="text-link focus-ring mt-3" type="button" data-request="Requesting an appointment" data-doctor="Dr. Amara Okafor">Request an appointment <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></button>
+        <a class="text-link focus-ring mt-3" href="book.html?doctor=okafor">Book an appointment<span class="sr-only"> with Dr. Amara Okafor</span> <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
        </article>
        <article data-reveal="1" class="fill-card path-card rounded-[2rem_2rem_.5rem_2rem] bg-[#fffaf1]">
         <img class="doctor-photo" src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&amp;fit=crop&amp;crop=faces&amp;w=600&amp;h=750&amp;q=75" alt="Portrait of Dr. Daniel Reyes smiling in blue scrubs with a stethoscope." width="600" height="750" loading="lazy">
         <span class="fill-chip t-tag mt-6 inline-block rounded-full bg-[#f4e2e1] px-3 py-1.5 text-[#27483d]">Cardiology</span>
         <h3 class="fill-ink t-h3 mb-0 mt-4">Dr. Daniel Reyes</h3>
         <p class="fill-muted t-small mb-0 mt-2 text-[#5c675f]">Heart health, blood pressure and rhythm care. Speaks English and Spanish.</p>
-        <button class="text-link focus-ring mt-3" type="button" data-request="Requesting an appointment" data-doctor="Dr. Daniel Reyes">Request an appointment <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></button>
+        <a class="text-link focus-ring mt-3" href="book.html?doctor=reyes">Book an appointment<span class="sr-only"> with Dr. Daniel Reyes</span> <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
        </article>
        <article data-reveal="2" class="fill-card path-card rounded-[2rem_.5rem_2rem_2rem] bg-[#fffaf1]">
         <img class="doctor-photo" src="https://images.unsplash.com/photo-1729162128021-f37dca3ff30d?auto=format&amp;fit=crop&amp;crop=faces&amp;w=600&amp;h=750&amp;q=75" alt="Portrait of Dr. Mateo Silva smiling in a white lab coat." width="600" height="750" loading="lazy">
         <span class="fill-chip t-tag mt-6 inline-block rounded-full bg-[#e7eee4] px-3 py-1.5 text-[#27483d]">Rehabilitation medicine</span>
         <h3 class="fill-ink t-h3 mb-0 mt-4">Dr. Mateo Silva</h3>
         <p class="fill-muted t-small mb-0 mt-2 text-[#5c675f]">Recovery plans after surgery, injury or stroke. Speaks English and Portuguese.</p>
-        <button class="text-link focus-ring mt-3" type="button" data-request="Requesting an appointment" data-doctor="Dr. Mateo Silva">Request an appointment <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></button>
+        <a class="text-link focus-ring mt-3" href="book.html?doctor=silva">Book an appointment<span class="sr-only"> with Dr. Mateo Silva</span> <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
        </article>
       </div>
       <div class="mt-8 flex flex-wrap items-center justify-between gap-4">
@@ -1043,7 +1085,7 @@
          <p data-template-id="emergency-note-copy" class="canva-text t-small mb-0 mt-1" style="color: rgb(48, 61, 55); font-weight: 500; font-style: normal;">If you need urgent help, call <a class="focus-ring font-bold text-[#27483d] underline underline-offset-4" href="tel:911">911</a> or go to the nearest emergency department.</p>
         </div>
        </div>
-       <p class="t-small mb-0 mt-6 text-[#5c675f]">Prefer to talk? Call appointments on <a class="focus-ring font-semibold text-[#27483d] underline underline-offset-4" href="tel:+15550147821">(555) 014-7821</a>.</p>
+       <p class="t-small mb-0 mt-6 text-[#5c675f]">Know what you need? <a class="focus-ring font-semibold text-[#27483d] underline underline-offset-4" href="book.html">Book online</a> and pick your own time. Prefer to talk? Call appointments on <a class="focus-ring font-semibold text-[#27483d] underline underline-offset-4" href="tel:+15550147821">(555) 014-7821</a>.</p>
       </div>
       <form id="appointment-form" class="rounded-[2rem_2rem_2rem_.5rem] border-t-4 border-[#27483d] bg-[#f7f0e2] p-6 sm:p-8" novalidate>
        <p class="t-small m-0 mb-5 text-[#5c675f]">All fields are required.</p>
@@ -1261,7 +1303,8 @@
     function createCareGrid() {
       const toggle = document.getElementById("service-grid-toggle");
       const grid = document.getElementById("service-grid");
-      const label = toggle ? toggle.querySelector(".service-grid-toggle-label") : null;
+      if (!toggle || !grid) return null;
+      const label = toggle.querySelector(".service-grid-toggle-label");
       function setOpen(isOpen) {
         grid.hidden = !isOpen;
         toggle.setAttribute("aria-expanded", String(isOpen));

@@ -84,28 +84,15 @@
     .spec-card__start+.button-primary{margin-top:1.25rem}
     .text-link{align-self:flex-start;display:inline-flex;align-items:center;gap:.4rem;min-height:2.75rem;margin-top:.35rem;color:var(--plum);font-weight:700;text-decoration:underline;text-underline-offset:5px}
     .text-link:hover{text-decoration-thickness:2px}
-    .fill-card:has(:focus-visible) .text-link{color:var(--blush)}
-    @media(hover:hover){.fill-card:hover .text-link{color:var(--blush)}}
     .button-primary:hover{background:var(--deep);transform:translateY(-1px)}
     .button-primary:active{transform:scale(.97)}
 
     /* Same green fill as the landing page cards */
     .fill-card{position:relative;isolation:isolate;overflow:hidden;transition:transform var(--dur) var(--ease-out),box-shadow var(--dur) ease}
-    .fill-card:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(165deg,var(--forest),var(--deep));clip-path:inset(100% 0 0 0);transition:clip-path 480ms var(--ease-out)}
     .fill-card .fill-ink,.fill-card .fill-muted,.fill-card .fill-chip{transition:color 280ms ease,background-color 280ms ease}
-    .fill-card:has(:focus-visible):before{clip-path:inset(0)}
-    .fill-card:has(:focus-visible) .fill-ink{color:var(--ivory)!important}
-    .fill-card:has(:focus-visible) .fill-muted{color:var(--mist)!important}
-    .fill-card:has(:focus-visible) .fill-chip{background:rgba(255,250,241,.14)!important;color:var(--ivory)!important}
-    .fill-card:has(:focus-visible) .button-primary{background:var(--ivory);color:var(--forest)}
     .fill-card .focus-ring:focus-visible{outline-color:var(--blush)}
     @media(hover:hover){
       .fill-card:hover{transform:translateY(-3px);box-shadow:0 18px 35px rgba(39,72,61,.12)}
-      .fill-card:hover:before{clip-path:inset(0)}
-      .fill-card:hover .fill-ink{color:var(--ivory)!important}
-      .fill-card:hover .fill-muted{color:var(--mist)!important}
-      .fill-card:hover .fill-chip{background:rgba(255,250,241,.14)!important;color:var(--ivory)!important}
-      .fill-card:hover .button-primary{background:var(--ivory);color:var(--forest)}
     }
 
     footer{background:var(--deep);color:var(--mist);padding:2rem 1.25rem}
@@ -123,6 +110,8 @@
     .notes-pill:hover{background:var(--mist);border-color:var(--forest)}
     .notes-pill:active{transform:scale(.97)}
     @media print{.notes-pill{display:none}}
+      @media(hover:hover){.fill-card:hover{border-color:#9daf9f}}
+    .fill-card:has(:focus-visible){border-color:var(--plum)}
   </style>
 </head>
 <body>
@@ -143,11 +132,12 @@
         <input id="header-search" type="search" name="search" placeholder="Search services or doctors" autocomplete="off">
         <button type="submit" aria-label="Search"><i data-lucide="search" class="h-4 w-4" aria-hidden="true"></i></button>
       </form>
-      <a class="header-cta focus-ring" href="index.html#contact">Request support</a>
+      <a class="header-cta focus-ring" href="book.html">Book appointment</a>
     </div>
     <nav class="site-nav" aria-label="Primary navigation">
       <ul>
         <li><a href="index.html">Home</a></li>
+        <li><a href="book.html">Book an appointment</a></li>
         <li><a href="primary-care.html">Primary care</a></li>
         <li><a href="specialties.html" aria-current="page">Specialty care</a></li>
         <li><a href="imaging.html">Diagnostic imaging</a></li>
@@ -189,7 +179,7 @@
           <h3 class="fill-ink">Common reasons people visit</h3>
           <ul class="fill-muted"><li>High blood pressure</li><li>Chest pain or a racing heartbeat</li><li>High cholesterol</li><li>Follow-up care after a heart attack</li></ul>
           <p class="spec-card__start fill-muted"><strong class="fill-ink">Getting started:</strong> Most visits start with a referral from your primary care team.</p>
-          <a class="button-primary focus-ring" href="index.html?reason=Requesting%20an%20appointment&amp;service=Heart%20and%20vascular#contact">Request an appointment <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
+          <a class="button-primary focus-ring" href="book.html?care=specialty&amp;specialty=heart">Book online <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
           <a class="text-link focus-ring" href="doctors.html#reyes">Meet Dr. Daniel Reyes <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
         </div>
       </article>
@@ -202,7 +192,7 @@
           <h3 class="fill-ink">Common reasons people visit</h3>
           <ul class="fill-muted"><li>Stroke prevention and recovery</li><li>Migraines and frequent headaches</li><li>Seizures and epilepsy</li><li>Memory changes</li></ul>
           <p class="spec-card__start fill-muted"><strong class="fill-ink">Getting started:</strong> Referral recommended. If someone shows sudden signs of stroke, call 911 right away.</p>
-          <a class="button-primary focus-ring" href="index.html?reason=Requesting%20an%20appointment&amp;service=Neurology#contact">Request an appointment <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
+          <a class="button-primary focus-ring" href="book.html?care=specialty&amp;specialty=neuro">Book online <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
           <a class="text-link focus-ring" href="doctors.html#haddad">Meet Dr. Leila Haddad <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
         </div>
       </article>
@@ -215,7 +205,7 @@
           <h3 class="fill-ink">Common reasons people visit</h3>
           <ul class="fill-muted"><li>Cancer screening</li><li>Chemotherapy and infusion</li><li>Help understanding a new diagnosis</li><li>Support groups for patients and families</li></ul>
           <p class="spec-card__start fill-muted"><strong class="fill-ink">Getting started:</strong> Ask your primary care team for a referral, or send us a request and a nurse navigator will call you.</p>
-          <a class="button-primary focus-ring" href="index.html?reason=Finding%20care%20or%20a%20service&amp;service=Cancer%20care#contact">Request an appointment <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
+          <a class="button-primary focus-ring" href="book.html?care=specialty&amp;specialty=cancer">Book online <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
           <a class="text-link focus-ring" href="doctors.html#owusu">Meet Dr. Samuel Owusu <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
         </div>
       </article>
@@ -228,7 +218,7 @@
           <h3 class="fill-ink">Common reasons people visit</h3>
           <ul class="fill-muted"><li>Hip and knee replacement</li><li>Hernia repair</li><li>Gallbladder surgery</li><li>Same-day outpatient procedures</li></ul>
           <p class="spec-card__start fill-muted"><strong class="fill-ink">Getting started:</strong> Starts with a referral and a pre-surgery visit.</p>
-          <a class="button-primary focus-ring" href="index.html?reason=Finding%20care%20or%20a%20service&amp;service=Surgery#contact">Request an appointment <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
+          <a class="button-primary focus-ring" href="book.html?care=specialty&amp;specialty=surgery">Book online <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
           <a class="text-link focus-ring" href="doctors.html#mehta">Meet Dr. Arjun Mehta <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
         </div>
       </article>
@@ -241,7 +231,7 @@
           <h3 class="fill-ink">Common reasons people visit</h3>
           <ul class="fill-muted"><li>Prenatal check-ups and ultrasounds</li><li>Labor and delivery</li><li>Recovery and feeding support after birth</li><li>Annual well-woman visits</li></ul>
           <p class="spec-card__start fill-muted"><strong class="fill-ink">Getting started:</strong> No referral needed for most visits. Birth center tours are available for expecting families.</p>
-          <a class="button-primary focus-ring" href="index.html?reason=Requesting%20an%20appointment&amp;service=Women%27s%20health%20and%20maternity#contact">Request an appointment <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
+          <a class="button-primary focus-ring" href="book.html?care=specialty&amp;specialty=womens">Book online <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
           <a class="text-link focus-ring" href="doctors.html#marin">Meet Dr. Sofia Marín <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
         </div>
       </article>
@@ -254,7 +244,7 @@
           <h3 class="fill-ink">Common reasons people visit</h3>
           <ul class="fill-muted"><li>Well-child check-ups</li><li>Vaccines</li><li>Sick visits</li><li>School and sports physicals</li></ul>
           <p class="spec-card__start fill-muted"><strong class="fill-ink">Getting started:</strong> No referral needed.</p>
-          <a class="button-primary focus-ring" href="index.html?reason=Requesting%20an%20appointment&amp;service=Pediatrics#contact">Request an appointment <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
+          <a class="button-primary focus-ring" href="book.html?care=specialty&amp;specialty=pediatrics">Book online <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
           <a class="text-link focus-ring" href="doctors.html#delgado">Meet Dr. Rosa Delgado <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
         </div>
       </article>
@@ -267,7 +257,7 @@
           <h3 class="fill-ink">Common reasons people visit</h3>
           <ul class="fill-muted"><li>Recovery after surgery or injury</li><li>Rehab after a stroke</li><li>Balance and mobility problems</li><li>Speech and swallowing therapy</li></ul>
           <p class="spec-card__start fill-muted"><strong class="fill-ink">Getting started:</strong> Usually starts with an order from your doctor or surgeon.</p>
-          <a class="button-primary focus-ring" href="index.html?reason=Requesting%20an%20appointment&amp;service=Rehabilitation#contact">Request an appointment <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
+          <a class="button-primary focus-ring" href="book.html?care=specialty&amp;specialty=rehab">Book online <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
           <a class="text-link focus-ring" href="doctors.html#silva">Meet Dr. Mateo Silva <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
         </div>
       </article>

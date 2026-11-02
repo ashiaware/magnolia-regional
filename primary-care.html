@@ -84,28 +84,15 @@
     .spec-card__start+.button-primary{margin-top:1.25rem}
     .text-link{align-self:flex-start;display:inline-flex;align-items:center;gap:.4rem;min-height:2.75rem;margin-top:.35rem;color:var(--plum);font-weight:700;text-decoration:underline;text-underline-offset:5px}
     .text-link:hover{text-decoration-thickness:2px}
-    .fill-card:has(:focus-visible) .text-link{color:var(--blush)}
-    @media(hover:hover){.fill-card:hover .text-link{color:var(--blush)}}
     .button-primary:hover{background:var(--deep);transform:translateY(-1px)}
     .button-primary:active{transform:scale(.97)}
 
     /* Same green fill as the landing page cards */
     .fill-card{position:relative;isolation:isolate;overflow:hidden;transition:transform var(--dur) var(--ease-out),box-shadow var(--dur) ease}
-    .fill-card:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(165deg,var(--forest),var(--deep));clip-path:inset(100% 0 0 0);transition:clip-path 480ms var(--ease-out)}
     .fill-card .fill-ink,.fill-card .fill-muted,.fill-card .fill-chip{transition:color 280ms ease,background-color 280ms ease}
-    .fill-card:has(:focus-visible):before{clip-path:inset(0)}
-    .fill-card:has(:focus-visible) .fill-ink{color:var(--ivory)!important}
-    .fill-card:has(:focus-visible) .fill-muted{color:var(--mist)!important}
-    .fill-card:has(:focus-visible) .fill-chip{background:rgba(255,250,241,.14)!important;color:var(--ivory)!important}
-    .fill-card:has(:focus-visible) .button-primary{background:var(--ivory);color:var(--forest)}
     .fill-card .focus-ring:focus-visible{outline-color:var(--blush)}
     @media(hover:hover){
       .fill-card:hover{transform:translateY(-3px);box-shadow:0 18px 35px rgba(39,72,61,.12)}
-      .fill-card:hover:before{clip-path:inset(0)}
-      .fill-card:hover .fill-ink{color:var(--ivory)!important}
-      .fill-card:hover .fill-muted{color:var(--mist)!important}
-      .fill-card:hover .fill-chip{background:rgba(255,250,241,.14)!important;color:var(--ivory)!important}
-      .fill-card:hover .button-primary{background:var(--ivory);color:var(--forest)}
     }
 
     footer{background:var(--deep);color:var(--mist);padding:2rem 1.25rem}
@@ -123,6 +110,8 @@
     .notes-pill:hover{background:var(--mist);border-color:var(--forest)}
     .notes-pill:active{transform:scale(.97)}
     @media print{.notes-pill{display:none}}
+      @media(hover:hover){.fill-card:hover{border-color:#9daf9f}}
+    .fill-card:has(:focus-visible){border-color:var(--plum)}
   </style>
 </head>
 <body>
@@ -143,11 +132,12 @@
         <input id="header-search" type="search" name="search" placeholder="Search services or doctors" autocomplete="off">
         <button type="submit" aria-label="Search"><i data-lucide="search" class="h-4 w-4" aria-hidden="true"></i></button>
       </form>
-      <a class="header-cta focus-ring" href="index.html#contact">Request support</a>
+      <a class="header-cta focus-ring" href="book.html">Book appointment</a>
     </div>
     <nav class="site-nav" aria-label="Primary navigation">
       <ul>
         <li><a href="index.html">Home</a></li>
+        <li><a href="book.html">Book an appointment</a></li>
         <li><a href="primary-care.html" aria-current="page">Primary care</a></li>
         <li><a href="specialties.html">Specialty care</a></li>
         <li><a href="imaging.html">Diagnostic imaging</a></li>
@@ -162,7 +152,7 @@
     <section class="hero" aria-labelledby="page-title">
       <h1 id="page-title">Primary care</h1>
       <p class="lead">Check-ups, screenings and an ongoing relationship with one care team that gets to know you. Choose a visit type to see what it covers and how to get started.</p>
-      <div class="note"><i data-lucide="info" class="h-5 w-5" aria-hidden="true" style="flex:none;color:var(--plum);margin-top:.15rem"></i><p>No referral needed for primary care. Not sure what you need? <a href="index.html?reason=Requesting%20an%20appointment#contact">Send us a request</a> and we will get you with the right clinician.</p></div>
+      <div class="note"><i data-lucide="info" class="h-5 w-5" aria-hidden="true" style="flex:none;color:var(--plum);margin-top:.15rem"></i><p>No referral needed for primary care. Not sure what you need? <a href="book.html">Send us a request</a> and we will get you with the right clinician.</p></div>
     </section>
 
     <nav class="chips" aria-labelledby="chips-title">
@@ -185,7 +175,7 @@
           <h3 class="fill-ink">What a visit usually covers</h3>
           <ul class="fill-muted"><li>Weight, blood pressure and basic vitals</li><li>A review of your health history and medications</li><li>Preventive screenings due for your age</li><li>Time to ask questions about anything on your mind</li></ul>
           <p class="spec-card__start fill-muted"><strong class="fill-ink">Getting started:</strong> No referral needed. Most adults schedule this once a year.</p>
-          <a class="button-primary focus-ring" href="index.html?reason=Requesting%20an%20appointment&amp;service=Annual%20physicals%20and%20wellness%20visits#contact">Request an appointment <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
+          <a class="button-primary focus-ring" href="book.html?care=primary">Book online <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
           <a class="text-link focus-ring" href="doctors.html#okafor">Meet Dr. Amara Okafor <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
         </div>
       </article>
@@ -198,7 +188,7 @@
           <h3 class="fill-ink">What a visit usually covers</h3>
           <ul class="fill-muted"><li>Flu, shingles, tetanus and other routine vaccines</li><li>Cholesterol and blood sugar screening</li><li>Cancer screenings due for your age</li><li>A plan for what is due next and when</li></ul>
           <p class="spec-card__start fill-muted"><strong class="fill-ink">Getting started:</strong> No referral needed. Many screenings can be added onto an annual physical.</p>
-          <a class="button-primary focus-ring" href="index.html?reason=Requesting%20an%20appointment&amp;service=Vaccinations%20and%20preventive%20screenings#contact">Request an appointment <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
+          <a class="button-primary focus-ring" href="book.html?care=primary">Book online <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
           <a class="text-link focus-ring" href="doctors.html#okafor">Meet Dr. Amara Okafor <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
         </div>
       </article>
@@ -211,7 +201,7 @@
           <h3 class="fill-ink">What a visit usually covers</h3>
           <ul class="fill-muted"><li>Diabetes and blood sugar management</li><li>Blood pressure monitoring and medication review</li><li>Cholesterol and heart-health follow-up</li><li>Lifestyle guidance that fits your routine</li></ul>
           <p class="spec-card__start fill-muted"><strong class="fill-ink">Getting started:</strong> No referral needed. Bring a list of current medications to your first visit.</p>
-          <a class="button-primary focus-ring" href="index.html?reason=Requesting%20an%20appointment&amp;service=Chronic%20conditions#contact">Request an appointment <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
+          <a class="button-primary focus-ring" href="book.html?care=primary">Book online <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
           <a class="text-link focus-ring" href="doctors.html#okafor">Meet Dr. Amara Okafor <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
         </div>
       </article>
@@ -224,7 +214,7 @@
           <h3 class="fill-ink">What a visit usually covers</h3>
           <ul class="fill-muted"><li>A referral to the right specialist for your concern</li><li>Lab and imaging orders when needed</li><li>Notes shared between your care teams</li><li>A single place to ask questions about your overall care</li></ul>
           <p class="spec-card__start fill-muted"><strong class="fill-ink">Getting started:</strong> Start with your primary care team. They will coordinate the rest.</p>
-          <a class="button-primary focus-ring" href="index.html?reason=Requesting%20an%20appointment&amp;service=Referrals%20and%20care%20coordination#contact">Request an appointment <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
+          <a class="button-primary focus-ring" href="book.html?care=primary">Book online <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
           <a class="text-link focus-ring" href="specialties.html">Browse specialty care <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
         </div>
       </article>

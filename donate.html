@@ -86,21 +86,10 @@
 
     /* Same green fill as the landing page cards */
     .fill-card{position:relative;isolation:isolate;overflow:hidden;transition:transform var(--dur) var(--ease-out),box-shadow var(--dur) ease}
-    .fill-card:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(165deg,var(--forest),var(--deep));clip-path:inset(100% 0 0 0);transition:clip-path 480ms var(--ease-out)}
     .fill-card .fill-ink,.fill-card .fill-muted,.fill-card .fill-chip{transition:color 280ms ease,background-color 280ms ease}
-    .fill-card:has(:focus-visible):before{clip-path:inset(0)}
-    .fill-card:has(:focus-visible) .fill-ink{color:var(--ivory)!important}
-    .fill-card:has(:focus-visible) .fill-muted{color:var(--mist)!important}
-    .fill-card:has(:focus-visible) .fill-chip{background:rgba(255,250,241,.14)!important;color:var(--ivory)!important}
-    .fill-card:has(:focus-visible) .button-primary{background:var(--ivory);color:var(--forest)}
     .fill-card .focus-ring:focus-visible{outline-color:var(--blush)}
     @media(hover:hover){
       .fill-card:hover{transform:translateY(-3px);box-shadow:0 18px 35px rgba(39,72,61,.12)}
-      .fill-card:hover:before{clip-path:inset(0)}
-      .fill-card:hover .fill-ink{color:var(--ivory)!important}
-      .fill-card:hover .fill-muted{color:var(--mist)!important}
-      .fill-card:hover .fill-chip{background:rgba(255,250,241,.14)!important;color:var(--ivory)!important}
-      .fill-card:hover .button-primary{background:var(--ivory);color:var(--forest)}
     }
 
     .impact{max-width:72rem;margin:0 auto;padding:1.5rem 1.25rem 5rem}
@@ -128,6 +117,8 @@
     .notes-pill:hover{background:var(--mist);border-color:var(--forest)}
     .notes-pill:active{transform:scale(.97)}
     @media print{.notes-pill{display:none}}
+      @media(hover:hover){.fill-card:hover{border-color:#9daf9f}}
+    .fill-card:has(:focus-visible){border-color:var(--plum)}
   </style>
 </head>
 <body>
@@ -148,11 +139,12 @@
         <input id="header-search" type="search" name="search" placeholder="Search services or doctors" autocomplete="off">
         <button type="submit" aria-label="Search"><i data-lucide="search" class="h-4 w-4" aria-hidden="true"></i></button>
       </form>
-      <a class="header-cta focus-ring" href="index.html#contact">Request support</a>
+      <a class="header-cta focus-ring" href="book.html">Book appointment</a>
     </div>
     <nav class="site-nav" aria-label="Primary navigation">
       <ul>
         <li><a href="index.html">Home</a></li>
+        <li><a href="book.html">Book an appointment</a></li>
         <li><a href="primary-care.html">Primary care</a></li>
         <li><a href="specialties.html">Specialty care</a></li>
         <li><a href="imaging.html">Diagnostic imaging</a></li>

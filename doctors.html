@@ -67,21 +67,10 @@
 
     /* Same green fill as the landing page cards */
     .fill-card{position:relative;isolation:isolate;overflow:hidden;transition:transform var(--dur) var(--ease-out),box-shadow var(--dur) ease}
-    .fill-card:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(165deg,var(--forest),var(--deep));clip-path:inset(100% 0 0 0);transition:clip-path 480ms var(--ease-out)}
     .fill-card .fill-ink,.fill-card .fill-muted,.fill-card .fill-chip{transition:color 280ms ease,background-color 280ms ease}
-    .fill-card:has(:focus-visible):before{clip-path:inset(0)}
-    .fill-card:has(:focus-visible) .fill-ink{color:var(--ivory)!important}
-    .fill-card:has(:focus-visible) .fill-muted{color:var(--mist)!important}
-    .fill-card:has(:focus-visible) .fill-chip{background:rgba(255,250,241,.14)!important;color:var(--ivory)!important}
-    .fill-card:has(:focus-visible) .button-primary{background:var(--ivory);color:var(--forest)}
     .fill-card .focus-ring:focus-visible{outline-color:var(--blush)}
     @media(hover:hover){
       .fill-card:hover{transform:translateY(-3px);box-shadow:0 18px 35px rgba(39,72,61,.12)}
-      .fill-card:hover:before{clip-path:inset(0)}
-      .fill-card:hover .fill-ink{color:var(--ivory)!important}
-      .fill-card:hover .fill-muted{color:var(--mist)!important}
-      .fill-card:hover .fill-chip{background:rgba(255,250,241,.14)!important;color:var(--ivory)!important}
-      .fill-card:hover .button-primary{background:var(--ivory);color:var(--forest)}
     }
 
     footer{background:var(--deep);color:var(--mist);padding:2rem 1.25rem}
@@ -126,8 +115,6 @@
     .text-link:hover{text-decoration-thickness:2px}
     .empty{max-width:72rem;margin:1.5rem auto 0;padding:0 1.25rem}
     .empty p{margin:0;padding:1.25rem;border-radius:1.25rem;background:var(--mist)}
-    .fill-card:has(:focus-visible) .status,.fill-card:has(:focus-visible) .text-link{color:var(--blush)!important}
-    @media(hover:hover){.fill-card:hover .status,.fill-card:hover .text-link{color:var(--blush)!important}}
   
     @media(max-width:400px){
       .site-bar__inner{padding:.75rem 1rem;gap:.5rem}
@@ -139,6 +126,8 @@
     .notes-pill:hover{background:var(--mist);border-color:var(--forest)}
     .notes-pill:active{transform:scale(.97)}
     @media print{.notes-pill{display:none}}
+      @media(hover:hover){.fill-card:hover{border-color:#9daf9f}}
+    .fill-card:has(:focus-visible){border-color:var(--plum)}
   </style>
 </head>
 <body>
@@ -159,11 +148,12 @@
         <input id="header-search" type="search" name="search" placeholder="Search services or doctors" autocomplete="off">
         <button type="submit" aria-label="Search"><i data-lucide="search" class="h-4 w-4" aria-hidden="true"></i></button>
       </form>
-      <a class="header-cta focus-ring" href="index.html#contact">Request support</a>
+      <a class="header-cta focus-ring" href="book.html">Book appointment</a>
     </div>
     <nav class="site-nav" aria-label="Primary navigation">
       <ul>
         <li><a href="index.html">Home</a></li>
+        <li><a href="book.html">Book an appointment</a></li>
         <li><a href="primary-care.html">Primary care</a></li>
         <li><a href="specialties.html">Specialty care</a></li>
         <li><a href="imaging.html">Diagnostic imaging</a></li>
@@ -203,7 +193,7 @@
           <p class="fill-muted">Primary care for adults and children, with a focus on preventive screenings and long-term conditions like diabetes.</p>
           <p class="doc-card__langs fill-muted"><strong class="fill-ink">Languages:</strong> English, Igbo</p>
           <div class="doc-card__actions">
-            <a class="button-primary focus-ring" href="index.html?reason=Requesting%20an%20appointment&amp;doctor=Dr.%20Amara%20Okafor#contact">Request an appointment<span class="sr-only"> with Dr. Amara Okafor</span></a>
+            <a class="button-primary focus-ring" href="book.html?doctor=okafor">Book an appointment<span class="sr-only"> with Dr. Amara Okafor</span></a>
             <a class="text-link focus-ring" href="primary-care.html">About primary care <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
           </div>
         </div>
@@ -233,7 +223,7 @@
           <p class="fill-muted">Treats high blood pressure, heart rhythm problems and heart failure, and runs the heart health clinic.</p>
           <p class="doc-card__langs fill-muted"><strong class="fill-ink">Languages:</strong> English, Spanish</p>
           <div class="doc-card__actions">
-            <a class="button-primary focus-ring" href="index.html?reason=Requesting%20an%20appointment&amp;doctor=Dr.%20Daniel%20Reyes#contact">Request an appointment<span class="sr-only"> with Dr. Daniel Reyes</span></a>
+            <a class="button-primary focus-ring" href="book.html?doctor=reyes">Book an appointment<span class="sr-only"> with Dr. Daniel Reyes</span></a>
             <a class="text-link focus-ring" href="specialties.html#heart">About heart and vascular care <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
           </div>
         </div>
@@ -248,7 +238,7 @@
           <p class="fill-muted">Cares for patients with migraines, epilepsy and memory changes, and leads stroke follow-up care.</p>
           <p class="doc-card__langs fill-muted"><strong class="fill-ink">Languages:</strong> English, Arabic, French</p>
           <div class="doc-card__actions">
-            <a class="button-primary focus-ring" href="index.html?reason=Requesting%20an%20appointment&amp;doctor=Dr.%20Leila%20Haddad#contact">Request an appointment<span class="sr-only"> with Dr. Leila Haddad</span></a>
+            <a class="button-primary focus-ring" href="book.html?doctor=haddad">Book an appointment<span class="sr-only"> with Dr. Leila Haddad</span></a>
             <a class="text-link focus-ring" href="specialties.html#neurology">About neurology <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
           </div>
         </div>
@@ -263,7 +253,7 @@
           <p class="fill-muted">Leads the cancer care team, with a focus on chemotherapy and helping families understand a new diagnosis.</p>
           <p class="doc-card__langs fill-muted"><strong class="fill-ink">Languages:</strong> English, Twi</p>
           <div class="doc-card__actions">
-            <a class="button-primary focus-ring" href="index.html?reason=Requesting%20an%20appointment&amp;doctor=Dr.%20Samuel%20Owusu#contact">Request an appointment<span class="sr-only"> with Dr. Samuel Owusu</span></a>
+            <a class="button-primary focus-ring" href="book.html?doctor=owusu">Book an appointment<span class="sr-only"> with Dr. Samuel Owusu</span></a>
             <a class="text-link focus-ring" href="specialties.html#cancer">About cancer care <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
           </div>
         </div>
@@ -278,7 +268,7 @@
           <p class="fill-muted">Performs hernia, gallbladder and same-day procedures, and meets every patient before surgery to plan recovery.</p>
           <p class="doc-card__langs fill-muted"><strong class="fill-ink">Languages:</strong> English, Hindi, Gujarati</p>
           <div class="doc-card__actions">
-            <a class="button-primary focus-ring" href="index.html?reason=Requesting%20an%20appointment&amp;doctor=Dr.%20Arjun%20Mehta#contact">Request an appointment<span class="sr-only"> with Dr. Arjun Mehta</span></a>
+            <a class="button-primary focus-ring" href="book.html?doctor=mehta">Book an appointment<span class="sr-only"> with Dr. Arjun Mehta</span></a>
             <a class="text-link focus-ring" href="specialties.html#surgery">About surgery <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
           </div>
         </div>
@@ -293,7 +283,7 @@
           <p class="fill-muted">Cares for patients before, during and after pregnancy, and offers routine women's health visits.</p>
           <p class="doc-card__langs fill-muted"><strong class="fill-ink">Languages:</strong> English, Spanish</p>
           <div class="doc-card__actions">
-            <a class="button-primary focus-ring" href="index.html?reason=Requesting%20an%20appointment&amp;doctor=Dr.%20Sofia%20Mar%C3%ADn#contact">Request an appointment<span class="sr-only"> with Dr. Sofia Marín</span></a>
+            <a class="button-primary focus-ring" href="book.html?doctor=marin">Book an appointment<span class="sr-only"> with Dr. Sofia Marín</span></a>
             <a class="text-link focus-ring" href="specialties.html#maternity">About women's health and maternity <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
           </div>
         </div>
@@ -308,7 +298,7 @@
           <p class="fill-muted">Sees babies, children and teens for check-ups, vaccines and sick visits, and helps families with development questions.</p>
           <p class="doc-card__langs fill-muted"><strong class="fill-ink">Languages:</strong> English, Spanish</p>
           <div class="doc-card__actions">
-            <a class="button-primary focus-ring" href="index.html?reason=Requesting%20an%20appointment&amp;doctor=Dr.%20Rosa%20Delgado#contact">Request an appointment<span class="sr-only"> with Dr. Rosa Delgado</span></a>
+            <a class="button-primary focus-ring" href="book.html?doctor=delgado">Book an appointment<span class="sr-only"> with Dr. Rosa Delgado</span></a>
             <a class="text-link focus-ring" href="specialties.html#pediatrics">About pediatrics <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
           </div>
         </div>
@@ -323,7 +313,7 @@
           <p class="fill-muted">Builds recovery plans after surgery, injury or stroke, working with physical, occupational and speech therapists.</p>
           <p class="doc-card__langs fill-muted"><strong class="fill-ink">Languages:</strong> English, Portuguese</p>
           <div class="doc-card__actions">
-            <a class="button-primary focus-ring" href="index.html?reason=Requesting%20an%20appointment&amp;doctor=Dr.%20Mateo%20Silva#contact">Request an appointment<span class="sr-only"> with Dr. Mateo Silva</span></a>
+            <a class="button-primary focus-ring" href="book.html?doctor=silva">Book an appointment<span class="sr-only"> with Dr. Mateo Silva</span></a>
             <a class="text-link focus-ring" href="specialties.html#rehabilitation">About rehabilitation <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
           </div>
         </div>
@@ -338,7 +328,7 @@
           <p class="fill-muted">Reads X-ray, CT, MRI and mammography results, and works with your care team to explain what a scan shows.</p>
           <p class="doc-card__langs fill-muted"><strong class="fill-ink">Languages:</strong> English, Korean</p>
           <div class="doc-card__actions">
-            <a class="button-primary focus-ring" href="index.html?reason=Requesting%20an%20appointment&amp;doctor=Dr.%20Hana%20Kim#contact">Request an appointment<span class="sr-only"> with Dr. Hana Kim</span></a>
+            <a class="button-primary focus-ring" href="book.html?doctor=kim">Book an appointment<span class="sr-only"> with Dr. Hana Kim</span></a>
             <a class="text-link focus-ring" href="imaging.html">About diagnostic imaging <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
           </div>
         </div>
@@ -353,7 +343,7 @@
           <p class="fill-muted">Performs image-guided procedures, including fluoroscopy-guided biopsies and catheter placements.</p>
           <p class="doc-card__langs fill-muted"><strong class="fill-ink">Languages:</strong> English</p>
           <div class="doc-card__actions">
-            <a class="button-primary focus-ring" href="index.html?reason=Requesting%20an%20appointment&amp;doctor=Dr.%20Marcus%20Webb#contact">Request an appointment<span class="sr-only"> with Dr. Marcus Webb</span></a>
+            <a class="button-primary focus-ring" href="book.html?doctor=webb">Book an appointment<span class="sr-only"> with Dr. Marcus Webb</span></a>
             <a class="text-link focus-ring" href="imaging.html#xray">About X-ray and fluoroscopy <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
           </div>
         </div>
@@ -368,7 +358,7 @@
           <p class="fill-muted">Reads mammograms and breast MRI, and talks through screening and follow-up results with patients directly.</p>
           <p class="doc-card__langs fill-muted"><strong class="fill-ink">Languages:</strong> English</p>
           <div class="doc-card__actions">
-            <a class="button-primary focus-ring" href="index.html?reason=Requesting%20an%20appointment&amp;doctor=Dr.%20Naomi%20Clarke#contact">Request an appointment<span class="sr-only"> with Dr. Naomi Clarke</span></a>
+            <a class="button-primary focus-ring" href="book.html?doctor=clarke">Book an appointment<span class="sr-only"> with Dr. Naomi Clarke</span></a>
             <a class="text-link focus-ring" href="imaging.html#mri">About MRI and mammography <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
           </div>
         </div>
