@@ -113,22 +113,20 @@
 
     /* Find care */
     .care-list{display:grid;gap:1.5rem}
-    .care-emergency{display:grid;grid-template-columns:auto minmax(0,1fr);gap:1rem 1.25rem;align-items:center;padding:1.25rem 1.5rem;border:1px solid #e4cbce;border-radius:1.5rem 1.5rem 1.5rem .375rem;background:var(--blush)}
-    .care-emergency[hidden]{display:none}
-    .care-emergency__icon{display:grid;place-items:center;width:3rem;height:3rem;border-radius:999px;background:var(--ivory);color:var(--danger)}
-    .care-emergency__title{margin:0;display:flex;flex-wrap:wrap;align-items:center;gap:.4rem .75rem;font-family:var(--font-display);font-weight:400;font-size:1.5rem;line-height:1.15;color:var(--forest)}
-    .care-open{display:inline-flex;align-items:center;gap:.4rem;padding:.2rem .65rem;border-radius:999px;background:var(--ivory);font-family:var(--font-body);font-size:.75rem;font-weight:700;color:var(--danger)}
-    .care-emergency__actions{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:.25rem 1.5rem}
-    @media(min-width:1024px){.care-emergency{grid-template-columns:auto minmax(0,1fr) auto}.care-emergency__actions{grid-column:auto;justify-content:flex-end}}
     .care-911{background:var(--danger);color:#fff}
     .care-911:hover{background:#7f2234;box-shadow:0 10px 22px -12px rgba(155,44,63,.7)}
     .care-grid{display:grid;gap:1.5rem}
     .care-grid[hidden]{display:none}
-    @media(min-width:1024px){.care-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+    @media(min-width:1024px){.care-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(min-width:1360px){.care-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
     .care-card{display:flex;flex-direction:column;padding:.75rem;border:1px solid var(--line);border-radius:2rem 2rem 2rem .5rem;background:var(--ivory);transition:transform var(--dur) var(--ease-out),box-shadow var(--dur) ease,border-color var(--dur) ease}
     .care-card[hidden]{display:none}
     .care-card:nth-child(2){border-radius:2rem 2rem .5rem 2rem}
     .care-card:nth-child(3){border-radius:2rem .5rem 2rem 2rem}
+    .care-card:nth-child(4){border-radius:.5rem 2rem 2rem 2rem}
+    .care-card--er{border-color:#e4cbce;background:linear-gradient(180deg,#fff6f5,var(--ivory) 45%)}
+    .care-card--er .care-card__meta svg{color:var(--danger)}
+    @media(hover:hover){.care-card--er:hover{border-color:#d9a9b1}}
     @media(hover:hover){.care-card:hover{transform:translateY(-3px);border-color:#9daf9f;box-shadow:0 22px 40px -24px rgba(39,72,61,.4)}}
     .care-card:has(:focus-visible){border-color:var(--plum)}
     .care-card__img{display:block;width:100%;aspect-ratio:16/10;height:auto;object-fit:cover;border-radius:1.5rem 1.5rem 1.5rem .375rem;background:var(--cream)}
@@ -230,11 +228,12 @@
  </head>
  <body data-template-id="__page-root" style="background: rgb(255, 250, 241);">
 <div class="fx-note" role="note" aria-label="Fictional site notice"><style>
-.fx-note{background:#18352d;color:#e7eee4;font:500 .8125rem/1.45 "Work Sans",system-ui,sans-serif;text-align:center;padding:.55rem max(16px,env(safe-area-inset-left,0px));border-bottom:1px solid rgba(174,187,170,.25)}
+.fx-note{background:#ece5f2;color:#303d37;font:500 .8125rem/1.45 "Work Sans",system-ui,sans-serif;text-align:center;padding:.6rem max(16px,env(safe-area-inset-left,0px));border-bottom:1px solid rgba(131,71,174,.28)}
 .fx-note p{margin:0 auto;max-width:72rem}
-.fx-note .fx-tag{display:inline-block;margin-right:.5rem;padding:.05rem .55rem;border-radius:999px;background:#f4e2e1;color:#18352d;font-weight:600;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;vertical-align:1px}
-.fx-note b{color:#fffaf1;font-weight:600}
-</style><p><span class="fx-tag">Fictional</span><b>Magnolia Regional Medical Center is not a real hospital.</b> This is a UX design student project by Ashia Ware. For real medical care, contact your provider or call 911.</p></div>
+.fx-note .fx-tag{font-weight:700;font-size:.72rem;letter-spacing:.2em;color:#8347ae;margin-right:.6rem}
+.fx-note .fx-tag::after{content:"\2726";margin-left:.6rem;font-size:.62rem;vertical-align:1px}
+.fx-note b{color:#27483d;font-weight:700}
+</style><p><span class="fx-tag">FICTIONAL</span><b>Magnolia Regional Medical Center is not a real hospital.</b> This is a UX design student project by Ashia Ware. For real medical care, contact your provider or call 911.</p></div>
 
   <div class="site-shell" id="site-shell"><a href="#main-content" class="skip-link focus-ring">Skip to main content</a>
    <header class="site-header">
@@ -335,20 +334,28 @@
       </div>
 
       <div id="service-list" class="care-list mt-10">
-       <article class="care-emergency" data-search="emergency er urgent accident injury trauma chest pain stroke 24/7 ambulance paramedics">
-        <span class="care-emergency__icon" aria-hidden="true"><i data-lucide="siren" class="h-5 w-5"></i></span>
-        <div class="care-emergency__text">
-         <h3 class="care-emergency__title">Emergency care <span class="care-open"><span class="emergency-dot" aria-hidden="true"></span>Open 24/7</span></h3>
-         <p class="t-small m-0 mt-1 text-[#303d37]">Serious injury or sudden illness? Come to the east entrance off Magnolia Grove Way. Emergencies don't need an appointment.</p>
-        </div>
-        <div class="care-emergency__actions">
-         <a class="button-base care-911 focus-ring" href="tel:911"><i data-lucide="phone" class="h-4 w-4" aria-hidden="true"></i>Call 911</a>
-         <a class="text-link focus-ring" href="#visit">Directions to the ER</a>
-         <button class="text-link focus-ring" type="button" data-modal="emergency">About emergency care</button>
-        </div>
-       </article>
 
        <div id="service-grid" class="care-grid">
+        <article class="care-card care-card--er" data-search="emergency er urgent accident injury trauma chest pain stroke 24/7 ambulance paramedics">
+         <img class="care-card__img" width="800" height="533" loading="lazy" src="https://images.pexels.com/photos/6519920/pexels-photo-6519920.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Paramedics wheel a stretcher to the back of an open ambulance.">
+         <div class="care-card__body">
+          <div class="flex items-center gap-3"><span class="grid h-10 w-10 flex-none place-items-center rounded-full bg-[#f4e2e1] text-[#9b2c3f]"><i data-lucide="siren" class="h-5 w-5" aria-hidden="true"></i></span><span class="t-tag inline-flex items-center gap-1.5 rounded-full bg-[#f4e2e1] px-3 py-1.5 text-[#9b2c3f]"><span class="emergency-dot" aria-hidden="true"></span>Open 24/7</span></div>
+          <h3 class="t-h3 mb-0 mt-4">Emergency care</h3>
+          <p class="t-body mb-0 mt-2 text-[#303d37]">Fast treatment for serious injury or sudden illness, any hour of the day. Use the east entrance off Magnolia Grove Way.</p>
+          <ul class="care-card__list">
+           <li><i data-lucide="check" class="h-4 w-4" aria-hidden="true"></i>Chest pain and stroke signs</li>
+           <li><i data-lucide="check" class="h-4 w-4" aria-hidden="true"></i>Trouble breathing or severe allergic reactions</li>
+           <li><i data-lucide="check" class="h-4 w-4" aria-hidden="true"></i>Serious injuries and accidents</li>
+          </ul>
+          <p class="care-card__meta"><i data-lucide="door-open" class="h-4 w-4" aria-hidden="true"></i>No appointment needed · Walk in or arrive by ambulance</p>
+          <div class="care-card__actions">
+           <a class="button-base care-911 focus-ring" href="tel:911"><i data-lucide="phone" class="h-4 w-4" aria-hidden="true"></i>Call 911</a>
+           <button class="text-link focus-ring" type="button" data-modal="emergency">Explore<span class="sr-only"> emergency care</span> <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></button>
+           <a class="text-link focus-ring" href="#visit">Directions</a>
+          </div>
+         </div>
+        </article>
+
         <article class="care-card focus-within" data-search="primary care check-up checkup physical screening vaccination vaccine everyday family doctor gp annual sick">
          <img class="care-card__img" width="800" height="533" loading="lazy" src="https://images.pexels.com/photos/4266942/pexels-photo-4266942.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Clinician consulting with a patient in a welcoming medical office.">
          <div class="care-card__body">
